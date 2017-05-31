@@ -29,9 +29,14 @@ namespace DnDCharacterSheet
 
         }
 
-        private void doTheThing_Click(object sender, EventArgs e)
+        private void DoTheThing_Click(object sender, EventArgs e)
         {
-            _mainFormProcessor.DoTheThing_Click(mainLayout);
+            _mainFormProcessor.DoTheThing_Click(middleLayoutPanel);
+        }
+
+        private void middleLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

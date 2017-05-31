@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,19 +10,17 @@ namespace DnDCharacterSheet
 {
     class MainFormProcessor
     {
-        public void DoTheThing_Click()
-        {
-
-        }
+        private int Count = 0;
 
         internal void DoTheThing_Click(TableLayoutPanel mainLayout)
         {
-            mainLayout.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            //mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             mainLayout.RowCount = mainLayout.RowStyles.Count;
 
             var addTable = new TableLayoutPanel();
             addTable.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
+            addTable.Dock = DockStyle.Fill;
+            addTable.BackColor = Color.Brown;
             
             var label = new Label();
             label.Text = "test";
