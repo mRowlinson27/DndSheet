@@ -11,11 +11,27 @@ namespace DnDCharacterSheet
     class MainFormProcessor
     {
         private int Count = 0;
+        private ICentralLayoutPanelFactory _centralLayoutPanelFactory;
+        private TableLayoutPanel _mainLayout;
+        private TableLayoutPanel _centraLayoutPanel;
 
-        internal void DoTheThing_Click(TableLayoutPanel mainLayout)
+        public MainFormProcessor(TableLayoutPanel mainLayout, ICentralLayoutPanelFactory centralLayoutPanelFactory)
+        {
+            _centralLayoutPanelFactory = centralLayoutPanelFactory;
+            _mainLayout = mainLayout;
+            SetUpStatPage();
+        }
+
+        public void SetUpStatPage()
+        {
+            _centraLayoutPanel = _centralLayoutPanelFactory.Create();
+            _mainLayout.Controls.Add(_centraLayoutPanel, 0, 1);
+        }
+
+        internal void DoTheThing_Click()
         {
             //mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            mainLayout.RowCount = mainLayout.RowStyles.Count;
+            _centraLayoutPanel.RowCount = _centraLayoutPanel.RowStyles.Count;
 
             var addTable = new TableLayoutPanel();
             addTable.GrowStyle = TableLayoutPanelGrowStyle.AddRows;
@@ -37,7 +53,7 @@ namespace DnDCharacterSheet
             addTable.RowCount = addTable.RowStyles.Count;
             addTable.Controls.Add(label3);
 
-            mainLayout.Controls.Add(addTable);
+            _centraLayoutPanel.Controls.Add(addTable);
         }
     }
 }

@@ -34,8 +34,6 @@
             this.dndIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.iconContextStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.doTheThing = new System.Windows.Forms.ToolStripMenuItem();
-            this.middleLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.mainLayout.SuspendLayout();
             this.iconContextStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +44,6 @@
             this.mainLayout.ColumnCount = 1;
             this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.mainLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayout.Controls.Add(this.middleLayoutPanel, 0, 1);
             this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayout.Location = new System.Drawing.Point(0, 0);
             this.mainLayout.Name = "mainLayout";
@@ -81,23 +78,6 @@
             this.doTheThing.Text = "Do the Thing";
             this.doTheThing.Click += new System.EventHandler(this.DoTheThing_Click);
             // 
-            // middleLayoutPanel
-            // 
-            this.middleLayoutPanel.AutoScroll = true;
-            this.middleLayoutPanel.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.middleLayoutPanel.ColumnCount = 2;
-            this.middleLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.middleLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.middleLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.middleLayoutPanel.Location = new System.Drawing.Point(3, 77);
-            this.middleLayoutPanel.Name = "middleLayoutPanel";
-            this.middleLayoutPanel.RowCount = 1;
-            this.middleLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.middleLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.middleLayoutPanel.Size = new System.Drawing.Size(698, 292);
-            this.middleLayoutPanel.TabIndex = 0;
-            this.middleLayoutPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.middleLayoutPanel_Paint);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,7 +89,6 @@
             this.Name = "MainForm";
             this.Text = "DnD CharacterSheet";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.mainLayout.ResumeLayout(false);
             this.iconContextStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -121,7 +100,6 @@
         private System.Windows.Forms.NotifyIcon dndIcon;
         private System.Windows.Forms.ContextMenuStrip iconContextStrip;
         private System.Windows.Forms.ToolStripMenuItem doTheThing;
-        private System.Windows.Forms.TableLayoutPanel middleLayoutPanel;
     }
 }
 
