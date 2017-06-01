@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CentralLayoutPanelFactory.cs" />
+    <Compile Include="DataEntryForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ICentralLayoutPanelFactory.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
