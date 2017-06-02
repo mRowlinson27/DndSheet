@@ -1,9 +1,10 @@
 ﻿using System.Windows.Forms;
+using CustomForms.API;
 
 namespace DnDCharacterSheet
 {
     public interface ICentralLayoutBuilder
     {
-        TableLayoutPanel Create();
+        ITableLayoutWrapper Create();
     }
 }

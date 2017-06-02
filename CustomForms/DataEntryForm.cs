@@ -15,12 +15,14 @@ namespace DnDCharacterSheet
         public int Rows { get; set; }
         public int Cols { get; set; }
         private int _rowNum = 0;
-        private int _height = 20;
-        public DataEntryForm(int rows, int cols)
+        private int _height;
+        public DataEntryForm(int rows, int cols, int height)
         {
             Labels = new List<Label>();
             Rows = rows;
             Cols = cols;
+            _height = height;
+
             Height = Rows* (_height + 2) + 2;
             Dock = DockStyle.Top;
             BackColor = Color.Aqua;

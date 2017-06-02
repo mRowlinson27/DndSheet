@@ -61,6 +61,10 @@
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomForms\CustomForms.csproj">
+      <Project>{C9698281-9747-446D-ABF8-CA59C58F0D22}</Project>
+      <Name>CustomForms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

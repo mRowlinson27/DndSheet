@@ -49,6 +49,7 @@
     <Compile Include="DataEntryFormBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableLayoutDecoratorApplier.cs" />
+    <Compile Include="TableLayoutWrapper.cs" />
     <Compile Include="VerticalScrollTableLayoutDecorator.cs" />
   </ItemGroup>
   <ItemGroup>

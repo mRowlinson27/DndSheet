@@ -9,7 +9,7 @@ namespace CustomForms.API
 {
     public interface ITableLayoutDecoratorApplier
     {
-        TableLayoutPanel Create(List<ITableLayoutDecorator> decorators);
-        TableLayoutPanel Apply(TableLayoutPanel input, List<ITableLayoutDecorator> decorators);
+        ITableLayoutWrapper Create(List<ITableLayoutDecorator> decorators);
+        ITableLayoutWrapper Apply(ITableLayoutWrapper input, List<ITableLayoutDecorator> decorators);
     }
 }

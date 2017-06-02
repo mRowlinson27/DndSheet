@@ -14,10 +14,10 @@ namespace DnDCharacterSheet
         private int Count = 0;
         private ICentralLayoutBuilder _centralLayoutBuilder;
         private IDataEntryFormBuilder _dataEntryFormBuilder;
-        private TableLayoutPanel _mainLayout;
-        private TableLayoutPanel _centraLayoutPanel;
+        private ITableLayoutWrapper _mainLayout;
+        private ITableLayoutWrapper _centralLayoutPanel;
 
-        public MainFormProcessor(TableLayoutPanel mainLayout, ICentralLayoutBuilder centralLayoutBuilder, IDataEntryFormBuilder dataEntryFormBuilder)
+        public MainFormProcessor(ITableLayoutWrapper mainLayout, ICentralLayoutBuilder centralLayoutBuilder, IDataEntryFormBuilder dataEntryFormBuilder)
         {
             _centralLayoutBuilder = centralLayoutBuilder;
             _dataEntryFormBuilder = dataEntryFormBuilder;
@@ -27,16 +27,15 @@ namespace DnDCharacterSheet
 
         public void SetUpStatPage()
         {
-            _centraLayoutPanel = _centralLayoutBuilder.Create();
-            _centraLayoutPanel.BackColor = Color.Aquamarine;
-            _mainLayout.Controls.Add(_centraLayoutPanel, 0, 1);
+            _centralLayoutPanel = _centralLayoutBuilder.Create();
+            _centralLayoutPanel.BackColor = Color.Aquamarine;
+            _mainLayout.Controls.Add(_centralLayoutPanel.TrueControl, 0, 1);
         }
 
         internal void DoTheThing_Click()
         {
-            //mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            _centraLayoutPanel.RowCount = _centraLayoutPanel.RowStyles.Count;
-            _centraLayoutPanel.Controls.Add(_dataEntryFormBuilder.Create());
+            _centralLayoutPanel.RowCount = _centralLayoutPanel.RowStyles.Count;
+            _centralLayoutPanel.Controls.Add(_dataEntryFormBuilder.Create(null));
         }
     }
 }

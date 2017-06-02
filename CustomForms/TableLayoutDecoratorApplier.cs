@@ -10,9 +10,9 @@ namespace CustomForms
 {
     public class TableLayoutDecoratorApplier : ITableLayoutDecoratorApplier
     {
-        public TableLayoutPanel Apply(TableLayoutPanel input, List<ITableLayoutDecorator> decorators)
+        public ITableLayoutWrapper Apply(ITableLayoutWrapper input, List<ITableLayoutDecorator> decorators)
         {
-            TableLayoutPanel output = input;
+            ITableLayoutWrapper output = input;
 
             foreach (var decorator in decorators)
             {
@@ -21,9 +21,9 @@ namespace CustomForms
             return output;
         }
 
-        public TableLayoutPanel Create(List<ITableLayoutDecorator> decorators)
+        public ITableLayoutWrapper Create(List<ITableLayoutDecorator> decorators)
         {
-            var input = new TableLayoutPanel();
+            var input = new TableLayoutWrapper();
             return Apply(input, decorators);
         }
     }

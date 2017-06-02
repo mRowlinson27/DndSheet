@@ -19,7 +19,7 @@ namespace DnDCharacterSheet
             };
         }
 
-        public TableLayoutPanel Create()
+        public ITableLayoutWrapper Create()
         {
             var middleLayoutPanel = _tableLayoutDecoratorApplier.Create(_tableLayoutDecorators);
 

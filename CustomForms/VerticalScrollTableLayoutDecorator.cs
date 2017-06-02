@@ -10,18 +10,18 @@ namespace CustomForms
 {
     class VerticalScrollTableLayoutDecorator : ITableLayoutDecorator
     {
-        public TableLayoutPanel Create()
+        public ITableLayoutWrapper Create()
         {
-            var input = new TableLayoutPanel();
+            var input = new TableLayoutWrapper();
             return ApplyChanges(input);
         }
 
-        public TableLayoutPanel Apply(TableLayoutPanel input)
+        public ITableLayoutWrapper Apply(ITableLayoutWrapper input)
         {
             return ApplyChanges(input);
         }
 
-        private TableLayoutPanel ApplyChanges(TableLayoutPanel input)
+        private ITableLayoutWrapper ApplyChanges(ITableLayoutWrapper input)
         {
             input.AutoScroll = false;
             input.HorizontalScroll.Maximum = 0;

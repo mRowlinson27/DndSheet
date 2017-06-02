@@ -9,6 +9,6 @@ namespace CustomForms.API
 {
     public interface IDataEntryFormBuilder
     {
-        TableLayoutPanel Create();
+        TableLayoutPanel Create(List<Control> controls);
     }
 }
