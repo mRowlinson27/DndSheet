@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using CustomForms.API;
 
 namespace DnDCharacterSheet
@@ -7,7 +8,38 @@ namespace DnDCharacterSheet
     {
         public TableLayoutPanel Create()
         {
-            return new DataEntryForm(3);
+            var panel = new DataEntryForm(2, 3);
+            panel.AddRow(new List<object>()
+            {
+                "boo",
+                "meow",
+                "go"
+            });
+            panel.AddRow(new List<object>()
+            {
+                "boo",
+                "meow",
+                "go"
+            });
+            panel.AddRow(new List<object>()
+            {
+                "boo",
+                "meow",
+                "go"
+            });
+            panel.AddRow(new List<object>()
+            {
+                "boo",
+                "meow",
+                "go"
+            });
+            panel.AddRow(new List<object>()
+            {
+                "boo",
+                "meow",
+                "go"
+            });
+            return panel;
         }
     }
 }

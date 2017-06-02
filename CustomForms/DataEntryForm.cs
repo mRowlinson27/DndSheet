@@ -12,14 +12,49 @@ namespace DnDCharacterSheet
     class DataEntryForm : TableLayoutPanel, IDataEntryForm
     {
         public List<Label> Labels;
-        public DataEntryForm(int numLabels)
+        public int Rows { get; set; }
+        public int Cols { get; set; }
+        private int _rowNum = 0;
+        private int _height = 20;
+        public DataEntryForm(int rows, int cols)
         {
             Labels = new List<Label>();
-            Height = 40;
+            Rows = rows;
+            Cols = cols;
+            Height = Rows* (_height + 2) + 2;
             Dock = DockStyle.Top;
             BackColor = Color.Aqua;
             CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
-            
+            for (int r = 0; r < rows; r++)
+            {
+                RowStyles.Add(new RowStyle(SizeType.Absolute,_height));
+            }
+            RowCount = RowStyles.Count;
+            for (int c = 0; c < cols; c++)
+            {
+                ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            }
+            ColumnCount = ColumnStyles.Count;
+        }
+
+        public bool AddRow(List<object> row)
+        {
+            if (row.Count != Cols || _rowNum == Rows)
+            {
+                return false;
+            }
+
+            for (var i = 0; i < Cols; i++)
+            {
+                var data = row[i];
+                var label = new Label() { Height = _height  };
+                label.Text = (string) data;
+                Controls.Add(label, i, _rowNum);
+            }
+            _rowNum++;
+
+            return true;
+            var numLabels = 3;
             GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
             ColumnCount = ColumnStyles.Count;
             RowStyles.Add(new RowStyle(SizeType.Percent, 50));
@@ -30,7 +65,7 @@ namespace DnDCharacterSheet
                 ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
                 ColumnCount = ColumnStyles.Count;
 
-                var label = new Label() { Height = 13, AutoSize = true};
+                var label = new Label() { Height = 13, AutoSize = true };
                 label.Text = $"{i}";
                 for (int j = 0; j <= i; j++)
                     label.Text += $" - {j}";

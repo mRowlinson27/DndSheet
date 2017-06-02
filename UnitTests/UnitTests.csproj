@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomFormsTests\DataEntryFormBuilderTests.cs" />
+    <Compile Include="CustomFormsTests\VerticalScrollTableLayoutDecoratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

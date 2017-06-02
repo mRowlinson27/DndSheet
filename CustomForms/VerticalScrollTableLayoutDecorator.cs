@@ -23,9 +23,10 @@ namespace CustomForms
 
         private TableLayoutPanel ApplyChanges(TableLayoutPanel input)
         {
-            input.HorizontalScroll.Maximum = 0;
             input.AutoScroll = false;
+            input.HorizontalScroll.Maximum = 0;
             input.VerticalScroll.Visible = false;
+            input.HorizontalScroll.Visible = false;
             input.AutoScroll = true;
             return input;
         }
