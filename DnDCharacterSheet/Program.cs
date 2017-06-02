@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms;
 
 namespace DnDCharacterSheet
 {
@@ -17,7 +18,7 @@ namespace DnDCharacterSheet
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var mainForm = new MainForm();
-            var mainFormProcessor = new MainFormProcessor(mainForm.MainLayoutPanel, new CentralLayoutPanelFactory(), new DataEntryFormBuilder());
+            var mainFormProcessor = new MainFormProcessor(mainForm.MainLayoutPanel, new CentralLayoutBuilder(new TableLayoutDecoratorApplier()), new DataEntryFormBuilder());
             mainForm.MainFormProcessor = mainFormProcessor;
             Application.Run(mainForm);
         }

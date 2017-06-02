@@ -12,14 +12,14 @@ namespace DnDCharacterSheet
     public class MainFormProcessor
     {
         private int Count = 0;
-        private ICentralLayoutPanelFactory _centralLayoutPanelFactory;
+        private ICentralLayoutBuilder _centralLayoutBuilder;
         private IDataEntryFormBuilder _dataEntryFormBuilder;
         private TableLayoutPanel _mainLayout;
         private TableLayoutPanel _centraLayoutPanel;
 
-        public MainFormProcessor(TableLayoutPanel mainLayout, ICentralLayoutPanelFactory centralLayoutPanelFactory, IDataEntryFormBuilder dataEntryFormBuilder)
+        public MainFormProcessor(TableLayoutPanel mainLayout, ICentralLayoutBuilder centralLayoutBuilder, IDataEntryFormBuilder dataEntryFormBuilder)
         {
-            _centralLayoutPanelFactory = centralLayoutPanelFactory;
+            _centralLayoutBuilder = centralLayoutBuilder;
             _dataEntryFormBuilder = dataEntryFormBuilder;
             _mainLayout = mainLayout;
             SetUpStatPage();
@@ -27,7 +27,7 @@ namespace DnDCharacterSheet
 
         public void SetUpStatPage()
         {
-            _centraLayoutPanel = _centralLayoutPanelFactory.Create();
+            _centraLayoutPanel = _centralLayoutBuilder.Create();
             _centraLayoutPanel.BackColor = Color.Aquamarine;
             _mainLayout.Controls.Add(_centraLayoutPanel, 0, 1);
         }

@@ -42,12 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CentralLayoutPanelFactory.cs" />
+    <Compile Include="CentralLayoutBuilder.cs" />
     <Compile Include="DataEntryForm.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataEntryFormBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableLayoutDecoratorApplier.cs" />
+    <Compile Include="VerticalScrollTableLayoutDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">

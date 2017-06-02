@@ -2,7 +2,7 @@
 
 namespace DnDCharacterSheet
 {
-    public interface ICentralLayoutPanelFactory
+    public interface ICentralLayoutBuilder
     {
         TableLayoutPanel Create();
     }

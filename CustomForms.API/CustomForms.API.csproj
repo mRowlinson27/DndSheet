@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICentralLayoutPanelFactory.cs" />
+    <Compile Include="ICentralLayoutBuilder.cs" />
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="IDataEntryFormBuilder.cs" />
+    <Compile Include="ITableLayoutDecoratorApplier.cs" />
+    <Compile Include="ITableLayoutDecorator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
