@@ -5,19 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms.API;
 
 namespace DnDCharacterSheet
 {
-    class MainFormProcessor
+    public class MainFormProcessor
     {
         private int Count = 0;
         private ICentralLayoutPanelFactory _centralLayoutPanelFactory;
+        private IDataEntryFormBuilder _dataEntryFormBuilder;
         private TableLayoutPanel _mainLayout;
         private TableLayoutPanel _centraLayoutPanel;
 
-        public MainFormProcessor(TableLayoutPanel mainLayout, ICentralLayoutPanelFactory centralLayoutPanelFactory)
+        public MainFormProcessor(TableLayoutPanel mainLayout, ICentralLayoutPanelFactory centralLayoutPanelFactory, IDataEntryFormBuilder dataEntryFormBuilder)
         {
             _centralLayoutPanelFactory = centralLayoutPanelFactory;
+            _dataEntryFormBuilder = dataEntryFormBuilder;
             _mainLayout = mainLayout;
             SetUpStatPage();
         }
@@ -33,7 +36,7 @@ namespace DnDCharacterSheet
         {
             //mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             _centraLayoutPanel.RowCount = _centraLayoutPanel.RowStyles.Count;
-            _centraLayoutPanel.Controls.Add(new DataEntryForm(4));
+            _centraLayoutPanel.Controls.Add(_dataEntryFormBuilder.Create());
         }
     }
 }

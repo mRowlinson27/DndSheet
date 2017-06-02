@@ -5,15 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms.API;
 
 namespace DnDCharacterSheet
 {
-    class DataEntryForm : TableLayoutPanel
+    class DataEntryForm : TableLayoutPanel, IDataEntryForm
     {
-        private List<Label> _labels;
+        public List<Label> Labels;
         public DataEntryForm(int numLabels)
         {
-            _labels = new List<Label>();
+            Labels = new List<Label>();
             Height = 40;
             Dock = DockStyle.Top;
             BackColor = Color.Aqua;
@@ -29,15 +30,19 @@ namespace DnDCharacterSheet
                 ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
                 ColumnCount = ColumnStyles.Count;
 
-                _labels.Add(new Label() { Text = $"{i}", Width = 10, Height = 13 });
-                _labels.ElementAt(i).BackColor = Color.Red;
+                var label = new Label() { Height = 13, AutoSize = true};
+                label.Text = $"{i}";
+                for (int j = 0; j <= i; j++)
+                    label.Text += $" - {j}";
+                Labels.Add(label);
+                Labels.ElementAt(i).BackColor = Color.Red;
                 if (i == 1)
-                    _labels.ElementAt(i).BackColor = Color.Green;
+                    Labels.ElementAt(i).BackColor = Color.Green;
                 if (i == 2)
-                    _labels.ElementAt(i).BackColor = Color.Blue;
+                    Labels.ElementAt(i).BackColor = Color.Blue;
                 if (i == 3)
-                    _labels.ElementAt(i).BackColor = Color.Violet;
-                Controls.Add(_labels.ElementAt(i));
+                    Labels.ElementAt(i).BackColor = Color.Violet;
+                Controls.Add(Labels.ElementAt(i));
             }
 
             GrowStyle = TableLayoutPanelGrowStyle.AddRows;
@@ -46,15 +51,15 @@ namespace DnDCharacterSheet
 
             for (int i = 0; i < numLabels; i++)
             {
-                _labels.Add(new Label() { Text = $"{i}", Width = 10, Height = 13 });
-                _labels.ElementAt(i + 3).BackColor = Color.Violet;
+                Labels.Add(new Label() { Text = $"{i}", Width = 10, Height = 13 });
+                Labels.ElementAt(i + 3).BackColor = Color.Violet;
                 if (i == 1)
-                    _labels.ElementAt(i + 3).BackColor = Color.Blue;
+                    Labels.ElementAt(i + 3).BackColor = Color.Blue;
                 if (i == 2)
-                    _labels.ElementAt(i + 3).BackColor = Color.Green;
+                    Labels.ElementAt(i + 3).BackColor = Color.Green;
                 if (i == 3)
-                    _labels.ElementAt(i + 3).BackColor = Color.Red;
-                Controls.Add(_labels.ElementAt(i + 3));
+                    Labels.ElementAt(i + 3).BackColor = Color.Red;
+                Controls.Add(Labels.ElementAt(i + 3));
             }
         }
     }

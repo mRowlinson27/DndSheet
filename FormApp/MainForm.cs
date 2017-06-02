@@ -12,12 +12,13 @@ namespace DnDCharacterSheet
 {
     public partial class MainForm : Form
     {
-        private MainFormProcessor _mainFormProcessor;
+        public MainFormProcessor MainFormProcessor { get; set; }
+
+        public TableLayoutPanel MainLayoutPanel { get { return mainLayout; } }
 
         public MainForm()
         {
             InitializeComponent();
-            _mainFormProcessor = new MainFormProcessor(mainLayout, new CentralLayoutPanelFactory());
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace DnDCharacterSheet
 
         private void DoTheThing_Click(object sender, EventArgs e)
         {
-            _mainFormProcessor.DoTheThing_Click();
+            MainFormProcessor.DoTheThing_Click();
         }
     }
 }

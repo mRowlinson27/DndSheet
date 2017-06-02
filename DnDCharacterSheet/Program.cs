@@ -16,7 +16,10 @@ namespace DnDCharacterSheet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            var mainForm = new MainForm();
+            var mainFormProcessor = new MainFormProcessor(mainForm.MainLayoutPanel, new CentralLayoutPanelFactory(), new DataEntryFormBuilder());
+            mainForm.MainFormProcessor = mainFormProcessor;
+            Application.Run(mainForm);
         }
     }
 }
