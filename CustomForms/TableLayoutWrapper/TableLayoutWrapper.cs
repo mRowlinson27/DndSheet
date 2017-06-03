@@ -1,33 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using CustomForms.API;
 
-namespace CustomForms
+namespace CustomForms.TableLayoutWrapper
 {
     public class TableLayoutWrapper : ITableLayoutWrapper
     {
         private TableLayoutPanel _trueControl;
+        private TableLayoutControlCollectionWrapper _layoutControlCollectionWrapper;
         public TableLayoutWrapper()
         {
             _trueControl = new TableLayoutPanel();
+            Setup();
         }
 
         public TableLayoutWrapper(TableLayoutPanel input)
         {
             _trueControl = input;
+            Setup();
+        }
+
+        private void Setup()
+        {
+            _layoutControlCollectionWrapper = new TableLayoutControlCollectionWrapper(_trueControl.Controls);
         }
 
         public Control TrueControl => _trueControl;
 
-        public TableLayoutControlCollection Controls => _trueControl.Controls;
+        public ITableLayoutControlCollectionWrapper Controls => _layoutControlCollectionWrapper;
+
+        public TableLayoutPanelCellBorderStyle CellBorderStyle
+        {
+            get => _trueControl.CellBorderStyle;
+            set => _trueControl.CellBorderStyle = value;
+        }
+
+        public TableLayoutPanelGrowStyle GrowStyle
+        {
+            get => _trueControl.GrowStyle;
+            set => _trueControl.GrowStyle = value;
+        }
+
+        public int Height
+        {
+            get => _trueControl.Height;
+            set => _trueControl.Height = value;
+        }
+
+        public int Width
+        {
+            get => _trueControl.Width;
+            set => _trueControl.Width = value;
+        }
 
         public TableLayoutRowStyleCollection RowStyles => _trueControl.RowStyles;
-
         public int RowCount
         {
             get => _trueControl.RowCount;

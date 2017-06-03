@@ -43,13 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CentralLayoutBuilder.cs" />
-    <Compile Include="DataEntryForm.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="DataEntryForm.cs" />
     <Compile Include="DataEntryFormBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableLayoutDecoratorApplier.cs" />
-    <Compile Include="TableLayoutWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\TableLayoutControlCollectionWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\TableLayoutWrapper.cs" />
     <Compile Include="VerticalScrollTableLayoutDecorator.cs" />
   </ItemGroup>
   <ItemGroup>

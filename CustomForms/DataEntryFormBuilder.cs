@@ -6,7 +6,7 @@ namespace DnDCharacterSheet
 {
     public class DataEntryFormBuilder : IDataEntryFormBuilder
     {
-        public TableLayoutPanel Create(List<Control> controls)
+        public ITableLayoutWrapper Create(List<Control> controls)
         {
             var panel = new DataEntryForm(4, 3, 20);
             panel.AddRow(new List<object>()

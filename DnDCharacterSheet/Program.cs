@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms;
+using CustomForms.TableLayoutWrapper;
 
 namespace DnDCharacterSheet
 {
@@ -17,9 +18,12 @@ namespace DnDCharacterSheet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             var mainForm = new MainForm();
             var mainFormProcessor = new MainFormProcessor(new TableLayoutWrapper(mainForm.MainLayoutPanel), new CentralLayoutBuilder(new TableLayoutDecoratorApplier()), new DataEntryFormBuilder());
             mainForm.MainFormProcessor = mainFormProcessor;
+            mainFormProcessor.SetUpStatPage();
+
             Application.Run(mainForm);
         }
     }

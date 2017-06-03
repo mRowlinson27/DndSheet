@@ -5,20 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms;
 using CustomForms.API;
+using CustomForms.TableLayoutWrapper;
 
 namespace DnDCharacterSheet
 {
-    class DataEntryForm : TableLayoutPanel, IDataEntryForm
+    class DataEntryForm : TableLayoutWrapper, IDataEntryForm
     {
-        public List<Label> Labels;
+        public List<LabelWrapper> Labels;
         public int Rows { get; set; }
         public int Cols { get; set; }
         private int _rowNum = 0;
         private int _height;
         public DataEntryForm(int rows, int cols, int height)
         {
-            Labels = new List<Label>();
+            Labels = new List<LabelWrapper>();
             Rows = rows;
             Cols = cols;
             _height = height;
@@ -49,7 +51,7 @@ namespace DnDCharacterSheet
             for (var i = 0; i < Cols; i++)
             {
                 var data = row[i];
-                var label = new Label() { Height = _height  };
+                var label = new LabelWrapper() { Height = _height  };
                 label.Text = (string) data;
                 Controls.Add(label, i, _rowNum);
             }

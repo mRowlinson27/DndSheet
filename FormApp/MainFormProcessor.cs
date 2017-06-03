@@ -22,14 +22,13 @@ namespace DnDCharacterSheet
             _centralLayoutBuilder = centralLayoutBuilder;
             _dataEntryFormBuilder = dataEntryFormBuilder;
             _mainLayout = mainLayout;
-            SetUpStatPage();
         }
 
         public void SetUpStatPage()
         {
             _centralLayoutPanel = _centralLayoutBuilder.Create();
             _centralLayoutPanel.BackColor = Color.Aquamarine;
-            _mainLayout.Controls.Add(_centralLayoutPanel.TrueControl, 0, 1);
+            _mainLayout.Controls.Add(_centralLayoutPanel, 0, 1);
         }
 
         internal void DoTheThing_Click()

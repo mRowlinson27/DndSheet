@@ -23,7 +23,7 @@ namespace CustomForms
 
         public ITableLayoutWrapper Create(List<ITableLayoutDecorator> decorators)
         {
-            var input = new TableLayoutWrapper();
+            var input = new TableLayoutWrapper.TableLayoutWrapper();
             return Apply(input, decorators);
         }
     }

@@ -7,8 +7,8 @@ using System.Windows.Forms;
 
 namespace CustomForms.API
 {
-    public interface IDataEntryFormBuilder
+    public interface IControl
     {
-        ITableLayoutWrapper Create(List<Control> controls);
+        Control TrueControl { get; }
     }
 }

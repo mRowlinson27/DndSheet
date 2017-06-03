@@ -8,11 +8,11 @@ using CustomForms.API;
 
 namespace CustomForms
 {
-    class VerticalScrollTableLayoutDecorator : ITableLayoutDecorator
+    public class VerticalScrollTableLayoutDecorator : ITableLayoutDecorator
     {
         public ITableLayoutWrapper Create()
         {
-            var input = new TableLayoutWrapper();
+            var input = new TableLayoutWrapper.TableLayoutWrapper();
             return ApplyChanges(input);
         }
 
