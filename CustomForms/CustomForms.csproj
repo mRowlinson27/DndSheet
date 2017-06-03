@@ -42,12 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CentralLayoutBuilder.cs" />
+    <Compile Include="Builders\CentralLayoutBuilder.cs" />
+    <Compile Include="Builders\TableLayoutBuilder.cs" />
     <Compile Include="DataEntryForm.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataEntryFormBuilder.cs" />
+    <Compile Include="Builders\DataEntryFormBuilder.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecorator.cs" />
+    <Compile Include="Decorators\EqualColumnsTableLayoutDecoratorArgs.cs" />
     <Compile Include="LabelWrapper.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -69,6 +71,7 @@
       <Name>CustomForms.API</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

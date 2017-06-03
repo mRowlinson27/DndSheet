@@ -2,8 +2,9 @@
 using System.Windows.Forms;
 using CustomForms.API;
 using CustomForms.API.TableLayoutWrapper;
+using DnDCharacterSheet;
 
-namespace DnDCharacterSheet
+namespace CustomForms.Builders
 {
     public class DataEntryFormBuilder : IDataEntryFormBuilder
     {

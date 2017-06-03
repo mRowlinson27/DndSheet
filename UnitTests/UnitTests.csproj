@@ -57,7 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFormsTests\DataEntryFormBuilderTests.cs" />
+    <Compile Include="CustomFormsTests\Builders\DataEntryFormBuilderTests.cs" />
+    <Compile Include="CustomFormsTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
     <Compile Include="CustomFormsTests\Decorators\VerticalScrollTableLayoutDecoratorTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

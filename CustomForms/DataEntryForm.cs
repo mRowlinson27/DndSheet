@@ -18,6 +18,7 @@ namespace DnDCharacterSheet
         public int Cols { get; set; }
         private int _rowNum = 0;
         private int _height;
+
         public DataEntryForm(int rows, int cols, int height)
         {
             Labels = new List<LabelWrapper>();

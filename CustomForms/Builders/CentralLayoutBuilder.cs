@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using CustomForms;
 using CustomForms.API;
 using CustomForms.API.TableLayoutWrapper;
 using CustomForms.Decorators;
+using DnDCharacterSheet;
 
-namespace DnDCharacterSheet
+namespace CustomForms.Builders
 {
     public class CentralLayoutBuilder : ICentralLayoutBuilder
     {
@@ -18,11 +18,13 @@ namespace DnDCharacterSheet
             _tableLayoutDecoratorApplier = tableLayoutDecoratorApplier;
             _tableLayoutDecorators = new List<ITableLayoutDecorator>
             {
-                new VerticalScrollTableLayoutDecorator()
+                new VerticalScrollTableLayoutDecorator(),
+                new EqualColumnsTableLayoutDecorator()
             };
             _tableLayoutDecoratorArguments = new List<ITableLayoutDecoratorArguments>
             {
-                null
+                null,
+                new EqualColumnsTableLayoutDecoratorArgs() {NumCols = 2}
             };
         }
 
@@ -32,10 +34,8 @@ namespace DnDCharacterSheet
 
             middleLayoutPanel.BackColor = Color.Beige;
             middleLayoutPanel.Dock = DockStyle.Fill;
-            middleLayoutPanel.AccessColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            middleLayoutPanel.AccessColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            middleLayoutPanel.ColumnCount = middleLayoutPanel.AccessColumnStyles.Count;
             middleLayoutPanel.Margin = new Padding(20);
+
             return middleLayoutPanel;
         }
     }
