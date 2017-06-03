@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms.TableLayoutWrapper;
 
 namespace DnDCharacterSheet
 {
@@ -14,7 +15,7 @@ namespace DnDCharacterSheet
     {
         public MainFormProcessor MainFormProcessor { get; set; }
 
-        public TableLayoutPanel MainLayoutPanel { get { return mainLayout; } }
+        public TableLayoutWrapper MainLayoutPanel { get { return mainLayout; } }
 
         public MainForm()
         {

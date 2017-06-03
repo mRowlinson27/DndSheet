@@ -8,19 +8,18 @@ using CustomForms.API;
 
 namespace CustomForms.TableLayoutWrapper
 {
-    class TableLayoutControlCollectionWrapper : ITableLayoutControlCollectionWrapper
+    class TableLayoutControlCollectionWrapper : TableLayoutControlCollection, ITableLayoutControlCollectionWrapper
     {
-        public TableLayoutControlCollectionWrapper(TableLayoutControlCollection trueControlControls)
+        public TableLayoutControlCollectionWrapper(TableLayoutPanel container) : base(container)
+        {
+        }
+
+        public void Add(IControl tableLayoutWrapper)
         {
             throw new NotImplementedException();
         }
 
-        public void Add(IControl control)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Add(IControl control, int col, int row)
+        public void Add(IControl tableLayoutWrapper, int col, int row)
         {
             throw new NotImplementedException();
         }

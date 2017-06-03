@@ -10,7 +10,6 @@ namespace CustomForms.API
 {
     public interface ITableLayoutWrapper : IControl
     {
-        Control TrueControl { get; }
         ITableLayoutControlCollectionWrapper Controls { get; }
 
         TableLayoutPanelCellBorderStyle CellBorderStyle { get; set; }

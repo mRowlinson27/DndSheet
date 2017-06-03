@@ -1,4 +1,7 @@
-﻿namespace DnDCharacterSheet
+﻿
+using CustomForms.TableLayoutWrapper;
+
+namespace DnDCharacterSheet
 {
     partial class MainForm
     {
@@ -30,7 +33,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.mainLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.mainLayout = new CustomForms.TableLayoutWrapper.TableLayoutWrapper();
             this.dndIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.iconContextStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.doTheThing = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,11 +98,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel mainLayout;
         private System.Windows.Forms.NotifyIcon dndIcon;
         private System.Windows.Forms.ContextMenuStrip iconContextStrip;
         private System.Windows.Forms.ToolStripMenuItem doTheThing;
+        private TableLayoutWrapper mainLayout;
     }
 }
 

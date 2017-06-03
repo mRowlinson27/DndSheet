@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICentralLayoutBuilder.cs" />
+    <Compile Include="IControl.cs" />
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="IDataEntryFormBuilder.cs" />
+    <Compile Include="ILabelWrapper.cs" />
     <Compile Include="ITableLayoutControlCollectionWrapper.cs" />
     <Compile Include="ITableLayoutDecoratorApplier.cs" />
     <Compile Include="ITableLayoutDecorator.cs" />

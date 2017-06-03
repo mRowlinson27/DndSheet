@@ -37,8 +37,8 @@ namespace UnitTests.FormAppTests
 
             _mainFormProcessor.SetUpStatPage();
             
-            A.CallTo(() => _createdTableLayoutWrapper.TrueControl).MustHaveHappened();
-            A.CallTo(() => _tableLayoutWrapper.Controls.Add(A<Control>.Ignored, 0, 1)).MustHaveHappened();
+            //A.CallTo(() => _createdTableLayoutWrapper.TrueControl).MustHaveHappened();
+            A.CallTo(() => _tableLayoutWrapper.Controls.Add(A<IControl>.Ignored, 0, 1)).MustHaveHappened();
         }
     }
 }

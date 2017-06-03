@@ -69,7 +69,7 @@ namespace DnDCharacterSheet
                 ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
                 ColumnCount = ColumnStyles.Count;
 
-                var label = new Label() { Height = 13, AutoSize = true };
+                var label = new LabelWrapper() { Height = 13, AutoSize = true };
                 label.Text = $"{i}";
                 for (int j = 0; j <= i; j++)
                     label.Text += $" - {j}";
@@ -90,7 +90,7 @@ namespace DnDCharacterSheet
 
             for (int i = 0; i < numLabels; i++)
             {
-                Labels.Add(new Label() { Text = $"{i}", Width = 10, Height = 13 });
+                Labels.Add(new LabelWrapper() { Text = $"{i}", Width = 10, Height = 13 });
                 Labels.ElementAt(i + 3).BackColor = Color.Violet;
                 if (i == 1)
                     Labels.ElementAt(i + 3).BackColor = Color.Blue;
