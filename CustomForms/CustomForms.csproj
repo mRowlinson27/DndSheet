@@ -47,6 +47,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataEntryFormBuilder.cs" />
+    <Compile Include="Decorators\EqualColumnsTableLayoutDecorator.cs" />
     <Compile Include="LabelWrapper.cs">
       <SubType>Component</SubType>
     </Compile>

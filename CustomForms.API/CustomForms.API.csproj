@@ -47,6 +47,7 @@
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="IDataEntryFormBuilder.cs" />
     <Compile Include="ILabelWrapper.cs" />
+    <Compile Include="ITableLayoutDecoratorArguments.cs" />
     <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutColumnStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutControlCollectionWrapper.cs" />

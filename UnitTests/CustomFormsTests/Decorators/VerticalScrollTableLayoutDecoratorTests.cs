@@ -29,7 +29,7 @@ namespace UnitTests.CustomFormsTests.Decorators
             A.CallTo(() => _tableLayoutWrapper.AccessHorizontalScroll).Returns(_hScrollPropertiesWrapper);
             A.CallTo(() => _tableLayoutWrapper.AccessVerticalScroll).Returns(_vScrollPropertiesWrapper);
 
-            _decorator.Apply(_tableLayoutWrapper);
+            _decorator.Apply(_tableLayoutWrapper,null);
 
             A.CallToSet(() => _tableLayoutWrapper.AutoScroll).To(false).MustHaveHappened()
                 .Then(A.CallToSet(() => _hScrollPropertiesWrapper.Maximum).To(0).MustHaveHappened())

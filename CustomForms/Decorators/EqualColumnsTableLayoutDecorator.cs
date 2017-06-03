@@ -1,9 +1,14 @@
-﻿using CustomForms.API;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CustomForms.API;
 using CustomForms.API.TableLayoutWrapper;
 
 namespace CustomForms.Decorators
 {
-    public class VerticalScrollTableLayoutDecorator : ITableLayoutDecorator
+    class EqualColumnsTableLayoutDecorator : ITableLayoutDecorator
     {
         public ITableLayoutWrapper Create(ITableLayoutDecoratorArguments args)
         {
@@ -18,11 +23,6 @@ namespace CustomForms.Decorators
 
         private ITableLayoutWrapper ApplyChanges(ITableLayoutWrapper input)
         {
-            input.AutoScroll = false;
-            input.AccessHorizontalScroll.Maximum = 0;
-            input.AccessVerticalScroll.Visible = false;
-            input.AccessHorizontalScroll.Visible = false;
-            input.AutoScroll = true;
             return input;
         }
     }

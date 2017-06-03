@@ -11,7 +11,8 @@ namespace DnDCharacterSheet
     public class CentralLayoutBuilder : ICentralLayoutBuilder
     {
         private ITableLayoutDecoratorApplier _tableLayoutDecoratorApplier;
-        private List<ITableLayoutDecorator> _tableLayoutDecorators; 
+        private List<ITableLayoutDecorator> _tableLayoutDecorators;
+        private List<ITableLayoutDecoratorArguments> _tableLayoutDecoratorArguments;
         public CentralLayoutBuilder(ITableLayoutDecoratorApplier tableLayoutDecoratorApplier)
         {
             _tableLayoutDecoratorApplier = tableLayoutDecoratorApplier;
@@ -19,11 +20,15 @@ namespace DnDCharacterSheet
             {
                 new VerticalScrollTableLayoutDecorator()
             };
+            _tableLayoutDecoratorArguments = new List<ITableLayoutDecoratorArguments>
+            {
+                null
+            };
         }
 
         public ITableLayoutWrapper Create()
         {
-            var middleLayoutPanel = _tableLayoutDecoratorApplier.Create(_tableLayoutDecorators);
+            var middleLayoutPanel = _tableLayoutDecoratorApplier.Create(_tableLayoutDecorators, _tableLayoutDecoratorArguments);
 
             middleLayoutPanel.BackColor = Color.Beige;
             middleLayoutPanel.Dock = DockStyle.Fill;

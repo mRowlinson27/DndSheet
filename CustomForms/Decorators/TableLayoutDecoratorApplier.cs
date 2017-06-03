@@ -6,21 +6,21 @@ namespace CustomForms.Decorators
 {
     public class TableLayoutDecoratorApplier : ITableLayoutDecoratorApplier
     {
-        public ITableLayoutWrapper Apply(ITableLayoutWrapper input, List<ITableLayoutDecorator> decorators)
+        public ITableLayoutWrapper Apply(ITableLayoutWrapper input, List<ITableLayoutDecorator> decorators, List<ITableLayoutDecoratorArguments> args)
         {
             ITableLayoutWrapper output = input;
 
-            foreach (var decorator in decorators)
+            for (var i = 0; i < decorators.Count; i++ )
             {
-                output = decorator.Apply(output);
+                output = decorators[i].Apply(output, args[i]);
             }
             return output;
         }
 
-        public ITableLayoutWrapper Create(List<ITableLayoutDecorator> decorators)
+        public ITableLayoutWrapper Create(List<ITableLayoutDecorator> decorators, List<ITableLayoutDecoratorArguments> args)
         {
             var input = new TableLayoutWrapper.TableLayoutWrapper();
-            return Apply(input, decorators);
+            return Apply(input, decorators, args);
         }
     }
 }
