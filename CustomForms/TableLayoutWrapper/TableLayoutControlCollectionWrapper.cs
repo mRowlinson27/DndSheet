@@ -8,20 +8,32 @@ using CustomForms.API;
 
 namespace CustomForms.TableLayoutWrapper
 {
-    class TableLayoutControlCollectionWrapper : TableLayoutControlCollection, ITableLayoutControlCollectionWrapper
+    class TableLayoutControlCollectionWrapper : ITableLayoutControlCollectionWrapper
     {
-        public TableLayoutControlCollectionWrapper(TableLayoutPanel container) : base(container)
+        private TableLayoutControlCollection _control;
+        public TableLayoutControlCollectionWrapper(TableLayoutControlCollection control)
         {
+            _control = control;
         }
 
-        public void Add(IControl tableLayoutWrapper)
+        public void Add(IControl control)
         {
-            throw new NotImplementedException();
+            Add(control.TrueControl);
         }
 
-        public void Add(IControl tableLayoutWrapper, int col, int row)
+        public void Add(IControl control, int col, int row)
         {
-            throw new NotImplementedException();
+            Add(control.TrueControl, col, row);
+        }
+
+        public void Add(Control control)
+        {
+            _control.Add(control);
+        }
+
+        public void Add(Control control, int col, int row)
+        {
+            _control.Add(control, col, row);
         }
     }
 }

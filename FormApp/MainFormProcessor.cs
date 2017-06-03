@@ -28,13 +28,13 @@ namespace DnDCharacterSheet
         {
             _centralLayoutPanel = _centralLayoutBuilder.Create();
             _centralLayoutPanel.BackColor = Color.Aquamarine;
-            _mainLayout.Controls.Add(_centralLayoutPanel, 0, 1);
+            _mainLayout.Controller.Add(_centralLayoutPanel.TrueControl, 0, 1);
         }
 
         internal void DoTheThing_Click()
         {
             _centralLayoutPanel.RowCount = _centralLayoutPanel.RowStyles.Count;
-            _centralLayoutPanel.Controls.Add(_dataEntryFormBuilder.Create(null));
+            _centralLayoutPanel.Controller.Add(_dataEntryFormBuilder.Create(null).TrueControl);
         }
     }
 }

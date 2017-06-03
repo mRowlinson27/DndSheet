@@ -9,5 +9,6 @@ namespace CustomForms.API
 {
     public interface IControl
     {
+        Control TrueControl { get; }
     }
 }

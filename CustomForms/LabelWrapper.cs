@@ -5,6 +5,6 @@ namespace CustomForms
 {
     public class LabelWrapper : Label, ILabelWrapper
     {
-
+        public Control TrueControl { get; }
     }
 }

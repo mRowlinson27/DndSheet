@@ -10,9 +10,11 @@ namespace CustomForms.TableLayoutWrapper
         private TableLayoutControlCollectionWrapper _layoutControlCollectionWrapper;
         public TableLayoutWrapper()
         {
-            _layoutControlCollectionWrapper = new TableLayoutControlCollectionWrapper(this);
+            _layoutControlCollectionWrapper = new TableLayoutControlCollectionWrapper(Controls);
         }
 
-        public new ITableLayoutControlCollectionWrapper Controls => _layoutControlCollectionWrapper;
+        public ITableLayoutControlCollectionWrapper Controller => _layoutControlCollectionWrapper;
+
+        public Control TrueControl => this;
     }
 }
