@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.TableLayoutWrapper;
 
 namespace DnDCharacterSheet
 {
     public class MainFormProcessor
     {
-        private int Count = 0;
         private ICentralLayoutBuilder _centralLayoutBuilder;
         private IDataEntryFormBuilder _dataEntryFormBuilder;
         private ITableLayoutWrapper _mainLayout;
@@ -28,13 +28,13 @@ namespace DnDCharacterSheet
         {
             _centralLayoutPanel = _centralLayoutBuilder.Create();
             _centralLayoutPanel.BackColor = Color.Aquamarine;
-            _mainLayout.Controller.Add(_centralLayoutPanel.TrueControl, 0, 1);
+            _mainLayout.AccessControls.Add(_centralLayoutPanel.TrueControl, 0, 1);
         }
 
         internal void DoTheThing_Click()
         {
-            _centralLayoutPanel.RowCount = _centralLayoutPanel.RowStyles.Count;
-            _centralLayoutPanel.Controller.Add(_dataEntryFormBuilder.Create(null).TrueControl);
+            _centralLayoutPanel.RowCount = _centralLayoutPanel.AccessRowStyles.Count;
+            _centralLayoutPanel.AccessControls.Add(_dataEntryFormBuilder.Create(null).TrueControl);
         }
     }
 }

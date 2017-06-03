@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CustomForms.API;
+﻿using CustomForms.API;
+using CustomForms.API.TableLayoutWrapper;
 
-namespace CustomForms
+namespace CustomForms.Decorators
 {
     public class VerticalScrollTableLayoutDecorator : ITableLayoutDecorator
     {
@@ -24,9 +19,9 @@ namespace CustomForms
         private ITableLayoutWrapper ApplyChanges(ITableLayoutWrapper input)
         {
             input.AutoScroll = false;
-            input.HorizontalScroll.Maximum = 0;
-            input.VerticalScroll.Visible = false;
-            input.HorizontalScroll.Visible = false;
+            input.AccessHorizontalScroll.Maximum = 0;
+            input.AccessVerticalScroll.Visible = false;
+            input.AccessHorizontalScroll.Visible = false;
             input.AutoScroll = true;
             return input;
         }

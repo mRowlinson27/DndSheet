@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace CustomForms.API
+namespace CustomForms.API.TableLayoutWrapper
 {
     public interface ITableLayoutWrapper : IControl
     {
-        ITableLayoutControlCollectionWrapper Controller { get; }
+        ITableLayoutControlCollectionWrapper AccessControls { get; }
 
         TableLayoutPanelCellBorderStyle CellBorderStyle { get; set; }
 
@@ -19,9 +14,9 @@ namespace CustomForms.API
         int Height { get; set; }
         int Width { get; set; }
 
-        TableLayoutRowStyleCollection RowStyles { get; }
+        ITableLayoutRowStyleCollectionWrapper AccessRowStyles { get; }
         int RowCount { get; set; }
-        TableLayoutColumnStyleCollection ColumnStyles { get; }
+        ITableLayoutColumnStyleCollectionWrapper AccessColumnStyles { get; }
         int ColumnCount { get; set; }
 
         Padding Margin { get; set; }
@@ -32,7 +27,7 @@ namespace CustomForms.API
 
         bool AutoScroll { get; set; }
 
-        HScrollProperties HorizontalScroll { get; }
-        VScrollProperties VerticalScroll { get; }
+        IHScrollPropertiesWrapper AccessHorizontalScroll { get; }
+        IVScrollPropertiesWrapper AccessVerticalScroll { get; }
     }
 }

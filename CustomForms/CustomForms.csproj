@@ -51,12 +51,16 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableLayoutDecoratorApplier.cs" />
+    <Compile Include="Decorators\TableLayoutDecoratorApplier.cs" />
+    <Compile Include="TableLayoutWrapper\HScrollPropertiesWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\TableLayoutColumnStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\TableLayoutControlCollectionWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\TableLayoutRowStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\TableLayoutWrapper.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VerticalScrollTableLayoutDecorator.cs" />
+    <Compile Include="Decorators\VerticalScrollTableLayoutDecorator.cs" />
+    <Compile Include="TableLayoutWrapper\VScrollPropertiesWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">

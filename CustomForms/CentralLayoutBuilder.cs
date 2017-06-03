@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using CustomForms;
 using CustomForms.API;
+using CustomForms.API.TableLayoutWrapper;
+using CustomForms.Decorators;
 
 namespace DnDCharacterSheet
 {
@@ -25,9 +27,9 @@ namespace DnDCharacterSheet
 
             middleLayoutPanel.BackColor = Color.Beige;
             middleLayoutPanel.Dock = DockStyle.Fill;
-            middleLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            middleLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            middleLayoutPanel.ColumnCount = middleLayoutPanel.ColumnStyles.Count;
+            middleLayoutPanel.AccessColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            middleLayoutPanel.AccessColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            middleLayoutPanel.ColumnCount = middleLayoutPanel.AccessColumnStyles.Count;
             middleLayoutPanel.Margin = new Padding(20);
             return middleLayoutPanel;
         }

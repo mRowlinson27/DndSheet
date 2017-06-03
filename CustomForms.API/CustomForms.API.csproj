@@ -47,11 +47,15 @@
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="IDataEntryFormBuilder.cs" />
     <Compile Include="ILabelWrapper.cs" />
-    <Compile Include="ITableLayoutControlCollectionWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\ITableLayoutColumnStyleCollectionWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\ITableLayoutControlCollectionWrapper.cs" />
     <Compile Include="ITableLayoutDecoratorApplier.cs" />
     <Compile Include="ITableLayoutDecorator.cs" />
-    <Compile Include="ITableLayoutWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\ITableLayoutRowStyleCollectionWrapper.cs" />
+    <Compile Include="TableLayoutWrapper\ITableLayoutWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableLayoutWrapper\IVScrollPropertiesWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

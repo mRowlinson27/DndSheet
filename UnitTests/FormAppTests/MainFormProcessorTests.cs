@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.TableLayoutWrapper;
 using DnDCharacterSheet;
 using FakeItEasy;
 using NUnit.Framework;
@@ -38,7 +39,7 @@ namespace UnitTests.FormAppTests
             _mainFormProcessor.SetUpStatPage();
             
             //A.CallTo(() => _createdTableLayoutWrapper.TrueControl).MustHaveHappened();
-            A.CallTo(() => _tableLayoutWrapper.Controller.Add(A<Control>.Ignored, 0, 1)).MustHaveHappened();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls.Add(A<Control>.Ignored, 0, 1)).MustHaveHappened();
         }
     }
 }
