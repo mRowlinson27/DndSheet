@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CustomForms.API.DTOs;
 using CustomForms.API.TableLayoutWrapper;
 
 namespace CustomForms.API.Decorators

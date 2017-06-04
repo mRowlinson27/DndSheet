@@ -1,4 +1,4 @@
-﻿namespace CustomForms.API.Decorators
+﻿namespace CustomForms.API.DTOs
 {
     public interface ITableLayoutDecoratorArguments
     {

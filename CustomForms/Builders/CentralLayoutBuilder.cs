@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using CustomForms.API;
 using CustomForms.API.Builders;
 using CustomForms.API.Decorators;
+using CustomForms.API.DTOs;
 using CustomForms.API.TableLayoutWrapper;
 using CustomForms.Decorators;
 

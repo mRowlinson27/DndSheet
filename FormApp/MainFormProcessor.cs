@@ -39,11 +39,11 @@ namespace DnDCharacterSheet
             {
                 new List<string>
                 {
-                    "a", "b"
+                    "Acrobatics", "Dex"
                 },
                 new List<string>
                 {
-                    "a", "b", "c"
+                    "Appraise", "b", "c"
                 }
             };
             _centralLayoutPanel.AccessControls.Add(_tableLayoutBuilder.Create(data));
