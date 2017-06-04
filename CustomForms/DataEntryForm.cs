@@ -1,106 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CustomForms;
 using CustomForms.API;
-using CustomForms.TableLayoutWrapper;
 
-namespace DnDCharacterSheet
+namespace CustomForms
 {
-    class DataEntryForm : TableLayoutWrapper, IDataEntryForm
+    class DataEntryForm : TableLayoutWrapper.TableLayoutWrapper, IDataEntryForm
     {
-        public List<LabelWrapper> Labels;
-        public int Rows { get; set; }
-        public int Cols { get; set; }
         private int _rowNum = 0;
-        private int _height;
+        private int _height = 22;
 
-        public DataEntryForm(int rows, int cols, int height)
+        public DataEntryForm()
         {
-            Labels = new List<LabelWrapper>();
-            Rows = rows;
-            Cols = cols;
-            _height = height;
-
-            Height = Rows* (_height + 2) + 2;
             Dock = DockStyle.Top;
             BackColor = Color.Aqua;
             CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
-            for (int r = 0; r < rows; r++)
-            {
-                RowStyles.Add(new RowStyle(SizeType.Absolute,_height));
-            }
-            RowCount = RowStyles.Count;
-            for (int c = 0; c < cols; c++)
-            {
-                ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-            }
-            ColumnCount = ColumnStyles.Count;
         }
 
-        public bool AddRow(List<object> row)
+        public bool AddRow(List<IControl> row)
         {
-            if (row.Count != Cols || _rowNum == Rows)
+            if (row.Count != ColumnStyles.Count || _rowNum == RowStyles.Count)
             {
                 return false;
             }
 
-            for (var i = 0; i < Cols; i++)
+            for (var i = 0; i < ColumnStyles.Count; i++)
             {
                 var data = row[i];
-                var label = new LabelWrapper() { Height = _height  };
-                label.Text = (string) data;
-                Controls.Add(label, i, _rowNum);
+                AccessControls.Add(data, _rowNum, i);
             }
             _rowNum++;
 
             return true;
-            var numLabels = 3;
-            GrowStyle = TableLayoutPanelGrowStyle.AddColumns;
+        }
+
+        public bool AddCol()
+        {
+            ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
             ColumnCount = ColumnStyles.Count;
-            RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+            return true;
+        }
+
+        public bool AddRow()
+        {
+            RowStyles.Add(new ColumnStyle(SizeType.Absolute, 22));
             RowCount = RowStyles.Count;
+            Height = RowStyles.Count * (_height + 2) + 2;
+            return true;
+        }
 
-            for (int i = 0; i < numLabels; i++)
+        public bool AddRows(int rows)
+        {
+            for (var i = 0; i < rows; i++)
             {
-                ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-                ColumnCount = ColumnStyles.Count;
 
-                var label = new LabelWrapper() { Height = 13, AutoSize = true };
-                label.Text = $"{i}";
-                for (int j = 0; j <= i; j++)
-                    label.Text += $" - {j}";
-                Labels.Add(label);
-                Labels.ElementAt(i).BackColor = Color.Red;
-                if (i == 1)
-                    Labels.ElementAt(i).BackColor = Color.Green;
-                if (i == 2)
-                    Labels.ElementAt(i).BackColor = Color.Blue;
-                if (i == 3)
-                    Labels.ElementAt(i).BackColor = Color.Violet;
-                Controls.Add(Labels.ElementAt(i));
             }
+            return true;
+        }
 
-            GrowStyle = TableLayoutPanelGrowStyle.AddRows;
-            RowStyles.Add(new RowStyle(SizeType.Percent, 50));
-            RowCount = RowStyles.Count;
-
-            for (int i = 0; i < numLabels; i++)
+        public bool AddCols(int cols)
+        {
+            for (var i = 0; i < cols; i++)
             {
-                Labels.Add(new LabelWrapper() { Text = $"{i}", Width = 10, Height = 13 });
-                Labels.ElementAt(i + 3).BackColor = Color.Violet;
-                if (i == 1)
-                    Labels.ElementAt(i + 3).BackColor = Color.Blue;
-                if (i == 2)
-                    Labels.ElementAt(i + 3).BackColor = Color.Green;
-                if (i == 3)
-                    Labels.ElementAt(i + 3).BackColor = Color.Red;
-                Controls.Add(Labels.ElementAt(i + 3));
+                
             }
+            return true;
+        }
+
+        public bool InsertControl(IControl control, int row, int col)
+        {
+            AccessControls.Add(control, row, col);
+            return true;
+        }
+
+        public IControl GetControl(int row, int col)
+        {
+            return null;
         }
     }
 }

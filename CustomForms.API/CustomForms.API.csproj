@@ -42,23 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICentralLayoutBuilder.cs" />
+    <Compile Include="Builders\ICentralLayoutBuilder.cs" />
+    <Compile Include="Builders\ITableLayoutBuilder.cs" />
+    <Compile Include="Factories\ILabelWrapperFactory.cs" />
     <Compile Include="IControl.cs" />
     <Compile Include="IDataEntryForm.cs" />
-    <Compile Include="IDataEntryFormBuilder.cs" />
+    <Compile Include="Builders\IDataEntryFormBuilder.cs" />
+    <Compile Include="Factories\IDataEntryFormFactory.cs" />
     <Compile Include="ILabelWrapper.cs" />
-    <Compile Include="ITableLayoutDecoratorArguments.cs" />
+    <Compile Include="Decorators\ITableLayoutDecoratorArguments.cs" />
     <Compile Include="ITableLayoutFormatterStrategy.cs" />
     <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutColumnStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutControlCollectionWrapper.cs" />
-    <Compile Include="ITableLayoutDecoratorApplier.cs" />
-    <Compile Include="ITableLayoutDecorator.cs" />
+    <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
+    <Compile Include="Decorators\ITableLayoutDecorator.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutRowStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableLayoutWrapper\IVScrollPropertiesWrapper.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

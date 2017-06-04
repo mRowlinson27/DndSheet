@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.Builders;
 using CustomForms.API.TableLayoutWrapper;
 using DnDCharacterSheet;
 using FakeItEasy;
@@ -19,7 +20,7 @@ namespace UnitTests.FormAppTests
         private ITableLayoutWrapper _tableLayoutWrapper;
         private ICentralLayoutBuilder _centralLayoutBuilder;
         private ITableLayoutWrapper _createdTableLayoutWrapper;
-        private IDataEntryFormBuilder _dataEntryFormBuilder;
+        private ITableLayoutBuilder _tableLayoutBuilder;
 
         [SetUp]
         public void Setup()
@@ -27,8 +28,8 @@ namespace UnitTests.FormAppTests
             _tableLayoutWrapper = A.Fake<ITableLayoutWrapper>();
             _createdTableLayoutWrapper = A.Fake<ITableLayoutWrapper>();
             _centralLayoutBuilder = A.Fake<ICentralLayoutBuilder>();
-            _dataEntryFormBuilder = A.Fake<IDataEntryFormBuilder>();
-            _mainFormProcessor = new MainFormProcessor(_tableLayoutWrapper, _centralLayoutBuilder, _dataEntryFormBuilder);
+            _tableLayoutBuilder = A.Fake<ITableLayoutBuilder>();
+            _mainFormProcessor = new MainFormProcessor(_tableLayoutWrapper, _centralLayoutBuilder, _tableLayoutBuilder);
         }
 
         [Test]
@@ -38,8 +39,7 @@ namespace UnitTests.FormAppTests
 
             _mainFormProcessor.SetUpStatPage();
             
-            //A.CallTo(() => _createdTableLayoutWrapper.TrueControl).MustHaveHappened();
-            A.CallTo(() => _tableLayoutWrapper.AccessControls.Add(A<Control>.Ignored, 0, 1)).MustHaveHappened();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls.Add(A<IControl>.Ignored, 2, 1)).MustHaveHappened();
         }
     }
 }

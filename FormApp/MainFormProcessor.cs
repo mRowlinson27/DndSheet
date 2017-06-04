@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.Builders;
 using CustomForms.API.TableLayoutWrapper;
 
 namespace DnDCharacterSheet
@@ -13,14 +14,14 @@ namespace DnDCharacterSheet
     public class MainFormProcessor
     {
         private ICentralLayoutBuilder _centralLayoutBuilder;
-        private IDataEntryFormBuilder _dataEntryFormBuilder;
+        private ITableLayoutBuilder _tableLayoutBuilder;
         private ITableLayoutWrapper _mainLayout;
         private ITableLayoutWrapper _centralLayoutPanel;
 
-        public MainFormProcessor(ITableLayoutWrapper mainLayout, ICentralLayoutBuilder centralLayoutBuilder, IDataEntryFormBuilder dataEntryFormBuilder)
+        public MainFormProcessor(ITableLayoutWrapper mainLayout, ICentralLayoutBuilder centralLayoutBuilder, ITableLayoutBuilder tableLayoutBuilder)
         {
             _centralLayoutBuilder = centralLayoutBuilder;
-            _dataEntryFormBuilder = dataEntryFormBuilder;
+            _tableLayoutBuilder = tableLayoutBuilder;
             _mainLayout = mainLayout;
         }
 
@@ -28,13 +29,24 @@ namespace DnDCharacterSheet
         {
             _centralLayoutPanel = _centralLayoutBuilder.Create();
             _centralLayoutPanel.BackColor = Color.Aquamarine;
-            _mainLayout.AccessControls.Add(_centralLayoutPanel.TrueControl, 0, 1);
+            _mainLayout.AccessControls.Add(_centralLayoutPanel, 2, 1);
         }
 
         internal void DoTheThing_Click()
         {
             _centralLayoutPanel.RowCount = _centralLayoutPanel.AccessRowStyles.Count;
-            _centralLayoutPanel.AccessControls.Add(_dataEntryFormBuilder.Create(null).TrueControl);
+            List<List<string>> data = new List<List<string>>
+            {
+                new List<string>
+                {
+                    "a", "b"
+                },
+                new List<string>
+                {
+                    "a", "b", "c"
+                }
+            };
+            _centralLayoutPanel.AccessControls.Add(_tableLayoutBuilder.Create(data));
         }
     }
 }

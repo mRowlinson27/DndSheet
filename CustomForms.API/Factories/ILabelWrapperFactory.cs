@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomForms.API
+namespace CustomForms.API.Factories
 {
-    public interface ILabelWrapper : IControl
+    public interface ILabelWrapperFactory
     {
-        string Text { get; set; }
+        ILabelWrapper Create(string data);
     }
 }

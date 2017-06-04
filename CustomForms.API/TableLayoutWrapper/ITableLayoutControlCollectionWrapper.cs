@@ -4,7 +4,7 @@ namespace CustomForms.API.TableLayoutWrapper
 {
     public interface ITableLayoutControlCollectionWrapper
     {
-        void Add(Control control);
-        void Add(Control control, int col, int row);
+        void Add(IControl control);
+        void Add(IControl control, int col, int row);
     }
 }

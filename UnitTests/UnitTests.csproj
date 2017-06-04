@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomFormsTests\Builders\DataEntryFormBuilderTests.cs" />
+    <Compile Include="CustomFormsTests\Builders\TableLayoutBuilderTests.cs" />
+    <Compile Include="CustomFormsTests\DataEntryFormTests.cs" />
     <Compile Include="CustomFormsTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
     <Compile Include="CustomFormsTests\Decorators\VerticalScrollTableLayoutDecoratorTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />

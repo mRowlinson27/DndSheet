@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CustomForms;
 using CustomForms.Builders;
 using CustomForms.Decorators;
+using CustomForms.Factories;
 using CustomForms.TableLayoutWrapper;
 
 namespace DnDCharacterSheet
@@ -22,7 +23,11 @@ namespace DnDCharacterSheet
             Application.SetCompatibleTextRenderingDefault(false);
 
             var mainForm = new MainForm();
-            var mainFormProcessor = new MainFormProcessor(mainForm.MainLayoutPanel, new CentralLayoutBuilder(new TableLayoutDecoratorApplier()), new DataEntryFormBuilder());
+            var mainFormProcessor = new MainFormProcessor(
+                mainForm.MainLayoutPanel,
+                new CentralLayoutBuilder(new TableLayoutDecoratorApplier()),
+                new TableLayoutBuilder(new LabelWrapperFactory()));
+
             mainForm.MainFormProcessor = mainFormProcessor;
             mainFormProcessor.SetUpStatPage();
 
