@@ -8,6 +8,7 @@ using CustomForms;
 using CustomForms.API;
 using CustomForms.API.TableLayoutWrapper;
 using FakeItEasy;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace UnitTests.CustomFormsTests
@@ -95,6 +96,26 @@ namespace UnitTests.CustomFormsTests
             _dataEntryForm.InsertControl(control, 2, 2);
 
             A.CallTo(() => _layoutControlCollectionWrapper.Add(control, 2, 2)).MustHaveHappened();
+        }
+
+        [Test]
+        public void GetControl_NotValid_ThrowsException()
+        {
+            Assert.That(() => _dataEntryForm.GetControl(2, 2), Throws.TypeOf(typeof(IndexOutOfRangeException)));
+        }
+
+        [Test]
+        public void GetControl_Valid_ReturnsCorrect()
+        {
+            var control = A.Fake<IControl>();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls).Returns(_layoutControlCollectionWrapper);
+            _dataEntryForm.AddRows(2);
+            _dataEntryForm.AddCols(2);
+            _dataEntryForm.InsertControl(control, 2, 2);
+
+            var value = _dataEntryForm.GetControl(2, 2);
+
+            value.Should().Be(control);
         }
     }
 }

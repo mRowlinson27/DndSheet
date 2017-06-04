@@ -14,14 +14,14 @@ namespace CustomForms.TableLayoutWrapperFields
 
         public int Maximum
         {
-            get => _horizontalScroll.Maximum;
-            set => _horizontalScroll.Maximum = value;
+            get { return _horizontalScroll.Maximum; }
+            set { _horizontalScroll.Maximum = value; }
         }
 
         public bool Visible
         {
-            get => _horizontalScroll.Visible;
-            set => _horizontalScroll.Visible = value;
+            get { return _horizontalScroll.Visible; }
+            set { _horizontalScroll.Visible = value; }
         }
     }
 }

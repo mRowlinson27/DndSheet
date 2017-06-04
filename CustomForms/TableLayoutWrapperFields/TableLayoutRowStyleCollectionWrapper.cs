@@ -17,9 +17,6 @@ namespace CustomForms.TableLayoutWrapperFields
             _rowStyles.Add(rowStyle);
         }
 
-        public int Count
-        {
-            get => _rowStyles.Count;
-        }
+        public int Count => _rowStyles.Count;
     }
 }

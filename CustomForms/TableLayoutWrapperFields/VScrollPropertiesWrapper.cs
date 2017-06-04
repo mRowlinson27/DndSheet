@@ -13,14 +13,14 @@ namespace CustomForms.TableLayoutWrapperFields
 
         public int Maximum
         {
-            get => _vScrollProperties.Maximum;
-            set => _vScrollProperties.Maximum = value;
+            get { return _vScrollProperties.Maximum; }
+            set { _vScrollProperties.Maximum = value; }
         }
 
         public bool Visible
         {
-            get => _vScrollProperties.Visible;
-            set => _vScrollProperties.Visible = value;
+            get { return _vScrollProperties.Visible; }
+            set { _vScrollProperties.Visible = value; }
         }
     }
 }
