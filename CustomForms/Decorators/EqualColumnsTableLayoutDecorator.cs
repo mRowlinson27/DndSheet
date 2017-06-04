@@ -15,7 +15,7 @@ namespace CustomForms.Decorators
         private EqualColumnsTableLayoutDecoratorArgs _args;
         public ITableLayoutWrapper Create(ITableLayoutDecoratorArguments args)
         {
-            var input = new TableLayoutWrapper.TableLayoutWrapper();
+            var input = new TableLayoutWrapperFields.TableLayoutWrapper();
             _args = args as EqualColumnsTableLayoutDecoratorArgs;
             return ApplyChanges(input);
         }

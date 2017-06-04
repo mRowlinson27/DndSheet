@@ -8,7 +8,7 @@ namespace CustomForms.Decorators
     {
         public ITableLayoutWrapper Create(ITableLayoutDecoratorArguments args)
         {
-            var input = new TableLayoutWrapper.TableLayoutWrapper();
+            var input = new TableLayoutWrapperFields.TableLayoutWrapper();
             return ApplyChanges(input);
         }
 

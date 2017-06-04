@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CustomForms.API;
+﻿using System.Windows.Forms;
 using CustomForms.API.TableLayoutWrapper;
 
-namespace CustomForms.TableLayoutWrapper
+namespace CustomForms.TableLayoutWrapperFields
 {
     public class TableLayoutRowStyleCollectionWrapper : ITableLayoutRowStyleCollectionWrapper
     {
@@ -16,6 +10,11 @@ namespace CustomForms.TableLayoutWrapper
         public TableLayoutRowStyleCollectionWrapper(TableLayoutRowStyleCollection rowStyles)
         {
             _rowStyles = rowStyles;
+        }
+
+        public void Add(RowStyle rowStyle)
+        {
+            _rowStyles.Add(rowStyle);
         }
 
         public int Count

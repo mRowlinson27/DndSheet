@@ -1,7 +1,6 @@
-﻿
-using CustomForms.TableLayoutWrapper;
+﻿using CustomForms.TableLayoutWrapperFields;
 
-namespace DnDCharacterSheet
+namespace FormApp
 {
     partial class MainForm
     {
@@ -33,7 +32,7 @@ namespace DnDCharacterSheet
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.mainLayout = new CustomForms.TableLayoutWrapper.TableLayoutWrapper();
+            this.mainLayout = new TableLayoutWrapper();
             this.dndIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.iconContextStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.doTheThing = new System.Windows.Forms.ToolStripMenuItem();

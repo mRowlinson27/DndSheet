@@ -20,7 +20,7 @@ namespace CustomForms.Decorators
 
         public ITableLayoutWrapper Create(List<ITableLayoutDecorator> decorators, List<ITableLayoutDecoratorArguments> args)
         {
-            var input = new TableLayoutWrapper.TableLayoutWrapper();
+            var input = new TableLayoutWrapperFields.TableLayoutWrapper();
             return Apply(input, decorators, args);
         }
     }

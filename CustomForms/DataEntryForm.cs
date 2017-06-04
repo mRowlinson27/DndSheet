@@ -1,51 +1,51 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.TableLayoutWrapper;
 
 namespace CustomForms
 {
-    public class DataEntryForm : TableLayoutWrapper.TableLayoutWrapper, IDataEntryForm
+    public class DataEntryForm : IDataEntryForm
     {
         private int _rowNum = 0;
+        private int _colNum = 0;
         private int _height = 22;
+        private ITableLayoutWrapper _tableLayoutWrapper;
+
+        public Control TrueControl { get; }
 
         public DataEntryForm()
         {
-            Dock = DockStyle.Top;
-            BackColor = Color.Aqua;
-            CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
-            AutoSize = true;
+            _tableLayoutWrapper = new TableLayoutWrapperFields.TableLayoutWrapper();
+            TrueControl = _tableLayoutWrapper.TrueControl;
+            _tableLayoutWrapper.Dock = DockStyle.Top;
+            _tableLayoutWrapper.BackColor = Color.Aqua;
+            _tableLayoutWrapper.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            _tableLayoutWrapper.AutoSize = true;
+            _tableLayoutWrapper.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
         }
 
-        public bool AddRow(List<IControl> row)
+        public DataEntryForm(ITableLayoutWrapper tableLayoutWrapper)
         {
-            if (row.Count != ColumnStyles.Count || _rowNum == RowStyles.Count)
-            {
-                return false;
-            }
-
-            for (var i = 0; i < ColumnStyles.Count; i++)
-            {
-                var data = row[i];
-                AccessControls.Add(data, _rowNum, i);
-            }
-            _rowNum++;
-
-            return true;
+            _tableLayoutWrapper = tableLayoutWrapper;
+            TrueControl = _tableLayoutWrapper.TrueControl;
         }
 
         public bool AddCol()
         {
-            ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-            ColumnCount = ColumnStyles.Count;
+            _tableLayoutWrapper.AccessColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            _tableLayoutWrapper.ColumnCount = _tableLayoutWrapper.AccessColumnStyles.Count;
+            _colNum++;
             return true;
         }
 
         public bool AddRow()
         {
-            RowStyles.Add(new RowStyle(SizeType.Absolute, 22));
-            RowCount = RowStyles.Count;
+            _tableLayoutWrapper.AccessRowStyles.Add(new RowStyle(SizeType.Absolute, 22));
+            _tableLayoutWrapper.RowCount = _tableLayoutWrapper.AccessRowStyles.Count;
+            _rowNum++;
             return true;
         }
 
@@ -53,7 +53,7 @@ namespace CustomForms
         {
             for (var i = 0; i < rows; i++)
             {
-
+                AddRow();
             }
             return true;
         }
@@ -62,14 +62,18 @@ namespace CustomForms
         {
             for (var i = 0; i < cols; i++)
             {
-                
+                AddCol();
             }
             return true;
         }
 
         public bool InsertControl(IControl control, int row, int col)
         {
-            AccessControls.Add(control, row, col);
+            if (row > _rowNum || col > _colNum)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            _tableLayoutWrapper.AccessControls.Add(control, row, col);
             return true;
         }
 

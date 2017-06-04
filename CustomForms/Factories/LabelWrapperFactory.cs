@@ -12,7 +12,7 @@ namespace CustomForms.Factories
     {
         public ILabelWrapper Create(string data)
         {
-            return new LabelWrapper() {Text = data, Height = 20};
+            return new LabelWrapper() {Text = data, Height = 20, AutoSize = true};
         }
     }
 }

@@ -26,6 +26,7 @@ namespace CustomForms.API.TableLayoutWrapper
         Color BackColor { get; set; }
 
         bool AutoScroll { get; set; }
+        bool AutoSize { get; set; }
 
         IHScrollPropertiesWrapper AccessHorizontalScroll { get; }
         IVScrollPropertiesWrapper AccessVerticalScroll { get; }

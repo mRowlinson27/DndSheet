@@ -1,10 +1,7 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-using CustomForms.API;
+﻿using System.Windows.Forms;
 using CustomForms.API.TableLayoutWrapper;
 
-namespace CustomForms.TableLayoutWrapper
+namespace CustomForms.TableLayoutWrapperFields
 {
     public class TableLayoutWrapper : TableLayoutPanel, ITableLayoutWrapper
     {
