@@ -5,7 +5,7 @@ using CustomForms.API;
 
 namespace CustomForms
 {
-    class DataEntryForm : TableLayoutWrapper.TableLayoutWrapper, IDataEntryForm
+    public class DataEntryForm : TableLayoutWrapper.TableLayoutWrapper, IDataEntryForm
     {
         private int _rowNum = 0;
         private int _height = 22;
@@ -15,6 +15,7 @@ namespace CustomForms
             Dock = DockStyle.Top;
             BackColor = Color.Aqua;
             CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
+            AutoSize = true;
         }
 
         public bool AddRow(List<IControl> row)
@@ -43,9 +44,8 @@ namespace CustomForms
 
         public bool AddRow()
         {
-            RowStyles.Add(new ColumnStyle(SizeType.Absolute, 22));
+            RowStyles.Add(new RowStyle(SizeType.Absolute, 22));
             RowCount = RowStyles.Count;
-            Height = RowStyles.Count * (_height + 2) + 2;
             return true;
         }
 
