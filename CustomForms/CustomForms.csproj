@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\CentralLayoutBuilder.cs" />
+    <Compile Include="DTOs\SkillNameDto.cs" />
+    <Compile Include="DTOs\SkillRankDto.cs" />
     <Compile Include="DTOs\SkillsDto.cs" />
     <Compile Include="Factories\DataEntryFormFactory.cs" />
     <Compile Include="Builders\TableLayoutBuilder.cs" />
