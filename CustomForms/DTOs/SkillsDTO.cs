@@ -7,15 +7,16 @@ using CustomForms.API.DTOs;
 
 namespace CustomForms.DTOs
 {
-    class SkillsDto : IDataValue
+    public class SkillsDto
     {
-        public int DataValueId { get; set; }
-        public SkillNameDto SkillName { get; set; }
-        public SkillRankDto SkillRank { get; set; }
-
-        public SkillsDto()
-        {
-            
-        }
+        public string SkillName { get; set; }
+        public int SkillRanks { get; set; }
+        public AbilityModifier Modifier { get; set; }
+        public int ArmourCheckPenalty { get; set; }
+        public bool HasArmourCheckPenalty { get; set; }
+        public bool UseUntrained { get; set; }
+        public bool Trained { get; set; }
     }
+
+    public enum AbilityModifier {Str, Dex, Con, Int, Wis, Cha};
 }

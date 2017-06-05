@@ -1,10 +1,12 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CustomForms.API.TableLayoutWrapper
 {
     public interface ITableLayoutWrapper : IControl
     {
+        Point PointToClient(Point p);
         ITableLayoutControlCollectionWrapper AccessControls { get; }
 
         TableLayoutPanelCellBorderStyle CellBorderStyle { get; set; }
@@ -13,6 +15,8 @@ namespace CustomForms.API.TableLayoutWrapper
 
         int Height { get; set; }
         int Width { get; set; }
+        int[] GetRowHeights();
+        int[] GetColumnWidths();
 
         ITableLayoutRowStyleCollectionWrapper AccessRowStyles { get; }
         int RowCount { get; set; }
