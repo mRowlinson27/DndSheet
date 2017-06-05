@@ -62,6 +62,7 @@
     <Compile Include="CustomFormsTests\DataEntryFormTests.cs" />
     <Compile Include="CustomFormsTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
     <Compile Include="CustomFormsTests\Decorators\VerticalScrollTableLayoutDecoratorTests.cs" />
+    <Compile Include="DataManipulationTests\DataMapperTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +77,14 @@
     <ProjectReference Include="..\CustomForms\CustomForms.csproj">
       <Project>{c9698281-9747-446d-abf8-ca59c58f0d22}</Project>
       <Name>CustomForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataManipulation.API\DataManipulation.API.csproj">
+      <Project>{cab5d56c-12a3-4a92-9bc6-a28b4784725c}</Project>
+      <Name>DataManipulation.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataManipulation\DataManipulation.csproj">
+      <Project>{def243db-40a8-4e29-ada0-5dca766448ac}</Project>
+      <Name>DataManipulation</Name>
     </ProjectReference>
     <ProjectReference Include="..\DnDCharacterSheet\DnDCharacterSheet.csproj">
       <Project>{23e551e6-f3aa-434d-a3a4-136f459a1531}</Project>

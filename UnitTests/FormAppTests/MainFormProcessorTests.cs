@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using CustomForms.API;
 using CustomForms.API.Builders;
 using CustomForms.API.TableLayoutWrapper;
+using DataManipulation.API;
 using DnDCharacterSheet;
 using FakeItEasy;
 using NUnit.Framework;
@@ -20,7 +21,7 @@ namespace UnitTests.FormAppTests
         private ITableLayoutWrapper _tableLayoutWrapper;
         private ICentralLayoutBuilder _centralLayoutBuilder;
         private ITableLayoutWrapper _createdTableLayoutWrapper;
-        private ITableLayoutBuilder _tableLayoutBuilder;
+        private IDataEntryFormManager _dataEntryFormManager;
 
         [SetUp]
         public void Setup()
@@ -28,8 +29,8 @@ namespace UnitTests.FormAppTests
             _tableLayoutWrapper = A.Fake<ITableLayoutWrapper>();
             _createdTableLayoutWrapper = A.Fake<ITableLayoutWrapper>();
             _centralLayoutBuilder = A.Fake<ICentralLayoutBuilder>();
-            _tableLayoutBuilder = A.Fake<ITableLayoutBuilder>();
-            _mainFormProcessor = new MainFormProcessor(_tableLayoutWrapper, _centralLayoutBuilder, _tableLayoutBuilder);
+            _dataEntryFormManager = A.Fake<IDataEntryFormManager>();
+            _mainFormProcessor = new MainFormProcessor(_tableLayoutWrapper, _centralLayoutBuilder, _dataEntryFormManager);
         }
 
         [Test]

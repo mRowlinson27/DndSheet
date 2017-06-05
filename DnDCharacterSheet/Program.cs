@@ -7,6 +7,7 @@ using CustomForms;
 using CustomForms.Builders;
 using CustomForms.Decorators;
 using CustomForms.Factories;
+using DataManipulation;
 using FormApp;
 
 namespace DnDCharacterSheet
@@ -26,7 +27,7 @@ namespace DnDCharacterSheet
             var mainFormProcessor = new MainFormProcessor(
                 mainForm.MainLayoutPanel,
                 new CentralLayoutBuilder(new TableLayoutDecoratorApplier()),
-                new TableLayoutBuilder(new LabelWrapperFactory()));
+                new DataEntryFormManager(new TableLayoutBuilder(new LabelWrapperFactory()), new DataMapper()));
 
             mainForm.MainFormProcessor = mainFormProcessor;
             mainFormProcessor.SetUpStatPage();

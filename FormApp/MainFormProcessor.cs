@@ -9,20 +9,21 @@ using CustomForms;
 using CustomForms.API;
 using CustomForms.API.Builders;
 using CustomForms.API.TableLayoutWrapper;
+using DataManipulation.API;
 
 namespace DnDCharacterSheet
 {
     public class MainFormProcessor
     {
         private ICentralLayoutBuilder _centralLayoutBuilder;
-        private ITableLayoutBuilder _tableLayoutBuilder;
+        private IDataEntryFormManager _dataEntryFormManager;
         private ITableLayoutWrapper _mainLayout;
         private ITableLayoutWrapper _centralLayoutPanel;
 
-        public MainFormProcessor(ITableLayoutWrapper mainLayout, ICentralLayoutBuilder centralLayoutBuilder, ITableLayoutBuilder tableLayoutBuilder)
+        public MainFormProcessor(ITableLayoutWrapper mainLayout, ICentralLayoutBuilder centralLayoutBuilder, IDataEntryFormManager dataEntryFormManager)
         {
             _centralLayoutBuilder = centralLayoutBuilder;
-            _tableLayoutBuilder = tableLayoutBuilder;
+            _dataEntryFormManager = dataEntryFormManager;
             _mainLayout = mainLayout;
         }
 
@@ -36,7 +37,7 @@ namespace DnDCharacterSheet
         internal void DoTheThing_Click()
         {
             _centralLayoutPanel.RowCount = _centralLayoutPanel.AccessRowStyles.Count;
-            _centralLayoutPanel.AccessControls.Add(new DataEntryFormManager(_tableLayoutBuilder));
+            _centralLayoutPanel.AccessControls.Add(_dataEntryFormManager);
         }
     }
 }

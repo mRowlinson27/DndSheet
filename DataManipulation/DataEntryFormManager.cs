@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
 using CustomForms.API.Builders;
-using CustomForms.DTOs;
+using DataManipulation.API;
+using DataManipulation.API.DTOs;
 
 namespace CustomForms
 {
-    public class DataEntryFormManager : IControl
+    public class DataEntryFormManager : IDataEntryFormManager
     {
         private List<SkillsDto> _skills = new List<SkillsDto>
         {
@@ -49,45 +50,10 @@ namespace CustomForms
         public Control TrueControl { get; set; }
         public event EventHandler Click;
 
-        public DataEntryFormManager(ITableLayoutBuilder builder)
+        public DataEntryFormManager(ITableLayoutBuilder builder, IDataMapper dataMapper)
         {
-            _dataEntryForm = builder.Create(SkillTransform(_skills));
+            _dataEntryForm = builder.Create(dataMapper.SkillDtoToStringsList(_skills));
             TrueControl = _dataEntryForm.TrueControl;
-        }
-
-        public List<List<string>> SkillTransform(List<SkillsDto> skillsDto)
-        {
-            var output = new List<List<string>>();
-            foreach (var skill in skillsDto)
-            {
-                var row = new List<string>();
-                row.Add(skill.SkillRanks.ToString());
-                row.Add(skill.SkillName);
-                switch (skill.Modifier)
-                {
-                    case AbilityModifier.Str:
-                        row.Add("STR");
-                        break;
-                    case AbilityModifier.Dex:
-                        row.Add("DEX");
-                        break;
-                    case AbilityModifier.Con:
-                        row.Add("CON");
-                        break;
-                    case AbilityModifier.Wis:
-                        row.Add("WIS");
-                        break;
-                    case AbilityModifier.Int:
-                        row.Add("INT");
-                        break;
-                    case AbilityModifier.Cha:
-                        row.Add("CHA");
-                        break;
-                }
-                
-                output.Add(row);
-            }
-            return output;
         }
     }
 }
