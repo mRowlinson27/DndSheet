@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms;
 using CustomForms.API;
 using CustomForms.API.Builders;
 using CustomForms.API.TableLayoutWrapper;
@@ -35,18 +36,7 @@ namespace DnDCharacterSheet
         internal void DoTheThing_Click()
         {
             _centralLayoutPanel.RowCount = _centralLayoutPanel.AccessRowStyles.Count;
-            List<List<string>> data = new List<List<string>>
-            {
-                new List<string>
-                {
-                    "Acrobatics", "Dex"
-                },
-                new List<string>
-                {
-                    "Appraise", "b", "c"
-                }
-            };
-            _centralLayoutPanel.AccessControls.Add(_tableLayoutBuilder.Create(data));
+            _centralLayoutPanel.AccessControls.Add(new DataEntryFormManager(_tableLayoutBuilder));
         }
     }
 }

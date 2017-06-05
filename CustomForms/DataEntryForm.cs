@@ -39,25 +39,20 @@ namespace CustomForms
 
         private void _tableLayoutWrapper_Click(object sender, EventArgs e)
         {
-            var tlp = _tableLayoutWrapper;
             var point = _tableLayoutWrapper.PointToClient(Cursor.Position);
-            if (point.X > tlp.Width || point.Y > tlp.Height)
+            if (point.X > _tableLayoutWrapper.Width || point.Y > _tableLayoutWrapper.Height)
                 return;
-
-            int w = tlp.Width;
-            int h = tlp.Height;
-            int[] widths = tlp.GetColumnWidths();
-
+            var w = _tableLayoutWrapper.Width;
+            var h = _tableLayoutWrapper.Height;
             int i;
+            var widths = _tableLayoutWrapper.GetColumnWidths();
             for (i = widths.Length - 1; i >= 0 && point.X < w; i--)
                 w -= widths[i];
-            int col = i + 1;
-
-            int[] heights = tlp.GetRowHeights();
+            var col = i + 1;
+            var heights = _tableLayoutWrapper.GetRowHeights();
             for (i = heights.Length - 1; i >= 0 && point.Y < h; i--)
                 h -= heights[i];
-
-            int row = i + 1;
+            var row = i + 1;
 
             MessageBox.Show($"row: {row+1}. col: {col+1}");
         }
