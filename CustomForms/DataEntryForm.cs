@@ -23,7 +23,6 @@ namespace CustomForms
         public DataEntryForm() : this(new TableLayoutWrapper())
         {
             _tableLayoutWrapper.Dock = DockStyle.Top;
-            _tableLayoutWrapper.BackColor = Color.Aqua;
             _tableLayoutWrapper.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
             _tableLayoutWrapper.AutoSize = true;
             _tableLayoutWrapper.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;

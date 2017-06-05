@@ -1,4 +1,5 @@
-﻿using CustomForms.API.TableLayoutWrapper;
+﻿using System.Windows.Forms;
+using CustomForms.API.TableLayoutWrapper;
 
 namespace CustomForms.API.Builders
 {

@@ -27,7 +27,7 @@ namespace DnDCharacterSheet
             var mainFormProcessor = new MainFormProcessor(
                 mainForm.MainLayoutPanel,
                 new CentralLayoutBuilder(new TableLayoutDecoratorApplier()),
-                new DataEntryFormManager(new TableLayoutBuilder(new LabelWrapperFactory()), new DataMapper()));
+                new DataEntryFormManager(new TableLayoutBuilder(), new DataMapper(new LabelWrapperFactory())));
 
             mainForm.MainFormProcessor = mainFormProcessor;
             mainFormProcessor.SetUpStatPage();

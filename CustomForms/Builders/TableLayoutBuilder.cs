@@ -11,24 +11,18 @@ namespace CustomForms.Builders
 {
     public class TableLayoutBuilder : ITableLayoutBuilder
     {
-        private ILabelWrapperFactory _labelWrapperFactory;
-        public TableLayoutBuilder(ILabelWrapperFactory labelWrapperFactory)
-        {
-            _labelWrapperFactory = labelWrapperFactory;
-        }
-
-        public IDataEntryForm Create(List<List<string>> dataListofList)
+        public IDataEntryForm Create(List<List<IControl>> dataListofList)
         {
             var dataEntryForm = new DataEntryForm();
             return Build(dataEntryForm, dataListofList);
         }
 
-        public IDataEntryForm Apply(IDataEntryForm dataEntryForm, List<List<string>> dataListofList)
+        public IDataEntryForm Apply(IDataEntryForm dataEntryForm, List<List<IControl>> dataListofList)
         {
             return Build(dataEntryForm, dataListofList);
         }
 
-        private IDataEntryForm Build(IDataEntryForm dataEntryForm, List<List<string>> dataListofList)
+        private IDataEntryForm Build(IDataEntryForm dataEntryForm, List<List<IControl>> dataListofList)
         {
             int maxCols = 0;
             foreach (var datalist in dataListofList)
@@ -45,7 +39,7 @@ namespace CustomForms.Builders
             {
                 for (var c = 0; c < dataListofList[r].Count; c++)
                 {
-                    dataEntryForm.InsertControl(_labelWrapperFactory.Create(dataListofList[r][c]), r+1, c+1);
+                    dataEntryForm.InsertControl(dataListofList[r][c], r+1, c+1);
                 }
             }
             return dataEntryForm;

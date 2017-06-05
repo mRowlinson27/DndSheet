@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CustomForms;
 using CustomForms.API;
 using CustomForms.API.Factories;
 using CustomForms.Builders;
@@ -16,29 +17,30 @@ namespace UnitTests.CustomFormsTests.Builders
     class TableLayoutBuilderTests
     {
         private TableLayoutBuilder _builder;
-        private ILabelWrapperFactory _labelWrapperFactory;
         private IDataEntryForm _dataEntryForm;
 
         [SetUp]
         public void Setup()
         {
             _dataEntryForm = A.Fake<IDataEntryForm>();
-            _labelWrapperFactory = new LabelWrapperFactory();
-            _builder = new TableLayoutBuilder(_labelWrapperFactory);
+            _builder = new TableLayoutBuilder();
         }
 
         [Test]
         public void Apply_CorrectRowsAdded()
         {
-            List<List<string>> data = new List<List<string>>
+            var data = new List<List<IControl>>
             {
-                new List<string>
+                new List<IControl>
                 {
-                    "a", "b"
+                    new LabelWrapper() {Text = "a"},
+                    new LabelWrapper() {Text = "b"}
                 },
-                new List<string>
+                new List<IControl>
                 {
-                    "a", "b", "c"
+                    new LabelWrapper() {Text = "1"},
+                    new LabelWrapper() {Text = "2"},
+                    new LabelWrapper() {Text = "3"}
                 }
             };
 
@@ -50,15 +52,18 @@ namespace UnitTests.CustomFormsTests.Builders
         [Test]
         public void Apply_CorrectColsAdded()
         {
-            List<List<string>> data = new List<List<string>>
+            var data = new List<List<IControl>>
             {
-                new List<string>
+                new List<IControl>
                 {
-                    "a", "b"
+                    new LabelWrapper() {Text = "a"},
+                    new LabelWrapper() {Text = "b"}
                 },
-                new List<string>
+                new List<IControl>
                 {
-                    "a", "b", "c"
+                    new LabelWrapper() {Text = "1"},
+                    new LabelWrapper() {Text = "2"},
+                    new LabelWrapper() {Text = "3"}
                 }
             };
 
@@ -70,15 +75,18 @@ namespace UnitTests.CustomFormsTests.Builders
         [Test]
         public void Apply_CorrectInserts()
         {
-            List<List<string>> data = new List<List<string>>
+            var data = new List<List<IControl>>
             {
-                new List<string>
+                new List<IControl>
                 {
-                    "a", "b"
+                    new LabelWrapper() {Text = "a"},
+                    new LabelWrapper() {Text = "b"}
                 },
-                new List<string>
+                new List<IControl>
                 {
-                    "1", "2", "3"
+                    new LabelWrapper() {Text = "1"},
+                    new LabelWrapper() {Text = "2"},
+                    new LabelWrapper() {Text = "3"}
                 }
             };
 

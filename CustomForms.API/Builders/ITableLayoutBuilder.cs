@@ -8,7 +8,7 @@ namespace CustomForms.API.Builders
 {
     public interface ITableLayoutBuilder
     {
-        IDataEntryForm Create(List<List<string>> dataListofList);
-        IDataEntryForm Apply(IDataEntryForm dataEntryForm, List<List<string>> dataListofList);
+        IDataEntryForm Create(List<List<IControl>> dataListofList);
+        IDataEntryForm Apply(IDataEntryForm dataEntryForm, List<List<IControl>> dataListofList);
     }
 }

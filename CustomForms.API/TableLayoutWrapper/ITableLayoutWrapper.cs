@@ -7,6 +7,7 @@ namespace CustomForms.API.TableLayoutWrapper
     public interface ITableLayoutWrapper : IControl
     {
         Point PointToClient(Point p);
+        event ScrollEventHandler Scroll;
         ITableLayoutControlCollectionWrapper AccessControls { get; }
 
         TableLayoutPanelCellBorderStyle CellBorderStyle { get; set; }
