@@ -24,10 +24,19 @@ namespace DnDCharacterSheet
             Application.SetCompatibleTextRenderingDefault(false);
 
             var mainForm = new MainForm();
-            var mainFormProcessor = new MainFormProcessor(
-                mainForm.MainLayoutPanel,
-                new CentralLayoutBuilder(new TableLayoutDecoratorApplier()),
-                new DataEntryFormManager(new TableLayoutBuilder(), new DataMapper(new LabelWrapperFactory())));
+
+            var centralLayoutBuilder = new CentralLayoutBuilder(new TableLayoutDecoratorApplier());
+
+            var dataEntryFormManager = new DataEntryFormManager(
+                new TableLayoutBuilder(),
+                new DataMapper(new LabelWrapperFactory()));
+
+            var verticalScrollStrategy = new VerticalScrollStrategy(new Win32Adapter(new NativeMethods()));
+
+            var mainFormProcessor = new MainFormProcessor(mainForm.MainLayoutPanel,
+                centralLayoutBuilder,
+                dataEntryFormManager,
+                verticalScrollStrategy);
 
             mainForm.MainFormProcessor = mainFormProcessor;
             mainFormProcessor.SetUpStatPage();

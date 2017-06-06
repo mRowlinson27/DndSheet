@@ -52,7 +52,10 @@
     <Compile Include="Factories\IDataEntryFormFactory.cs" />
     <Compile Include="ILabelWrapper.cs" />
     <Compile Include="DTOs\ITableLayoutDecoratorArguments.cs" />
+    <Compile Include="INativeMethods.cs" />
     <Compile Include="ITableLayoutFormatterStrategy.cs" />
+    <Compile Include="IVerticalScrollStrategy.cs" />
+    <Compile Include="IWin32Adapter.cs" />
     <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutColumnStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutControlCollectionWrapper.cs" />

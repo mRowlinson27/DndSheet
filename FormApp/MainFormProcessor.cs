@@ -19,17 +19,20 @@ namespace DnDCharacterSheet
         private IDataEntryFormManager _dataEntryFormManager;
         private ITableLayoutWrapper _mainLayout;
         private ITableLayoutWrapper _centralLayoutPanel;
+        private IVerticalScrollStrategy _verticalScrollStrategy;
 
-        public MainFormProcessor(ITableLayoutWrapper mainLayout, ICentralLayoutBuilder centralLayoutBuilder, IDataEntryFormManager dataEntryFormManager)
+        public MainFormProcessor(ITableLayoutWrapper mainLayout, ICentralLayoutBuilder centralLayoutBuilder, IDataEntryFormManager dataEntryFormManager, IVerticalScrollStrategy verticalScrollStrategy)
         {
             _centralLayoutBuilder = centralLayoutBuilder;
             _dataEntryFormManager = dataEntryFormManager;
             _mainLayout = mainLayout;
+            _verticalScrollStrategy = verticalScrollStrategy;
         }
 
         public void SetUpStatPage()
         {
             _centralLayoutPanel = _centralLayoutBuilder.Create();
+            _centralLayoutPanel = _verticalScrollStrategy.ExecuteOn(_centralLayoutPanel);
             _centralLayoutPanel.BackColor = Color.Aquamarine;
             _mainLayout.AccessControls.Add(_centralLayoutPanel, 2, 1);
         }

@@ -22,6 +22,7 @@ namespace UnitTests.FormAppTests
         private ICentralLayoutBuilder _centralLayoutBuilder;
         private ITableLayoutWrapper _createdTableLayoutWrapper;
         private IDataEntryFormManager _dataEntryFormManager;
+        private IVerticalScrollStrategy _VerticalScrollStrategy;
 
         [SetUp]
         public void Setup()
@@ -30,7 +31,9 @@ namespace UnitTests.FormAppTests
             _createdTableLayoutWrapper = A.Fake<ITableLayoutWrapper>();
             _centralLayoutBuilder = A.Fake<ICentralLayoutBuilder>();
             _dataEntryFormManager = A.Fake<IDataEntryFormManager>();
-            _mainFormProcessor = new MainFormProcessor(_tableLayoutWrapper, _centralLayoutBuilder, _dataEntryFormManager);
+            _VerticalScrollStrategy = A.Fake<IVerticalScrollStrategy>();
+            _mainFormProcessor = new MainFormProcessor(_tableLayoutWrapper, _centralLayoutBuilder, _dataEntryFormManager,
+                _VerticalScrollStrategy);
         }
 
         [Test]

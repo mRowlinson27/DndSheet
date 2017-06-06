@@ -8,6 +8,10 @@ namespace CustomForms.API.TableLayoutWrapper
     {
         Point PointToClient(Point p);
         event ScrollEventHandler Scroll;
+        event EventHandler MouseEnter;
+        bool Focus();
+        void Update();
+        IntPtr Handle { get; }
         ITableLayoutControlCollectionWrapper AccessControls { get; }
 
         TableLayoutPanelCellBorderStyle CellBorderStyle { get; set; }

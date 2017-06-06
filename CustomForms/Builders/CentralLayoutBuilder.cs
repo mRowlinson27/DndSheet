@@ -20,12 +20,10 @@ namespace CustomForms.Builders
             _tableLayoutDecoratorApplier = tableLayoutDecoratorApplier;
             _tableLayoutDecorators = new List<ITableLayoutDecorator>
             {
-                new VerticalScrollTableLayoutDecorator(),
                 new EqualColumnsTableLayoutDecorator()
             };
             _tableLayoutDecoratorArguments = new List<ITableLayoutDecoratorArguments>
             {
-                null,
                 new EqualColumnsTableLayoutDecoratorArgs() {NumCols = 2}
             };
         }

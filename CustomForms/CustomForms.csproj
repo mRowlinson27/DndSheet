@@ -55,6 +55,7 @@
     <Compile Include="LabelWrapper.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decorators\TableLayoutDecoratorApplier.cs" />
     <Compile Include="TableLayoutWrapperFields\HScrollPropertiesWrapper.cs" />
@@ -64,8 +65,9 @@
     <Compile Include="TableLayoutWrapperFields\TableLayoutWrapper.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Decorators\VerticalScrollTableLayoutDecorator.cs" />
+    <Compile Include="VerticalScrollStrategy.cs" />
     <Compile Include="TableLayoutWrapperFields\VScrollPropertiesWrapper.cs" />
+    <Compile Include="Win32Adapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
