@@ -18,6 +18,12 @@ namespace CustomForms
             get { return _dataEntryForm.Editable; }
             set { _dataEntryForm.Editable = value; }
         }
+
+        public IControl GetControl(int row, int col)
+        {
+            return _dataEntryForm.GetControl(row, col);
+;        }
+
         private List<SkillsDto> _skills = new List<SkillsDto>
         {
             new SkillsDto()

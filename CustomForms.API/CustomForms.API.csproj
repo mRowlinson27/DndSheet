@@ -57,6 +57,7 @@
     <Compile Include="DTOs\ITableLayoutDecoratorArguments.cs" />
     <Compile Include="INativeMethods.cs" />
     <Compile Include="ITableLayoutFormatterStrategy.cs" />
+    <Compile Include="ITextBoxWrapper.cs" />
     <Compile Include="IVerticalScrollStrategy.cs" />
     <Compile Include="IWin32Adapter.cs" />
     <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />

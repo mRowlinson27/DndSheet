@@ -67,6 +67,9 @@
     <Compile Include="TableLayoutWrapperFields\TableLayoutWrapper.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TextBoxWrapper.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="VerticalScrollStrategy.cs" />
     <Compile Include="TableLayoutWrapperFields\VScrollPropertiesWrapper.cs" />
     <Compile Include="Win32Adapter.cs" />

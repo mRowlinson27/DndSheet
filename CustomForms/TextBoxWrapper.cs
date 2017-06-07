@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using CustomForms.API;
 
-namespace DataManipulation.API
+namespace CustomForms
 {
-    public interface IDataEntryFormManager : IEditable
+    class TextBoxWrapper : TextBox, ITextBoxWrapper
     {
-        IControl GetControl(int row, int col);
+        public Control TrueControl => this;
     }
 }

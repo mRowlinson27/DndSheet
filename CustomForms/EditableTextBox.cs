@@ -14,19 +14,47 @@ namespace CustomForms
     {
         public Control TrueControl { get; set; }
         public event EventHandler Click;
-        public bool Editable { get; set; }
+        private bool _inEdit = false;
+        public bool Editable
+        {
+            get { return _inEdit; }
+            set
+            {
+                if (_inEdit && !value)
+                {
+                    EnterEditMode();
+                }
+                else if (!_inEdit && value)
+                {
+                    LeaveEditMode();
+                }
+                _inEdit = value;
+            }
+        }
         public string Text
         {
-            get { return _control.Text; }
-            set { _control.Text = value; }
+            get { return TrueControl.Text; }
+            set { TrueControl.Text = value; }
         }
 
-        private ILabelWrapper _control;
+        private ILabelWrapper _label;
 
         public EditableTextBox(ILabelWrapper input)
         {
-            _control = input;
-            TrueControl = _control.TrueControl;
+            _label = input;
+            TrueControl = _label.TrueControl;
+            var test = new TextBox();
+        }
+
+        public void EnterEditMode()
+        {
+            TrueControl = null;
+            _label.TrueControl.Visible = false;
+        }
+
+        public void LeaveEditMode()
+        {
+            TrueControl = _label.TrueControl;
         }
     }
 }
