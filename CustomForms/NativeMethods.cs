@@ -17,5 +17,13 @@ namespace CustomForms
         {
             return LockWindowUpdate(hWnd);
         }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+
+        public IntPtr CallSendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp)
+        {
+            return SendMessage(hWnd, msg, wp, lp);
+        }
     }
 }

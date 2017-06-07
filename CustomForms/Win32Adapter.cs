@@ -19,5 +19,10 @@ namespace CustomForms
         {
             return _nativeMethods.CallLockWindowUpdate(hWnd);
         }
+
+        public IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp)
+        {
+            return _nativeMethods.CallSendMessage(hWnd, msg, wp, lp);
+        }
     }
 }
