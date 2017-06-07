@@ -28,11 +28,11 @@ namespace CustomForms
             {
                 if (_inEdit && !value)
                 {
-                    EnterEditMode();
+                    LeaveEditMode();
                 }
                 else if (!_inEdit && value)
                 {
-                    LeaveEditMode();
+                    EnterEditMode();
                 }
                 _inEdit = value;
             }
