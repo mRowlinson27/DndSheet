@@ -38,7 +38,6 @@ namespace CustomForms
 
         private void Input_Scroll(object sender, ScrollEventArgs e)
         {
-            //This needs to be elevated methinks
             if (e.Type == ScrollEventType.First)
             {
                 _win32Adapter.LockWindowUpdate(_control.Handle);

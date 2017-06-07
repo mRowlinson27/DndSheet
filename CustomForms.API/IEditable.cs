@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API
 {
-    public interface ILabelWrapper : IEditable
+    public interface IEditable : IControl
     {
-        string Text { get; set; }
+        bool Editable { get; set; }
     }
 }

@@ -35,12 +35,12 @@ namespace DnDCharacterSheet
             _centralLayoutPanel = _verticalScrollStrategy.ExecuteOn(_centralLayoutPanel);
             _centralLayoutPanel.BackColor = Color.Aquamarine;
             _mainLayout.AccessControls.Add(_centralLayoutPanel, 2, 1);
+            _centralLayoutPanel.AccessControls.Add(_dataEntryFormManager);
         }
 
         internal void DoTheThing_Click()
         {
-            _centralLayoutPanel.RowCount = _centralLayoutPanel.AccessRowStyles.Count;
-            _centralLayoutPanel.AccessControls.Add(_dataEntryFormManager);
+            _dataEntryFormManager.Editable = true;
         }
     }
 }

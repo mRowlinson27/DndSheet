@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API
 {
-    public interface IDataEntryForm : IControl
+    public interface IDataEntryForm : IEditable
     {
         bool AddRow();
         bool AddCol();

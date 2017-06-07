@@ -7,7 +7,8 @@ using CustomForms.API;
 
 namespace DataManipulation.API
 {
-    public interface IDataEntryFormManager : IControl
+    public interface IDataEntryFormManager : IEditable
     {
+        
     }
 }

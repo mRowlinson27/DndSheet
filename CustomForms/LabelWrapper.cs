@@ -6,5 +6,6 @@ namespace CustomForms
     public class LabelWrapper : Label, ILabelWrapper
     {
         public Control TrueControl => this;
+        public bool Editable { get; set; }
     }
 }

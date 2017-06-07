@@ -20,6 +20,24 @@ namespace CustomForms
         public Control TrueControl { get; }
         public event EventHandler Click;
 
+        private bool _inEdit = false;
+        public bool Editable
+        {
+            get { return _inEdit; }
+            set
+            {
+                if (_inEdit && !value)
+                {
+                    EnterEditMode();
+                }
+                else if (!_inEdit && value)
+                {
+                    LeaveEditMode();
+                }
+                _inEdit = value;
+            }
+        }
+
         public DataEntryForm() : this(new TableLayoutWrapper())
         {
             _tableLayoutWrapper.Dock = DockStyle.Top;
@@ -121,6 +139,22 @@ namespace CustomForms
                 throw new IndexOutOfRangeException();
             }
             return _insertedControls[row-1][col-1];
+        }
+
+        private void EnterEditMode()
+        {
+            foreach (var listOfControls in _insertedControls)
+            {
+                foreach (var control in listOfControls)
+                {
+                    
+                }
+            }
+        }
+
+        private void LeaveEditMode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

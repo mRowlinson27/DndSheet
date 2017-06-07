@@ -50,6 +50,7 @@
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="Builders\IDataEntryFormBuilder.cs" />
     <Compile Include="Factories\IDataEntryFormFactory.cs" />
+    <Compile Include="IEditable.cs" />
     <Compile Include="ILabelWrapper.cs" />
     <Compile Include="DTOs\ITableLayoutDecoratorArguments.cs" />
     <Compile Include="INativeMethods.cs" />

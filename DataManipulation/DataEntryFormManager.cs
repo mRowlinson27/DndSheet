@@ -13,6 +13,11 @@ namespace CustomForms
 {
     public class DataEntryFormManager : IDataEntryFormManager
     {
+        public bool Editable
+        {
+            get { return _dataEntryForm.Editable; }
+            set { _dataEntryForm.Editable = value; }
+        }
         private List<SkillsDto> _skills = new List<SkillsDto>
         {
             new SkillsDto()

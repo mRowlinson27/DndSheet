@@ -10,7 +10,6 @@ namespace DataManipulation.API
 {
     public interface IDataMapper
     {
-        List<List<string>> SkillDtoToStringsList(List<SkillsDto> skillsDto);
         List<List<IControl>> SkillDtoToIcontrol(List<SkillsDto> skillsDto);
     }
 }
