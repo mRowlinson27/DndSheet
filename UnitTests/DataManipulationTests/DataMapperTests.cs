@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomForms;
+using CustomForms.API;
 using CustomForms.API.Factories;
 using CustomForms.Factories;
 using DataManipulation;
@@ -17,13 +18,13 @@ namespace UnitTests.DataManipulationTests
     class DataMapperTests
     {
         private DataMapper _dataMapper;
-        private ILabelWrapperFactory _labelWrapperFactory;
+        private IEditableTextBoxFactory _editableTextBoxFactory;
 
         [SetUp]
         public void Setup()
         {
-            _labelWrapperFactory = new LabelWrapperFactory();
-            _dataMapper = new DataMapper(_labelWrapperFactory);
+            _editableTextBoxFactory = new EditableTextBoxFactory(new LabelWrapperFactory());
+            _dataMapper = new DataMapper(_editableTextBoxFactory);
         }
 
         [Test]
@@ -63,23 +64,23 @@ namespace UnitTests.DataManipulationTests
             var result = _dataMapper.SkillDtoToIcontrol(skills);
 
             result[0].Count.Should().Be(5);
-            (result[0][0] as LabelWrapper).Text.Should().Be("Acrobatics");
-            (result[0][1] as LabelWrapper).Text.Should().Be("x");
-            (result[0][2] as LabelWrapper).Text.Should().Be("1");
-            (result[0][3] as LabelWrapper).Text.Should().Be("DEX");
-            (result[0][4] as LabelWrapper).Text.Should().Be("0");
+            (result[0][0] as ILabelWrapper).Text.Should().Be("Acrobatics");
+            (result[0][1] as ILabelWrapper).Text.Should().Be("x");
+            (result[0][2] as ILabelWrapper).Text.Should().Be("1");
+            (result[0][3] as ILabelWrapper).Text.Should().Be("DEX");
+            (result[0][4] as ILabelWrapper).Text.Should().Be("0");
 
             result[1].Count.Should().Be(4);
-            (result[1][0] as LabelWrapper).Text.Should().Be("Appraise");
-            (result[1][1] as LabelWrapper).Text.Should().Be("o");
-            (result[1][2] as LabelWrapper).Text.Should().Be("0");
-            (result[1][3] as LabelWrapper).Text.Should().Be("INT");
+            (result[1][0] as ILabelWrapper).Text.Should().Be("Appraise");
+            (result[1][1] as ILabelWrapper).Text.Should().Be("o");
+            (result[1][2] as ILabelWrapper).Text.Should().Be("0");
+            (result[1][3] as ILabelWrapper).Text.Should().Be("INT");
 
             result[2].Count.Should().Be(4);
-            (result[2][0] as LabelWrapper).Text.Should().Be("Bluff");
-            (result[2][1] as LabelWrapper).Text.Should().Be("o");
-            (result[2][2] as LabelWrapper).Text.Should().Be("3");
-            (result[2][3] as LabelWrapper).Text.Should().Be("CHA");
+            (result[2][0] as ILabelWrapper).Text.Should().Be("Bluff");
+            (result[2][1] as ILabelWrapper).Text.Should().Be("o");
+            (result[2][2] as ILabelWrapper).Text.Should().Be("3");
+            (result[2][3] as ILabelWrapper).Text.Should().Be("CHA");
         }
     }
 }

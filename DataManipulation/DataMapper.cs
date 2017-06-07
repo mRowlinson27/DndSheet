@@ -12,10 +12,10 @@ namespace DataManipulation
 {
     public class DataMapper : IDataMapper
     {
-        private ILabelWrapperFactory _labelWrapperFactory;
-        public DataMapper(ILabelWrapperFactory labelWrapperFactory)
+        private IEditableTextBoxFactory _editableTextBoxFactory;
+        public DataMapper(IEditableTextBoxFactory editableTextBoxFactory)
         {
-            _labelWrapperFactory = labelWrapperFactory;
+            _editableTextBoxFactory = editableTextBoxFactory;
         }
 
         public List<List<IControl>> SkillDtoToIcontrol(List<SkillsDto> skillsDto)
@@ -25,41 +25,41 @@ namespace DataManipulation
             {
                 var row = new List<IControl>();
 
-                row.Add(_labelWrapperFactory.Create(skill.SkillName));
+                row.Add(_editableTextBoxFactory.Create(skill.SkillName));
                 if (skill.Trained)
                 {
-                    row.Add(_labelWrapperFactory.Create("x"));
+                    row.Add(_editableTextBoxFactory.Create("x"));
                 }
                 else
                 {
-                    row.Add(_labelWrapperFactory.Create("o"));
+                    row.Add(_editableTextBoxFactory.Create("o"));
                 }
 
-                row.Add(_labelWrapperFactory.Create(skill.SkillRanks.ToString()));
+                row.Add(_editableTextBoxFactory.Create(skill.SkillRanks.ToString()));
                 switch (skill.Modifier)
                 {
                     case AbilityModifier.Str:
-                        row.Add(_labelWrapperFactory.Create("STR"));
+                        row.Add(_editableTextBoxFactory.Create("STR"));
                         break;
                     case AbilityModifier.Dex:
-                        row.Add(_labelWrapperFactory.Create("DEX"));
+                        row.Add(_editableTextBoxFactory.Create("DEX"));
                         break;
                     case AbilityModifier.Con:
-                        row.Add(_labelWrapperFactory.Create("CON"));
+                        row.Add(_editableTextBoxFactory.Create("CON"));
                         break;
                     case AbilityModifier.Wis:
-                        row.Add(_labelWrapperFactory.Create("WIS"));
+                        row.Add(_editableTextBoxFactory.Create("WIS"));
                         break;
                     case AbilityModifier.Int:
-                        row.Add(_labelWrapperFactory.Create("INT"));
+                        row.Add(_editableTextBoxFactory.Create("INT"));
                         break;
                     case AbilityModifier.Cha:
-                        row.Add(_labelWrapperFactory.Create("CHA"));
+                        row.Add(_editableTextBoxFactory.Create("CHA"));
                         break;
                 }
                 if (skill.HasArmourCheckPenalty)
                 {
-                    row.Add(_labelWrapperFactory.Create(skill.ArmourCheckPenalty.ToString()));
+                    row.Add(_editableTextBoxFactory.Create(skill.ArmourCheckPenalty.ToString()));
                 }
                 output.Add(row);
             }

@@ -29,7 +29,7 @@ namespace DnDCharacterSheet
 
             var dataEntryFormManager = new DataEntryFormManager(
                 new TableLayoutBuilder(),
-                new DataMapper(new LabelWrapperFactory()));
+                new DataMapper(new EditableTextBoxFactory(new LabelWrapperFactory())));
 
             var verticalScrollStrategy = new VerticalScrollStrategy(new Win32Adapter(new NativeMethods()));
 

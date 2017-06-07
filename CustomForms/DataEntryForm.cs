@@ -147,14 +147,28 @@ namespace CustomForms
             {
                 foreach (var control in listOfControls)
                 {
-                    
+                    var editableControl = control as IEditable;
+                    if (editableControl != null)
+                    {
+                        editableControl.Editable = true;
+                    }
                 }
             }
         }
 
         private void LeaveEditMode()
         {
-            throw new NotImplementedException();
+            foreach (var listOfControls in _insertedControls)
+            {
+                foreach (var control in listOfControls)
+                {
+                    var editableControl = control as IEditable;
+                    if (editableControl != null)
+                    {
+                        editableControl.Editable = false;
+                    }
+                }
+            }
         }
     }
 }

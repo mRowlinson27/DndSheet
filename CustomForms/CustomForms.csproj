@@ -45,12 +45,14 @@
     <Compile Include="Builders\CentralLayoutBuilder.cs" />
     <Compile Include="DTOs\SkillNameDto.cs" />
     <Compile Include="DTOs\SkillRankDto.cs" />
+    <Compile Include="EditableTextBox.cs" />
     <Compile Include="Factories\DataEntryFormFactory.cs" />
     <Compile Include="Builders\TableLayoutBuilder.cs" />
     <Compile Include="DataEntryForm.cs" />
     <Compile Include="Builders\DataEntryFormBuilder.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecorator.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecoratorArgs.cs" />
+    <Compile Include="Factories\EditableTextBoxFactory.cs" />
     <Compile Include="Factories\LabelWrapperFactory.cs" />
     <Compile Include="LabelWrapper.cs">
       <SubType>Component</SubType>

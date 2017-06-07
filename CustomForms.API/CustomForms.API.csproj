@@ -45,12 +45,14 @@
     <Compile Include="Builders\ICentralLayoutBuilder.cs" />
     <Compile Include="Builders\ITableLayoutBuilder.cs" />
     <Compile Include="DTOs\IDataValue.cs" />
+    <Compile Include="Factories\IEditableTextBoxFactory.cs" />
     <Compile Include="Factories\ILabelWrapperFactory.cs" />
     <Compile Include="IControl.cs" />
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="Builders\IDataEntryFormBuilder.cs" />
     <Compile Include="Factories\IDataEntryFormFactory.cs" />
     <Compile Include="IEditable.cs" />
+    <Compile Include="IEditableTextBox.cs" />
     <Compile Include="ILabelWrapper.cs" />
     <Compile Include="DTOs\ITableLayoutDecoratorArguments.cs" />
     <Compile Include="INativeMethods.cs" />
