@@ -62,7 +62,7 @@ namespace UnitTests.CustomFormsTests
             _dataEntryForm.AddRow();
 
             A.CallTo(() => _layoutRowStyleCollectionWrapper.Add(
-                A<RowStyle>.That.Matches(x => x.SizeType == SizeType.Absolute && Math.Abs(x.Height - 22) < 0.1))).MustHaveHappened();
+                A<RowStyle>.That.Matches(x => x.SizeType == SizeType.Absolute && Math.Abs(x.Height - 30) < 0.1))).MustHaveHappened();
         }
         [Test]
         public void AddRows_MultiRowsAdded()
@@ -72,7 +72,7 @@ namespace UnitTests.CustomFormsTests
             _dataEntryForm.AddRows(3);
 
             A.CallTo(() => _layoutRowStyleCollectionWrapper.Add(
-                    A<RowStyle>.That.Matches(x => x.SizeType == SizeType.Absolute && Math.Abs(x.Height - 22) < 0.1)))
+                    A<RowStyle>.That.Matches(x => x.SizeType == SizeType.Absolute && Math.Abs(x.Height - 30) < 0.1)))
                 .MustHaveHappened(Repeated.Exactly.Times(3));
         }
 

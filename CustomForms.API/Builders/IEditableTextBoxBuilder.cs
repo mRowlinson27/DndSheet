@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API.Factories
 {
-    public interface IEditableTextBoxFactory
+    public interface IEditableTextBoxBuilder
     {
-        IEditableTextBox Create(string data);
+        IEditableTextBox Build(string data);
     }
 }

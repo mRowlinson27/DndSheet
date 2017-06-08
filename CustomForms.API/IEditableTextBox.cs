@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API
 {
-    public interface IEditableTextBox : IEditable
+    public interface IEditableTextBox : IEditable, ITrueControl
     {
         string Text { get; set; }
     }

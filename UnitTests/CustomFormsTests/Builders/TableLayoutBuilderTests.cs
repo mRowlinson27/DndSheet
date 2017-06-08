@@ -29,14 +29,14 @@ namespace UnitTests.CustomFormsTests.Builders
         [Test]
         public void Apply_CorrectRowsAdded()
         {
-            var data = new List<List<IControl>>
+            var data = new List<List<ITrueControl>>
             {
-                new List<IControl>
+                new List<ITrueControl>
                 {
                     new LabelWrapper() {Text = "a"},
                     new LabelWrapper() {Text = "b"}
                 },
-                new List<IControl>
+                new List<ITrueControl>
                 {
                     new LabelWrapper() {Text = "1"},
                     new LabelWrapper() {Text = "2"},
@@ -52,14 +52,14 @@ namespace UnitTests.CustomFormsTests.Builders
         [Test]
         public void Apply_CorrectColsAdded()
         {
-            var data = new List<List<IControl>>
+            var data = new List<List<ITrueControl>>
             {
-                new List<IControl>
+                new List<ITrueControl>
                 {
                     new LabelWrapper() {Text = "a"},
                     new LabelWrapper() {Text = "b"}
                 },
-                new List<IControl>
+                new List<ITrueControl>
                 {
                     new LabelWrapper() {Text = "1"},
                     new LabelWrapper() {Text = "2"},
@@ -75,14 +75,14 @@ namespace UnitTests.CustomFormsTests.Builders
         [Test]
         public void Apply_CorrectInserts()
         {
-            var data = new List<List<IControl>>
+            var data = new List<List<ITrueControl>>
             {
-                new List<IControl>
+                new List<ITrueControl>
                 {
                     new LabelWrapper() {Text = "a"},
                     new LabelWrapper() {Text = "b"}
                 },
-                new List<IControl>
+                new List<ITrueControl>
                 {
                     new LabelWrapper() {Text = "1"},
                     new LabelWrapper() {Text = "2"},
@@ -92,15 +92,15 @@ namespace UnitTests.CustomFormsTests.Builders
 
             _builder.Apply(_dataEntryForm, data);
 
-            A.CallTo(() => _dataEntryForm.InsertControl(A<IControl>.That.Matches(x => (x as ILabelWrapper).Text == "a"),
+            A.CallTo(() => _dataEntryForm.InsertControl(A<ITrueControl>.That.Matches(x => (x as ILabelWrapper).Text == "a"),
                 1, 1)).MustHaveHappened();
-            A.CallTo(() => _dataEntryForm.InsertControl(A<IControl>.That.Matches(x => (x as ILabelWrapper).Text == "b"),
+            A.CallTo(() => _dataEntryForm.InsertControl(A<ITrueControl>.That.Matches(x => (x as ILabelWrapper).Text == "b"),
                 1, 2)).MustHaveHappened();
-            A.CallTo(() => _dataEntryForm.InsertControl(A<IControl>.That.Matches(x => (x as ILabelWrapper).Text == "1"),
+            A.CallTo(() => _dataEntryForm.InsertControl(A<ITrueControl>.That.Matches(x => (x as ILabelWrapper).Text == "1"),
                 2, 1)).MustHaveHappened();
-            A.CallTo(() => _dataEntryForm.InsertControl(A<IControl>.That.Matches(x => (x as ILabelWrapper).Text == "2"),
+            A.CallTo(() => _dataEntryForm.InsertControl(A<ITrueControl>.That.Matches(x => (x as ILabelWrapper).Text == "2"),
                 2, 2)).MustHaveHappened();
-            A.CallTo(() => _dataEntryForm.InsertControl(A<IControl>.That.Matches(x => (x as ILabelWrapper).Text == "3"),
+            A.CallTo(() => _dataEntryForm.InsertControl(A<ITrueControl>.That.Matches(x => (x as ILabelWrapper).Text == "3"),
                 2, 3)).MustHaveHappened();
         }
     }

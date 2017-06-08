@@ -28,7 +28,7 @@ namespace CustomForms.Builders
             };
         }
 
-        public ITableLayoutWrapper Create()
+        public ITableLayoutWrapper Build()
         {
             var middleLayoutPanel = _tableLayoutDecoratorApplier.Create(_tableLayoutDecorators, _tableLayoutDecoratorArguments);
 

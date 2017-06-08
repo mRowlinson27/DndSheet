@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomForms.API
+namespace CustomForms.API.Factories
 {
-    public interface IEditable
+    public interface ITextBoxWrapperFactory
     {
-        bool Editable { get; set; }
+        ITextBoxWrapper Create();
     }
 }

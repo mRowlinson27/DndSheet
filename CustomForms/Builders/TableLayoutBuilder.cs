@@ -11,18 +11,18 @@ namespace CustomForms.Builders
 {
     public class TableLayoutBuilder : ITableLayoutBuilder
     {
-        public IDataEntryForm Create(List<List<IControl>> dataListofList)
+        public IDataEntryForm Build(List<List<ITrueControl>> dataListofList)
         {
             var dataEntryForm = new DataEntryForm();
             return Build(dataEntryForm, dataListofList);
         }
 
-        public IDataEntryForm Apply(IDataEntryForm dataEntryForm, List<List<IControl>> dataListofList)
+        public IDataEntryForm Apply(IDataEntryForm dataEntryForm, List<List<ITrueControl>> dataListofList)
         {
             return Build(dataEntryForm, dataListofList);
         }
 
-        private IDataEntryForm Build(IDataEntryForm dataEntryForm, List<List<IControl>> dataListofList)
+        private IDataEntryForm Build(IDataEntryForm dataEntryForm, List<List<ITrueControl>> dataListofList)
         {
             int maxCols = 0;
             foreach (var datalist in dataListofList)

@@ -31,7 +31,7 @@ namespace DnDCharacterSheet
 
         public void SetUpStatPage()
         {
-            _centralLayoutPanel = _centralLayoutBuilder.Create();
+            _centralLayoutPanel = _centralLayoutBuilder.Build();
             _centralLayoutPanel = _verticalScrollStrategy.ExecuteOn(_centralLayoutPanel);
             _centralLayoutPanel.BackColor = Color.Aquamarine;
             _mainLayout.AccessControls.Add(_centralLayoutPanel, 2, 1);

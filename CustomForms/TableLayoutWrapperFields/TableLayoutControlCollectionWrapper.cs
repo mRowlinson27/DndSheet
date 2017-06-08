@@ -13,12 +13,12 @@ namespace CustomForms.TableLayoutWrapperFields
             _control = control;
         }
 
-        public void Add(IControl control)
+        public void Add(ITrueControl control)
         {
             Add(control.TrueControl);
         }
 
-        public void Add(IControl control, int row, int col)
+        public void Add(ITrueControl control, int row, int col)
         {
             Add(control.TrueControl, col - 1, row - 1);
         }

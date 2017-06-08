@@ -52,8 +52,9 @@
     <Compile Include="Builders\DataEntryFormBuilder.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecorator.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecoratorArgs.cs" />
-    <Compile Include="Factories\EditableTextBoxFactory.cs" />
+    <Compile Include="Builders\EditableTextBoxBuilder.cs" />
     <Compile Include="Factories\LabelWrapperFactory.cs" />
+    <Compile Include="Factories\TextBoxWrapperFactory.cs" />
     <Compile Include="LabelWrapper.cs">
       <SubType>Component</SubType>
     </Compile>

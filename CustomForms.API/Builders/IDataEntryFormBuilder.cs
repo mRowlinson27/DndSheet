@@ -6,6 +6,6 @@ namespace CustomForms.API.Builders
 {
     public interface IDataEntryFormBuilder
     {
-        ITableLayoutWrapper Create(List<Control> controls);
+        ITableLayoutWrapper Build(List<Control> controls);
     }
 }

@@ -15,7 +15,7 @@ namespace CustomForms
         private int _colNum = 0;
         private int _height = 22;
         private ITableLayoutWrapper _tableLayoutWrapper;
-        private List<List<IControl>> _insertedControls; 
+        private List<List<ITrueControl>> _insertedControls; 
 
         public Control TrueControl { get; }
         public event EventHandler Click;
@@ -50,7 +50,7 @@ namespace CustomForms
         {
             _tableLayoutWrapper = tableLayoutWrapper;
             TrueControl = _tableLayoutWrapper.TrueControl;
-            _insertedControls = new List<List<IControl>>();
+            _insertedControls = new List<List<ITrueControl>>();
             _tableLayoutWrapper.Click += _tableLayoutWrapper_Click;
         }
 
@@ -97,7 +97,7 @@ namespace CustomForms
         {
             _tableLayoutWrapper.AccessRowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             _tableLayoutWrapper.RowCount = _tableLayoutWrapper.AccessRowStyles.Count;
-            _insertedControls.Add(new List<IControl>());
+            _insertedControls.Add(new List<ITrueControl>());
             _rowNum++;
             return true;
         }
@@ -120,19 +120,24 @@ namespace CustomForms
             return true;
         }
 
-        public bool InsertControl(IControl control, int row, int col)
+        public bool InsertControl(ITrueControl trueControl, int row, int col)
         {
             if (row > _rowNum || col > _colNum)
             {
                 throw new IndexOutOfRangeException();
             }
-            control.Click += _tableLayoutWrapperChild_Click;
-            _tableLayoutWrapper.AccessControls.Add(control, row, col);
-            _insertedControls[row-1][col-1] = control;
+            var control = trueControl as IControl;
+            if (control != null)
+            {
+                control.Click += _tableLayoutWrapperChild_Click;
+            }
+
+            _tableLayoutWrapper.AccessControls.Add(trueControl, row, col);
+            _insertedControls[row-1][col-1] = trueControl;
             return true;
         }
 
-        public IControl GetControl(int row, int col)
+        public ITrueControl GetControl(int row, int col)
         {
             if (row > _rowNum || col > _colNum)
             {

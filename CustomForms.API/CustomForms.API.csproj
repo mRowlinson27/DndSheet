@@ -45,8 +45,9 @@
     <Compile Include="Builders\ICentralLayoutBuilder.cs" />
     <Compile Include="Builders\ITableLayoutBuilder.cs" />
     <Compile Include="DTOs\IDataValue.cs" />
-    <Compile Include="Factories\IEditableTextBoxFactory.cs" />
+    <Compile Include="Builders\IEditableTextBoxBuilder.cs" />
     <Compile Include="Factories\ILabelWrapperFactory.cs" />
+    <Compile Include="Factories\ITextBoxWrapperFactory.cs" />
     <Compile Include="IControl.cs" />
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="Builders\IDataEntryFormBuilder.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="INativeMethods.cs" />
     <Compile Include="ITableLayoutFormatterStrategy.cs" />
     <Compile Include="ITextBoxWrapper.cs" />
+    <Compile Include="ITrueControl.cs" />
     <Compile Include="IVerticalScrollStrategy.cs" />
     <Compile Include="IWin32Adapter.cs" />
     <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />

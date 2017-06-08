@@ -19,7 +19,7 @@ namespace CustomForms
             set { _dataEntryForm.Editable = value; }
         }
 
-        public IControl GetControl(int row, int col)
+        public ITrueControl GetControl(int row, int col)
         {
             return _dataEntryForm.GetControl(row, col);
 ;        }
@@ -330,9 +330,9 @@ namespace CustomForms
         public Control TrueControl { get; set; }
         public event EventHandler Click;
 
-        public DataEntryFormManager(ITableLayoutBuilder builder, IDataMapper dataMapper)
+        public DataEntryFormManager(ITableLayoutBuilder tableLayoutBuilder, IDataMapper dataMapper)
         {
-            _dataEntryForm = builder.Create(dataMapper.SkillDtoToIcontrol(_skills));
+            _dataEntryForm = tableLayoutBuilder.Build(dataMapper.SkillDtoToIcontrol(_skills));
             TrueControl = _dataEntryForm.TrueControl;
         }
     }

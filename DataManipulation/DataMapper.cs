@@ -12,54 +12,54 @@ namespace DataManipulation
 {
     public class DataMapper : IDataMapper
     {
-        private IEditableTextBoxFactory _editableTextBoxFactory;
-        public DataMapper(IEditableTextBoxFactory editableTextBoxFactory)
+        private IEditableTextBoxBuilder _editableTextBoxBuilder;
+        public DataMapper(IEditableTextBoxBuilder editableTextBoxBuilder)
         {
-            _editableTextBoxFactory = editableTextBoxFactory;
+            _editableTextBoxBuilder = editableTextBoxBuilder;
         }
 
-        public List<List<IControl>> SkillDtoToIcontrol(List<SkillsDto> skillsDto)
+        public List<List<ITrueControl>> SkillDtoToIcontrol(List<SkillsDto> skillsDto)
         {
-            var output = new List<List<IControl>>();
+            var output = new List<List<ITrueControl>>();
             foreach (var skill in skillsDto)
             {
-                var row = new List<IControl>();
+                var row = new List<ITrueControl>();
 
-                row.Add(_editableTextBoxFactory.Create(skill.SkillName));
+                row.Add(_editableTextBoxBuilder.Build(skill.SkillName));
                 if (skill.Trained)
                 {
-                    row.Add(_editableTextBoxFactory.Create("x"));
+                    row.Add(_editableTextBoxBuilder.Build("x"));
                 }
                 else
                 {
-                    row.Add(_editableTextBoxFactory.Create("o"));
+                    row.Add(_editableTextBoxBuilder.Build("o"));
                 }
 
-                row.Add(_editableTextBoxFactory.Create(skill.SkillRanks.ToString()));
+                row.Add(_editableTextBoxBuilder.Build(skill.SkillRanks.ToString()));
                 switch (skill.Modifier)
                 {
                     case AbilityModifier.Str:
-                        row.Add(_editableTextBoxFactory.Create("STR"));
+                        row.Add(_editableTextBoxBuilder.Build("STR"));
                         break;
                     case AbilityModifier.Dex:
-                        row.Add(_editableTextBoxFactory.Create("DEX"));
+                        row.Add(_editableTextBoxBuilder.Build("DEX"));
                         break;
                     case AbilityModifier.Con:
-                        row.Add(_editableTextBoxFactory.Create("CON"));
+                        row.Add(_editableTextBoxBuilder.Build("CON"));
                         break;
                     case AbilityModifier.Wis:
-                        row.Add(_editableTextBoxFactory.Create("WIS"));
+                        row.Add(_editableTextBoxBuilder.Build("WIS"));
                         break;
                     case AbilityModifier.Int:
-                        row.Add(_editableTextBoxFactory.Create("INT"));
+                        row.Add(_editableTextBoxBuilder.Build("INT"));
                         break;
                     case AbilityModifier.Cha:
-                        row.Add(_editableTextBoxFactory.Create("CHA"));
+                        row.Add(_editableTextBoxBuilder.Build("CHA"));
                         break;
                 }
                 if (skill.HasArmourCheckPenalty)
                 {
-                    row.Add(_editableTextBoxFactory.Create(skill.ArmourCheckPenalty.ToString()));
+                    row.Add(_editableTextBoxBuilder.Build(skill.ArmourCheckPenalty.ToString()));
                 }
                 output.Add(row);
             }

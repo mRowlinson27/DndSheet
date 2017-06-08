@@ -18,13 +18,13 @@ namespace UnitTests.DataManipulationTests
     class DataMapperTests
     {
         private DataMapper _dataMapper;
-        private IEditableTextBoxFactory _editableTextBoxFactory;
+        private IEditableTextBoxBuilder _editableTextBoxBuilder;
 
         [SetUp]
         public void Setup()
         {
-            _editableTextBoxFactory = new EditableTextBoxFactory(new LabelWrapperFactory());
-            _dataMapper = new DataMapper(_editableTextBoxFactory);
+            _editableTextBoxBuilder = new EditableTextBoxBuilder(new TextBoxWrapperFactory());
+            _dataMapper = new DataMapper(_editableTextBoxBuilder);
         }
 
         [Test]
@@ -64,23 +64,23 @@ namespace UnitTests.DataManipulationTests
             var result = _dataMapper.SkillDtoToIcontrol(skills);
 
             result[0].Count.Should().Be(5);
-            (result[0][0] as ILabelWrapper).Text.Should().Be("Acrobatics");
-            (result[0][1] as ILabelWrapper).Text.Should().Be("x");
-            (result[0][2] as ILabelWrapper).Text.Should().Be("1");
-            (result[0][3] as ILabelWrapper).Text.Should().Be("DEX");
-            (result[0][4] as ILabelWrapper).Text.Should().Be("0");
+            (result[0][0] as IEditableTextBox).Text.Should().Be("Acrobatics");
+            (result[0][1] as IEditableTextBox).Text.Should().Be("x");
+            (result[0][2] as IEditableTextBox).Text.Should().Be("1");
+            (result[0][3] as IEditableTextBox).Text.Should().Be("DEX");
+            (result[0][4] as IEditableTextBox).Text.Should().Be("0");
 
             result[1].Count.Should().Be(4);
-            (result[1][0] as ILabelWrapper).Text.Should().Be("Appraise");
-            (result[1][1] as ILabelWrapper).Text.Should().Be("o");
-            (result[1][2] as ILabelWrapper).Text.Should().Be("0");
-            (result[1][3] as ILabelWrapper).Text.Should().Be("INT");
+            (result[1][0] as IEditableTextBox).Text.Should().Be("Appraise");
+            (result[1][1] as IEditableTextBox).Text.Should().Be("o");
+            (result[1][2] as IEditableTextBox).Text.Should().Be("0");
+            (result[1][3] as IEditableTextBox).Text.Should().Be("INT");
 
             result[2].Count.Should().Be(4);
-            (result[2][0] as ILabelWrapper).Text.Should().Be("Bluff");
-            (result[2][1] as ILabelWrapper).Text.Should().Be("o");
-            (result[2][2] as ILabelWrapper).Text.Should().Be("3");
-            (result[2][3] as ILabelWrapper).Text.Should().Be("CHA");
+            (result[2][0] as IEditableTextBox).Text.Should().Be("Bluff");
+            (result[2][1] as IEditableTextBox).Text.Should().Be("o");
+            (result[2][2] as IEditableTextBox).Text.Should().Be("3");
+            (result[2][3] as IEditableTextBox).Text.Should().Be("CHA");
         }
     }
 }

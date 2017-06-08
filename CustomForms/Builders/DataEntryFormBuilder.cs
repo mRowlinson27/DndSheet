@@ -8,7 +8,7 @@ namespace CustomForms.Builders
 {
     public class DataEntryFormBuilder : IDataEntryFormBuilder
     {
-        public ITableLayoutWrapper Create(List<Control> controls)
+        public ITableLayoutWrapper Build(List<Control> controls)
         {
             return null;
             //var panel = new DataEntryForm(4, 3, 20);

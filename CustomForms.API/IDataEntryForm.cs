@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API
 {
-    public interface IDataEntryForm : IEditable
+    public interface IDataEntryForm : IEditable, ITrueControl
     {
         bool AddRow();
         bool AddCol();
         bool AddRows(int rows);
         bool AddCols(int cols);
-        bool InsertControl(IControl control, int row, int col);
-        IControl GetControl( int row, int col);
+        bool InsertControl(ITrueControl control, int row, int col);
+        ITrueControl GetControl( int row, int col);
     }
 }
