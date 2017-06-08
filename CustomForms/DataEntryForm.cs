@@ -95,7 +95,7 @@ namespace CustomForms
 
         public bool AddRow()
         {
-            _tableLayoutWrapper.AccessRowStyles.Add(new RowStyle(SizeType.Absolute, 22));
+            _tableLayoutWrapper.AccessRowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             _tableLayoutWrapper.RowCount = _tableLayoutWrapper.AccessRowStyles.Count;
             _insertedControls.Add(new List<IControl>());
             _rowNum++;

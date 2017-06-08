@@ -38,9 +38,9 @@ namespace CustomForms
             set { TrueControl.Text = value; }
         }
 
-        private ILabelWrapper _label;
+        private IControl _label;
 
-        public EditableTextBox(ILabelWrapper input)
+        public EditableTextBox(IControl input)
         {
             _label = input;
             TrueControl = _label.TrueControl;
@@ -49,7 +49,6 @@ namespace CustomForms
         public void EnterEditMode()
         {
             TrueControl.BackColor = Color.BlueViolet;
-            TrueControl = new LabelWrapper() { Text = "bla", Height = 50, AutoSize = true };
         }
 
         public void LeaveEditMode()
