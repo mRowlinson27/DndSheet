@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API
 {
-    public interface IEditable
+    public interface IEditable : ITrueControl
     {
         bool Editable { get; set; }
     }

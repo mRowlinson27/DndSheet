@@ -50,7 +50,6 @@
     <Compile Include="Factories\ITextBoxWrapperFactory.cs" />
     <Compile Include="IControl.cs" />
     <Compile Include="IDataEntryForm.cs" />
-    <Compile Include="Builders\IDataEntryFormBuilder.cs" />
     <Compile Include="Factories\IDataEntryFormFactory.cs" />
     <Compile Include="IEditable.cs" />
     <Compile Include="IEditableTextBox.cs" />

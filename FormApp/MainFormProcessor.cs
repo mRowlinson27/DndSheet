@@ -40,7 +40,7 @@ namespace DnDCharacterSheet
 
         internal void DoTheThing_Click()
         {
-            _dataEntryFormManager.Editable = true;
+            _dataEntryFormManager.Editable = !_dataEntryFormManager.Editable;
             //_dataEntryFormManager.GetControl(2, 2).TrueControl.Visible = false;
             _centralLayoutPanel.BackColor = Color.Red;
         }

@@ -11,7 +11,7 @@ using CustomForms.Factories;
 
 namespace CustomForms
 {
-    class EditableTextBox : IEditableTextBox
+    public class EditableTextBox : IEditableTextBox
     {
         public Control TrueControl { get; set; }
         public event EventHandler Click;
@@ -34,32 +34,30 @@ namespace CustomForms
         }
         public string Text
         {
-            get { return TrueControl.Text; }
-            set { TrueControl.Text = value; }
+            get { return _textBox.Text; }
+            set { _textBox.Text = value; }
         }
 
-        private ITextBoxWrapper _label;
+        private ITextBoxWrapper _textBox;
 
         public EditableTextBox(ITextBoxWrapper input)
         {
-            _label = input;
-            TrueControl = _label.TrueControl;
-
-            _label.ReadOnly = true;
-            _label.Dock = DockStyle.Fill;
-            _label.Anchor = AnchorStyles.Left;
-            _label.Cursor = Cursors.Default;
-            _label.BorderStyle = BorderStyle.None;
+            _textBox = input;
+            TrueControl = _textBox.TrueControl;
+            LeaveEditMode();
         }
 
-        public void EnterEditMode()
+        private void EnterEditMode()
         {
-            TrueControl.BackColor = Color.BlueViolet;
+            _textBox.BackColor = Color.BlueViolet;
         }
 
-        public void LeaveEditMode()
+        private void LeaveEditMode()
         {
-            TrueControl = _label.TrueControl;
+            _textBox.BackColor = Color.Transparent;
+            _textBox.Enabled = false;
+            _textBox.ReadOnly = true;
+            _textBox.Cursor = Cursors.Default;
         }
 
         protected void OnEnter(object sender, System.EventArgs e)

@@ -15,6 +15,7 @@ namespace CustomForms.API
         event EventHandler MouseEnter;
         bool Focus();
         void Update();
+        bool Enabled { get; set; }
         IntPtr Handle { get; }
         int Height { get; set; }
         int Width { get; set; }

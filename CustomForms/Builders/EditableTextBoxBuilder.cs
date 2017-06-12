@@ -27,6 +27,10 @@ namespace CustomForms.Factories
             textBox.TrueControl.Enter += OnEnter;
             textBox.TrueControl.TextChanged += OnTextChanged;
             textBox.Text = data;
+
+            textBox.Dock = DockStyle.Fill;
+            textBox.Anchor = AnchorStyles.Left;
+            textBox.BorderStyle = BorderStyle.None;
             return new EditableTextBox(textBox);
         }
 

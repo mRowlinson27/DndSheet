@@ -117,5 +117,74 @@ namespace UnitTests.CustomFormsTests
 
             value.Should().Be(control);
         }
+
+        [Test]
+        public void SetEditable_ToTrue_EditablesSetToTrue()
+        {
+            var control = A.Fake<IEditable>();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls).Returns(_layoutControlCollectionWrapper);
+            _dataEntryForm.AddRows(2);
+            _dataEntryForm.AddCols(2);
+            _dataEntryForm.InsertControl(control, 2, 2);
+
+            _dataEntryForm.Editable = true;
+
+            A.CallToSet(() => control.Editable).To(true).MustHaveHappened();
+        }
+
+        [Test]
+        public void SetEditableFalse_NoChangeInState_CallNotMade()
+        {
+            var control = A.Fake<IEditable>();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls).Returns(_layoutControlCollectionWrapper);
+            _dataEntryForm.AddRows(2);
+            _dataEntryForm.AddCols(2);
+            _dataEntryForm.InsertControl(control, 2, 2);
+
+            _dataEntryForm.Editable = false;
+
+            A.CallToSet(() => control.Editable).To(false).MustNotHaveHappened();
+        }
+
+        [Test]
+        public void SetEditableTrue_NoChangeInState_CallNotMade()
+        {
+            var control = A.Fake<IEditable>();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls).Returns(_layoutControlCollectionWrapper);
+            _dataEntryForm.AddRows(2);
+            _dataEntryForm.AddCols(2);
+            _dataEntryForm.InsertControl(control, 2, 2);
+
+            _dataEntryForm.Editable = true;
+
+            A.CallToSet(() => control.Editable).To(true).MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void SetEditable_ToFalse_EditablesSetToFalse()
+        {
+            var control = A.Fake<IEditable>();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls).Returns(_layoutControlCollectionWrapper);
+            _dataEntryForm.AddRows(2);
+            _dataEntryForm.AddCols(2);
+            _dataEntryForm.InsertControl(control, 2, 2);
+
+            _dataEntryForm.Editable = true;
+            _dataEntryForm.Editable = false;
+
+            A.CallToSet(() => control.Editable).To(false).MustHaveHappened();
+        }
+
+        [Test]
+        public void SetEditable_NonEditable_NoException()
+        {
+            var control = A.Fake<IControl>();
+            A.CallTo(() => _tableLayoutWrapper.AccessControls).Returns(_layoutControlCollectionWrapper);
+            _dataEntryForm.AddRows(2);
+            _dataEntryForm.AddCols(2);
+            _dataEntryForm.InsertControl(control, 2, 2);
+
+            _dataEntryForm.Editable = false;
+        }
     }
 }

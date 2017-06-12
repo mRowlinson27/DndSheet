@@ -49,7 +49,6 @@
     <Compile Include="Factories\DataEntryFormFactory.cs" />
     <Compile Include="Builders\TableLayoutBuilder.cs" />
     <Compile Include="DataEntryForm.cs" />
-    <Compile Include="Builders\DataEntryFormBuilder.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecorator.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecoratorArgs.cs" />
     <Compile Include="Builders\EditableTextBoxBuilder.cs" />

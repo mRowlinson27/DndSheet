@@ -28,11 +28,11 @@ namespace CustomForms
             {
                 if (_inEdit && !value)
                 {
-                    LeaveEditMode();
+                    SetEditMode(false);
                 }
                 else if (!_inEdit && value)
                 {
-                    EnterEditMode();
+                    SetEditMode(true);
                 }
                 _inEdit = value;
             }
@@ -146,7 +146,7 @@ namespace CustomForms
             return _insertedControls[row-1][col-1];
         }
 
-        private void EnterEditMode()
+        private void SetEditMode(bool value)
         {
             foreach (var listOfControls in _insertedControls)
             {
@@ -155,22 +155,7 @@ namespace CustomForms
                     var editableControl = control as IEditable;
                     if (editableControl != null)
                     {
-                        editableControl.Editable = true;
-                    }
-                }
-            }
-        }
-
-        private void LeaveEditMode()
-        {
-            foreach (var listOfControls in _insertedControls)
-            {
-                foreach (var control in listOfControls)
-                {
-                    var editableControl = control as IEditable;
-                    if (editableControl != null)
-                    {
-                        editableControl.Editable = false;
+                        editableControl.Editable = value;
                     }
                 }
             }

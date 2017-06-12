@@ -61,6 +61,7 @@
     <Compile Include="CustomFormsTests\Builders\TableLayoutBuilderTests.cs" />
     <Compile Include="CustomFormsTests\DataEntryFormTests.cs" />
     <Compile Include="CustomFormsTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
+    <Compile Include="CustomFormsTests\EditableTextBoxTests.cs" />
     <Compile Include="CustomFormsTests\VerticalScrollStrategyTests.cs" />
     <Compile Include="DataManipulationTests\DataMapperTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
