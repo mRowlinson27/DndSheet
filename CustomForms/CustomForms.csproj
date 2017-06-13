@@ -45,6 +45,7 @@
     <Compile Include="Builders\CentralLayoutBuilder.cs" />
     <Compile Include="DTOs\SkillNameDto.cs" />
     <Compile Include="DTOs\SkillRankDto.cs" />
+    <Compile Include="DTOs\TextBoxStyleSheet.cs" />
     <Compile Include="EditableTextBox.cs" />
     <Compile Include="Factories\DataEntryFormFactory.cs" />
     <Compile Include="Builders\TableLayoutBuilder.cs" />
