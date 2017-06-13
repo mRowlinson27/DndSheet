@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomForms;
 using CustomForms.API;
+using CustomForms.API.Builders;
 using CustomForms.API.Factories;
 using CustomForms.Factories;
 using DataManipulation;

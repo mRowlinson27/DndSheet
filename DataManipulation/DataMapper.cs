@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomForms.API;
+using CustomForms.API.Builders;
 using CustomForms.API.Factories;
 using DataManipulation.API;
 using DataManipulation.API.DTOs;
@@ -25,41 +26,41 @@ namespace DataManipulation
             {
                 var row = new List<ITrueControl>();
 
-                row.Add(_editableTextBoxBuilder.Build(skill.SkillName));
+                row.Add(_editableTextBoxBuilder.Build(skill.SkillName, null, null));
                 if (skill.Trained)
                 {
-                    row.Add(_editableTextBoxBuilder.Build("x"));
+                    row.Add(_editableTextBoxBuilder.Build("x", null, null));
                 }
                 else
                 {
-                    row.Add(_editableTextBoxBuilder.Build("o"));
+                    row.Add(_editableTextBoxBuilder.Build("o", null, null));
                 }
 
-                row.Add(_editableTextBoxBuilder.Build(skill.SkillRanks.ToString()));
+                row.Add(_editableTextBoxBuilder.Build(skill.SkillRanks.ToString(), null, null));
                 switch (skill.Modifier)
                 {
                     case AbilityModifier.Str:
-                        row.Add(_editableTextBoxBuilder.Build("STR"));
+                        row.Add(_editableTextBoxBuilder.Build("STR", null, null));
                         break;
                     case AbilityModifier.Dex:
-                        row.Add(_editableTextBoxBuilder.Build("DEX"));
+                        row.Add(_editableTextBoxBuilder.Build("DEX", null, null));
                         break;
                     case AbilityModifier.Con:
-                        row.Add(_editableTextBoxBuilder.Build("CON"));
+                        row.Add(_editableTextBoxBuilder.Build("CON", null, null));
                         break;
                     case AbilityModifier.Wis:
-                        row.Add(_editableTextBoxBuilder.Build("WIS"));
+                        row.Add(_editableTextBoxBuilder.Build("WIS", null, null));
                         break;
                     case AbilityModifier.Int:
-                        row.Add(_editableTextBoxBuilder.Build("INT"));
+                        row.Add(_editableTextBoxBuilder.Build("INT", null, null));
                         break;
                     case AbilityModifier.Cha:
-                        row.Add(_editableTextBoxBuilder.Build("CHA"));
+                        row.Add(_editableTextBoxBuilder.Build("CHA", null, null));
                         break;
                 }
                 if (skill.HasArmourCheckPenalty)
                 {
-                    row.Add(_editableTextBoxBuilder.Build(skill.ArmourCheckPenalty.ToString()));
+                    row.Add(_editableTextBoxBuilder.Build(skill.ArmourCheckPenalty.ToString(), null, null));
                 }
                 output.Add(row);
             }

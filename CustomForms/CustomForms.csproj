@@ -61,6 +61,7 @@
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decorators\TableLayoutDecoratorApplier.cs" />
+    <Compile Include="StyleApplier.cs" />
     <Compile Include="TableLayoutWrapperFields\HScrollPropertiesWrapper.cs" />
     <Compile Include="TableLayoutWrapperFields\TableLayoutColumnStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapperFields\TableLayoutControlCollectionWrapper.cs" />

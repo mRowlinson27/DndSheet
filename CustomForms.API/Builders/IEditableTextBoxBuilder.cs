@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using CustomForms.API.DTOs;
 
-namespace CustomForms.API.Factories
+namespace CustomForms.API.Builders
 {
     public interface IEditableTextBoxBuilder
     {
-        IEditableTextBox Build(string data);
+        IEditableTextBox Build(string data, Dictionary<string, object> inEditDict,
+            Dictionary<string, object> notInDict);
     }
 }
