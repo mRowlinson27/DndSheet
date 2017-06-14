@@ -8,7 +8,7 @@ namespace CustomForms.API
 {
     public interface ITextBoxWrapper : IControl
     {
-        string Text { get; set; }
+
         bool ReadOnly { get; set; }
     }
 }

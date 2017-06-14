@@ -7,13 +7,13 @@ namespace CustomFormManipulation.Decorators
 {
     public class TableLayoutDecoratorApplier : ITableLayoutDecoratorApplier
     {
-        public ITableLayoutWrapper Apply(ITableLayoutWrapper input, List<ITableLayoutDecorator> decorators, List<ITableLayoutDecoratorArguments> args)
+        public ITableLayoutWrapper Apply(ITableLayoutWrapper input, List<ITableLayoutDecorator> decorators)
         {
             ITableLayoutWrapper output = input;
 
             for (var i = 0; i < decorators.Count; i++ )
             {
-                output = decorators[i].Apply(output, args[i]);
+                output = decorators[i].Apply(output);
             }
             return output;
         }

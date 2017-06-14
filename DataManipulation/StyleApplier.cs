@@ -17,9 +17,13 @@ namespace DataManipulation
             {
                 var outputInfo = output.GetType().GetProperty(propertyInfo.Name);
 
-                if (outputInfo != null && !IsNullOrDefault(propertyInfo.GetValue(style)))
+                if (outputInfo != null )
                 {
-                    outputInfo.SetValue(output, Convert.ChangeType(propertyInfo.GetValue(style), propertyInfo.PropertyType), null);
+                    if (!IsNullOrDefault(propertyInfo.GetValue(style)))
+                    {
+                        outputInfo.SetValue(output,
+                            Convert.ChangeType(propertyInfo.GetValue(style), propertyInfo.PropertyType), null);
+                    }
                 }
                 else
                 {
@@ -30,14 +34,14 @@ namespace DataManipulation
             return output;
         }
 
-        private bool IsNullOrDefault<Tin>(Tin argument)
+        private bool IsNullOrDefault<TIn>(TIn argument)
         {
-            if (argument == null || object.Equals(argument, default(Tin)))
+            if (argument == null || object.Equals(argument, default(TIn)))
             {
                 return true;
             }
 
-            var methodType = typeof(Tin);
+            var methodType = typeof(TIn);
             if (Nullable.GetUnderlyingType(methodType) != null)
             {
                 return false;
@@ -51,26 +55,6 @@ namespace DataManipulation
             }
 
             return false;
-        }
-
-        public T Apply(T input, Dictionary<string, object> dictionary)
-        {
-            var output = input;
-            foreach (var kvp in dictionary)
-            {
-                var propertyInfo = output.GetType().GetProperty(kvp.Key);
-
-                if (propertyInfo != null)
-                {
-                    propertyInfo.SetValue(output, Convert.ChangeType(kvp.Value, propertyInfo.PropertyType), null);
-                }
-                else
-                {
-                    return default(T);
-                }
-            }
-
-            return output;
         }
     }
 }

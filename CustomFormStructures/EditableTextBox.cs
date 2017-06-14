@@ -9,7 +9,6 @@ namespace CustomFormStructures
     public class EditableTextBox : IEditableTextBox
     {
         public Control TrueControl { get; set; }
-        public event EventHandler Click;
         private bool _inEdit = false;
         public bool Editable
         {
@@ -34,31 +33,43 @@ namespace CustomFormStructures
         }
 
         private ITextBoxWrapper _textBox;
+        private IStyleApplier<IControlProperties> _styleApplier;
+        private IControlProperties _inEditStyle;
+        private IControlProperties _notInEditStyle;
 
-        public EditableTextBox(ITextBoxWrapper input)
+        public EditableTextBox(ITextBoxWrapper input, IStyleApplier<IControlProperties> styleApplier, IControlProperties inEditStyle, IControlProperties notInEditStyle)
         {
             _textBox = input;
             TrueControl = _textBox.TrueControl;
+            _styleApplier = styleApplier;
+            _inEditStyle = inEditStyle;
+            _notInEditStyle = notInEditStyle;
             LeaveEditMode();
         }
 
         private void EnterEditMode()
         {
-            _textBox.BackColor = Color.BlueViolet;
+            _textBox.Enabled = true;
+            _textBox.ReadOnly = false;
+            _textBox.Cursor = Cursors.IBeam;
+            _styleApplier.Apply(_textBox, _inEditStyle);
         }
 
         private void LeaveEditMode()
         {
-            _textBox.BackColor = Color.Transparent;
             _textBox.Enabled = false;
             _textBox.ReadOnly = true;
             _textBox.Cursor = Cursors.Default;
+            _styleApplier.Apply(_textBox, _notInEditStyle);
         }
 
         protected void OnEnter(object sender, System.EventArgs e)
         {
             var control = sender as Control;
-            if (control != null) control.Parent.Parent.Focus();
+            if (control != null)
+            {
+                control.Parent.Parent.Focus();
+            }
         }
 
         protected void OnTextChanged(object sender, System.EventArgs e)

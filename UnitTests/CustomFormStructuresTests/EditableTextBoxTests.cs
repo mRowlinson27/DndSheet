@@ -16,7 +16,7 @@ namespace UnitTests.CustomFormStructuresTests
         public void Setup()
         {
             _textBoxWrapper = A.Fake<ITextBoxWrapper>();
-            _editableTextBox = new EditableTextBox(_textBoxWrapper);
+            //_editableTextBox = new EditableTextBox(_textBoxWrapper);
         }
 
         [Test]

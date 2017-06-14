@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using CustomFormManipulation;
+using CustomFormManipulation.API.Decorators;
 using CustomFormManipulation.Builders;
 using CustomFormManipulation.Decorators;
 using CustomForms;
+using CustomForms.API;
 using CustomForms.Factories;
 using CustomFormStructures.Builders;
 using DataManipulation;
@@ -25,11 +28,17 @@ namespace DnDCharacterSheet
             var mainForm = new MainForm();
 
             var tableLayoutWrapperFactory = new TableLayoutWrapperFactory();
-            var centralLayoutBuilder = new CentralLayoutBuilder(new TableLayoutDecoratorApplier(), tableLayoutWrapperFactory);
+            var centralLayoutBuilderDecorators = new List<ITableLayoutDecorator>
+            {
+                new EqualColumnsTableLayoutDecorator(2)
+            };
+            var centralLayoutBuilder = new CentralLayoutBuilder(new TableLayoutDecoratorApplier(), centralLayoutBuilderDecorators, tableLayoutWrapperFactory);
+
+            var textBoxStyleApplier = new StyleApplier<IControlProperties>();
 
             var dataEntryFormManager = new DataEntryFormManager(
                 new DataEntryFormBuilder(tableLayoutWrapperFactory),
-                new DataMapper(new EditableTextBoxBuilder(new TextBoxWrapperFactory())));
+                new DataMapper(new EditableTextBoxBuilder(new TextBoxWrapperFactory(), textBoxStyleApplier)));
 
             var verticalScrollStrategy = new VerticalScrollStrategy(new Win32Adapter(new NativeMethods()));
 

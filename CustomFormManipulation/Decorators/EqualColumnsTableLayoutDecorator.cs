@@ -7,17 +7,22 @@ namespace CustomFormManipulation.Decorators
 {
     public class EqualColumnsTableLayoutDecorator : ITableLayoutDecorator
     {
-        private EqualColumnsTableLayoutDecoratorArgs _args;
-        public ITableLayoutWrapper Apply(ITableLayoutWrapper input, ITableLayoutDecoratorArguments args)
+        private int _numCols;
+
+        public EqualColumnsTableLayoutDecorator(int numCols)
         {
-            _args = args as EqualColumnsTableLayoutDecoratorArgs;
+            _numCols = numCols;
+        }
+
+        public ITableLayoutWrapper Apply(ITableLayoutWrapper input)
+        {
             return ApplyChanges(input);
         }
 
         private ITableLayoutWrapper ApplyChanges(ITableLayoutWrapper input)
         {
-            float diviser = 100 / _args.NumCols;
-            for (var i = 0; i < _args.NumCols; i++)
+            float diviser = 100 / _numCols;
+            for (var i = 0; i < _numCols; i++)
             {
                 input.AccessColumnStyles.Add(new ColumnStyle(SizeType.Percent, diviser));
             }

@@ -11,15 +11,12 @@ namespace UnitTests.CustomFormManipulationTests.Decorators
     class EqualColumnsTableLayoutDecoratorTests
     {
         private EqualColumnsTableLayoutDecorator _equalColumnsTableLayoutDecorator;
-        private EqualColumnsTableLayoutDecoratorArgs _equalColumnsTableLayoutDecoratorArgs;
         private ITableLayoutWrapper _tableLayoutWrapper;
         private ITableLayoutColumnStyleCollectionWrapper _layoutColumnStyleCollectionWrapper;
 
         [SetUp]
         public void Setup()
         {
-            _equalColumnsTableLayoutDecoratorArgs = new EqualColumnsTableLayoutDecoratorArgs();
-            _equalColumnsTableLayoutDecorator = new EqualColumnsTableLayoutDecorator();
             _layoutColumnStyleCollectionWrapper = A.Fake<ITableLayoutColumnStyleCollectionWrapper>();
             _tableLayoutWrapper = A.Fake<ITableLayoutWrapper>();
         }
@@ -28,12 +25,12 @@ namespace UnitTests.CustomFormManipulationTests.Decorators
         public void ApplyChanges_WithOneColumn_OneColumnAt100()
         {
             //Arrange
-            _equalColumnsTableLayoutDecoratorArgs.NumCols = 1;
+            _equalColumnsTableLayoutDecorator = new EqualColumnsTableLayoutDecorator(1);
             A.CallTo(() => _tableLayoutWrapper.AccessColumnStyles).Returns(_layoutColumnStyleCollectionWrapper);
             A.CallTo(() => _layoutColumnStyleCollectionWrapper.Count).Returns(1);
 
             //Act
-            _equalColumnsTableLayoutDecorator.Apply(_tableLayoutWrapper, _equalColumnsTableLayoutDecoratorArgs);
+            _equalColumnsTableLayoutDecorator.Apply(_tableLayoutWrapper);
 
             //Assert
             A.CallTo(() => _layoutColumnStyleCollectionWrapper.Add(
@@ -46,12 +43,12 @@ namespace UnitTests.CustomFormManipulationTests.Decorators
         public void ApplyChanges_WithTwoColumn_TwoColumnAt50()
         {
             //Arrange
-            _equalColumnsTableLayoutDecoratorArgs.NumCols = 2;
+            _equalColumnsTableLayoutDecorator = new EqualColumnsTableLayoutDecorator(2);
             A.CallTo(() => _tableLayoutWrapper.AccessColumnStyles).Returns(_layoutColumnStyleCollectionWrapper);
             A.CallTo(() => _layoutColumnStyleCollectionWrapper.Count).Returns(2);
 
             //Act
-            _equalColumnsTableLayoutDecorator.Apply(_tableLayoutWrapper, _equalColumnsTableLayoutDecoratorArgs);
+            _equalColumnsTableLayoutDecorator.Apply(_tableLayoutWrapper);
 
             //Assert
             A.CallTo(() => _layoutColumnStyleCollectionWrapper.Add(
@@ -64,12 +61,12 @@ namespace UnitTests.CustomFormManipulationTests.Decorators
         public void ApplyChanges_With3Column_3ColumnAt33()
         {
             //Arrange
-            _equalColumnsTableLayoutDecoratorArgs.NumCols = 3;
+            _equalColumnsTableLayoutDecorator = new EqualColumnsTableLayoutDecorator(3);
             A.CallTo(() => _tableLayoutWrapper.AccessColumnStyles).Returns(_layoutColumnStyleCollectionWrapper);
             A.CallTo(() => _layoutColumnStyleCollectionWrapper.Count).Returns(3);
 
             //Act
-            _equalColumnsTableLayoutDecorator.Apply(_tableLayoutWrapper, _equalColumnsTableLayoutDecoratorArgs);
+            _equalColumnsTableLayoutDecorator.Apply(_tableLayoutWrapper);
 
             //Assert
             A.CallTo(() => _layoutColumnStyleCollectionWrapper.Add(

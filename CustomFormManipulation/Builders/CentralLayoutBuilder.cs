@@ -14,25 +14,17 @@ namespace CustomFormManipulation.Builders
     {
         private ITableLayoutDecoratorApplier _tableLayoutDecoratorApplier;
         private List<ITableLayoutDecorator> _tableLayoutDecorators;
-        private List<ITableLayoutDecoratorArguments> _tableLayoutDecoratorArguments;
         private ITableLayoutWrapperFactory _tableLayoutWrapperFactory;
-        public CentralLayoutBuilder(ITableLayoutDecoratorApplier tableLayoutDecoratorApplier, ITableLayoutWrapperFactory tableLayoutWrapperFactory)
+        public CentralLayoutBuilder(ITableLayoutDecoratorApplier tableLayoutDecoratorApplier, List<ITableLayoutDecorator> tableLayoutDecorators, ITableLayoutWrapperFactory tableLayoutWrapperFactory)
         {
             _tableLayoutDecoratorApplier = tableLayoutDecoratorApplier;
             _tableLayoutWrapperFactory = tableLayoutWrapperFactory;
-            _tableLayoutDecorators = new List<ITableLayoutDecorator>
-            {
-                new EqualColumnsTableLayoutDecorator()
-            };
-            _tableLayoutDecoratorArguments = new List<ITableLayoutDecoratorArguments>
-            {
-                new EqualColumnsTableLayoutDecoratorArgs() {NumCols = 2}
-            };
+            _tableLayoutDecorators = tableLayoutDecorators;
         }
 
         public ITableLayoutWrapper Build()
         {
-            var middleLayoutPanel = _tableLayoutDecoratorApplier.Apply(_tableLayoutWrapperFactory.Create(), _tableLayoutDecorators, _tableLayoutDecoratorArguments);
+            var middleLayoutPanel = _tableLayoutDecoratorApplier.Apply(_tableLayoutWrapperFactory.Create(), _tableLayoutDecorators);
 
             middleLayoutPanel.BackColor = Color.Beige;
             middleLayoutPanel.Dock = DockStyle.Fill;

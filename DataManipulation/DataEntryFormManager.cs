@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using CustomForms.API;
 using CustomFormStructures.API;
@@ -7,7 +6,7 @@ using CustomFormStructures.API.Builders;
 using DataManipulation.API;
 using DataManipulation.API.DTOs;
 
-namespace CustomForms
+namespace DataManipulation
 {
     public class DataEntryFormManager : IDataEntryFormManager
     {
@@ -326,8 +325,7 @@ namespace CustomForms
         private IDataEntryForm _dataEntryForm;
 
         public Control TrueControl { get; set; }
-        public event EventHandler Click;
-
+        
         public DataEntryFormManager(IDataEntryFormBuilder dataEntryFormBuilder, IDataMapper dataMapper)
         {
             _dataEntryForm = dataEntryFormBuilder.Build(dataMapper.SkillDtoToIcontrol(_skills));

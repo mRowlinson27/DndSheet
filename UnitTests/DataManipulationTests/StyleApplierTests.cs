@@ -47,77 +47,18 @@ namespace UnitTests.DataManipulationTests
             IGeneric original = new Generic1();
             IGeneric style = new Generic2() { OneHasProperty = "test" };
             
-            _styleApplier.Apply(original, style);
-
             Assert.That(() => _styleApplier.Apply(original, style),
                 Throws.TypeOf<ArgumentException>());
         }
 
         [Test]
-        public void GenericObject_SinglePropertySet()
+        public void Apply_PropertyDifferentType_Exception()
         {
-            var propertyName = "Property";
-            var stringData = "test";
+            IGeneric original = new Generic1() { TypeCheck = "test"};
+            IGeneric style = new Generic2() { TypeCheck = 2 };
 
-            var data = new Dictionary<string, object>
-            {
-                { propertyName, stringData}
-            };
-
-            var response = _styleApplier.Apply(new Generic1(), data);
-
-            response.Property.Should().Be(stringData);
-        }
-
-        [Test]
-        public void GenericObject_NoProperty_ReturnsNull()
-        {
-            var propertyName = "NoProperty";
-            var stringData = "test";
-            
-
-            var data = new Dictionary<string, object>
-            {
-                { propertyName, stringData}
-            };
-
-            var response = _styleApplier.Apply(new Generic1(), data);
-
-            response.Should().Be(null);
-        }
-
-        [Test]
-        public void GenericObject_PropertyWrongType_ReturnsNull()
-        {
-            var propertyName = "NoProperty";
-            var intData = 5;
-            
-            var data = new Dictionary<string, object>
-            {
-                { propertyName, intData}
-            };
-
-            var response = _styleApplier.Apply(new Generic1(), data);
-
-            response.Should().Be(null);
-        }
-
-        [Test]
-        public void GenericObject_OriginalObjectChanged()
-        {
-            var propertyName = "Property";
-            var stringData = "test";
-
-            var data = new Dictionary<string, object>
-            {
-                { propertyName, stringData}
-            };
-
-            var generic = new Generic1();
-
-            _styleApplier.Apply(generic, data);
-
-            generic.Property.Should().Be(stringData);
+            Assert.That(() => _styleApplier.Apply(original, style),
+                Throws.TypeOf<ArgumentException>());
         }
     }
 

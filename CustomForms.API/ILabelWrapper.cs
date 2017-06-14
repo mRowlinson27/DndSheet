@@ -8,6 +8,5 @@ namespace CustomForms.API
 {
     public interface ILabelWrapper : IControl
     {
-        string Text { get; set; }
     }
 }

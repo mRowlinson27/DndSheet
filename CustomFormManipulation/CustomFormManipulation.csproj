@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Builders\CentralLayoutBuilder.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecorator.cs" />
-    <Compile Include="Decorators\DTOs\EqualColumnsTableLayoutDecoratorArgs.cs" />
     <Compile Include="Decorators\TableLayoutDecoratorApplier.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +67,10 @@
       <Project>{cab5d56c-12a3-4a92-9bc6-a28b4784725c}</Project>
       <Name>DataManipulation.API</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+    <Folder Include="Factories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

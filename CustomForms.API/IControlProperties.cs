@@ -22,5 +22,6 @@ namespace CustomForms.API
         Cursor Cursor { get; set; }
         AnchorStyles Anchor { get; set; }
         Font Font { get; set; }
+        string Text { get; set; }
     }
 }

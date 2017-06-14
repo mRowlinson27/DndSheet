@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
 
-namespace CustomForms.DTOs
+namespace CustomFormManipulation.DTOs
 {
-    class ControlPropertiesStyle : IControlProperties
+    public class ControlPropertiesStyle : IControlProperties
     {
         public bool Enabled { get; set; }
         public IntPtr Handle { get; }
@@ -23,5 +19,6 @@ namespace CustomForms.DTOs
         public Cursor Cursor { get; set; }
         public AnchorStyles Anchor { get; set; }
         public Font Font { get; set; }
+        public string Text { get; set; }
     }
 }

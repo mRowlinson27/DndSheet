@@ -12,6 +12,7 @@ using CustomFormStructures.API.Builders;
 using CustomFormStructures.Builders;
 using DataManipulation;
 using DataManipulation.API.DTOs;
+using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -22,11 +23,13 @@ namespace UnitTests.DataManipulationTests
     {
         private DataMapper _dataMapper;
         private IEditableTextBoxBuilder _editableTextBoxBuilder;
+        private StyleApplier<IControlProperties> _styleApplier;
 
         [SetUp]
         public void Setup()
         {
-            _editableTextBoxBuilder = new EditableTextBoxBuilder(new TextBoxWrapperFactory());
+            _styleApplier = A.Fake<StyleApplier<IControlProperties>>();
+            _editableTextBoxBuilder = new EditableTextBoxBuilder(new TextBoxWrapperFactory(), _styleApplier);
             _dataMapper = new DataMapper(_editableTextBoxBuilder);
         }
 

@@ -35,7 +35,6 @@ namespace FormApp
         {
             _dataEntryFormManager.Editable = !_dataEntryFormManager.Editable;
             //_dataEntryFormManager.GetControl(2, 2).TrueControl.Visible = false;
-            _centralLayoutPanel.BackColor = Color.Red;
         }
     }
 }

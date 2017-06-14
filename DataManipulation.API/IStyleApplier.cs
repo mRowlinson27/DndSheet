@@ -4,6 +4,6 @@ namespace CustomForms.API
 {
     public interface IStyleApplier<T>
     {
-        T Apply(T input, Dictionary<string, object> dictionary);
+        T Apply(T input, T style);
     }
 }

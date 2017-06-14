@@ -16,7 +16,6 @@ namespace CustomFormStructures
         private List<List<ITrueControl>> _insertedControls; 
 
         public Control TrueControl { get; }
-        public event EventHandler Click;
 
         private bool _inEdit = false;
         public bool Editable

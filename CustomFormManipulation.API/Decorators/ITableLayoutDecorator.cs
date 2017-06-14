@@ -5,6 +5,6 @@ namespace CustomFormManipulation.API.Decorators
 {
     public interface ITableLayoutDecorator
     {
-        ITableLayoutWrapper Apply(ITableLayoutWrapper input, ITableLayoutDecoratorArguments args);
+        ITableLayoutWrapper Apply(ITableLayoutWrapper input);
     }
 }

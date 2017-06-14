@@ -44,7 +44,6 @@
     <Compile Include="Builders\ICentralLayoutBuilder.cs" />
     <Compile Include="Decorators\ITableLayoutDecorator.cs" />
     <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
-    <Compile Include="DTOs\ITableLayoutDecoratorArguments.cs" />
     <Compile Include="DTOs\StyleSheet.cs" />
     <Compile Include="INativeMethods.cs" />
     <Compile Include="IVerticalScrollStrategy.cs" />

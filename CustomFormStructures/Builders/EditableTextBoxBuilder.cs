@@ -13,14 +13,14 @@ namespace CustomFormStructures.Builders
     public class EditableTextBoxBuilder : IEditableTextBoxBuilder
     {
         private ITextBoxWrapperFactory _textBoxWrapperFactory;
-        private IStyleApplier<ITextBoxWrapper> _styleApplier;
-        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory/*, IStyleApplier<ITextBoxWrapper> styleApplier*/)
+        private IStyleApplier<IControlProperties> _styleApplier;
+        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory, IStyleApplier<IControlProperties> styleApplier)
         {
             _textBoxWrapperFactory = textBoxWrapperFactory;
-            //_styleApplier = styleApplier;
+            _styleApplier = styleApplier;
         }
 
-        public IEditableTextBox Build(string data, Dictionary<string, object> inEditDict, Dictionary<string, object> notInDict)
+        public IEditableTextBox Build(string data, IControlProperties inEditStyle, IControlProperties notInEditStyle)
         {
             var textBox = _textBoxWrapperFactory.Create();
 
@@ -32,7 +32,7 @@ namespace CustomFormStructures.Builders
             textBox.Dock = DockStyle.Fill;
             textBox.Anchor = AnchorStyles.Left;
             textBox.BorderStyle = BorderStyle.None;
-            return new EditableTextBox(textBox);
+            return new EditableTextBox(textBox, _styleApplier, inEditStyle, notInEditStyle);
         }
 
         protected void OnEnter(object sender, System.EventArgs e)
