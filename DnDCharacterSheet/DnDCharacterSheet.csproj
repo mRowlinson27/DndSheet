@@ -70,9 +70,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomFormManipulation.API\CustomFormManipulation.API.csproj">
+      <Project>{21eeac60-01cf-4010-987c-f52f1601eeb7}</Project>
+      <Name>CustomFormManipulation.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormManipulation\CustomFormManipulation.csproj">
+      <Project>{81fdd576-00ac-423f-b9ba-5322b0429491}</Project>
+      <Name>CustomFormManipulation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormStructures.API\CustomFormStructures.API.csproj">
+      <Project>{6865004e-407f-4abd-8d17-57ccd8f471b6}</Project>
+      <Name>CustomFormStructures.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormStructures\CustomFormStructures.csproj">
+      <Project>{c6d9ebf1-9288-4613-b7f9-eb4e006b6342}</Project>
+      <Name>CustomFormStructures</Name>
     </ProjectReference>
     <ProjectReference Include="..\CustomForms\CustomForms.csproj">
       <Project>{c9698281-9747-446d-abf8-ca59c58f0d22}</Project>

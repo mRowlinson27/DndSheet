@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
-using CustomForms.API.Builders;
+using CustomFormStructures.API;
+using CustomFormStructures.API.Builders;
 using DataManipulation.API;
 using DataManipulation.API.DTOs;
 
@@ -330,9 +328,9 @@ namespace CustomForms
         public Control TrueControl { get; set; }
         public event EventHandler Click;
 
-        public DataEntryFormManager(ITableLayoutBuilder tableLayoutBuilder, IDataMapper dataMapper)
+        public DataEntryFormManager(IDataEntryFormBuilder dataEntryFormBuilder, IDataMapper dataMapper)
         {
-            _dataEntryForm = tableLayoutBuilder.Build(dataMapper.SkillDtoToIcontrol(_skills));
+            _dataEntryForm = dataEntryFormBuilder.Build(dataMapper.SkillDtoToIcontrol(_skills));
             TrueControl = _dataEntryForm.TrueControl;
         }
     }

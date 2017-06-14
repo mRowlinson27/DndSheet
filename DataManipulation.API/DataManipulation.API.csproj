@@ -43,12 +43,17 @@
     <Compile Include="DTOs\SkillsDto.cs" />
     <Compile Include="IDataEntryFormManager.cs" />
     <Compile Include="IDataMapper.cs" />
+    <Compile Include="IStyleApplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormStructures.API\CustomFormStructures.API.csproj">
+      <Project>{6865004e-407f-4abd-8d17-57ccd8f471b6}</Project>
+      <Name>CustomFormStructures.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

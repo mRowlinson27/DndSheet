@@ -42,38 +42,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\ICentralLayoutBuilder.cs" />
-    <Compile Include="Builders\ITableLayoutBuilder.cs" />
-    <Compile Include="DTOs\IDataValue.cs" />
-    <Compile Include="Builders\IEditableTextBoxBuilder.cs" />
-    <Compile Include="DTOs\StyleSheet.cs" />
     <Compile Include="Factories\ILabelWrapperFactory.cs" />
+    <Compile Include="Factories\ITableLayoutWrapperFactory.cs" />
     <Compile Include="Factories\ITextBoxWrapperFactory.cs" />
     <Compile Include="IControl.cs" />
-    <Compile Include="IDataEntryForm.cs" />
-    <Compile Include="Factories\IDataEntryFormFactory.cs" />
-    <Compile Include="IEditable.cs" />
-    <Compile Include="IEditableTextBox.cs" />
+    <Compile Include="IControlEvents.cs" />
+    <Compile Include="IControlProperties.cs" />
     <Compile Include="ILabelWrapper.cs" />
-    <Compile Include="DTOs\ITableLayoutDecoratorArguments.cs" />
-    <Compile Include="INativeMethods.cs" />
-    <Compile Include="IStyleApplier.cs" />
-    <Compile Include="ITableLayoutFormatterStrategy.cs" />
     <Compile Include="ITextBoxWrapper.cs" />
     <Compile Include="ITrueControl.cs" />
-    <Compile Include="IVerticalScrollStrategy.cs" />
-    <Compile Include="IWin32Adapter.cs" />
     <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutColumnStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutControlCollectionWrapper.cs" />
-    <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
-    <Compile Include="Decorators\ITableLayoutDecorator.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutRowStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableLayoutWrapper\IVScrollPropertiesWrapper.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Builders\" />
+    <Folder Include="DTOs\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

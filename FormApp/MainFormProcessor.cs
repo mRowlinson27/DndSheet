@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CustomForms;
-using CustomForms.API;
-using CustomForms.API.Builders;
+﻿using System.Drawing;
+using CustomFormManipulation.API;
+using CustomFormManipulation.API.Builders;
 using CustomForms.API.TableLayoutWrapper;
 using DataManipulation.API;
 
-namespace DnDCharacterSheet
+namespace FormApp
 {
     public class MainFormProcessor
     {

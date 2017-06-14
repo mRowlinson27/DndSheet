@@ -57,14 +57,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFormsTests\Builders\DataEntryFormBuilderTests.cs" />
-    <Compile Include="CustomFormsTests\Builders\EditableTextBoxBuilderTests.cs" />
-    <Compile Include="CustomFormsTests\Builders\TableLayoutBuilderTests.cs" />
-    <Compile Include="CustomFormsTests\DataEntryFormTests.cs" />
-    <Compile Include="CustomFormsTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
-    <Compile Include="CustomFormsTests\EditableTextBoxTests.cs" />
-    <Compile Include="CustomFormsTests\StyleApplierTests.cs" />
-    <Compile Include="CustomFormsTests\VerticalScrollStrategyTests.cs" />
+    <Compile Include="CustomFormManipulationTests\Builders\CentralLayoutBuilderTests.cs" />
+    <Compile Include="CustomFormManipulationTests\Decorators\TableLayoutDecoratorApplierTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Builders\EditableTextBoxBuilderTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Builders\DataEntryFormBuilderTests.cs" />
+    <Compile Include="CustomFormStructuresTests\DataEntryFormTests.cs" />
+    <Compile Include="CustomFormManipulationTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
+    <Compile Include="CustomFormStructuresTests\EditableTextBoxTests.cs" />
+    <Compile Include="DataManipulationTests\DataEntryFormManagerTests.cs" />
+    <Compile Include="DataManipulationTests\StyleApplierTests.cs" />
+    <Compile Include="CustomFormManipulationTests\VerticalScrollStrategyTests.cs" />
     <Compile Include="DataManipulationTests\DataMapperTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,9 +75,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomFormManipulation.API\CustomFormManipulation.API.csproj">
+      <Project>{21eeac60-01cf-4010-987c-f52f1601eeb7}</Project>
+      <Name>CustomFormManipulation.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormManipulation\CustomFormManipulation.csproj">
+      <Project>{81fdd576-00ac-423f-b9ba-5322b0429491}</Project>
+      <Name>CustomFormManipulation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormStructures.API\CustomFormStructures.API.csproj">
+      <Project>{6865004e-407f-4abd-8d17-57ccd8f471b6}</Project>
+      <Name>CustomFormStructures.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormStructures\CustomFormStructures.csproj">
+      <Project>{c6d9ebf1-9288-4613-b7f9-eb4e006b6342}</Project>
+      <Name>CustomFormStructures</Name>
     </ProjectReference>
     <ProjectReference Include="..\CustomForms\CustomForms.csproj">
       <Project>{c9698281-9747-446d-abf8-ca59c58f0d22}</Project>
@@ -97,6 +115,9 @@
       <Project>{d619c3fe-5949-456a-bf8a-76a9ca1b1c57}</Project>
       <Name>FormApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomFormsTests\Builders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
