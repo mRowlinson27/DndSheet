@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using DataManipulation;
+using CustomFormManipulation;
 using FluentAssertions;
 using NUnit.Framework;
 
 namespace UnitTests.DataManipulationTests
 {
     [TestFixture]
-    class StyleApplierTests
+    class PropertyApplierTests
     {
-        private StyleApplier<IGeneric> _styleApplier;
+        private PropertyApplier<IGeneric> _propertyApplier;
 
         [SetUp]
         public void Setup()
         {
-            _styleApplier = new StyleApplier<IGeneric>();
+            _propertyApplier = new PropertyApplier<IGeneric>();
         }
 
         [Test]
@@ -24,7 +23,7 @@ namespace UnitTests.DataManipulationTests
             var original = new Generic1();
             var style = new Generic1() { Property = propertyValue };
 
-            _styleApplier.Apply(original, style);
+            _propertyApplier.Apply(original, style);
 
             original.Property.Should().Be(style.Property);
         }
@@ -36,7 +35,7 @@ namespace UnitTests.DataManipulationTests
             IGeneric original = new Generic1() { Property = propertyValue };
             IGeneric style = new Generic1();
 
-            _styleApplier.Apply(original, style);
+            _propertyApplier.Apply(original, style);
 
             original.Property.Should().Be(propertyValue);
         }
@@ -47,7 +46,7 @@ namespace UnitTests.DataManipulationTests
             IGeneric original = new Generic1();
             IGeneric style = new Generic2() { OneHasProperty = "test" };
             
-            Assert.That(() => _styleApplier.Apply(original, style),
+            Assert.That(() => _propertyApplier.Apply(original, style),
                 Throws.TypeOf<ArgumentException>());
         }
 
@@ -57,7 +56,7 @@ namespace UnitTests.DataManipulationTests
             IGeneric original = new Generic1() { TypeCheck = "test"};
             IGeneric style = new Generic2() { TypeCheck = 2 };
 
-            Assert.That(() => _styleApplier.Apply(original, style),
+            Assert.That(() => _propertyApplier.Apply(original, style),
                 Throws.TypeOf<ArgumentException>());
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using CustomFormManipulation.API;
 using CustomForms.API;
 using CustomForms.API.Factories;
 using CustomFormStructures.API.Builders;
@@ -15,14 +16,14 @@ namespace UnitTests.CustomFormStructuresTests.Builders
 
         private IEditableTextBoxBuilder _editableTextBoxBoxBuilder;
         private ITextBoxWrapperFactory _textBoxWrapperFactory;
-        private IStyleApplier<IControlProperties> _styleApplier;
+        private IControlStyleApplier<IControlProperties> _controlStyleApplier;
 
         [SetUp]
         public void Setup()
         {
             _textBoxWrapperFactory = A.Fake<ITextBoxWrapperFactory>();
-            _styleApplier = A.Fake<IStyleApplier<IControlProperties>>();
-            _editableTextBoxBoxBuilder = new EditableTextBoxBuilder(_textBoxWrapperFactory, _styleApplier);
+            _controlStyleApplier = A.Fake<IControlStyleApplier<IControlProperties>>();
+            _editableTextBoxBoxBuilder = new EditableTextBoxBuilder(_textBoxWrapperFactory, _controlStyleApplier);
         }
 
         [Test]

@@ -1,5 +1,4 @@
-﻿using CustomFormManipulation.API.DTOs;
-using CustomForms.API.TableLayoutWrapper;
+﻿using CustomForms.API.TableLayoutWrapper;
 
 namespace CustomFormManipulation.API.Decorators
 {

@@ -47,6 +47,7 @@
     <Compile Include="Factories\ITextBoxWrapperFactory.cs" />
     <Compile Include="IControl.cs" />
     <Compile Include="IControlEvents.cs" />
+    <Compile Include="IControlMethods.cs" />
     <Compile Include="IControlProperties.cs" />
     <Compile Include="ILabelWrapper.cs" />
     <Compile Include="ITextBoxWrapper.cs" />

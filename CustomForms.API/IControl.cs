@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace CustomForms.API
 {
-    public interface IControl : IControlProperties, IControlEvents, ITrueControl
+    public interface IControl : IControlProperties, IControlEvents, IControlMethods, ITrueControl
     {
         
     }

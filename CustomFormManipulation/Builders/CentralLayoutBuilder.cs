@@ -3,8 +3,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using CustomFormManipulation.API.Builders;
 using CustomFormManipulation.API.Decorators;
-using CustomFormManipulation.API.DTOs;
-using CustomFormManipulation.Decorators;
 using CustomForms.API.Factories;
 using CustomForms.API.TableLayoutWrapper;
 

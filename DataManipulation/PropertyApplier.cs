@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using CustomFormManipulation.API;
 using CustomForms.API;
+using DataManipulation.API;
 
-namespace DataManipulation
+namespace CustomFormManipulation
 {
-    public class StyleApplier<T> : IStyleApplier<T>
+    public class PropertyApplier<T> : IPropertyApplier<T>
     {
-
         public T Apply(T input, T style)
         {
             var output = input;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using CustomFormManipulation.API;
 using CustomForms;
 using CustomForms.API;
 using CustomForms.API.Factories;
@@ -13,11 +14,11 @@ namespace CustomFormStructures.Builders
     public class EditableTextBoxBuilder : IEditableTextBoxBuilder
     {
         private ITextBoxWrapperFactory _textBoxWrapperFactory;
-        private IStyleApplier<IControlProperties> _styleApplier;
-        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory, IStyleApplier<IControlProperties> styleApplier)
+        private IControlStyleApplier<IControlProperties> _controlStyleApplier;
+        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory, IControlStyleApplier<IControlProperties> controlStyleApplier)
         {
             _textBoxWrapperFactory = textBoxWrapperFactory;
-            _styleApplier = styleApplier;
+            _controlStyleApplier = controlStyleApplier;
         }
 
         public IEditableTextBox Build(string data, IControlProperties inEditStyle, IControlProperties notInEditStyle)
@@ -32,7 +33,7 @@ namespace CustomFormStructures.Builders
             textBox.Dock = DockStyle.Fill;
             textBox.Anchor = AnchorStyles.Left;
             textBox.BorderStyle = BorderStyle.None;
-            return new EditableTextBox(textBox, _styleApplier, inEditStyle, notInEditStyle);
+            return new EditableTextBox(textBox, _controlStyleApplier, inEditStyle, notInEditStyle);
         }
 
         protected void OnEnter(object sender, System.EventArgs e)

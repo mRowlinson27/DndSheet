@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API
 {
-    public interface IControlEvents
+    public interface IControlMethods
     {
-        event EventHandler Click;
-        event EventHandler MouseEnter;
+        bool Focus();
+        void Update();
     }
 }

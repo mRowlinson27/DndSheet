@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using CustomFormManipulation.API;
 using CustomForms.API;
 using CustomFormStructures.API;
 
@@ -33,15 +34,15 @@ namespace CustomFormStructures
         }
 
         private ITextBoxWrapper _textBox;
-        private IStyleApplier<IControlProperties> _styleApplier;
+        private IControlStyleApplier<IControlProperties> _controlStyleApplier;
         private IControlProperties _inEditStyle;
         private IControlProperties _notInEditStyle;
 
-        public EditableTextBox(ITextBoxWrapper input, IStyleApplier<IControlProperties> styleApplier, IControlProperties inEditStyle, IControlProperties notInEditStyle)
+        public EditableTextBox(ITextBoxWrapper input, IControlStyleApplier<IControlProperties> controlStyleApplier, IControlProperties inEditStyle, IControlProperties notInEditStyle)
         {
             _textBox = input;
             TrueControl = _textBox.TrueControl;
-            _styleApplier = styleApplier;
+            _controlStyleApplier = controlStyleApplier;
             _inEditStyle = inEditStyle;
             _notInEditStyle = notInEditStyle;
             LeaveEditMode();
@@ -52,7 +53,7 @@ namespace CustomFormStructures
             _textBox.Enabled = true;
             _textBox.ReadOnly = false;
             _textBox.Cursor = Cursors.IBeam;
-            _styleApplier.Apply(_textBox, _inEditStyle);
+            _controlStyleApplier.Apply(_textBox, _inEditStyle);
         }
 
         private void LeaveEditMode()
@@ -60,7 +61,7 @@ namespace CustomFormStructures
             _textBox.Enabled = false;
             _textBox.ReadOnly = true;
             _textBox.Cursor = Cursors.Default;
-            _styleApplier.Apply(_textBox, _notInEditStyle);
+            _controlStyleApplier.Apply(_textBox, _notInEditStyle);
         }
 
         protected void OnEnter(object sender, System.EventArgs e)

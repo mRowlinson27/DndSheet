@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CustomFormManipulation.API;
 using CustomFormManipulation.DTOs;
 using CustomForms.API;
-using CustomForms.API.Factories;
 using CustomFormStructures.API.Builders;
 using DataManipulation.API;
 using DataManipulation.API.DTOs;
 
-namespace DataManipulation
+namespace CustomFormManipulation
 {
     public class DataMapper : IDataMapper
     {

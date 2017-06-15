@@ -42,11 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlPropertiesStyle.cs" />
     <Compile Include="DataEntryFormManager.cs" />
-    <Compile Include="DataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StyleApplier.cs" />
+    <Compile Include="PropertyApplier.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomFormManipulation.API\CustomFormManipulation.API.csproj">

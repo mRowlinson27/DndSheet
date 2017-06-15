@@ -44,8 +44,10 @@
     <Compile Include="Builders\ICentralLayoutBuilder.cs" />
     <Compile Include="Decorators\ITableLayoutDecorator.cs" />
     <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
-    <Compile Include="DTOs\StyleSheet.cs" />
+    <Compile Include="DTOs\IControlStyle.cs" />
+    <Compile Include="IDataMapper.cs" />
     <Compile Include="INativeMethods.cs" />
+    <Compile Include="IControlStyleApplier.cs" />
     <Compile Include="IVerticalScrollStrategy.cs" />
     <Compile Include="IWin32Adapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +66,7 @@
       <Name>DataManipulation.API</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

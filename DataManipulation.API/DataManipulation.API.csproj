@@ -42,8 +42,7 @@
   <ItemGroup>
     <Compile Include="DTOs\SkillsDto.cs" />
     <Compile Include="IDataEntryFormManager.cs" />
-    <Compile Include="IDataMapper.cs" />
-    <Compile Include="IStyleApplier.cs" />
+    <Compile Include="IPropertyApplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

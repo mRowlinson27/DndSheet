@@ -43,8 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\CentralLayoutBuilder.cs" />
+    <Compile Include="ControlStyleApplier.cs" />
+    <Compile Include="DTOs\ControlEventsStyle.cs" />
+    <Compile Include="DTOs\ControlPropertiesStyle.cs" />
+    <Compile Include="DataMapper.cs" />
     <Compile Include="Decorators\EqualColumnsTableLayoutDecorator.cs" />
     <Compile Include="Decorators\TableLayoutDecoratorApplier.cs" />
+    <Compile Include="DTOs\ControlStyle.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VerticalScrollStrategy.cs" />
@@ -69,7 +74,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTOs\" />
     <Folder Include="Factories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

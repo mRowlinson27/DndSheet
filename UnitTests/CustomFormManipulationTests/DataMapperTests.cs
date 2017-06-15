@@ -1,34 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CustomForms;
+﻿using System.Collections.Generic;
+using CustomFormManipulation;
+using CustomFormManipulation.API;
 using CustomForms.API;
-using CustomForms.API.Factories;
 using CustomForms.Factories;
 using CustomFormStructures.API;
 using CustomFormStructures.API.Builders;
 using CustomFormStructures.Builders;
-using DataManipulation;
 using DataManipulation.API.DTOs;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace UnitTests.DataManipulationTests
+namespace UnitTests.CustomFormManipulationTests
 {
     [TestFixture]
     class DataMapperTests
     {
         private DataMapper _dataMapper;
         private IEditableTextBoxBuilder _editableTextBoxBuilder;
-        private StyleApplier<IControlProperties> _styleApplier;
+        private IControlStyleApplier<IControlProperties> _styleApplier;
 
         [SetUp]
         public void Setup()
         {
-            _styleApplier = A.Fake<StyleApplier<IControlProperties>>();
+            _styleApplier = A.Fake<IControlStyleApplier<IControlProperties>>();
             _editableTextBoxBuilder = new EditableTextBoxBuilder(new TextBoxWrapperFactory(), _styleApplier);
             _dataMapper = new DataMapper(_editableTextBoxBuilder);
         }
