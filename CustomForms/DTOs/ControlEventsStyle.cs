@@ -3,7 +3,7 @@ using CustomForms.API;
 
 namespace CustomForms.DTOs
 {
-    class ControlEventsStyle : IControlEvents
+    public class ControlEventsStyle : IControlEvents
     {
         public event EventHandler Click;
         public event EventHandler MouseEnter;

@@ -50,7 +50,7 @@ namespace DataManipulation
             {
                 var memberInfo = input.GetType()
                     .GetField(styleEvent.Name, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-
+                var bla = input.GetType();
                 if (memberInfo != null)
                 {
                     var eventDelegate = (MulticastDelegate)memberInfo

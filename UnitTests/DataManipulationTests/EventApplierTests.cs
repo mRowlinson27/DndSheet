@@ -5,9 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms;
+using CustomForms.API;
 using DataManipulation;
 using FakeItEasy;
 using FluentAssertions;
+using CustomForms.DTOs;
 using NUnit.Framework;
 
 namespace UnitTests.DataManipulationTests
@@ -71,6 +74,19 @@ namespace UnitTests.DataManipulationTests
 
             _eventApplier.Apply(original, eventStyle);
             original.OnEvent();
+
+            A.CallToSet(() => _flag.Flag).To(true).MustNotHaveHappened();
+        }
+
+        [Test]
+        public void Apply_OriginalEventSubscrition2_SubscriptionRemoved()
+        {
+            var eventApplier = new EventApplier<IControlEvents>();
+            var original = new LabelWrapper();
+            var eventStyle = new LabelWrapper();
+            original.Enter += DoSomething;
+
+            eventApplier.Apply(original, eventStyle);
 
             A.CallToSet(() => _flag.Flag).To(true).MustNotHaveHappened();
         }
