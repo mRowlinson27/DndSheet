@@ -1,7 +1,10 @@
-﻿namespace CustomFormManipulation.API
+﻿using CustomFormManipulation.API.DTOs;
+using CustomForms.API;
+
+namespace CustomFormManipulation.API
 {
-    public interface IControlStyleApplier<T>
+    public interface IControlStyleApplier
     {
-        T Apply(T input, T style);
+        IControl Apply(IControl input, IControlStyle style);
     }
 }

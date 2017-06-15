@@ -34,11 +34,11 @@ namespace DnDCharacterSheet
             };
             var centralLayoutBuilder = new CentralLayoutBuilder(new TableLayoutDecoratorApplier(), centralLayoutBuilderDecorators, tableLayoutWrapperFactory);
 
-            var textBoxStyleApplier = new ControlStyleApplier<IControlProperties>(new PropertyApplier<IControlProperties>());
+            var textBoxStyleApplier = new ControlStyleApplier(new PropertyApplier<IControlProperties>(), new EventApplier<IControlEvents>());
 
             var dataEntryFormManager = new DataEntryFormManager(
                 new DataEntryFormBuilder(tableLayoutWrapperFactory),
-                new DataMapper(new EditableTextBoxBuilder(new TextBoxWrapperFactory(), textBoxStyleApplier)));
+                new DataMapper(new EditableTextBoxBuilder(new TextBoxWrapperFactory(), textBoxStyleApplier), new ControlStyleFactory()));
 
             var verticalScrollStrategy = new VerticalScrollStrategy(new Win32Adapter(new NativeMethods()));
 

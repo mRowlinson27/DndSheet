@@ -6,44 +6,65 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataManipulation.API;
 
 namespace DataManipulation
 {
-    public class EventApplier<T>
+    public class EventApplier<T> : IEventApplier<T>
     {
         public T Apply(T input, T style)
         {
+            RemoveEventSubscriptions(input);
             var output = input;
             var styleEvents = style.GetType().GetEvents();
 
             foreach (var styleEvent in styleEvents)
             {
-                Console.WriteLine(styleEvent.Name);
-                //var test = typeof(T).GetField("events", BindingFlags.NonPublic | BindingFlags.Instance);
-                //styleEvent.GetRaiseMethod().CreateDelegate()
-                var eventDelegate =
-                    (MulticastDelegate)
-                        style.GetType()
-                            .GetField(styleEvent.Name, BindingFlags.Instance | BindingFlags.NonPublic)
-                            .GetValue(style);
-                //https://stackoverflow.com/questions/198543/how-do-i-raise-an-event-via-reflection-in-net-c
-                eventDelegate.Method.Invoke(eventDelegate.GetInvocationList()[0], new []{style, (object) default(T)});
-
-                var ctrlEventsCollection = (EventHandlerList)typeof(T)
-                                        .GetProperty("Event", BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Instance)
-                                        .GetValue(style, null);
-
-                var outputEvent = output.GetType().GetEvent(styleEvent.Name);
-                if (outputEvent != null)
+                var memberInfo = style.GetType()
+                    .GetField(styleEvent.Name, BindingFlags.Instance | BindingFlags.NonPublic);
+                if (memberInfo != null)
                 {
-                    var test = styleEvent.GetAddMethod(true);
-//                    test.CreateDelegate(EventHandler, this);
-                    outputEvent.AddEventHandler(output, new EventHandler((sender, args) => Console.WriteLine("meow")));
-//                    outputEvent.AddEventHandler(output, Delegate.CreateDelegate(typeof(EventHandler), test));
+                    var eventDelegate = (MulticastDelegate) memberInfo
+                        .GetValue(style);
+
+                    if (eventDelegate != null)
+                    {
+                        foreach (var handler in eventDelegate.GetInvocationList())
+                        {
+                            var outputEvent = output.GetType().GetEvent(styleEvent.Name);
+                            if (outputEvent != null)
+                            {
+                                outputEvent.AddEventHandler(output, handler);
+                            }
+                        }
+                    }
                 }
             }
-
             return output;
+        }
+
+        private void RemoveEventSubscriptions(T input)
+        {
+            var styleEvents = input.GetType().GetEvents();
+            foreach (var styleEvent in styleEvents)
+            {
+                var memberInfo = input.GetType()
+                    .GetField(styleEvent.Name, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+                if (memberInfo != null)
+                {
+                    var eventDelegate = (MulticastDelegate)memberInfo
+                        .GetValue(input);
+
+                    if (eventDelegate != null)
+                    {
+                        foreach (var handler in eventDelegate.GetInvocationList())
+                        {
+                            styleEvent.RemoveEventHandler(input, handler);
+                        }
+                    }
+                }
+            }
         }
     }
 }

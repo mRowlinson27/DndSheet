@@ -4,21 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomFormManipulation.API;
+using CustomFormManipulation.API.DTOs;
+using CustomForms.API;
 using DataManipulation.API;
 
 namespace CustomFormManipulation
 {
-    public class ControlStyleApplier<T> : IControlStyleApplier<T>
+    public class ControlStyleApplier : IControlStyleApplier
     {
-        private IPropertyApplier<T> _propertyApplier;
-        public ControlStyleApplier(IPropertyApplier<T> propertyApplier)
+        private IPropertyApplier<IControlProperties> _propertyApplier;
+        private IEventApplier<IControlEvents> _eventApplier;
+        public ControlStyleApplier(IPropertyApplier<IControlProperties> propertyApplier, IEventApplier<IControlEvents> eventApplier)
         {
             _propertyApplier = propertyApplier;
+            _eventApplier = eventApplier;
         }
 
-        public T Apply(T input, T style)
+        public IControl Apply(IControl input, IControlStyle style)
         {
-            return _propertyApplier.Apply(input, style);
+            var output = _propertyApplier.Apply(input, style.ControlProperties) as IControl;
+            output = _eventApplier.Apply(input, style.ControlEvents) as IControl;
+            return output;
         }
     }
 }

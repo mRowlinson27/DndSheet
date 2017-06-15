@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomFormManipulation;
+using CustomFormManipulation.API.DTOs;
+using CustomForms.API;
 using DataManipulation.API;
 using FakeItEasy;
 using NUnit.Framework;
@@ -13,36 +15,43 @@ namespace UnitTests.CustomFormManipulationTests
     [TestFixture]
     class ControlStyleApplierTests
     {
-        private ControlStyleApplier<IGeneric> _controlStyleApplier;
-        private IPropertyApplier<IGeneric> _propertyApplier;
+        private ControlStyleApplier _controlStyleApplier;
+        private IPropertyApplier<IControlProperties> _propertyApplier;
+        private IEventApplier<IControlEvents> _eventApplier;
 
         [SetUp]
         public void Setup()
         {
-            _propertyApplier = A.Fake<IPropertyApplier<IGeneric>>();
-            _controlStyleApplier = new ControlStyleApplier<IGeneric>(_propertyApplier);
+            _propertyApplier = A.Fake<IPropertyApplier<IControlProperties>>();
+            _eventApplier = A.Fake<IEventApplier<IControlEvents>>();
+            _controlStyleApplier = new ControlStyleApplier(_propertyApplier, _eventApplier);
         }
 
         [Test]
         public void Apply_PropertiesApplied()
         {
-            var generic = new Generic1();
-            var genericStyle = new Generic1() {Property = "test"};
+            var original = A.Fake<IControl>();
+            var style = A.Fake<IControlStyle>();
+            var controlProperties = A.Fake<IControlProperties>();
+            A.CallTo(() => style.ControlProperties).Returns(controlProperties);
 
-            _controlStyleApplier.Apply(generic, genericStyle);
+            _controlStyleApplier.Apply(original, style);
 
-            A.CallTo(() => _propertyApplier.Apply(generic, genericStyle)).MustHaveHappened();
+            A.CallTo(() => _propertyApplier.Apply(original, controlProperties)).MustHaveHappened();
         }
 
-    }
+        [Test]
+        public void Apply_EventsApplied()
+        {
+            var original = A.Fake<IControl>();
+            var style = A.Fake<IControlStyle>();
+            var controlEvents = A.Fake<IControlEvents>();
+            A.CallTo(() => style.ControlEvents).Returns(controlEvents);
 
-    public interface IGeneric
-    {
-        string Property { get; set; }
-    }
+            _controlStyleApplier.Apply(original, style);
 
-    internal class Generic1 : IGeneric
-    {
-        public string Property { get; set; }
+            A.CallTo(() => _eventApplier.Apply(original, controlEvents)).MustHaveHappened();
+        }
+
     }
 }

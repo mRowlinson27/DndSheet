@@ -1,9 +1,7 @@
 ﻿using System;
-using CustomFormManipulation.API;
-using CustomForms.API;
 using DataManipulation.API;
 
-namespace CustomFormManipulation
+namespace DataManipulation
 {
     public class PropertyApplier<T> : IPropertyApplier<T>
     {

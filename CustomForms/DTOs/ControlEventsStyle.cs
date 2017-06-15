@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CustomForms.API;
 
-namespace CustomFormManipulation.DTOs
+namespace CustomForms.DTOs
 {
     class ControlEventsStyle : IControlEvents
     {
         public event EventHandler Click;
         public event EventHandler MouseEnter;
+        public event EventHandler TextChanged;
+        public event EventHandler Enter;
     }
 }

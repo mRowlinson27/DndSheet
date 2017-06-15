@@ -2,6 +2,7 @@
 using CustomFormManipulation;
 using CustomFormManipulation.API;
 using CustomForms.API;
+using CustomForms.API.Factories;
 using CustomForms.Factories;
 using CustomFormStructures.API;
 using CustomFormStructures.API.Builders;
@@ -18,14 +19,16 @@ namespace UnitTests.CustomFormManipulationTests
     {
         private DataMapper _dataMapper;
         private IEditableTextBoxBuilder _editableTextBoxBuilder;
-        private IControlStyleApplier<IControlProperties> _styleApplier;
+        private IControlStyleApplier _styleApplier;
+        private IControlStyleFactory _controlStyleFactory;
 
         [SetUp]
         public void Setup()
         {
-            _styleApplier = A.Fake<IControlStyleApplier<IControlProperties>>();
+            _styleApplier = A.Fake<IControlStyleApplier>();
+            _controlStyleFactory = A.Fake<IControlStyleFactory>();
             _editableTextBoxBuilder = new EditableTextBoxBuilder(new TextBoxWrapperFactory(), _styleApplier);
-            _dataMapper = new DataMapper(_editableTextBoxBuilder);
+            _dataMapper = new DataMapper(_editableTextBoxBuilder, _controlStyleFactory);
         }
 
         [Test]

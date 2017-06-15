@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using CustomFormManipulation.API;
+using CustomFormManipulation.API.DTOs;
 using CustomForms.API;
 using CustomFormStructures.API;
 
@@ -18,7 +19,7 @@ namespace CustomFormStructures
             {
                 if (_inEdit && !value)
                 {
-                    LeaveEditMode();
+                    EnterRegularMode();
                 }
                 else if (!_inEdit && value)
                 {
@@ -34,18 +35,26 @@ namespace CustomFormStructures
         }
 
         private ITextBoxWrapper _textBox;
-        private IControlStyleApplier<IControlProperties> _controlStyleApplier;
-        private IControlProperties _inEditStyle;
-        private IControlProperties _notInEditStyle;
+        private IControlStyleApplier _controlStyleApplier;
+        private IControlStyle _inEditStyle;
+        private IControlStyle _regularStyle;
 
-        public EditableTextBox(ITextBoxWrapper input, IControlStyleApplier<IControlProperties> controlStyleApplier, IControlProperties inEditStyle, IControlProperties notInEditStyle)
+        public EditableTextBox(ITextBoxWrapper input, IControlStyleApplier controlStyleApplier, IControlStyle regularStyle, IControlStyle inEditStyle, bool inEdit = false)
         {
             _textBox = input;
             TrueControl = _textBox.TrueControl;
             _controlStyleApplier = controlStyleApplier;
             _inEditStyle = inEditStyle;
-            _notInEditStyle = notInEditStyle;
-            LeaveEditMode();
+            _regularStyle = regularStyle;
+            _inEdit = inEdit;
+            if (!_inEdit)
+            {
+                EnterRegularMode();
+            }
+            else
+            {
+                EnterEditMode();
+            }
         }
 
         private void EnterEditMode()
@@ -56,31 +65,12 @@ namespace CustomFormStructures
             _controlStyleApplier.Apply(_textBox, _inEditStyle);
         }
 
-        private void LeaveEditMode()
+        private void EnterRegularMode()
         {
             _textBox.Enabled = false;
             _textBox.ReadOnly = true;
             _textBox.Cursor = Cursors.Default;
-            _controlStyleApplier.Apply(_textBox, _notInEditStyle);
-        }
-
-        protected void OnEnter(object sender, System.EventArgs e)
-        {
-            var control = sender as Control;
-            if (control != null)
-            {
-                control.Parent.Parent.Focus();
-            }
-        }
-
-        protected void OnTextChanged(object sender, System.EventArgs e)
-        {
-            var control = sender as ITextBoxWrapper;
-            if (control != null)
-            {
-                Size size = TextRenderer.MeasureText(control.Text, control.Font);
-                control.Width = (int)Math.Ceiling(((float)size.Width) + 10);
-            }
+            _controlStyleApplier.Apply(_textBox, _regularStyle);
         }
     }
 }

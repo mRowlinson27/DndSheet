@@ -10,5 +10,7 @@ namespace CustomForms.API
     {
         event EventHandler Click;
         event EventHandler MouseEnter;
+        event EventHandler TextChanged;
+        event EventHandler Enter;
     }
 }

@@ -42,16 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\IControlStyle.cs" />
+    <Compile Include="Factories\IControlStyleFactory.cs" />
     <Compile Include="Factories\ILabelWrapperFactory.cs" />
     <Compile Include="Factories\ITableLayoutWrapperFactory.cs" />
     <Compile Include="Factories\ITextBoxWrapperFactory.cs" />
-    <Compile Include="IControl.cs" />
-    <Compile Include="IControlEvents.cs" />
-    <Compile Include="IControlMethods.cs" />
-    <Compile Include="IControlProperties.cs" />
+    <Compile Include="DTOs\IControl.cs" />
+    <Compile Include="DTOs\IControlEvents.cs" />
+    <Compile Include="DTOs\IControlMethods.cs" />
+    <Compile Include="DTOs\IControlProperties.cs" />
     <Compile Include="ILabelWrapper.cs" />
     <Compile Include="ITextBoxWrapper.cs" />
-    <Compile Include="ITrueControl.cs" />
+    <Compile Include="DTOs\ITrueControl.cs" />
     <Compile Include="TableLayoutWrapper\IHScrollPropertiesWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutColumnStyleCollectionWrapper.cs" />
     <Compile Include="TableLayoutWrapper\ITableLayoutControlCollectionWrapper.cs" />
@@ -62,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Builders\" />
-    <Folder Include="DTOs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

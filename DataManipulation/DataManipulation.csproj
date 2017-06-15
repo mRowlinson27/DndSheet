@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataEntryFormManager.cs" />
     <Compile Include="EventApplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyApplier.cs" />

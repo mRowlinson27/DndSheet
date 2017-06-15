@@ -44,7 +44,7 @@
     <Compile Include="Builders\ICentralLayoutBuilder.cs" />
     <Compile Include="Decorators\ITableLayoutDecorator.cs" />
     <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
-    <Compile Include="DTOs\IControlStyle.cs" />
+    <Compile Include="IDataEntryFormManager.cs" />
     <Compile Include="IDataMapper.cs" />
     <Compile Include="INativeMethods.cs" />
     <Compile Include="IControlStyleApplier.cs" />
@@ -58,7 +58,7 @@
       <Name>CustomForms.API</Name>
     </ProjectReference>
     <ProjectReference Include="..\CustomFormStructures.API\CustomFormStructures.API.csproj">
-      <Project>{6865004e-407f-4abd-8d17-57ccd8f471b6}</Project>
+      <Project>{6865004E-407F-4ABD-8D17-57CCD8F471B6}</Project>
       <Name>CustomFormStructures.API</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataManipulation.API\DataManipulation.API.csproj">
@@ -66,7 +66,9 @@
       <Name>DataManipulation.API</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

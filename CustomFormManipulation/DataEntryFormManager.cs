@@ -7,7 +7,7 @@ using CustomFormStructures.API.Builders;
 using DataManipulation.API;
 using DataManipulation.API.DTOs;
 
-namespace DataManipulation
+namespace CustomFormManipulation
 {
     public class DataEntryFormManager : IDataEntryFormManager
     {

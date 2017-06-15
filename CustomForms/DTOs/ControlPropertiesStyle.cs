@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using CustomForms.API;
 
-namespace CustomFormManipulation.DTOs
+namespace CustomForms.DTOs
 {
     public class ControlPropertiesStyle : IControlProperties
     {
