@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using CustomForms.API;
 
 namespace CustomForms
@@ -6,5 +7,9 @@ namespace CustomForms
     public class LabelWrapper : Label, ILabelWrapper
     {
         public Control TrueControl => this;
+        public vIControloid RemoveAllEvents()
+        {
+
+        }
     }
 }

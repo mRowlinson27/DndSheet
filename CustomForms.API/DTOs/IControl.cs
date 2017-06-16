@@ -10,6 +10,6 @@ namespace CustomForms.API
 {
     public interface IControl : IControlProperties, IControlEvents, IControlMethods, ITrueControl
     {
-        
+        IControl RemoveAllEvents();
     }
 }

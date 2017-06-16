@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using CustomForms.API;
 using CustomForms.API.TableLayoutWrapper;
 
 namespace CustomForms.TableLayoutWrapperFields
@@ -37,5 +38,9 @@ namespace CustomForms.TableLayoutWrapperFields
         public IVScrollPropertiesWrapper AccessVerticalScroll => _vScrollPropertiesWrapper;
 
         public Control TrueControl => this;
+        public IControl RemoveAllEvents()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

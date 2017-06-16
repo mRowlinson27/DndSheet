@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,32 +66,6 @@ namespace UnitTests.DataManipulationTests
             original.OnEvent();
         }
 
-        [Test]
-        public void Apply_OriginalEventSubscrition_SubscriptionRemoved()
-        {
-            var original = new GenericEvent1();
-            var eventStyle = new GenericEvent1();
-            original.Event += DoSomething;
-
-            _eventApplier.Apply(original, eventStyle);
-            original.OnEvent();
-
-            A.CallToSet(() => _flag.Flag).To(true).MustNotHaveHappened();
-        }
-
-        [Test]
-        public void Apply_OriginalEventSubscrition2_SubscriptionRemoved()
-        {
-            var eventApplier = new EventApplier<IControlEvents>();
-            var original = new LabelWrapper();
-            var eventStyle = new LabelWrapper();
-            original.Enter += DoSomething;
-
-            eventApplier.Apply(original, eventStyle);
-
-            A.CallToSet(() => _flag.Flag).To(true).MustNotHaveHappened();
-        }
-
         private void DoSomething(object sender, EventArgs e)
         {
             _flag.Flag = true;
@@ -112,28 +87,6 @@ namespace UnitTests.DataManipulationTests
         public event EventHandler Event;
 
         public void OnEvent()
-        {
-            if (Event != null)
-            {
-                Event.Invoke(null, null);
-            }
-        }
-    }
-
-    internal class GenericEvent2 : IGenericEvents
-    {
-        public event EventHandler Event;
-        public event EventHandler Click;
-
-        public void OnEvent()
-        {
-            if (Event != null)
-            {
-                Event.Invoke(null, null);
-            }
-        }
-
-        public void OnClick()
         {
             if (Event != null)
             {

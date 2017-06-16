@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomForms.API;
 using DataManipulation.API;
 
 namespace DataManipulation
@@ -14,7 +15,6 @@ namespace DataManipulation
     {
         public T Apply(T input, T style)
         {
-            RemoveEventSubscriptions(input);
             var output = input;
             var styleEvents = style.GetType().GetEvents();
 
@@ -41,30 +41,6 @@ namespace DataManipulation
                 }
             }
             return output;
-        }
-
-        private void RemoveEventSubscriptions(T input)
-        {
-            var styleEvents = input.GetType().GetEvents();
-            foreach (var styleEvent in styleEvents)
-            {
-                var memberInfo = input.GetType()
-                    .GetField(styleEvent.Name, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                var bla = input.GetType();
-                if (memberInfo != null)
-                {
-                    var eventDelegate = (MulticastDelegate)memberInfo
-                        .GetValue(input);
-
-                    if (eventDelegate != null)
-                    {
-                        foreach (var handler in eventDelegate.GetInvocationList())
-                        {
-                            styleEvent.RemoveEventHandler(input, handler);
-                        }
-                    }
-                }
-            }
         }
     }
 }

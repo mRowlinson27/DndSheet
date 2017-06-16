@@ -22,7 +22,8 @@ namespace CustomFormManipulation
 
         public IControl Apply(IControl input, IControlStyle style)
         {
-            var output = _propertyApplier.Apply(input, style.ControlProperties) as IControl;
+            var output = input.RemoveAllEvents();
+            output = _propertyApplier.Apply(input, style.ControlProperties) as IControl;
             output = _eventApplier.Apply(input, style.ControlEvents) as IControl;
             return output;
         }
