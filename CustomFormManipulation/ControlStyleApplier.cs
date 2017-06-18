@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 using CustomFormManipulation.API;
 using CustomFormManipulation.API.DTOs;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using DataManipulation.API;
 
 namespace CustomFormManipulation
 {
-    public class ControlStyleApplier : IControlStyleApplier
+    public class EditableBehaviourStrategy
     {
         private IPropertyApplier<IControlProperties> _propertyApplier;
-        private IEventApplier<IControlEvents> _eventApplier;
-        public ControlStyleApplier(IPropertyApplier<IControlProperties> propertyApplier, IEventApplier<IControlEvents> eventApplier)
+        private IControlProperties _regularProperties;
+        private IControlProperties _inEditProperties;
+        public EditableBehaviourStrategy(IPropertyApplier<IControlProperties> propertyApplier, IControlProperties regularProperties, IControlProperties inEditProperties)
         {
             _propertyApplier = propertyApplier;
-            _eventApplier = eventApplier;
+            _regularProperties = regularProperties;
+            _inEditProperties = inEditProperties;
         }
 
         public IControl Apply(IControl input, IControlStyle style)
         {
-            var output = input.RemoveAllEvents();
-            output = _propertyApplier.Apply(input, style.ControlProperties) as IControl;
-            output = _eventApplier.Apply(input, style.ControlEvents) as IControl;
+            var output = _propertyApplier.Apply(input, style.ControlProperties) as IControl;
             return output;
         }
     }

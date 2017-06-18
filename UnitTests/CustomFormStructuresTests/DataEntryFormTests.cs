@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using CustomForms.API.TableLayoutWrapper;
 using CustomFormStructures;
 using CustomFormStructures.API;

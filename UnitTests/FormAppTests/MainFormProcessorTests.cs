@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using CustomFormManipulation.API;
 using CustomFormManipulation.API.Builders;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using CustomForms.API.TableLayoutWrapper;
 using DataManipulation.API;
 using DnDCharacterSheet;

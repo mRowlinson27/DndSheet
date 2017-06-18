@@ -1,5 +1,6 @@
 ﻿using System;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 
 namespace CustomForms.DTOs
 {

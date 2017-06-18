@@ -7,9 +7,5 @@ namespace CustomForms
     public class LabelWrapper : Label, ILabelWrapper
     {
         public Control TrueControl => this;
-        public vIControloid RemoveAllEvents()
-        {
-
-        }
     }
 }

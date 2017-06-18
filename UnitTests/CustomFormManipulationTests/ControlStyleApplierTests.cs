@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CustomFormManipulation;
 using CustomFormManipulation.API.DTOs;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using DataManipulation.API;
 using FakeItEasy;
 using NUnit.Framework;

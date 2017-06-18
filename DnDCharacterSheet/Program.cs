@@ -7,6 +7,7 @@ using CustomFormManipulation.Builders;
 using CustomFormManipulation.Decorators;
 using CustomForms;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using CustomForms.Factories;
 using CustomFormStructures.Builders;
 using DataManipulation;

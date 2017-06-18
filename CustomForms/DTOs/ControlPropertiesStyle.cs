@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 
 namespace CustomForms.DTOs
 {
