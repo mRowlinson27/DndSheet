@@ -16,14 +16,14 @@ namespace UnitTests.CustomFormStructuresTests.Builders
 
         private IEditableTextBoxBuilder _editableTextBoxBoxBuilder;
         private ITextBoxWrapperFactory _textBoxWrapperFactory;
-        private IControlStyleApplier _controlStyleApplier;
+//        private IControlStyleApplier _controlStyleApplier;
 
         [SetUp]
         public void Setup()
         {
             _textBoxWrapperFactory = A.Fake<ITextBoxWrapperFactory>();
-            _controlStyleApplier = A.Fake<IControlStyleApplier>();
-            _editableTextBoxBoxBuilder = new EditableTextBoxBuilder(_textBoxWrapperFactory, _controlStyleApplier);
+//            _controlStyleApplier = A.Fake<IControlStyleApplier>();
+//            _editableTextBoxBoxBuilder = new EditableTextBoxBuilder(_textBoxWrapperFactory, _controlStyleApplier);
         }
 
         [Test]

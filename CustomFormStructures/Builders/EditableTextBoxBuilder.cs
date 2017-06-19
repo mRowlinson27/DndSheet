@@ -4,34 +4,36 @@ using System.Drawing;
 using System.Windows.Forms;
 using CustomFormManipulation.API;
 using CustomFormManipulation.API.DTOs;
+using CustomFormManipulation.API.Factories;
 using CustomForms;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using CustomForms.API.Factories;
 using CustomFormStructures.API;
 using CustomFormStructures.API.Builders;
+using DataManipulation.API;
 
 namespace CustomFormStructures.Builders
 {
     public class EditableTextBoxBuilder : IEditableTextBoxBuilder
     {
+        private readonly ISwappableStrategyFactory _swappableStrategyFactory;
         private ITextBoxWrapperFactory _textBoxWrapperFactory;
-        private IControlStyleApplier _controlStyleApplier;
-        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory, IControlStyleApplier controlStyleApplier)
+        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory, ISwappableStrategyFactory swappableStrategyFactory)
         {
+            _swappableStrategyFactory = swappableStrategyFactory;
             _textBoxWrapperFactory = textBoxWrapperFactory;
-            _controlStyleApplier = controlStyleApplier;
         }
 
-        public IEditableTextBox Build(string data, IControlStyle regularStyle, IControlStyle inEditStyle)
+        public IEditableTextBox Build(string data, IControlProperties regularStyle, IControlProperties inEditStyle)
         {
             var textBox = _textBoxWrapperFactory.Create();
-
-            
+            var swappableStrategy = _swappableStrategyFactory.Create(regularStyle, inEditStyle);
             textBox.Text = data;
             textBox.Dock = DockStyle.Fill;
             textBox.Anchor = AnchorStyles.Left;
             textBox.BorderStyle = BorderStyle.None;
-            var result = new EditableTextBox(textBox, _controlStyleApplier, regularStyle, inEditStyle);
+            var result = new EditableTextBox(textBox, swappableStrategy);
             return result;
         }
     }

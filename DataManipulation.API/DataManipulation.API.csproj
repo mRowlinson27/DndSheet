@@ -45,16 +45,6 @@
     <Compile Include="IPropertyApplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
-      <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
-      <Name>CustomForms.API</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomFormStructures.API\CustomFormStructures.API.csproj">
-      <Project>{6865004e-407f-4abd-8d17-57ccd8f471b6}</Project>
-      <Name>CustomFormStructures.API</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

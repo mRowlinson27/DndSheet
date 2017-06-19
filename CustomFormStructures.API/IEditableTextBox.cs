@@ -1,4 +1,6 @@
-﻿namespace CustomFormStructures.API
+﻿using CustomForms.API.DTOs;
+
+namespace CustomFormStructures.API
 {
     public interface IEditableTextBox : IEditable
     {

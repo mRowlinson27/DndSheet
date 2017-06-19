@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomForms.API;
-using CustomFormStructures.API;
+using CustomForms.API.DTOs;
 
 namespace DataManipulation.API
 {

@@ -44,10 +44,11 @@
     <Compile Include="Builders\ICentralLayoutBuilder.cs" />
     <Compile Include="Decorators\ITableLayoutDecorator.cs" />
     <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
+    <Compile Include="Factories\ISwappableStrategyFactory.cs" />
     <Compile Include="IDataEntryFormManager.cs" />
     <Compile Include="IDataMapper.cs" />
     <Compile Include="INativeMethods.cs" />
-    <Compile Include="IControlStyleApplier.cs" />
+    <Compile Include="ISwappableStrategy.cs" />
     <Compile Include="IVerticalScrollStrategy.cs" />
     <Compile Include="IWin32Adapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,10 +57,6 @@
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomFormStructures.API\CustomFormStructures.API.csproj">
-      <Project>{6865004E-407F-4ABD-8D17-57CCD8F471B6}</Project>
-      <Name>CustomFormStructures.API</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataManipulation.API\DataManipulation.API.csproj">
       <Project>{cab5d56c-12a3-4a92-9bc6-a28b4784725c}</Project>

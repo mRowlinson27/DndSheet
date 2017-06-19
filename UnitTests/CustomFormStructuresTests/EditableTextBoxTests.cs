@@ -15,13 +15,13 @@ namespace UnitTests.CustomFormStructuresTests
         private ITextBoxWrapper _textBoxWrapper;
         private IControlStyle _regularStyle;
         private IControlStyle _inEditStyle;
-        private IControlStyleApplier _controlStyleApplier;
+        private ISwappableStrategy _swappableStrategy;
 
         public void Setup(bool inEdit)
         {
             _textBoxWrapper = A.Fake<ITextBoxWrapper>();
-            _controlStyleApplier = A.Fake<IControlStyleApplier>();
-            _editableTextBox = new EditableTextBox(_textBoxWrapper, _controlStyleApplier, _regularStyle, _inEditStyle, inEdit);
+            _swappableStrategy = A.Fake<ISwappableStrategy>();
+            _editableTextBox = new EditableTextBox(_textBoxWrapper, _swappableStrategy, inEdit);
         }
 
         [Test]
@@ -31,8 +31,7 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.Editable = false;
 
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _regularStyle)).MustHaveHappened();
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _inEditStyle)).MustHaveHappened();
+            Assert.That(false);
         }
 
         [Test]
@@ -42,8 +41,7 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.Editable = true;
 
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _inEditStyle)).MustHaveHappened();
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _regularStyle)).MustHaveHappened();
+            Assert.That(false);
         }
 
         [Test]
@@ -53,8 +51,7 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.Editable = false;
 
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _inEditStyle)).MustHaveHappened(Repeated.Exactly.Once);
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _regularStyle)).MustHaveHappened(Repeated.Exactly.Once);
+            Assert.That(false);
         }
 
         [Test]
@@ -64,8 +61,7 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.Editable = true;
 
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _inEditStyle)).MustHaveHappened(Repeated.Exactly.Once);
-            A.CallTo(() => _controlStyleApplier.Apply(_textBoxWrapper, _regularStyle)).MustHaveHappened(Repeated.Exactly.Once);
+            Assert.That(false);
         }
     }
 }

@@ -13,26 +13,24 @@ using CustomForms.DTOs;
 
 namespace CustomForms.Factories
 {
-    public class ControlStyleFactory : IControlStyleFactory
+    public class ControlPropertiesFactory : IControlPropertiesFactory
     {
-        public IControlStyle Create()
+        public IControlProperties Create()
         {
-            return new ControlStyle(new ControlPropertiesStyle(), new ControlEventsStyle());
+            return new ControlPropertiesStyle();
         }
 
-        public IControlStyle CreateInEditStyle()
+        public IControlProperties CreateInEditStyle()
         {
-            var inEditStyle = new ControlStyle(
-                new ControlPropertiesStyle()
-                {
-                    BackColor = Color.White
-                }, 
-                new ControlEventsStyle());
+            var inEditStyle = new ControlPropertiesStyle()
+            {
+                BackColor = Color.White
+            };
 
             return inEditStyle;
         }
 
-        public IControlStyle CreateRegularStyle()
+        public IControlProperties CreateRegularStyle()
         {
             var regularStyle = new ControlStyle(
                 new ControlPropertiesStyle()
@@ -43,9 +41,9 @@ namespace CustomForms.Factories
                 {
 
                 });
-            regularStyle.ControlEvents.Enter += OnEnter;
-            regularStyle.ControlEvents.TextChanged += OnTextChanged;
-            return regularStyle;
+//            regularStyle.ControlEvents.Enter += OnEnter;
+//            regularStyle.ControlEvents.TextChanged += OnTextChanged;
+            return regularStyle.ControlProperties;
         }
 
         protected void OnEnter(object sender, System.EventArgs e)

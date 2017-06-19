@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomFormManipulation.API.DTOs;
+using CustomForms.API.DTOs;
 
 namespace CustomForms.API.Factories
 {
-    public interface IControlStyleFactory
+    public interface IControlPropertiesFactory
     {
-        IControlStyle Create();
-        IControlStyle CreateInEditStyle();
-        IControlStyle CreateRegularStyle();
+        IControlProperties Create();
+        IControlProperties CreateInEditStyle();
+        IControlProperties CreateRegularStyle();
     }
 }

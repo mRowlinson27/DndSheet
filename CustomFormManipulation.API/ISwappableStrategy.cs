@@ -4,8 +4,8 @@ using CustomForms.API.DTOs;
 
 namespace CustomFormManipulation.API
 {
-    public interface IControlStyleApplier
+    public interface ISwappableStrategy
     {
-        IControl Apply(IControl input, IControlStyle style);
+        IControl SwapTo(IControl control, bool regularMode);
     }
 }

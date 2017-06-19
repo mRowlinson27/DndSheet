@@ -7,6 +7,7 @@ using CustomFormManipulation;
 using CustomFormManipulation.API.DTOs;
 using CustomForms.API;
 using CustomForms.API.DTOs;
+using CustomForms.TableLayoutWrapperFields;
 using DataManipulation.API;
 using FakeItEasy;
 using NUnit.Framework;
@@ -16,42 +17,32 @@ namespace UnitTests.CustomFormManipulationTests
     [TestFixture]
     class ControlStyleApplierTests
     {
-        private ControlStyleApplier _controlStyleApplier;
+        private EditableBehaviourStrategy _editableBehaviourStrategy;
         private IPropertyApplier<IControlProperties> _propertyApplier;
-        private IEventApplier<IControlEvents> _eventApplier;
 
         [SetUp]
         public void Setup()
         {
             _propertyApplier = A.Fake<IPropertyApplier<IControlProperties>>();
-            _eventApplier = A.Fake<IEventApplier<IControlEvents>>();
-            _controlStyleApplier = new ControlStyleApplier(_propertyApplier, _eventApplier);
+            _editableBehaviourStrategy = new EditableBehaviourStrategy(_propertyApplier, null, null);
         }
 
         [Test]
         public void Apply_PropertiesApplied()
         {
             var original = A.Fake<IControl>();
-            var style = A.Fake<IControlStyle>();
-            var controlProperties = A.Fake<IControlProperties>();
-            A.CallTo(() => style.ControlProperties).Returns(controlProperties);
+            _editableBehaviourStrategy.SwapTo(original, true);
 
-            _controlStyleApplier.Apply(original, style);
-
-            A.CallTo(() => _propertyApplier.Apply(original, controlProperties)).MustHaveHappened();
+            A.CallTo(() => _propertyApplier.Apply(original, new TableLayoutWrapper())).MustHaveHappened();
         }
 
         [Test]
         public void Apply_EventsApplied()
         {
             var original = A.Fake<IControl>();
-            var style = A.Fake<IControlStyle>();
-            var controlEvents = A.Fake<IControlEvents>();
-            A.CallTo(() => style.ControlEvents).Returns(controlEvents);
+            _editableBehaviourStrategy.SwapTo(original, false);
 
-            _controlStyleApplier.Apply(original, style);
-
-            A.CallTo(() => _eventApplier.Apply(original, controlEvents)).MustHaveHappened();
+            A.CallTo(() => _propertyApplier.Apply(original, new TableLayoutWrapper())).MustHaveHappened();
         }
 
     }

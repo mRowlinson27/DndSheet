@@ -45,7 +45,6 @@
     <Compile Include="Builders\IDataEntryFormBuilder.cs" />
     <Compile Include="Factories\IDataEntryFormFactory.cs" />
     <Compile Include="IDataEntryForm.cs" />
-    <Compile Include="IEditable.cs" />
     <Compile Include="IEditableTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -53,6 +52,10 @@
     <Folder Include="DTOs\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomFormManipulation.API\CustomFormManipulation.API.csproj">
+      <Project>{21eeac60-01cf-4010-987c-f52f1601eeb7}</Project>
+      <Name>CustomFormManipulation.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>

@@ -1,6 +1,4 @@
-﻿using CustomForms.API;
-
-namespace CustomFormStructures.API
+﻿namespace CustomForms.API.DTOs
 {
     public interface IEditable : ITrueControl
     {

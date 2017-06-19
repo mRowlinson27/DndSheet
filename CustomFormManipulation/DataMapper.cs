@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using CustomFormManipulation.API;
+using CustomFormManipulation.API.Factories;
 using CustomForms.API;
 using CustomForms.API.Factories;
 using CustomFormStructures.API.Builders;
@@ -12,18 +13,18 @@ namespace CustomFormManipulation
     public class DataMapper : IDataMapper
     {
         private IEditableTextBoxBuilder _editableTextBoxBuilder;
-        private IControlStyleFactory _controlStyleFactory;
-        public DataMapper(IEditableTextBoxBuilder editableTextBoxBuilder, IControlStyleFactory controlStyleFactory)
+        private IControlPropertiesFactory _controlPropertiesFactory;
+
+        public DataMapper(IEditableTextBoxBuilder editableTextBoxBuilder, IControlPropertiesFactory controlPropertiesFactory)
         {
             _editableTextBoxBuilder = editableTextBoxBuilder;
-            _controlStyleFactory = controlStyleFactory;
+            _controlPropertiesFactory = controlPropertiesFactory;
         }
 
         public List<List<ITrueControl>> SkillDtoToIcontrol(List<SkillsDto> skillsDto)
         {
-            var inEditStyle = _controlStyleFactory.CreateInEditStyle();
-            var regularStyle = _controlStyleFactory.CreateRegularStyle();
-
+            var inEditStyle = _controlPropertiesFactory.CreateInEditStyle();
+            var regularStyle = _controlPropertiesFactory.CreateRegularStyle();
             var output = new List<List<ITrueControl>>();
             foreach (var skill in skillsDto)
             {
