@@ -125,9 +125,9 @@ namespace UnitTests.CustomFormStructuresTests
             _dataEntryForm.AddCols(2);
             _dataEntryForm.InsertControl(control, 2, 2);
 
-            _dataEntryForm.Editable = true;
+            _dataEntryForm.EditableStatus = EditableStatus.InEdit;
 
-            A.CallToSet(() => control.Editable).To(true).MustHaveHappened();
+            A.CallToSet(() => control.EditableStatus).To(EditableStatus.InEdit).MustHaveHappened();
         }
 
         [Test]
@@ -139,9 +139,9 @@ namespace UnitTests.CustomFormStructuresTests
             _dataEntryForm.AddCols(2);
             _dataEntryForm.InsertControl(control, 2, 2);
 
-            _dataEntryForm.Editable = false;
+            _dataEntryForm.EditableStatus = EditableStatus.Regular;
 
-            A.CallToSet(() => control.Editable).To(false).MustNotHaveHappened();
+            A.CallToSet(() => control.EditableStatus).To(EditableStatus.Regular).MustNotHaveHappened();
         }
 
         [Test]
@@ -153,9 +153,9 @@ namespace UnitTests.CustomFormStructuresTests
             _dataEntryForm.AddCols(2);
             _dataEntryForm.InsertControl(control, 2, 2);
 
-            _dataEntryForm.Editable = true;
+            _dataEntryForm.EditableStatus = EditableStatus.InEdit;
 
-            A.CallToSet(() => control.Editable).To(true).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallToSet(() => control.EditableStatus).To(EditableStatus.InEdit).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]
@@ -167,10 +167,10 @@ namespace UnitTests.CustomFormStructuresTests
             _dataEntryForm.AddCols(2);
             _dataEntryForm.InsertControl(control, 2, 2);
 
-            _dataEntryForm.Editable = true;
-            _dataEntryForm.Editable = false;
+            _dataEntryForm.EditableStatus = EditableStatus.InEdit;
+            _dataEntryForm.EditableStatus = EditableStatus.Regular;
 
-            A.CallToSet(() => control.Editable).To(false).MustHaveHappened();
+            A.CallToSet(() => control.EditableStatus).To(EditableStatus.Regular).MustHaveHappened();
         }
 
         [Test]
@@ -182,7 +182,7 @@ namespace UnitTests.CustomFormStructuresTests
             _dataEntryForm.AddCols(2);
             _dataEntryForm.InsertControl(control, 2, 2);
 
-            _dataEntryForm.Editable = false;
+            _dataEntryForm.EditableStatus = EditableStatus.Regular;
         }
     }
 }

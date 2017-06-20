@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using CustomFormManipulation.API;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using CustomFormStructures.API;
 using CustomFormStructures.API.Builders;
 using DataManipulation.API;
@@ -11,10 +12,10 @@ namespace CustomFormManipulation
 {
     public class DataEntryFormManager : IDataEntryFormManager
     {
-        public bool Editable
+        public EditableStatus EditableStatus
         {
-            get { return _dataEntryForm.Editable; }
-            set { _dataEntryForm.Editable = value; }
+            get { return _dataEntryForm.EditableStatus; }
+            set { _dataEntryForm.EditableStatus = value; }
         }
 
         public ITrueControl GetControl(int row, int col)

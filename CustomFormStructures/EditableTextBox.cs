@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using CustomFormManipulation.API;
 using CustomFormManipulation.API.DTOs;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using CustomFormStructures.API;
 
 namespace CustomFormStructures
@@ -11,21 +12,21 @@ namespace CustomFormStructures
     public class EditableTextBox : IEditableTextBox
     {
         public Control TrueControl { get; set; }
-        private bool _inEdit = false;
-        public bool Editable
+        private EditableStatus _status = EditableStatus.Regular;
+        public EditableStatus EditableStatus
         {
-            get { return _inEdit; }
+            get { return _status; }
             set
             {
-                if (_inEdit && !value)
+                if (_status == EditableStatus.InEdit && value != EditableStatus.InEdit)
                 {
                     EnterRegularMode();
                 }
-                else if (!_inEdit && value)
+                else if (_status == EditableStatus.Regular && value != EditableStatus.Regular)
                 {
                     EnterEditMode();
                 }
-                _inEdit = value;
+                _status = value;
             }
         }
         public string Text
@@ -37,13 +38,13 @@ namespace CustomFormStructures
         private ITextBoxWrapper _textBox;
         private ISwappableStrategy _swappableStrategy;
 
-        public EditableTextBox(ITextBoxWrapper input, ISwappableStrategy swappableStrategy, bool inEdit = false)
+        public EditableTextBox(ITextBoxWrapper input, ISwappableStrategy swappableStrategy, EditableStatus regularMode = EditableStatus.Regular)
         {
             _textBox = input;
             TrueControl = _textBox.TrueControl;
             _swappableStrategy = swappableStrategy;
-            _inEdit = inEdit;
-            if (!_inEdit)
+            _status = regularMode;
+            if (_status == EditableStatus.Regular)
             {
                 EnterRegularMode();
             }
@@ -55,6 +56,7 @@ namespace CustomFormStructures
 
         private void EnterEditMode()
         {
+            Console.WriteLine("InEdit");
             _textBox.Enabled = true;
             _textBox.ReadOnly = false;
             _textBox.Cursor = Cursors.IBeam;
@@ -63,6 +65,7 @@ namespace CustomFormStructures
 
         private void EnterRegularMode()
         {
+            Console.WriteLine("Regular");
             _textBox.Enabled = false;
             _textBox.ReadOnly = true;
             _textBox.Cursor = Cursors.Default;

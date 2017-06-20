@@ -32,34 +32,11 @@ namespace CustomForms.Factories
 
         public IControlProperties CreateRegularStyle()
         {
-            var regularStyle = new ControlStyle(
-                new ControlPropertiesStyle()
-                {
-                    BackColor = Color.Transparent
-                },
-                new ControlEventsStyle()
-                {
-
-                });
-//            regularStyle.ControlEvents.Enter += OnEnter;
-//            regularStyle.ControlEvents.TextChanged += OnTextChanged;
-            return regularStyle.ControlProperties;
-        }
-
-        protected void OnEnter(object sender, System.EventArgs e)
-        {
-            var control = sender as Control;
-            if (control != null) control.Parent.Parent.Focus();
-        }
-
-        protected void OnTextChanged(object sender, System.EventArgs e)
-        {
-            var control = sender as IControl;
-            if (control != null)
+            var regularStyle = new ControlPropertiesStyle()
             {
-                Size size = TextRenderer.MeasureText(control.Text, control.Font);
-                control.Width = (int)Math.Ceiling(((float)size.Width) + 10);
-            }
+                BackColor = Color.Transparent
+            };
+            return regularStyle;
         }
     }
 }

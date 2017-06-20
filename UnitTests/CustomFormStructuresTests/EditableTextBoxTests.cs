@@ -2,6 +2,7 @@
 using CustomFormManipulation.API;
 using CustomFormManipulation.API.DTOs;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 using CustomFormStructures;
 using FakeItEasy;
 using NUnit.Framework;
@@ -17,51 +18,55 @@ namespace UnitTests.CustomFormStructuresTests
         private IControlStyle _inEditStyle;
         private ISwappableStrategy _swappableStrategy;
 
-        public void Setup(bool inEdit)
+        public void Setup(EditableStatus status)
         {
             _textBoxWrapper = A.Fake<ITextBoxWrapper>();
             _swappableStrategy = A.Fake<ISwappableStrategy>();
-            _editableTextBox = new EditableTextBox(_textBoxWrapper, _swappableStrategy, inEdit);
+            _editableTextBox = new EditableTextBox(_textBoxWrapper, _swappableStrategy, status);
         }
 
         [Test]
-        public void EditChangedToFalse_WasTrue_CorrectStyleApplied()
+        public void InRegularMode_ChangedToEdit_CorrectStyleApplied()
         {
-            Setup(true);
+            Setup(EditableStatus.Regular);
 
-            _editableTextBox.Editable = false;
+            _editableTextBox.EditableStatus = EditableStatus.InEdit;
 
-            Assert.That(false);
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]
-        public void EditChangedToTrue_WasFalse_CorrectStyleApplied()
+        public void InEdit_ChangedToRegularMode_CorrectStyleApplied()
         {
-            Setup(false);
+            Setup(EditableStatus.InEdit);
 
-            _editableTextBox.Editable = true;
+            _editableTextBox.EditableStatus = EditableStatus.Regular;
 
-            Assert.That(false);
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]
-        public void EditChangedToFalse_WasFalseBefore_NoChange()
+        public void InEdit_ChangedToEdit_NoChange()
         {
-            Setup(false);
+            Setup(EditableStatus.InEdit);
 
-            _editableTextBox.Editable = false;
+            _editableTextBox.EditableStatus = EditableStatus.InEdit;
 
-            Assert.That(false);
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustNotHaveHappened();
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]
-        public void EditChangedToTrue_WasTrueBefore_NoChange()
+        public void InRegularMode_ChangedToRegularMode_NoChange()
         {
-            Setup(true);
+            Setup(EditableStatus.Regular);
 
-            _editableTextBox.Editable = true;
+            _editableTextBox.EditableStatus = EditableStatus.Regular;
 
-            Assert.That(false);
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustNotHaveHappened();
         }
     }
 }

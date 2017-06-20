@@ -18,21 +18,21 @@ namespace CustomFormStructures
 
         public Control TrueControl { get; }
 
-        private bool _inEdit = false;
-        public bool Editable
+        private EditableStatus _editableStatus = EditableStatus.Regular;
+        public EditableStatus EditableStatus
         {
-            get { return _inEdit; }
+            get { return _editableStatus; }
             set
             {
-                if (_inEdit && !value)
+                if (_editableStatus == EditableStatus.InEdit && value != EditableStatus.InEdit)
                 {
-                    SetEditMode(false);
+                    SetEditMode(EditableStatus.Regular);
                 }
-                else if (!_inEdit && value)
+                else if (_editableStatus == EditableStatus.Regular && value != EditableStatus.Regular)
                 {
-                    SetEditMode(true);
+                    SetEditMode(EditableStatus.InEdit);
                 }
-                _inEdit = value;
+                _editableStatus = value;
             }
         }
 
@@ -140,7 +140,7 @@ namespace CustomFormStructures
             return _insertedControls[row-1][col-1];
         }
 
-        private void SetEditMode(bool value)
+        private void SetEditMode(EditableStatus value)
         {
             foreach (var listOfControls in _insertedControls)
             {
@@ -149,7 +149,7 @@ namespace CustomFormStructures
                     var editableControl = control as IEditable;
                     if (editableControl != null)
                     {
-                        editableControl.Editable = value;
+                        editableControl.EditableStatus = value;
                     }
                 }
             }

@@ -33,7 +33,7 @@ namespace CustomFormStructures.Builders
             textBox.Dock = DockStyle.Fill;
             textBox.Anchor = AnchorStyles.Left;
             textBox.BorderStyle = BorderStyle.None;
-            var result = new EditableTextBox(textBox, swappableStrategy);
+            var result = new EditableTextBox(textBox, swappableStrategy, EditableStatus.Regular);
             return result;
         }
     }

@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomFormManipulationTests\Builders\CentralLayoutBuilderTests.cs" />
-    <Compile Include="CustomFormManipulationTests\ControlStyleApplierTests.cs" />
+    <Compile Include="CustomFormManipulationTests\EditableBehaviourStrategyTests.cs" />
     <Compile Include="CustomFormManipulationTests\Decorators\TableLayoutDecoratorApplierTests.cs" />
     <Compile Include="CustomFormStructuresTests\Builders\EditableTextBoxBuilderTests.cs" />
     <Compile Include="CustomFormStructuresTests\Builders\DataEntryFormBuilderTests.cs" />

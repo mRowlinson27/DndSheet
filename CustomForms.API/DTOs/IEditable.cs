@@ -2,6 +2,12 @@
 {
     public interface IEditable : ITrueControl
     {
-        bool Editable { get; set; }
+        EditableStatus EditableStatus { get; set; }
+    }
+
+    public enum EditableStatus
+    {
+        Regular,
+        InEdit
     }
 }
