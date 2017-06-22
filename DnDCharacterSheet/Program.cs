@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CustomFormManipulation;
-using CustomFormManipulation.API.Decorators;
-using CustomFormManipulation.Builders;
-using CustomFormManipulation.Decorators;
-using CustomFormManipulation.Factories;
 using CustomForms;
 using CustomForms.API;
 using CustomForms.API.DTOs;
 using CustomForms.Factories;
+using CustomFormStructures;
+using CustomFormStructures.API.Decorators;
 using CustomFormStructures.Builders;
+using CustomFormStructures.Decorators;
+using CustomFormStructures.Factories;
 using DataManipulation;
 using FormApp;
 

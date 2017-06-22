@@ -70,14 +70,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomFormManipulation.API\CustomFormManipulation.API.csproj">
-      <Project>{21eeac60-01cf-4010-987c-f52f1601eeb7}</Project>
-      <Name>CustomFormManipulation.API</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomFormManipulation\CustomFormManipulation.csproj">
-      <Project>{81fdd576-00ac-423f-b9ba-5322b0429491}</Project>
-      <Name>CustomFormManipulation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>

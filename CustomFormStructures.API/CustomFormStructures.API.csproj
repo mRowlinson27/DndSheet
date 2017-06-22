@@ -41,24 +41,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\ICentralLayoutBuilder.cs" />
     <Compile Include="Builders\IEditableTextBoxBuilder.cs" />
     <Compile Include="Builders\IDataEntryFormBuilder.cs" />
+    <Compile Include="Decorators\ITableLayoutDecorator.cs" />
+    <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
     <Compile Include="Factories\IDataEntryFormFactory.cs" />
+    <Compile Include="Factories\ISwappableStrategyFactory.cs" />
     <Compile Include="IDataEntryForm.cs" />
+    <Compile Include="IDataEntryFormManager.cs" />
+    <Compile Include="IDataMapper.cs" />
     <Compile Include="IEditableTextBox.cs" />
+    <Compile Include="INativeMethods.cs" />
+    <Compile Include="ISwappableStrategy.cs" />
+    <Compile Include="IVerticalScrollStrategy.cs" />
+    <Compile Include="IWin32Adapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTOs\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomFormManipulation.API\CustomFormManipulation.API.csproj">
-      <Project>{21eeac60-01cf-4010-987c-f52f1601eeb7}</Project>
-      <Name>CustomFormManipulation.API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataManipulation.API\DataManipulation.API.csproj">
+      <Project>{CAB5D56C-12A3-4A92-9BC6-A28B4784725C}</Project>
+      <Name>DataManipulation.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

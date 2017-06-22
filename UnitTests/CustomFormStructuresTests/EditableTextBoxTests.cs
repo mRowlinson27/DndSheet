@@ -4,6 +4,7 @@ using CustomFormManipulation.API.DTOs;
 using CustomForms.API;
 using CustomForms.API.DTOs;
 using CustomFormStructures;
+using CustomFormStructures.API;
 using FakeItEasy;
 using NUnit.Framework;
 

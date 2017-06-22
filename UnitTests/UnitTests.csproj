@@ -58,19 +58,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFormManipulationTests\Builders\CentralLayoutBuilderTests.cs" />
-    <Compile Include="CustomFormManipulationTests\EditableBehaviourStrategyTests.cs" />
-    <Compile Include="CustomFormManipulationTests\Decorators\TableLayoutDecoratorApplierTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Builders\CentralLayoutBuilderTests.cs" />
+    <Compile Include="CustomFormStructuresTests\EditableBehaviourStrategyTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Decorators\TableLayoutDecoratorApplierTests.cs" />
     <Compile Include="CustomFormStructuresTests\Builders\EditableTextBoxBuilderTests.cs" />
     <Compile Include="CustomFormStructuresTests\Builders\DataEntryFormBuilderTests.cs" />
     <Compile Include="CustomFormStructuresTests\DataEntryFormTests.cs" />
-    <Compile Include="CustomFormManipulationTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
     <Compile Include="CustomFormStructuresTests\EditableTextBoxTests.cs" />
     <Compile Include="DataManipulationTests\DataEntryFormManagerTests.cs" />
     <Compile Include="DataManipulationTests\EventApplierTests.cs" />
     <Compile Include="DataManipulationTests\PropertyApplierTests.cs" />
-    <Compile Include="CustomFormManipulationTests\VerticalScrollStrategyTests.cs" />
-    <Compile Include="CustomFormManipulationTests\DataMapperTests.cs" />
+    <Compile Include="CustomFormStructuresTests\VerticalScrollStrategyTests.cs" />
+    <Compile Include="CustomFormStructuresTests\DataMapperTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,14 +78,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomFormManipulation.API\CustomFormManipulation.API.csproj">
-      <Project>{21eeac60-01cf-4010-987c-f52f1601eeb7}</Project>
-      <Name>CustomFormManipulation.API</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomFormManipulation\CustomFormManipulation.csproj">
-      <Project>{81fdd576-00ac-423f-b9ba-5322b0429491}</Project>
-      <Name>CustomFormManipulation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>

@@ -12,7 +12,7 @@ namespace CustomFormStructures
     public class EditableTextBox : IEditableTextBox
     {
         public Control TrueControl { get; set; }
-        private EditableStatus _status = EditableStatus.Regular;
+        private EditableStatus _status;
         public EditableStatus EditableStatus
         {
             get { return _status; }
@@ -56,7 +56,6 @@ namespace CustomFormStructures
 
         private void EnterEditMode()
         {
-            Console.WriteLine("InEdit");
             _textBox.Enabled = true;
             _textBox.ReadOnly = false;
             _textBox.Cursor = Cursors.IBeam;
@@ -65,7 +64,6 @@ namespace CustomFormStructures
 
         private void EnterRegularMode()
         {
-            Console.WriteLine("Regular");
             _textBox.Enabled = false;
             _textBox.ReadOnly = true;
             _textBox.Cursor = Cursors.Default;
