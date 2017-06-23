@@ -6,6 +6,7 @@ using CustomFormStructures.API;
 using CustomFormStructures.API.Builders;
 using CustomFormStructures.API.Factories;
 using CustomFormStructures.Builders;
+using CustomFormStructures.Factories;
 using DataManipulation.API.DTOs;
 using FakeItEasy;
 using FluentAssertions;
@@ -24,7 +25,7 @@ namespace UnitTests.CustomFormStructuresTests
         public void Setup()
         {
             _controlPropertiesFactory = A.Fake<IControlPropertiesFactory>();
-            _editableTextBoxBuilder = new EditableTextBoxBuilder(new TextBoxWrapperFactory(), A.Fake<ISwappableStrategyFactory>());
+            _editableTextBoxBuilder = new EditableTextBoxBuilder(new TextBoxWrapperFactory(), A.Fake<ISwappableStrategyFactory>(), new EditableTextBoxFactory());
             _dataMapper = new DataMapper(_editableTextBoxBuilder, _controlPropertiesFactory);
         }
 

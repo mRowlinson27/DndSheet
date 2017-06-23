@@ -44,7 +44,12 @@ namespace UnitTests.CustomFormStructuresTests
         [Test]
         public void Apply_DelegateApplied()
         {
-            throw new NotImplementedException();
+            var original = A.Fake<ITextBoxWrapper>();
+            _editableBehaviourTextboxStrategy.SwapTo(original, false);
+
+            original.Enter += Raise.WithEmpty();
+
+            throw new Exception("NEED PARENTS IN MY CONTROLS");
         }
 
     }

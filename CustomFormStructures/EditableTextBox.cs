@@ -38,7 +38,7 @@ namespace CustomFormStructures
         private ITextBoxWrapper _textBox;
         private ISwappableTextboxStrategy _swappableTextboxStrategy;
 
-        public EditableTextBox(ITextBoxWrapper input, ISwappableTextboxStrategy swappableTextboxStrategy, EditableStatus regularMode = EditableStatus.Regular)
+        public EditableTextBox(ITextBoxWrapper input, ISwappableTextboxStrategy swappableTextboxStrategy, EditableStatus regularMode)
         {
             _textBox = input;
             TrueControl = _textBox.TrueControl;

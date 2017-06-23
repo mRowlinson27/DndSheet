@@ -29,7 +29,7 @@ namespace CustomFormStructures
                 control.Enter += OnEnter;
                 control.TextChanged -= OnTextChanged;
                 output = _propertyApplier.Apply(control, _regularProperties) as ITextBoxWrapper;
-                OnTextChanged(output, null);
+                //OnTextChanged(output, null);
             }
             else
             {

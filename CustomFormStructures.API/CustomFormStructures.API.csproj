@@ -47,6 +47,7 @@
     <Compile Include="Decorators\ITableLayoutDecorator.cs" />
     <Compile Include="Decorators\ITableLayoutDecoratorApplier.cs" />
     <Compile Include="Factories\IDataEntryFormFactory.cs" />
+    <Compile Include="Factories\IEditableTextBoxFactory.cs" />
     <Compile Include="Factories\ISwappableStrategyFactory.cs" />
     <Compile Include="IDataEntryForm.cs" />
     <Compile Include="IDataEntryFormManager.cs" />

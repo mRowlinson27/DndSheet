@@ -53,6 +53,7 @@
     <Compile Include="EditableBehaviourTextboxStrategy.cs" />
     <Compile Include="EditableTextBox.cs" />
     <Compile Include="Factories\DataEntryFormFactory.cs" />
+    <Compile Include="Factories\EditableTextBoxFactory.cs" />
     <Compile Include="Factories\SwappableStrategyFactory.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

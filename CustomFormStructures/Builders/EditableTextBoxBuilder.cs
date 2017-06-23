@@ -18,10 +18,12 @@ namespace CustomFormStructures.Builders
     public class EditableTextBoxBuilder : IEditableTextBoxBuilder
     {
         private readonly ISwappableStrategyFactory _swappableStrategyFactory;
+        private readonly IEditableTextBoxFactory _editableTextBoxFactory;
         private ITextBoxWrapperFactory _textBoxWrapperFactory;
-        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory, ISwappableStrategyFactory swappableStrategyFactory)
+        public EditableTextBoxBuilder(ITextBoxWrapperFactory textBoxWrapperFactory, ISwappableStrategyFactory swappableStrategyFactory, IEditableTextBoxFactory editableTextBoxFactory)
         {
             _swappableStrategyFactory = swappableStrategyFactory;
+            _editableTextBoxFactory = editableTextBoxFactory;
             _textBoxWrapperFactory = textBoxWrapperFactory;
         }
 
@@ -33,7 +35,7 @@ namespace CustomFormStructures.Builders
             textBox.Dock = DockStyle.Fill;
             textBox.Anchor = AnchorStyles.Left;
             textBox.BorderStyle = BorderStyle.None;
-            var result = new EditableTextBox(textBox, swappableStrategy, EditableStatus.Regular);
+            var result = _editableTextBoxFactory.Create(textBox, swappableStrategy, EditableStatus.Regular);
             return result;
         }
     }
