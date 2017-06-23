@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CustomForms;
-using CustomForms.API;
-using CustomForms.API.Builders;
+﻿using System.Drawing;
+using CustomFormManipulation.API;
+using CustomForms.API.DTOs;
 using CustomForms.API.TableLayoutWrapper;
+using CustomFormStructures.API;
+using CustomFormStructures.API.Builders;
 using DataManipulation.API;
 
-namespace DnDCharacterSheet
+namespace FormApp
 {
     public class MainFormProcessor
     {
@@ -40,9 +35,16 @@ namespace DnDCharacterSheet
 
         internal void DoTheThing_Click()
         {
-            _dataEntryFormManager.Editable = !_dataEntryFormManager.Editable;
+            if (_dataEntryFormManager.EditableStatus == EditableStatus.Regular)
+            {
+                _dataEntryFormManager.EditableStatus = EditableStatus.InEdit;
+            }
+            else
+            {
+                _dataEntryFormManager.EditableStatus = EditableStatus.Regular;
+            }
+            
             //_dataEntryFormManager.GetControl(2, 2).TrueControl.Visible = false;
-            _centralLayoutPanel.BackColor = Color.Red;
         }
     }
 }

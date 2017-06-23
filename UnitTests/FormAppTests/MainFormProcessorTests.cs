@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CustomFormManipulation.API;
 using CustomForms.API;
-using CustomForms.API.Builders;
+using CustomForms.API.DTOs;
 using CustomForms.API.TableLayoutWrapper;
+using CustomFormStructures.API;
+using CustomFormStructures.API.Builders;
 using DataManipulation.API;
 using DnDCharacterSheet;
 using FakeItEasy;
+using FormApp;
 using NUnit.Framework;
 
 namespace UnitTests.FormAppTests

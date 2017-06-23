@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,13 +58,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFormsTests\Builders\DataEntryFormBuilderTests.cs" />
-    <Compile Include="CustomFormsTests\Builders\TableLayoutBuilderTests.cs" />
-    <Compile Include="CustomFormsTests\DataEntryFormTests.cs" />
-    <Compile Include="CustomFormsTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
-    <Compile Include="CustomFormsTests\EditableTextBoxTests.cs" />
-    <Compile Include="CustomFormsTests\VerticalScrollStrategyTests.cs" />
-    <Compile Include="DataManipulationTests\DataMapperTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Builders\CentralLayoutBuilderTests.cs" />
+    <Compile Include="CustomFormStructuresTests\EditableBehaviourStrategyTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Decorators\TableLayoutDecoratorApplierTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Builders\EditableTextBoxBuilderTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Builders\DataEntryFormBuilderTests.cs" />
+    <Compile Include="CustomFormStructuresTests\DataEntryFormTests.cs" />
+    <Compile Include="CustomFormStructuresTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
+    <Compile Include="CustomFormStructuresTests\EditableTextBoxTests.cs" />
+    <Compile Include="DataManipulationTests\DataEntryFormManagerTests.cs" />
+    <Compile Include="DataManipulationTests\EventApplierTests.cs" />
+    <Compile Include="DataManipulationTests\PropertyApplierTests.cs" />
+    <Compile Include="CustomFormStructuresTests\VerticalScrollStrategyTests.cs" />
+    <Compile Include="CustomFormStructuresTests\DataMapperTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +81,14 @@
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
       <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
       <Name>CustomForms.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormStructures.API\CustomFormStructures.API.csproj">
+      <Project>{6865004e-407f-4abd-8d17-57ccd8f471b6}</Project>
+      <Name>CustomFormStructures.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomFormStructures\CustomFormStructures.csproj">
+      <Project>{c6d9ebf1-9288-4613-b7f9-eb4e006b6342}</Project>
+      <Name>CustomFormStructures</Name>
     </ProjectReference>
     <ProjectReference Include="..\CustomForms\CustomForms.csproj">
       <Project>{c9698281-9747-446d-abf8-ca59c58f0d22}</Project>
@@ -95,6 +110,12 @@
       <Project>{d619c3fe-5949-456a-bf8a-76a9ca1b1c57}</Project>
       <Name>FormApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomFormsTests\Builders\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

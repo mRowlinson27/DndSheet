@@ -41,15 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\SkillsDto.cs" />
-    <Compile Include="IDataEntryFormManager.cs" />
-    <Compile Include="IDataMapper.cs" />
+    <Compile Include="IEventApplier.cs" />
+    <Compile Include="IPropertyApplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
-      <Project>{a7595dcf-56b4-4908-a6c4-d1dc0079f616}</Project>
-      <Name>CustomForms.API</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

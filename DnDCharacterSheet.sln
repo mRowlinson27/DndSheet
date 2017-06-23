@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDCharacterSheet", "DnDCharacterSheet\DnDCharacterSheet.csproj", "{23E551E6-F3AA-434D-A3A4-136F459A1531}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C6D9EBF1-9288-4613-B7F9-EB4E006B6342} = {C6D9EBF1-9288-4613-B7F9-EB4E006B6342}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{E0A5642E-5605-466F-8A7F-3814F29191BE}"
 EndProject
@@ -16,6 +19,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManipulation", "DataManipulation\DataManipulation.csproj", "{DEF243DB-40A8-4E29-ADA0-5DCA766448AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManipulation.API", "DataManipulation.API\DataManipulation.API.csproj", "{CAB5D56C-12A3-4A92-9BC6-A28B4784725C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomFormStructures", "CustomFormStructures\CustomFormStructures.csproj", "{C6D9EBF1-9288-4613-B7F9-EB4E006B6342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomFormStructures.API", "CustomFormStructures.API\CustomFormStructures.API.csproj", "{6865004E-407F-4ABD-8D17-57CCD8F471B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +58,14 @@ Global
 		{CAB5D56C-12A3-4A92-9BC6-A28B4784725C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAB5D56C-12A3-4A92-9BC6-A28B4784725C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAB5D56C-12A3-4A92-9BC6-A28B4784725C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D9EBF1-9288-4613-B7F9-EB4E006B6342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D9EBF1-9288-4613-B7F9-EB4E006B6342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D9EBF1-9288-4613-B7F9-EB4E006B6342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D9EBF1-9288-4613-B7F9-EB4E006B6342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6865004E-407F-4ABD-8D17-57CCD8F471B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6865004E-407F-4ABD-8D17-57CCD8F471B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6865004E-407F-4ABD-8D17-57CCD8F471B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6865004E-407F-4ABD-8D17-57CCD8F471B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

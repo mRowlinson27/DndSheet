@@ -7,12 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomForms.API;
+using CustomForms.API.DTOs;
 
 namespace CustomForms
 {
     public partial class TextBoxWrapper : TextBox, ITextBoxWrapper
     {
         public Control TrueControl => this;
+        public IControl RemoveAllEvents()
+        {
+            var test = Events;
+            return this;
+        }
 
         public TextBoxWrapper()
         {
