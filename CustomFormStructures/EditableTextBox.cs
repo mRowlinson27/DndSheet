@@ -36,13 +36,13 @@ namespace CustomFormStructures
         }
 
         private ITextBoxWrapper _textBox;
-        private ISwappableStrategy _swappableStrategy;
+        private ISwappableTextboxStrategy _swappableTextboxStrategy;
 
-        public EditableTextBox(ITextBoxWrapper input, ISwappableStrategy swappableStrategy, EditableStatus regularMode = EditableStatus.Regular)
+        public EditableTextBox(ITextBoxWrapper input, ISwappableTextboxStrategy swappableTextboxStrategy, EditableStatus regularMode = EditableStatus.Regular)
         {
             _textBox = input;
             TrueControl = _textBox.TrueControl;
-            _swappableStrategy = swappableStrategy;
+            _swappableTextboxStrategy = swappableTextboxStrategy;
             _status = regularMode;
             if (_status == EditableStatus.Regular)
             {
@@ -59,7 +59,7 @@ namespace CustomFormStructures
             _textBox.Enabled = true;
             _textBox.ReadOnly = false;
             _textBox.Cursor = Cursors.IBeam;
-            _swappableStrategy.SwapTo(_textBox, false);
+            _swappableTextboxStrategy.SwapTo(_textBox, false);
         }
 
         private void EnterRegularMode()
@@ -67,7 +67,7 @@ namespace CustomFormStructures
             _textBox.Enabled = false;
             _textBox.ReadOnly = true;
             _textBox.Cursor = Cursors.Default;
-            _swappableStrategy.SwapTo(_textBox, true);
+            _swappableTextboxStrategy.SwapTo(_textBox, true);
         }
     }
 }

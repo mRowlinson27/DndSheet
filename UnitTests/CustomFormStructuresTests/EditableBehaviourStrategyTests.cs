@@ -1,4 +1,5 @@
 ﻿using System;
+using CustomForms.API;
 using CustomForms.API.DTOs;
 using CustomFormStructures;
 using DataManipulation.API;
@@ -10,23 +11,23 @@ namespace UnitTests.CustomFormStructuresTests
     [TestFixture]
     class EditableBehaviourStrategyTests
     {
-        private EditableBehaviourStrategy _editableBehaviourStrategy;
-        private IPropertyApplier<IControlProperties> _propertyApplier;
-        private IControlProperties _regularProperties;
-        private IControlProperties _inEditProperties;
+        private EditableBehaviourTextboxStrategy _editableBehaviourTextboxStrategy;
+        private IPropertyApplier<ITextboxProperties> _propertyApplier;
+        private ITextboxProperties _regularProperties;
+        private ITextboxProperties _inEditProperties;
 
         [SetUp]
         public void Setup()
         {
-            _propertyApplier = A.Fake<IPropertyApplier<IControlProperties>>();
-            _editableBehaviourStrategy = new EditableBehaviourStrategy(_propertyApplier, _regularProperties, _inEditProperties);
+            _propertyApplier = A.Fake<IPropertyApplier<ITextboxProperties>>();
+            _editableBehaviourTextboxStrategy = new EditableBehaviourTextboxStrategy(_propertyApplier, _regularProperties, _inEditProperties);
         }
 
         [Test]
         public void Apply_RegularPropertiesApplied()
         {
-            var original = A.Fake<IControl>();
-            _editableBehaviourStrategy.SwapTo(original, true);
+            var original = A.Fake<ITextBoxWrapper>();
+            _editableBehaviourTextboxStrategy.SwapTo(original, true);
 
             A.CallTo(() => _propertyApplier.Apply(original, _regularProperties)).MustHaveHappened();
         }
@@ -34,8 +35,8 @@ namespace UnitTests.CustomFormStructuresTests
         [Test]
         public void Apply_InEditPropertiesApplied()
         {
-            var original = A.Fake<IControl>();
-            _editableBehaviourStrategy.SwapTo(original, false);
+            var original = A.Fake<ITextBoxWrapper>();
+            _editableBehaviourTextboxStrategy.SwapTo(original, false);
 
             A.CallTo(() => _propertyApplier.Apply(original, _inEditProperties)).MustHaveHappened();
         }

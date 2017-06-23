@@ -20,9 +20,9 @@ namespace CustomForms.Factories
             return new ControlPropertiesStyle();
         }
 
-        public IControlProperties CreateInEditStyle()
+        public ITextboxProperties CreateTextboxInEditStyle()
         {
-            var inEditStyle = new ControlPropertiesStyle()
+            var inEditStyle = new TextboxPropertiesStyle()
             {
                 BackColor = Color.White
             };
@@ -30,9 +30,9 @@ namespace CustomForms.Factories
             return inEditStyle;
         }
 
-        public IControlProperties CreateRegularStyle()
+        public ITextboxProperties CreateTextboxRegularStyle()
         {
-            var regularStyle = new ControlPropertiesStyle()
+            var regularStyle = new TextboxPropertiesStyle()
             {
                 BackColor = Color.Transparent
             };

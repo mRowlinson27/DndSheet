@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using CustomForms.API.DTOs;
 
-namespace CustomForms.API
+namespace CustomForms.DTOs
 {
-    public interface ITextBoxWrapper : IControl, ITextboxProperties
+    class TextboxPropertiesStyle : ControlPropertiesStyle, ITextboxProperties
     {
+        public bool ReadOnly { get; set; }
     }
 }

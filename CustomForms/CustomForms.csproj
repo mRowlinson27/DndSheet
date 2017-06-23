@@ -45,6 +45,7 @@
     <Compile Include="DTOs\ControlEventsStyle.cs" />
     <Compile Include="DTOs\ControlPropertiesStyle.cs" />
     <Compile Include="DTOs\ControlStyle.cs" />
+    <Compile Include="DTOs\TextboxPropertiesStyle.cs" />
     <Compile Include="Factories\ControlPropertiesFactory.cs" />
     <Compile Include="Factories\LabelWrapperFactory.cs" />
     <Compile Include="Factories\TableLayoutWrapperFactory.cs" />

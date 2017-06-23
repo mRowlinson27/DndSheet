@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using CustomForms.API;
 using CustomForms.API.DTOs;
@@ -144,13 +145,9 @@ namespace CustomFormStructures
         {
             foreach (var listOfControls in _insertedControls)
             {
-                foreach (var control in listOfControls)
+                foreach (var editableControl in listOfControls.OfType<IEditable>())
                 {
-                    var editableControl = control as IEditable;
-                    if (editableControl != null)
-                    {
-                        editableControl.EditableStatus = value;
-                    }
+                    editableControl.EditableStatus = value;
                 }
             }
         }

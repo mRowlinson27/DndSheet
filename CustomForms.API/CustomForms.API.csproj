@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DTOs\IControlStyle.cs" />
     <Compile Include="DTOs\IEditable.cs" />
+    <Compile Include="DTOs\ITextboxProperties.cs" />
     <Compile Include="Factories\IControlPropertiesFactory.cs" />
     <Compile Include="Factories\ILabelWrapperFactory.cs" />
     <Compile Include="Factories\ITableLayoutWrapperFactory.cs" />

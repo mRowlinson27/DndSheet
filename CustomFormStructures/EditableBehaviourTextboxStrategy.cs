@@ -2,38 +2,40 @@
 using System.Drawing;
 using System.Windows.Forms;
 using CustomFormManipulation.API;
+using CustomForms.API;
 using CustomForms.API.DTOs;
 using CustomFormStructures.API;
 using DataManipulation.API;
 
 namespace CustomFormStructures
 {
-    public class EditableBehaviourStrategy : ISwappableStrategy
+    public class EditableBehaviourTextboxStrategy : ISwappableTextboxStrategy
     {
-        private IPropertyApplier<IControlProperties> _propertyApplier;
-        private IControlProperties _regularProperties;
-        private IControlProperties _inEditProperties;
-        public EditableBehaviourStrategy(IPropertyApplier<IControlProperties> propertyApplier, IControlProperties regularProperties, IControlProperties inEditProperties)
+        private IPropertyApplier<ITextboxProperties> _propertyApplier;
+        private ITextboxProperties _regularProperties;
+        private ITextboxProperties _inEditProperties;
+        public EditableBehaviourTextboxStrategy(IPropertyApplier<ITextboxProperties> propertyApplier, ITextboxProperties regularProperties, ITextboxProperties inEditProperties)
         {
             _propertyApplier = propertyApplier;
             _regularProperties = regularProperties;
             _inEditProperties = inEditProperties;
         }
 
-        public IControl SwapTo(IControl control, bool regularMode)
+        public ITextBoxWrapper SwapTo(ITextBoxWrapper control, bool regularMode)
         {
-            IControl output;
+            ITextBoxWrapper output;
             if (regularMode)
             {
                 control.Enter += OnEnter;
                 control.TextChanged -= OnTextChanged;
-                output = _propertyApplier.Apply(control, _regularProperties) as IControl;
+                output = _propertyApplier.Apply(control, _regularProperties) as ITextBoxWrapper;
+                OnTextChanged(output, null);
             }
             else
             {
                 control.Enter -= OnEnter;
                 control.TextChanged += OnTextChanged;
-                output = _propertyApplier.Apply(control, _inEditProperties) as IControl;
+                output = _propertyApplier.Apply(control, _inEditProperties) as ITextBoxWrapper;
             }
             return output;
         }

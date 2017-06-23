@@ -4,6 +4,6 @@ namespace CustomFormStructures.API.Factories
 {
     public interface ISwappableStrategyFactory
     {
-        ISwappableStrategy Create(IControlProperties regularStyle, IControlProperties inEditStyle);
+        ISwappableTextboxStrategy Create(ITextboxProperties regularStyle, ITextboxProperties inEditStyle);
     }
 }

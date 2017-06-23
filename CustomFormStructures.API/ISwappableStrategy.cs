@@ -1,9 +1,10 @@
-﻿using CustomForms.API.DTOs;
+﻿using CustomForms.API;
+using CustomForms.API.DTOs;
 
 namespace CustomFormStructures.API
 {
-    public interface ISwappableStrategy
+    public interface ISwappableTextboxStrategy
     {
-        IControl SwapTo(IControl control, bool regularMode);
+        ITextBoxWrapper SwapTo(ITextBoxWrapper control, bool regularMode);
     }
 }

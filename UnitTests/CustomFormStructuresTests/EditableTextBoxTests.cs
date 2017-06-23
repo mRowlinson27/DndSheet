@@ -17,13 +17,13 @@ namespace UnitTests.CustomFormStructuresTests
         private ITextBoxWrapper _textBoxWrapper;
         private IControlStyle _regularStyle;
         private IControlStyle _inEditStyle;
-        private ISwappableStrategy _swappableStrategy;
+        private ISwappableTextboxStrategy _swappableTextboxStrategy;
 
         public void Setup(EditableStatus status)
         {
             _textBoxWrapper = A.Fake<ITextBoxWrapper>();
-            _swappableStrategy = A.Fake<ISwappableStrategy>();
-            _editableTextBox = new EditableTextBox(_textBoxWrapper, _swappableStrategy, status);
+            _swappableTextboxStrategy = A.Fake<ISwappableTextboxStrategy>();
+            _editableTextBox = new EditableTextBox(_textBoxWrapper, _swappableTextboxStrategy, status);
         }
 
         [Test]
@@ -33,8 +33,8 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.EditableStatus = EditableStatus.InEdit;
 
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]
@@ -44,8 +44,8 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.EditableStatus = EditableStatus.Regular;
 
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]
@@ -55,8 +55,8 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.EditableStatus = EditableStatus.InEdit;
 
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustNotHaveHappened();
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, true)).MustNotHaveHappened();
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, false)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]
@@ -66,8 +66,8 @@ namespace UnitTests.CustomFormStructuresTests
 
             _editableTextBox.EditableStatus = EditableStatus.Regular;
 
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
-            A.CallTo(() => _swappableStrategy.SwapTo(_textBoxWrapper, false)).MustNotHaveHappened();
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, true)).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(() => _swappableTextboxStrategy.SwapTo(_textBoxWrapper, false)).MustNotHaveHappened();
         }
     }
 }

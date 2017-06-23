@@ -21,8 +21,8 @@ namespace CustomFormStructures
 
         public List<List<ITrueControl>> SkillDtoToIcontrol(List<SkillsDto> skillsDto)
         {
-            var inEditStyle = _controlPropertiesFactory.CreateInEditStyle();
-            var regularStyle = _controlPropertiesFactory.CreateRegularStyle();
+            var inEditStyle = _controlPropertiesFactory.CreateTextboxInEditStyle();
+            var regularStyle = _controlPropertiesFactory.CreateTextboxRegularStyle();
             var output = new List<List<ITrueControl>>();
             foreach (var skill in skillsDto)
             {

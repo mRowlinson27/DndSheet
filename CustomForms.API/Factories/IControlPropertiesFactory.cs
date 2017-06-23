@@ -11,7 +11,7 @@ namespace CustomForms.API.Factories
     public interface IControlPropertiesFactory
     {
         IControlProperties Create();
-        IControlProperties CreateInEditStyle();
-        IControlProperties CreateRegularStyle();
+        ITextboxProperties CreateTextboxInEditStyle();
+        ITextboxProperties CreateTextboxRegularStyle();
     }
 }
