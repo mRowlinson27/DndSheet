@@ -12,14 +12,14 @@ namespace UnitTests.CustomFormStructuresTests
     class EditableBehaviourStrategyTests
     {
         private EditableBehaviourTextboxStrategy _editableBehaviourTextboxStrategy;
-        private IPropertyApplier<ITextboxProperties> _propertyApplier;
-        private ITextboxProperties _regularProperties;
-        private ITextboxProperties _inEditProperties;
+        private IPropertyApplier<ITextBoxProperties> _propertyApplier;
+        private ITextBoxPropertiesStyle _regularProperties;
+        private ITextBoxPropertiesStyle _inEditProperties;
 
         [SetUp]
         public void Setup()
         {
-            _propertyApplier = A.Fake<IPropertyApplier<ITextboxProperties>>();
+            _propertyApplier = A.Fake<IPropertyApplier<ITextBoxProperties>>();
             _editableBehaviourTextboxStrategy = new EditableBehaviourTextboxStrategy(_propertyApplier, _regularProperties, _inEditProperties);
         }
 

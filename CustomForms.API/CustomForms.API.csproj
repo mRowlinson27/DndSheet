@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\IControlPropertiesStyle.cs" />
     <Compile Include="DTOs\IControlStyle.cs" />
     <Compile Include="DTOs\IEditable.cs" />
-    <Compile Include="DTOs\ITextboxProperties.cs" />
+    <Compile Include="DTOs\ITextBoxProperties.cs" />
+    <Compile Include="DTOs\ITextBoxPropertiesStyle.cs" />
     <Compile Include="Factories\IControlPropertiesFactory.cs" />
     <Compile Include="Factories\ILabelWrapperFactory.cs" />
     <Compile Include="Factories\ITableLayoutWrapperFactory.cs" />
@@ -66,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Builders\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataManipulation.API\DataManipulation.API.csproj">
+      <Project>{CAB5D56C-12A3-4A92-9BC6-A28B4784725C}</Project>
+      <Name>DataManipulation.API</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

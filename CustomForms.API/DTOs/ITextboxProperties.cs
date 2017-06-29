@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomForms.API.DTOs
 {
-    public interface ITextboxProperties : IControlProperties
+    public interface ITextBoxProperties : IControlProperties
     {
         bool ReadOnly { get; set; }
     }

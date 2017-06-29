@@ -11,10 +11,10 @@ namespace CustomFormStructures
 {
     public class EditableBehaviourTextboxStrategy : ISwappableTextboxStrategy
     {
-        private IPropertyApplier<ITextboxProperties> _propertyApplier;
-        private ITextboxProperties _regularProperties;
-        private ITextboxProperties _inEditProperties;
-        public EditableBehaviourTextboxStrategy(IPropertyApplier<ITextboxProperties> propertyApplier, ITextboxProperties regularProperties, ITextboxProperties inEditProperties)
+        private IPropertyApplier<ITextBoxProperties> _propertyApplier;
+        private ITextBoxPropertiesStyle _regularProperties;
+        private ITextBoxPropertiesStyle _inEditProperties;
+        public EditableBehaviourTextboxStrategy(IPropertyApplier<ITextBoxProperties> propertyApplier, ITextBoxPropertiesStyle regularProperties, ITextBoxPropertiesStyle inEditProperties)
         {
             _propertyApplier = propertyApplier;
             _regularProperties = regularProperties;

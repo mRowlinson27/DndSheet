@@ -36,7 +36,7 @@ namespace DnDCharacterSheet
             };
             var centralLayoutBuilder = new CentralLayoutBuilder(new TableLayoutDecoratorApplier(), centralLayoutBuilderDecorators, tableLayoutWrapperFactory);
 
-            var textBoxStyleApplier = new PropertyApplier<ITextboxProperties>();
+            var textBoxStyleApplier = new PropertyApplier<ITextBoxProperties>();
 
             var dataEntryFormManager = new DataEntryFormManager(
                 new DataEntryFormBuilder(tableLayoutWrapperFactory),

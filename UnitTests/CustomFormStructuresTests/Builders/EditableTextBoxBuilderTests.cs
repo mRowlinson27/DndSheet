@@ -36,8 +36,8 @@ namespace UnitTests.CustomFormStructuresTests.Builders
         public void Build_CorrectCallsMade()
         {
             const string data = "test";
-            var regularStyle = A.Fake<ITextboxProperties>();
-            var inEditStyle = A.Fake<ITextboxProperties>();
+            var regularStyle = A.Fake<ITextBoxPropertiesStyle>();
+            var inEditStyle = A.Fake<ITextBoxPropertiesStyle>();
             var swappableStrategy = A.Fake<ISwappableTextboxStrategy>();
             var textBox = A.Fake<ITextBoxWrapper>();
             A.CallTo(() => _swappableStrategyFactory.Create(regularStyle, inEditStyle)).Returns(swappableStrategy);

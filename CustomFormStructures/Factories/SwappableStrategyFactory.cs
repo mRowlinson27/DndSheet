@@ -8,14 +8,14 @@ namespace CustomFormStructures.Factories
 {
     public class SwappableStrategyFactory : ISwappableStrategyFactory
     {
-        private readonly IPropertyApplier<ITextboxProperties> _propertyApplier;
+        private readonly IPropertyApplier<ITextBoxProperties> _propertyApplier;
 
-        public SwappableStrategyFactory(IPropertyApplier<ITextboxProperties> propertyApplier )
+        public SwappableStrategyFactory(IPropertyApplier<ITextBoxProperties> propertyApplier )
         {
             _propertyApplier = propertyApplier;
         }
 
-        public ISwappableTextboxStrategy Create(ITextboxProperties regularStyle, ITextboxProperties inEditStyle)
+        public ISwappableTextboxStrategy Create(ITextBoxPropertiesStyle regularStyle, ITextBoxPropertiesStyle inEditStyle)
         {
             return new EditableBehaviourTextboxStrategy(_propertyApplier, regularStyle, inEditStyle);
         }

@@ -2,6 +2,6 @@
 {
     public interface IPropertyApplier<T>
     {
-        T Apply(T input, T style);
+        T Apply<T2>(T input, T2 style) where T2 : IPropertyChangedChecker;
     }
 }

@@ -5,7 +5,7 @@ namespace DataManipulation
 {
     public class PropertyApplier<T> : IPropertyApplier<T>
     {
-        public T Apply(T input, T style)
+        public T Apply<T2>(T input, T2 style) where T2 : IPropertyChangedChecker
         {
             var output = input;
 
@@ -17,7 +17,7 @@ namespace DataManipulation
 
                 if (outputInfo != null )
                 {
-                    if (!IsNullOrDefault(propertyInfo.GetValue(style)))
+                    if (style.HasPropertyChanged(propertyInfo.Name))
                     {
                         outputInfo.SetValue(output,
                             Convert.ChangeType(propertyInfo.GetValue(style), propertyInfo.PropertyType), null);
@@ -30,29 +30,6 @@ namespace DataManipulation
             }
 
             return output;
-        }
-
-        private bool IsNullOrDefault<TIn>(TIn argument)
-        {
-            if (argument == null || object.Equals(argument, default(TIn)))
-            {
-                return true;
-            }
-
-            var methodType = typeof(TIn);
-            if (Nullable.GetUnderlyingType(methodType) != null)
-            {
-                return false;
-            }
-
-            var argumentType = argument.GetType();
-            if (argumentType.IsValueType && argumentType != methodType)
-            {
-                var obj = Activator.CreateInstance(argument.GetType());
-                return obj.Equals(argument);
-            }
-
-            return false;
         }
     }
 }

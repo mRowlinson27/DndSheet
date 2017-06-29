@@ -15,14 +15,14 @@ namespace CustomForms.Factories
 {
     public class ControlPropertiesFactory : IControlPropertiesFactory
     {
-        public IControlProperties Create()
+        public IControlPropertiesStyle Create()
         {
             return new ControlPropertiesStyle();
         }
 
-        public ITextboxProperties CreateTextboxInEditStyle()
+        public ITextBoxPropertiesStyle CreateTextboxInEditStyle()
         {
-            var inEditStyle = new TextboxPropertiesStyle()
+            var inEditStyle = new TextBoxPropertiesStyle()
             {
                 BackColor = Color.White
             };
@@ -30,9 +30,9 @@ namespace CustomForms.Factories
             return inEditStyle;
         }
 
-        public ITextboxProperties CreateTextboxRegularStyle()
+        public ITextBoxPropertiesStyle CreateTextboxRegularStyle()
         {
-            var regularStyle = new TextboxPropertiesStyle()
+            var regularStyle = new TextBoxPropertiesStyle()
             {
                 BackColor = Color.Transparent
             };

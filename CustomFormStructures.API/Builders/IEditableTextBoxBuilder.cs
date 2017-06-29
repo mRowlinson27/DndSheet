@@ -4,6 +4,6 @@ namespace CustomFormStructures.API.Builders
 {
     public interface IEditableTextBoxBuilder
     {
-        IEditableTextBox Build(string data, ITextboxProperties regularStyle, ITextboxProperties inEditStyle);
+        IEditableTextBox Build(string data, ITextBoxPropertiesStyle regularStyle, ITextBoxPropertiesStyle inEditStyle);
     }
 }

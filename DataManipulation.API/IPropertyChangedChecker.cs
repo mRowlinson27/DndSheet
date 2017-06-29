@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CustomForms.API.DTOs;
 
-namespace CustomForms.API
+namespace DataManipulation.API
 {
-    public interface ITextBoxWrapper : IControl, ITextBoxProperties
+    public interface IPropertyChangedChecker
     {
+        bool HasPropertyChanged(string property);
     }
 }

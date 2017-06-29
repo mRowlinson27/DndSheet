@@ -43,6 +43,7 @@
     <Compile Include="DTOs\SkillsDto.cs" />
     <Compile Include="IEventApplier.cs" />
     <Compile Include="IPropertyApplier.cs" />
+    <Compile Include="IPropertyChangedChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

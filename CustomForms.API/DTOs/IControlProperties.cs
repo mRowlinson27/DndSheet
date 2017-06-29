@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using DataManipulation.API;
 
 namespace CustomForms.API.DTOs
 {

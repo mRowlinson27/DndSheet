@@ -58,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomFormsTests\ControlPropertiesStyleTests.cs" />
+    <Compile Include="CustomFormsTests\TextBoxPropertiesStyleTests.cs" />
     <Compile Include="CustomFormStructuresTests\Builders\CentralLayoutBuilderTests.cs" />
     <Compile Include="CustomFormStructuresTests\EditableBehaviourStrategyTests.cs" />
     <Compile Include="CustomFormStructuresTests\Decorators\TableLayoutDecoratorApplierTests.cs" />

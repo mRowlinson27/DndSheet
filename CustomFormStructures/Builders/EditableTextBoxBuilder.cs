@@ -27,7 +27,7 @@ namespace CustomFormStructures.Builders
             _textBoxWrapperFactory = textBoxWrapperFactory;
         }
 
-        public IEditableTextBox Build(string data, ITextboxProperties regularStyle, ITextboxProperties inEditStyle)
+        public IEditableTextBox Build(string data, ITextBoxPropertiesStyle regularStyle, ITextBoxPropertiesStyle inEditStyle)
         {
             var textBox = _textBoxWrapperFactory.Create();
             var swappableStrategy = _swappableStrategyFactory.Create(regularStyle, inEditStyle);
