@@ -68,7 +68,7 @@
     <Compile Include="CustomFormStructuresTests\DataEntryFormTests.cs" />
     <Compile Include="CustomFormStructuresTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
     <Compile Include="CustomFormStructuresTests\EditableTextBoxTests.cs" />
-    <Compile Include="DataManipulationTests\DataEntryFormManagerTests.cs" />
+    <Compile Include="CustomFormStructuresTests\DataEntryFormManagerTests.cs" />
     <Compile Include="DataManipulationTests\EventApplierTests.cs" />
     <Compile Include="DataManipulationTests\PropertyApplierTests.cs" />
     <Compile Include="CustomFormStructuresTests\VerticalScrollStrategyTests.cs" />

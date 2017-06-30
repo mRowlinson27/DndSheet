@@ -18,11 +18,6 @@ namespace CustomFormStructures
             set { _dataEntryForm.EditableStatus = value; }
         }
 
-        public ITrueControl GetControl(int row, int col)
-        {
-            return _dataEntryForm.GetControl(row, col);
-;        }
-
         private List<SkillsDto> _skills = new List<SkillsDto>
         {
             new SkillsDto()
@@ -332,6 +327,11 @@ namespace CustomFormStructures
         {
             _dataEntryForm = dataEntryFormBuilder.Build(dataMapper.SkillDtoToIcontrol(_skills));
             TrueControl = _dataEntryForm.TrueControl;
+        }
+
+        public ITrueControl GetControl(int row, int col)
+        {
+            return _dataEntryForm.GetControl(row, col);
         }
     }
 }

@@ -1,9 +1,10 @@
-﻿using CustomForms.API.TableLayoutWrapper;
+﻿using CustomForms.API.DTOs;
+using CustomForms.API.TableLayoutWrapper;
 
 namespace CustomFormStructures.API.Builders
 {
     public interface ICentralLayoutBuilder
     {
-        ITableLayoutWrapper Build();
+        ITableLayoutWrapper Build(IControlPropertiesStyle tablePropertiesStyle = null);
     }
 }

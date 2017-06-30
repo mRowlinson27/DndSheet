@@ -43,7 +43,7 @@ namespace UnitTests.FormAppTests
         [Test]
         public void SetUpStatPage_CorrectCalls()
         {
-            A.CallTo(() => _centralLayoutBuilder.Build()).Returns(_createdTableLayoutWrapper);
+            A.CallTo(() => _centralLayoutBuilder.Build(A<IControlPropertiesStyle>.Ignored)).Returns(_createdTableLayoutWrapper);
 
             _mainFormProcessor.SetUpStatPage();
             

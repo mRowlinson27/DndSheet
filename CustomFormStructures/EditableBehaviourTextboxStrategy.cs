@@ -26,14 +26,14 @@ namespace CustomFormStructures
             ITextBoxWrapper output;
             if (regularMode)
             {
-                control.Enter += OnEnter;
+//                control.Enter += OnEnter;
                 control.TextChanged -= OnTextChanged;
                 output = _propertyApplier.Apply(control, _regularProperties) as ITextBoxWrapper;
                 //OnTextChanged(output, null);
             }
             else
             {
-                control.Enter -= OnEnter;
+//                control.Enter -= OnEnter;
                 control.TextChanged += OnTextChanged;
                 output = _propertyApplier.Apply(control, _inEditProperties) as ITextBoxWrapper;
             }

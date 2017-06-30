@@ -24,7 +24,7 @@ namespace UnitTests.CustomFormStructuresTests
         }
 
         [Test]
-        public void Apply_RegularPropertiesApplied()
+        public void SwapTo_RegularPropertiesApplied()
         {
             var original = A.Fake<ITextBoxWrapper>();
             _editableBehaviourTextboxStrategy.SwapTo(original, true);
@@ -33,7 +33,7 @@ namespace UnitTests.CustomFormStructuresTests
         }
 
         [Test]
-        public void Apply_InEditPropertiesApplied()
+        public void SwapTo_InEditPropertiesApplied()
         {
             var original = A.Fake<ITextBoxWrapper>();
             _editableBehaviourTextboxStrategy.SwapTo(original, false);
@@ -42,14 +42,26 @@ namespace UnitTests.CustomFormStructuresTests
         }
 
         [Test]
-        public void Apply_DelegateApplied()
+        public void SwapTo_EditModeTextChanged_FunctionCalled()
         {
             var original = A.Fake<ITextBoxWrapper>();
             _editableBehaviourTextboxStrategy.SwapTo(original, false);
 
-            original.Enter += Raise.WithEmpty();
+            original.TextChanged += Raise.WithEmpty();
 
-            throw new Exception("NEED PARENTS IN MY CONTROLS");
+            A.CallToSet(() => original.Width).MustHaveHappened();
+        }
+
+        [Test]
+        public void SwapTo_ChangedFromInEditMode_TextChangedFunctionNotCalled()
+        {
+            var original = A.Fake<ITextBoxWrapper>();
+            _editableBehaviourTextboxStrategy.SwapTo(original, false);
+            _editableBehaviourTextboxStrategy.SwapTo(original, true);
+
+            original.TextChanged += Raise.WithEmpty();
+
+            A.CallToSet(() => original.Width).MustNotHaveHappened();
         }
 
     }

@@ -121,6 +121,8 @@ namespace CustomFormStructures
             {
                 throw new IndexOutOfRangeException();
             }
+
+            //BAD CODE
             var control = trueControl as IControl;
             if (control != null)
             {

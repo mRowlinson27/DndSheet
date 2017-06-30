@@ -34,7 +34,7 @@ namespace DnDCharacterSheet
             {
                 new EqualColumnsTableLayoutDecorator(2)
             };
-            var centralLayoutBuilder = new CentralLayoutBuilder(new TableLayoutDecoratorApplier(), centralLayoutBuilderDecorators, tableLayoutWrapperFactory);
+            var centralLayoutBuilder = new CentralLayoutBuilder(new TableLayoutDecoratorApplier(), centralLayoutBuilderDecorators, tableLayoutWrapperFactory, new PropertyApplier<IControlProperties>());
 
             var textBoxStyleApplier = new PropertyApplier<ITextBoxProperties>();
 
