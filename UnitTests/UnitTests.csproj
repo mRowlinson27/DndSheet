@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -75,6 +76,8 @@
     <Compile Include="CustomFormStructuresTests\DataMapperTests.cs" />
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqLDatabase\DatabaseControlTests.cs" />
+    <Compile Include="SqLDatabase\SqLiteDatabaseBuilderTests.cs" />
     <Compile Include="SqLDatabase\SqLiteDatabaseTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +115,14 @@
     <ProjectReference Include="..\FormApp\FormApp.csproj">
       <Project>{d619c3fe-5949-456a-bf8a-76a9ca1b1c57}</Project>
       <Name>FormApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlDatabase.API\SqlDatabase.API.csproj">
+      <Project>{FE714E67-AB32-4B5B-AB13-F1A58DE50935}</Project>
+      <Name>SqlDatabase.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlDatabase\SqlDatabase.csproj">
+      <Project>{93BD93C5-7820-495B-BDA8-A41D37E2D852}</Project>
+      <Name>SqlDatabase</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

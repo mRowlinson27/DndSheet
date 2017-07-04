@@ -1,21 +1,43 @@
-﻿using SqlDatabase.Interfaces;
+﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using SqlDatabase.API;
+using SqlDatabase.Interfaces;
 
 namespace SqlDatabase.Implementation
 {
-    public class SqLiteDatabase
+    public class SqLiteDatabase : ISqLiteDatabase
     {
-        private readonly ISqLiteWrapperFactory _sqLiteWrapperFactory;
-        private ISqLiteWrapper _sqLiteWrapper;
+        private ISqLiteConnectionWrapper _sqLiteConnectionWrapper;
 
-        public SqLiteDatabase(ISqLiteWrapperFactory sqLiteWrapperFactory)
+        public SqLiteDatabase(ISqLiteConnectionWrapper sqLiteConnectionWrapper)
         {
-            _sqLiteWrapperFactory = sqLiteWrapperFactory;
+            _sqLiteConnectionWrapper = sqLiteConnectionWrapper;
+        }
+
+        public void CreateNewDatabase(string fileName)
+        {
+            _sqLiteConnectionWrapper.CreateFile(fileName);
         }
 
         public void Connect(string connection)
         {
-            _sqLiteWrapper = _sqLiteWrapperFactory.Create();
-            _sqLiteWrapper.Connect(connection);
+            _sqLiteConnectionWrapper.Connect(connection);
+        }
+
+        public void ExecuteNonQuery(string sql)
+        {
+            _sqLiteConnectionWrapper.ExecuteNonQuery(sql);
+        }
+
+        public List<NameValueCollection> ExecuteReader(string sql)
+        {
+            var data = new List<NameValueCollection>();
+            var dataReader = _sqLiteConnectionWrapper.ExecuteReader(sql);
+            while (dataReader.Read())
+            {
+                data.Add(dataReader.GetValues());
+            }
+            return data;
         }
     }
 }

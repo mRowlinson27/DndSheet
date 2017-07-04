@@ -98,6 +98,14 @@
       <Project>{d619c3fe-5949-456a-bf8a-76a9ca1b1c57}</Project>
       <Name>FormApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SqlDatabase.API\SqlDatabase.API.csproj">
+      <Project>{fe714e67-ab32-4b5b-ab13-f1a58de50935}</Project>
+      <Name>SqlDatabase.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SqlDatabase\SqlDatabase.csproj">
+      <Project>{93bd93c5-7820-495b-bda8-a41d37e2d852}</Project>
+      <Name>SqlDatabase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
