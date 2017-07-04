@@ -22,10 +22,12 @@ namespace SqlDatabase.Implementation
             SqLiteDataReaderWrapper reader;
             using (var sqLiteConnection = new SQLiteConnection(_connection))
             {
+                sqLiteConnection.Open();
                 using (var command = new SQLiteCommand(sql, sqLiteConnection))
                 {
                     reader = new SqLiteDataReaderWrapper(command.ExecuteReader());
                 }
+                sqLiteConnection.Close();
             }
             return reader;
         }
@@ -34,10 +36,12 @@ namespace SqlDatabase.Implementation
         {
             using (var sqLiteConnection = new SQLiteConnection(_connection))
             {
+                sqLiteConnection.Open();
                 using (var command = new SQLiteCommand(sql, sqLiteConnection))
                 {
                     command.ExecuteNonQuery();
                 }
+                sqLiteConnection.Close();
             }
         }
     }

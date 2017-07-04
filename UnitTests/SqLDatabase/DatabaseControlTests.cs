@@ -22,7 +22,7 @@ namespace UnitTests.SqLDatabase
         [Test]
         public void Initialize_CreatesDatabase()
         {
-            _databaseControl.Initialize("default.db");
+            _databaseControl.Initialize(@"C:\Temp\MYDATABASE.db");
         }
     }
 }

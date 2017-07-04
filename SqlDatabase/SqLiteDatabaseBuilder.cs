@@ -36,6 +36,7 @@ namespace SqlDatabase
             else
             {
                 sqliteDatabase.Connect(connection);
+                sqliteDatabase.ExecuteNonQuery("CREATE TABLE highscores (name VARCHAR(20), score INT)");
             }
             return sqliteDatabase;
         }
