@@ -7,42 +7,44 @@ namespace SqlDatabase.Implementation
     public class SqLiteConnectionWrapper : ISqLiteConnectionWrapper
     {
         private string _connection;
-        public void Connect(string connection)
+        private SQLiteConnection _sqLiteConnection;
+
+        public SqLiteConnectionWrapper(string connection)
         {
-            _connection = connection;
+            _sqLiteConnection = new SQLiteConnection(connection);
         }
 
-        public void CreateFile(string fileName)
+        public void Open()
         {
-            SQLiteConnection.CreateFile(fileName);
+            _sqLiteConnection.Open();
         }
 
-        public ISqLiteDataReaderWrapper ExecuteReader(string sql)
+        public void Close()
         {
-            SqLiteDataReaderWrapper reader;
-            using (var sqLiteConnection = new SQLiteConnection(_connection))
-            {
-                sqLiteConnection.Open();
-                using (var command = new SQLiteCommand(sql, sqLiteConnection))
-                {
-                    reader = new SqLiteDataReaderWrapper(command.ExecuteReader());
-                }
-                sqLiteConnection.Close();
-            }
-            return reader;
+            _sqLiteConnection.Close();
         }
 
         public void ExecuteNonQuery(string sql)
         {
-            using (var sqLiteConnection = new SQLiteConnection(_connection))
+            using (var command = new SQLiteCommand(sql, _sqLiteConnection))
             {
-                sqLiteConnection.Open();
-                using (var command = new SQLiteCommand(sql, sqLiteConnection))
-                {
-                    command.ExecuteNonQuery();
-                }
-                sqLiteConnection.Close();
+                command.ExecuteNonQuery();
             }
+        }
+
+        public ISqLiteDataReaderWrapper ExecuteReader(string sql)
+        {
+            ISqLiteDataReaderWrapper reader;
+            using (var command = new SQLiteCommand(sql, _sqLiteConnection))
+            {
+                reader = new SqLiteDataReaderWrapper(command.ExecuteReader());
+            }
+            return reader;
+        }
+
+        public void Dispose()
+        {
+            _sqLiteConnection.Dispose();
         }
     }
 }

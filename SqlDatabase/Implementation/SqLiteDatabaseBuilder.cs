@@ -1,41 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SqlDatabase.API;
-using SqlDatabase.Implementation;
+﻿using SqlDatabase.API;
 using SqlDatabase.Interfaces;
 
-namespace SqlDatabase
+namespace SqlDatabase.Implementation
 {
     public class SqLiteDatabaseBuilder
     {
         private readonly IDatabaseTableConstants _databaseTableConstants;
         private readonly IFileExplorer _fileExplorer;
+        private readonly ISqLiteDatabaseFactory _sqLiteDatabaseFactory;
         private readonly ISqLiteConnectionWrapperFactory _sqLiteConnectionWrapperFactory;
 
-        public SqLiteDatabaseBuilder(IDatabaseTableConstants databaseTableConstants,IFileExplorer fileExplorer, ISqLiteConnectionWrapperFactory sqLiteConnectionWrapperFactory)
+        public SqLiteDatabaseBuilder(IDatabaseTableConstants databaseTableConstants, IFileExplorer fileExplorer, ISqLiteDatabaseFactory sqLiteDatabaseFactory, ISqLiteConnectionWrapperFactory sqLiteConnectionWrapperFactory)
         {
             _databaseTableConstants = databaseTableConstants;
             _fileExplorer = fileExplorer;
+            _sqLiteDatabaseFactory = sqLiteDatabaseFactory;
             _sqLiteConnectionWrapperFactory = sqLiteConnectionWrapperFactory;
         }
 
         public ISqLiteDatabase Build(string connection)
         {
-            var sqliteDatabase = new SqLiteDatabase(_sqLiteConnectionWrapperFactory.Create());
+            ISqLiteDatabase sqliteDatabase;
 
             if (!_fileExplorer.CheckFileExists(connection))
             {
-                sqliteDatabase.CreateNewDatabase(connection);
-                sqliteDatabase.Connect(connection);
+                _fileExplorer.CreateNewDatabase(connection);
+                sqliteDatabase = _sqLiteDatabaseFactory.Create(connection, _sqLiteConnectionWrapperFactory);
                 sqliteDatabase.ExecuteNonQuery(_databaseTableConstants.CreateEntitiesTable);
                 sqliteDatabase.ExecuteNonQuery(_databaseTableConstants.CreatePredicatesTable);
             }
             else
             {
-                sqliteDatabase.Connect(connection);
+                sqliteDatabase = _sqLiteDatabaseFactory.Create(connection, _sqLiteConnectionWrapperFactory);
                 sqliteDatabase.ExecuteNonQuery("CREATE TABLE highscores (name VARCHAR(20), score INT)");
             }
             return sqliteDatabase;

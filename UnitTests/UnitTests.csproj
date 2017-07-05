@@ -108,10 +108,6 @@
       <Project>{def243db-40a8-4e29-ada0-5dca766448ac}</Project>
       <Name>DataManipulation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DnDCharacterSheet\DnDCharacterSheet.csproj">
-      <Project>{23e551e6-f3aa-434d-a3a4-136f459a1531}</Project>
-      <Name>DnDCharacterSheet</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FormApp\FormApp.csproj">
       <Project>{d619c3fe-5949-456a-bf8a-76a9ca1b1c57}</Project>
       <Name>FormApp</Name>

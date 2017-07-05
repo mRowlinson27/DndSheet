@@ -1,13 +1,14 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.Data.SQLite;
 using SqlDatabase.Implementation;
 
 namespace SqlDatabase.Interfaces
 {
-    public interface ISqLiteConnectionWrapper
+    public interface ISqLiteConnectionWrapper : IDisposable
     {
-        void CreateFile(string connection);
-        void Connect(string connection);
-        ISqLiteDataReaderWrapper ExecuteReader(string sql);
+        void Open();
+        void Close();
         void ExecuteNonQuery(string sql);
+        ISqLiteDataReaderWrapper ExecuteReader(string sql);
     }
 }

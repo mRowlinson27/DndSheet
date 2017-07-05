@@ -14,7 +14,7 @@ namespace SqlDatabase
 
         public void Initialize(string connection)
         {
-            _sqLiteDatabase = new SqLiteDatabaseBuilder(new DatabaseTableConstants(), new FileExplorer(), new SqLiteConnectionWrapperFactory()).Build(connection);
+            _sqLiteDatabase = new SqLiteDatabaseBuilder(new DatabaseTableConstants(), new FileExplorer(),new SqLiteDatabaseFactory(), new SqLiteConnectionWrapperFactory()).Build(connection);
         }
     }
 }

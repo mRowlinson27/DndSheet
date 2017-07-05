@@ -106,6 +106,10 @@
       <Project>{93bd93c5-7820-495b-bda8-a41d37e2d852}</Project>
       <Name>SqlDatabase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UnitTests\UnitTests.csproj">
+      <Project>{e0a5642e-5605-466f-8a7f-3814f29191be}</Project>
+      <Name>UnitTests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

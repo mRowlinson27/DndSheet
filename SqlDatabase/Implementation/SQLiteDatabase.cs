@@ -7,35 +7,38 @@ namespace SqlDatabase.Implementation
 {
     public class SqLiteDatabase : ISqLiteDatabase
     {
-        private ISqLiteConnectionWrapper _sqLiteConnectionWrapper;
+        private readonly ISqLiteConnectionWrapperFactory _sqLiteConnectionWrapperFactory;
+        private string _connection;
 
-        public SqLiteDatabase(ISqLiteConnectionWrapper sqLiteConnectionWrapper)
+        public SqLiteDatabase(string connection, ISqLiteConnectionWrapperFactory sqLiteConnectionWrapperFactory)
         {
-            _sqLiteConnectionWrapper = sqLiteConnectionWrapper;
-        }
-
-        public void CreateNewDatabase(string fileName)
-        {
-            _sqLiteConnectionWrapper.CreateFile(fileName);
-        }
-
-        public void Connect(string connection)
-        {
-            _sqLiteConnectionWrapper.Connect(connection);
+            _connection = "Data Source=" + connection;
+            _sqLiteConnectionWrapperFactory = sqLiteConnectionWrapperFactory;
         }
 
         public void ExecuteNonQuery(string sql)
         {
-            _sqLiteConnectionWrapper.ExecuteNonQuery(sql);
+            using (var sqLiteConnection = _sqLiteConnectionWrapperFactory.Create(_connection))
+            {
+                sqLiteConnection.Open();
+                sqLiteConnection.ExecuteNonQuery(sql);
+                sqLiteConnection.Close();
+            }
         }
 
         public List<NameValueCollection> ExecuteReader(string sql)
         {
+            ISqLiteDataReaderWrapper dataReader;
             var data = new List<NameValueCollection>();
-            var dataReader = _sqLiteConnectionWrapper.ExecuteReader(sql);
-            while (dataReader.Read())
+            using (var sqLiteConnection = _sqLiteConnectionWrapperFactory.Create(_connection))
             {
-                data.Add(dataReader.GetValues());
+                sqLiteConnection.Open();
+                dataReader = sqLiteConnection.ExecuteReader(sql);
+                while (dataReader.Read())
+                {
+                    data.Add(dataReader.GetValues());
+                }
+                sqLiteConnection.Close();
             }
             return data;
         }

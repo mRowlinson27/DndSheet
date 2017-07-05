@@ -9,5 +9,6 @@ namespace SqlDatabase
     public interface IFileExplorer
     {
         bool CheckFileExists(string fileName);
+        void CreateNewDatabase(string filename);
     }
 }

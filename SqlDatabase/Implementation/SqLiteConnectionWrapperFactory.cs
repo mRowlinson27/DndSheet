@@ -9,9 +9,9 @@ namespace SqlDatabase.Implementation
 {
     public class SqLiteConnectionWrapperFactory : ISqLiteConnectionWrapperFactory
     {
-        public ISqLiteConnectionWrapper Create()
+        public ISqLiteConnectionWrapper Create(string connection)
         {
-            return new SqLiteConnectionWrapper();
+            return new SqLiteConnectionWrapper(connection);
         }
     }
 }

@@ -53,13 +53,15 @@
     <Compile Include="Implementation\SqLiteConnectionWrapperFactory.cs" />
     <Compile Include="Implementation\SqLiteDatabase.cs" />
     <Compile Include="Implementation\SqLiteConnectionWrapper.cs" />
+    <Compile Include="Implementation\SqLiteDatabaseFactory.cs" />
     <Compile Include="Implementation\SqLiteDataReaderWrapper.cs" />
     <Compile Include="Interfaces\IDatabaseTableConstants.cs" />
     <Compile Include="Interfaces\ISqLiteConnectionWrapper.cs" />
+    <Compile Include="Interfaces\ISqLiteDatabaseFactory.cs" />
     <Compile Include="Interfaces\ISqLiteDataReaderWrapper.cs" />
     <Compile Include="Interfaces\ISqLiteConnectionWrapperFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqLiteDatabaseBuilder.cs" />
+    <Compile Include="Implementation\SqLiteDatabaseBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

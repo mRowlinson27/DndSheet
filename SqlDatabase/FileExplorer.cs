@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,11 @@ namespace SqlDatabase
         public bool CheckFileExists(string fileName)
         {
             return File.Exists(fileName);
+        }
+
+        public void CreateNewDatabase(string filename)
+        {
+            SQLiteConnection.CreateFile(filename);
         }
     }
 }

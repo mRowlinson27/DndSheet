@@ -2,6 +2,6 @@
 {
     public interface ISqLiteConnectionWrapperFactory
     {
-        ISqLiteConnectionWrapper Create();
+        ISqLiteConnectionWrapper Create(string connection);
     }
 }
