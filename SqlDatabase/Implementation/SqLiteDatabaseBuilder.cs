@@ -32,7 +32,6 @@ namespace SqlDatabase.Implementation
             else
             {
                 sqliteDatabase = _sqLiteDatabaseFactory.Create(connection, _sqLiteConnectionWrapperFactory);
-                sqliteDatabase.ExecuteNonQuery("CREATE TABLE highscores (name VARCHAR(20), score INT)");
             }
             return sqliteDatabase;
         }

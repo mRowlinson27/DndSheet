@@ -79,6 +79,7 @@
     <Compile Include="SqLDatabase\DatabaseControlTests.cs" />
     <Compile Include="SqLDatabase\SqLiteDatabaseBuilderTests.cs" />
     <Compile Include="SqLDatabase\SqLiteDatabaseTests.cs" />
+    <Compile Include="SqLDatabase\SqlQueryConstructorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
