@@ -16,7 +16,7 @@ namespace UnitTests.SqLDatabase
     public class SqLiteDatabaseBuilderTests
     {
         private IFileExplorer _fileExplorer;
-        private IDatabaseTableConstants _databaseTableConstants;
+        private IDatabaseTableCreationQueries _databaseTableCreationQueries;
         private ISqLiteConnectionWrapperFactory _connectionWrapperFactory;
         private ISqLiteDatabaseFactory _sqLiteDatabaseFactory;
         private ISqLiteDatabase _sqLiteDatabase;
@@ -25,12 +25,12 @@ namespace UnitTests.SqLDatabase
         [SetUp]
         public void Setup()
         {
-            _databaseTableConstants = A.Fake<IDatabaseTableConstants>();
+            _databaseTableCreationQueries = A.Fake<IDatabaseTableCreationQueries>();
             _fileExplorer = A.Fake<IFileExplorer>();
             _connectionWrapperFactory = A.Fake<ISqLiteConnectionWrapperFactory>();
             _sqLiteDatabaseFactory = A.Fake<ISqLiteDatabaseFactory>();
             _sqLiteDatabase = A.Fake<ISqLiteDatabase>();
-            _databaseBuilder = new SqLiteDatabaseBuilder(_databaseTableConstants, _fileExplorer, _sqLiteDatabaseFactory, _connectionWrapperFactory);
+            _databaseBuilder = new SqLiteDatabaseBuilder(_databaseTableCreationQueries, _fileExplorer, _sqLiteDatabaseFactory, _connectionWrapperFactory);
         }
 
         [Test]
@@ -54,8 +54,8 @@ namespace UnitTests.SqLDatabase
             const string createPredicateTable = "createPredicateTable";
             A.CallTo(() => _fileExplorer.CheckFileExists(connection)).Returns(false);
             A.CallTo(() => _sqLiteDatabaseFactory.Create(connection, _connectionWrapperFactory)).Returns(_sqLiteDatabase);
-            A.CallTo(() => _databaseTableConstants.CreateEntitiesTable).Returns(createEntiryTable);
-            A.CallTo(() => _databaseTableConstants.CreatePredicatesTable).Returns(createPredicateTable);
+            A.CallTo(() => _databaseTableCreationQueries.CreateEntitiesTable).Returns(createEntiryTable);
+            A.CallTo(() => _databaseTableCreationQueries.CreatePredicatesTable).Returns(createPredicateTable);
 
             _databaseBuilder.Build(connection);
 

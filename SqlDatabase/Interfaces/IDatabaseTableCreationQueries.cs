@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SqlDatabase.Interfaces
 {
-    public interface IDatabaseTableConstants
+    public interface IDatabaseTableCreationQueries
     {
         string CreateEntitiesTable { get; }
         string CreatePredicatesTable { get; }

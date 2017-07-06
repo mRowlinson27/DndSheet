@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseControl.cs" />
-    <Compile Include="Implementation\DatabaseTableConstants.cs" />
+    <Compile Include="Implementation\DatabaseTableCreationQueries.cs" />
     <Compile Include="FileExplorer.cs" />
     <Compile Include="IFileExplorer.cs" />
     <Compile Include="Implementation\SqLiteConnectionWrapperFactory.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Implementation\SqLiteDatabaseFactory.cs" />
     <Compile Include="Implementation\SqLiteDataReaderWrapper.cs" />
     <Compile Include="Implementation\SqlQueryConstructor.cs" />
-    <Compile Include="Interfaces\IDatabaseTableConstants.cs" />
+    <Compile Include="Interfaces\IDatabaseTableCreationQueries.cs" />
     <Compile Include="Interfaces\ISqLiteConnectionWrapper.cs" />
     <Compile Include="Interfaces\ISqLiteDatabaseBuilder.cs" />
     <Compile Include="Interfaces\ISqLiteDatabaseFactory.cs" />

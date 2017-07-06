@@ -5,14 +5,14 @@ namespace SqlDatabase.Implementation
 {
     public class SqLiteDatabaseBuilder
     {
-        private readonly IDatabaseTableConstants _databaseTableConstants;
+        private readonly IDatabaseTableCreationQueries _databaseTableCreationQueries;
         private readonly IFileExplorer _fileExplorer;
         private readonly ISqLiteDatabaseFactory _sqLiteDatabaseFactory;
         private readonly ISqLiteConnectionWrapperFactory _sqLiteConnectionWrapperFactory;
 
-        public SqLiteDatabaseBuilder(IDatabaseTableConstants databaseTableConstants, IFileExplorer fileExplorer, ISqLiteDatabaseFactory sqLiteDatabaseFactory, ISqLiteConnectionWrapperFactory sqLiteConnectionWrapperFactory)
+        public SqLiteDatabaseBuilder(IDatabaseTableCreationQueries databaseTableCreationQueries, IFileExplorer fileExplorer, ISqLiteDatabaseFactory sqLiteDatabaseFactory, ISqLiteConnectionWrapperFactory sqLiteConnectionWrapperFactory)
         {
-            _databaseTableConstants = databaseTableConstants;
+            _databaseTableCreationQueries = databaseTableCreationQueries;
             _fileExplorer = fileExplorer;
             _sqLiteDatabaseFactory = sqLiteDatabaseFactory;
             _sqLiteConnectionWrapperFactory = sqLiteConnectionWrapperFactory;
@@ -26,8 +26,8 @@ namespace SqlDatabase.Implementation
             {
                 _fileExplorer.CreateNewDatabase(connection);
                 sqliteDatabase = _sqLiteDatabaseFactory.Create(connection, _sqLiteConnectionWrapperFactory);
-                sqliteDatabase.ExecuteNonQuery(_databaseTableConstants.CreateEntitiesTable);
-                sqliteDatabase.ExecuteNonQuery(_databaseTableConstants.CreatePredicatesTable);
+                sqliteDatabase.ExecuteNonQuery(_databaseTableCreationQueries.CreateEntitiesTable);
+                sqliteDatabase.ExecuteNonQuery(_databaseTableCreationQueries.CreatePredicatesTable);
             }
             else
             {

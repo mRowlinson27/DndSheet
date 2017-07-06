@@ -11,7 +11,9 @@ namespace SqlDatabase.Interfaces
     public interface ISqlQueryConstructor
     {
         string InsertIntoEntitiesQuery(List<TableEntity> tableEntities);
+        string UpdateEntitiesQuery(List<TableEntity> tableEntities);
         string InsertIntoPredicatesQuery(List<Triple> triples);
+        string UpdatePredicatesQuery(List<Triple> triples);
         string FindEntitiesByEidQuery(List<string> eids);
         string FindEntitiesByDataTypeQuery(string dataType);
         string FindPredicatesAffectedBySubjectQuery(string subjectEid);

@@ -2,7 +2,7 @@
 
 namespace SqlDatabase.Implementation
 {
-    public class DatabaseTableConstants : IDatabaseTableConstants
+    public class DatabaseTableCreationQueries : IDatabaseTableCreationQueries
     {
         public string CreateEntitiesTable
         {
@@ -16,15 +16,15 @@ namespace SqlDatabase.Implementation
 
         private string _createEntitiesTable = 
 @"CREATE TABLE Entities (
-Eid varchar(50) PRIMARY KEY,
-DataType varchar(50) NOT NULL,
-Value varchar(50))";
+Eid INTEGER PRIMARY KEY,
+DataType VARCHAR(50) NOT NULL,
+Value VARCHAR(50))";
 
         private string _createPredicatesTable =
 @"CREATE TABLE Predicates (
-Object varchar(50),
-Subject varchar(50),
-Relationship varchar(50),
+Subject INTEGER,
+Relationship VARCHAR(50),
+Object INTEGER,
 PRIMARY KEY (Object, Subject),
 FOREIGN KEY (Object) REFERENCES Entities (Eid),
 FOREIGN KEY (Subject) REFERENCES Entities (Eid))";
