@@ -126,7 +126,7 @@ namespace UnitTests.SqLDatabase
             {
                 new TableEntity
                 {
-                    Eid = "1", DataType = "String", Value = "Test"
+                    Eid = 1, DataType = "String", Value = "Test"
                 }
             };
 
@@ -179,7 +179,7 @@ namespace UnitTests.SqLDatabase
             {
                 new TableEntity
                 {
-                    Eid = "1", DataType = "String", Value = "Test"
+                    Eid = 1, DataType = "String", Value = "Test"
                 }
             };
             A.CallTo(() => _sqlQueryConstructor.FindEntitiesByDataTypeQuery(A<string>.Ignored)).Returns(sql);

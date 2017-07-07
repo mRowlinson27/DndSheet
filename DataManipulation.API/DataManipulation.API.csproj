@@ -40,11 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\AbilityScore.cs" />
     <Compile Include="DTOs\SkillsDto.cs" />
+    <Compile Include="DTOs\SqlAbilityScore.cs" />
+    <Compile Include="IDataRestoreStrategy.cs" />
+    <Compile Include="IDictionaryGraphNode.cs" />
+    <Compile Include="IEidCreator.cs" />
     <Compile Include="IEventApplier.cs" />
     <Compile Include="IPropertyApplier.cs" />
     <Compile Include="IPropertyChangedChecker.cs" />
+    <Compile Include="ITaggable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SqlDatabase.API\SqlDatabase.API.csproj">
+      <Project>{fe714e67-ab32-4b5b-ab13-f1a58de50935}</Project>
+      <Name>SqlDatabase.API</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

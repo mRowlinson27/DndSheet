@@ -28,7 +28,7 @@ namespace UnitTests.SqLDatabase
             {
                 new TableEntity
                 {
-                    Eid = "1", DataType = "String", Value = "Test"
+                    Eid = 1, DataType = "String", Value = "Test"
                 }
             };
 
@@ -45,11 +45,11 @@ namespace UnitTests.SqLDatabase
             {
                 new TableEntity
                 {
-                    Eid = "1", DataType = "String", Value = "Test"
+                    Eid = 1, DataType = "String", Value = "Test"
                 },
                 new TableEntity
                 {
-                    Eid = "2", DataType = "String1", Value = "Test2"
+                    Eid = 2, DataType = "String1", Value = "Test2"
                 }
             };
 
@@ -67,7 +67,7 @@ namespace UnitTests.SqLDatabase
             {
                 new TableEntity
                 {
-                    Eid = "1", DataType = "String", Value = "Test"
+                    Eid = 1, DataType = "String", Value = "Test"
                 }
             };
 
@@ -93,11 +93,11 @@ Eid IN (1);");
             {
                 new TableEntity
                 {
-                    Eid = "1", DataType = "String", Value = "Test"
+                    Eid = 1, DataType = "String", Value = "Test"
                 },
                 new TableEntity
                 {
-                    Eid = "2", DataType = "String1", Value = "Test2"
+                    Eid = 2, DataType = "String1", Value = "Test2"
                 }
             };
 

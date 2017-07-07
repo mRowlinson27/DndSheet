@@ -1,9 +1,9 @@
 ﻿namespace SqlDatabase.API.DTO
 {
-    public struct TableEntity
+    public class TableEntity
     {
-        public string Eid;
-        public string DataType;
-        public string Value;
+        public int Eid { get; set; }
+        public string DataType { get; set; }
+        public string Value { get; set; }
     }
 }

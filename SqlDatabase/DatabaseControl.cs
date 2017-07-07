@@ -44,13 +44,20 @@ namespace SqlDatabase
             var sql = _sqlQueryConstructor.FindEntitiesByEidQuery(eids);
             var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
 
-            var response = nameValueCollections.Select(nvc => new TableEntity
+            var response = new List<TableEntity>();
+            foreach (var nvc in nameValueCollections)
             {
-                Eid = nvc.Get("Eid"),
-                DataType = nvc.Get("DataType"),
-                Value = nvc.Get("Value")
-            });
-            return response.ToList();
+                int eid;
+                int.TryParse(nvc.Get("Eid"), out eid);
+                var tableEntity = new TableEntity
+                {
+                    DataType = nvc.Get("DataType"),
+                    Value = nvc.Get("Value"),
+                    Eid = eid
+                };
+                response.Add(tableEntity);
+            }
+            return response;
         }
 
         public List<TableEntity> FindEntitiesByDatatype(string dataType)
@@ -58,13 +65,20 @@ namespace SqlDatabase
             var sql = _sqlQueryConstructor.FindEntitiesByDataTypeQuery(dataType);
             var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
 
-            var response = nameValueCollections.Select(nvc => new TableEntity
+            var response = new List<TableEntity>();
+            foreach (var nvc in nameValueCollections)
             {
-                Eid = nvc.Get("Eid"),
-                DataType = nvc.Get("DataType"),
-                Value = nvc.Get("Value")
-            });
-            return response.ToList();
+                int eid;
+                int.TryParse(nvc.Get("Eid"), out eid);
+                var tableEntity = new TableEntity
+                {
+                    DataType = nvc.Get("DataType"),
+                    Value = nvc.Get("Value"),
+                    Eid = eid
+                };
+                response.Add(tableEntity);
+            }
+            return response;
         }
 
         public List<Triple> FindPredicatesAffectedBySubject(string subjectEid)
