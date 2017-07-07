@@ -51,8 +51,9 @@ namespace UnitTests.DataManipulationTests
             var tableEntity = new TableEntity() { Eid = 0 };
             var tableEntity2 = new TableEntity() { Eid = 1 };
             var dictionaryGraphNode = new DictionaryGraphNode<TableEntity>(tableEntity.Eid, tableEntity);
+            var dictionaryGraphNode2 = new DictionaryGraphNode<TableEntity>(tableEntity2.Eid, tableEntity2);
 
-            dictionaryGraphNode.Add(tableEntity2.Eid, tableEntity2);
+            dictionaryGraphNode.Add(dictionaryGraphNode2);
 
             dictionaryGraphNode.ContainsKey(tableEntity2.Eid).Should().BeTrue();
         }
@@ -63,8 +64,9 @@ namespace UnitTests.DataManipulationTests
             var tableEntity = new TableEntity() { Eid = 0 };
             var tableEntity2 = new TableEntity() { Eid = 1 };
             var dictionaryGraphNode = new DictionaryGraphNode<TableEntity>(tableEntity.Eid, tableEntity);
+            var dictionaryGraphNode2 = new DictionaryGraphNode<TableEntity>(tableEntity2.Eid, tableEntity2);
 
-            dictionaryGraphNode.Add(tableEntity2.Eid, tableEntity2);
+            dictionaryGraphNode.Add(dictionaryGraphNode2);
 
             dictionaryGraphNode.Get(tableEntity2.Eid).Should().Be(tableEntity2);
         }

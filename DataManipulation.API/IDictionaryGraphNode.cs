@@ -12,7 +12,6 @@ namespace DataManipulation.API
         IDictionaryGraphNode<T> Parent { get; set; }
 
         void Add(IDictionaryGraphNode<T> item);
-        void Add(int eid, T item);
 
         T Get(int eid);
         IDictionaryGraphNode<T> GetNode(int eid);

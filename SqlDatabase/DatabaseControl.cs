@@ -39,6 +39,11 @@ namespace SqlDatabase
             _sqLiteDatabase.ExecuteNonQuery(sql);
         }
 
+        public TableEntity FindEntityByEid(string eid)
+        {
+            return FindEntitiesByEid(new List<string> {eid}).First();
+        }
+
         public List<TableEntity> FindEntitiesByEid(List<string> eids)
         {
             var sql = _sqlQueryConstructor.FindEntitiesByEidQuery(eids);

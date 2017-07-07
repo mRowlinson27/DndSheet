@@ -32,11 +32,6 @@ namespace DataManipulation
             _dictionary.Add(item.Eid, item);
         }
 
-        public void Add(int eid, T item)
-        {
-            Add(new DictionaryGraphNode<T>(eid, item));
-        }
-
         public IDictionaryGraphNode<T> GetNode(int eid)
         {
             if (eid == Eid)

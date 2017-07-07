@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SqlDatabase.API;
 
 namespace DataManipulation.API
 {
-    public interface IDataRestoreStrategy
+    public interface IDictionaryGraphNodeFactory<T>
     {
-        //void Restore(IDatabaseControl databaseControl);
+        IDictionaryGraphNode<T> Create(int eid, T data);
     }
 }

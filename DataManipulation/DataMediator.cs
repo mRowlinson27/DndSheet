@@ -21,7 +21,7 @@ namespace DataManipulation
 
         public void Restore()
         {
-            _dataRestoreStrategy.Restore(_databaseControl);
+            //_dataRestoreStrategy.Restore(_databaseControl);
         }
 
         public void Save()

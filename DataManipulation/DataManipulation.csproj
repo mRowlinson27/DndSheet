@@ -45,10 +45,17 @@
     <Compile Include="DataMediator.cs" />
     <Compile Include="DataRestoreStrategy.cs" />
     <Compile Include="DictionaryGraphNode.cs" />
+    <Compile Include="EntityToTaggedConverter.cs" />
+    <Compile Include="EntryData\EntryData.cs" />
+    <Compile Include="EntryData\EntryDataClient.cs" />
+    <Compile Include="EntryData\EntryDataServer.cs" />
+    <Compile Include="IDatabaseInterpretor.cs" />
     <Compile Include="SqlDataCreator.cs" />
     <Compile Include="EventApplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyApplier.cs" />
+    <Compile Include="EntryData\IntEntryData.cs" />
+    <Compile Include="EntryData\TaggableString.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">

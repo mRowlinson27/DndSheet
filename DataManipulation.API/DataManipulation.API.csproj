@@ -41,15 +41,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\AbilityScore.cs" />
+    <Compile Include="EntryData\IEntryData.cs" />
     <Compile Include="DTOs\SkillsDto.cs" />
     <Compile Include="DTOs\SqlAbilityScore.cs" />
+    <Compile Include="EntryData\IEntryDataClient.cs" />
+    <Compile Include="EntryData\IEntryDataClientFactory.cs" />
+    <Compile Include="EntryData\IEntryDataServer.cs" />
+    <Compile Include="EntryData\IEntryDataServerFactory.cs" />
+    <Compile Include="IDatabaseAdaptor.cs" />
     <Compile Include="IDataRestoreStrategy.cs" />
     <Compile Include="IDictionaryGraphNode.cs" />
+    <Compile Include="IDictionaryGraphNodeFactory.cs" />
     <Compile Include="IEidCreator.cs" />
+    <Compile Include="IEntityToTaggedConverter.cs" />
     <Compile Include="IEventApplier.cs" />
     <Compile Include="IPropertyApplier.cs" />
     <Compile Include="IPropertyChangedChecker.cs" />
-    <Compile Include="ITaggable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
