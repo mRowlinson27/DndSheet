@@ -70,6 +70,8 @@
     <Compile Include="CustomFormStructuresTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
     <Compile Include="CustomFormStructuresTests\EditableTextBoxTests.cs" />
     <Compile Include="CustomFormStructuresTests\DataEntryFormManagerTests.cs" />
+    <Compile Include="DataManipulationTests\DataPointBuilderTests.cs" />
+    <Compile Include="DataManipulationTests\DataRestoreStrategyTests.cs" />
     <Compile Include="DataManipulationTests\DictionaryGraphNodeTests.cs" />
     <Compile Include="DataManipulationTests\DataPointClientTests.cs" />
     <Compile Include="DataManipulationTests\DataPointServerTests.cs" />

@@ -55,7 +55,7 @@ namespace UnitTests.SqLDatabase
 
             A.CallTo(() => _sqlQueryConstructor.InsertIntoEntitiesQuery(data)).Returns(sql);
 
-            _databaseControl.InsertIntoEntites(data);
+            _databaseControl.InsertIntoEntities(data);
 
             A.CallTo(() => _sqlQueryConstructor.InsertIntoEntitiesQuery(data)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(sql)).MustHaveHappened();
@@ -83,6 +83,62 @@ namespace UnitTests.SqLDatabase
         }
 
         [Test]
+        public void FindAllEntities_GetsSqlAndExecutesAsQuery()
+        {
+            const string sql = "sql";
+            const string path = @"C:\Temp\MYDATABASE.db";
+            A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
+
+            _databaseControl.Connect(path);
+            var nameValueData = new List<NameValueCollection>
+            {
+                new NameValueCollection()
+                {
+                    {"Eid", "1"}, {"DataType", "String"}, {"Value", "Test"}
+                }
+            };
+
+            A.CallTo(() => _sqlQueryConstructor.FindAllEntitiesQuery()).Returns(sql);
+            A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
+
+            _databaseControl.FindAllEntities();
+
+            A.CallTo(() => _sqlQueryConstructor.FindAllEntitiesQuery()).MustHaveHappened();
+            A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
+        }
+
+        [Test]
+        public void FindAllEntities_ReturnsProperTableEntities()
+        {
+            const string sql = "sql";
+            const string path = @"C:\Temp\MYDATABASE.db";
+            A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
+
+            _databaseControl.Connect(path);
+            var nameValueData = new List<NameValueCollection>
+            {
+                new NameValueCollection()
+                {
+                    {"Eid", "1"}, {"DataType", "String"}, {"Value", "Test"}
+                }
+            };
+            var data = new List<TableEntity>
+            {
+                new TableEntity
+                {
+                    Eid = 1, DataType = "String", Value = "Test"
+                }
+            };
+
+            A.CallTo(() => _sqlQueryConstructor.FindAllEntitiesQuery()).Returns(sql);
+            A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
+
+            var response = _databaseControl.FindAllEntities();
+
+            response.ShouldAllBeEquivalentTo(data);
+        }
+
+        [Test]
         public void FindEntitiesByEid_GetsSqlAndExecutesAsQuery()
         {
             const string sql = "sql";
@@ -98,7 +154,7 @@ namespace UnitTests.SqLDatabase
                 }
             };
 
-            A.CallTo(() => _sqlQueryConstructor.FindEntitiesByEidQuery(A<List<string>>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindEntitiesByEidQuery(A<List<int>>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
             _databaseControl.FindEntitiesByEid(null);
@@ -130,7 +186,7 @@ namespace UnitTests.SqLDatabase
                 }
             };
 
-            A.CallTo(() => _sqlQueryConstructor.FindEntitiesByEidQuery(A<List<string>>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindEntitiesByEidQuery(A<List<int>>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
             var response = _databaseControl.FindEntitiesByEid(null);
@@ -204,12 +260,12 @@ namespace UnitTests.SqLDatabase
                     {"Subject", "1"}, {"Relationship", "0"}, {"Object", "2"}
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(A<string>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindPredicatesAffectedBySubject(null);
+            _databaseControl.FindPredicatesAffectedBySubject(1);
 
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(null)).MustHaveHappened();
+            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(1)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
         }
 
@@ -231,13 +287,13 @@ namespace UnitTests.SqLDatabase
             {
                 new Triple
                 {
-                    Subject = "1", Relationship = "0", Object = "2"
+                    Subject = 1, Relationship = "0", Object = 2
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(A<string>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindPredicatesAffectedBySubject(null);
+            var response = _databaseControl.FindPredicatesAffectedBySubject(1);
 
             response.ShouldAllBeEquivalentTo(data);
         }
@@ -256,12 +312,12 @@ namespace UnitTests.SqLDatabase
                     {"Subject", "1"}, {"Relationship", "0"}, {"Object", "2"}
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(A<string>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindPredicatesAffectingObject(null);
+            _databaseControl.FindPredicatesAffectingObject(1);
 
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(null)).MustHaveHappened();
+            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(1)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
         }
 
@@ -283,13 +339,13 @@ namespace UnitTests.SqLDatabase
             {
                 new Triple
                 {
-                    Subject = "1", Relationship = "0", Object = "2"
+                    Subject = 1, Relationship = "0", Object = 2
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(A<string>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindPredicatesAffectingObject(null);
+            var response = _databaseControl.FindPredicatesAffectingObject(1);
 
             response.ShouldAllBeEquivalentTo(data);
         }

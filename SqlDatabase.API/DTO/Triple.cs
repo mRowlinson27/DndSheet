@@ -2,8 +2,8 @@
 {
     public struct Triple
     {
-        public string Object;
+        public int Object;
         public string Relationship;
-        public string Subject;
+        public int Subject;
     }
 }

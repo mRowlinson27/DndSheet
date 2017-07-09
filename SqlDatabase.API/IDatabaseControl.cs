@@ -10,12 +10,13 @@ namespace SqlDatabase.API
     public interface IDatabaseControl
     {
         void Connect(string connection);
-        void InsertIntoEntites(List<TableEntity> tableEntities);
+        void InsertIntoEntities(List<TableEntity> tableEntities);
         void InsertIntoPredicates(List<Triple> triples);
-        List<TableEntity> FindEntitiesByEid(List<string> eids);
-        TableEntity FindEntityByEid(string eid);
+        List<TableEntity> FindAllEntities();
+        List<TableEntity> FindEntitiesByEid(List<int> eids);
+        TableEntity FindEntityByEid(int eid);
         List<TableEntity> FindEntitiesByDatatype(string dataType);
-        List<Triple> FindPredicatesAffectedBySubject(string subjectEid);
-        List<Triple> FindPredicatesAffectingObject(string objectEid);
+        List<Triple> FindPredicatesAffectedBySubject(int subjectEid);
+        List<Triple> FindPredicatesAffectingObject(int objectEid);
     }
 }

@@ -126,7 +126,7 @@ Eid IN (1, 2);");
             {
                 new Triple
                 {
-                    Subject = "1", Relationship = "Owns", Object = "2"
+                    Subject = 1, Relationship = "Owns", Object = 2
                 }
             };
 
@@ -143,11 +143,11 @@ Eid IN (1, 2);");
             {
                 new Triple
                 {
-                    Subject = "1", Relationship = "Owns", Object = "2"
+                    Subject = 1, Relationship = "Owns", Object = 2
                 },
                 new Triple
                 {
-                    Subject = "2", Relationship = "Owned By", Object = "1"
+                    Subject = 2, Relationship = "Owned By", Object = 1
                 }
             };
 
@@ -165,7 +165,7 @@ Eid IN (1, 2);");
             {
                 new Triple
                 {
-                    Subject = "1", Relationship = "Owns", Object = "2"
+                    Subject = 1, Relationship = "Owns", Object = 2
                 }
             };
 
@@ -187,11 +187,11 @@ Subject = 1 AND Object = 2;");
             {
                 new Triple
                 {
-                    Subject = "1", Relationship = "Owns", Object = "2"
+                    Subject = 1, Relationship = "Owns", Object = 2
                 },
                 new Triple
                 {
-                    Subject = "2", Relationship = "Owned By", Object = "1"
+                    Subject = 2, Relationship = "Owned By", Object = 1
                 }
             };
 
@@ -208,14 +208,23 @@ Subject = 1 AND Object = 2 OR Subject = 2 AND Object = 1;");
         }
 
         [Test]
+        public void FindAllEntitiesQuery_CorrectSql()
+        {
+
+            var sql = _sqlQueryConstructor.FindAllEntitiesQuery();
+
+            sql.Should().Be(@"SELECT * FROM Entities;");
+        }
+
+        [Test]
         public void FindEntitiesByEidQuery_SingleEntity_CorrectSql()
         {
-            var strings = new List<string>
+            var eids = new List<int>
             {
-                "1"
+                1
             };
 
-            var sql = _sqlQueryConstructor.FindEntitiesByEidQuery(strings);
+            var sql = _sqlQueryConstructor.FindEntitiesByEidQuery(eids);
 
             sql.Should().Be(@"SELECT * FROM Entities
 WHERE Eid = 1;");
@@ -224,13 +233,13 @@ WHERE Eid = 1;");
         [Test]
         public void FindEntitiesByEidQuery_MultipleEntities_CorrectSql()
         {
-            var strings = new List<string>
+            var eids = new List<int>
             {
-                "1",
-                "2"
+                1,
+                2
             };
 
-            var sql = _sqlQueryConstructor.FindEntitiesByEidQuery(strings);
+            var sql = _sqlQueryConstructor.FindEntitiesByEidQuery(eids);
 
             sql.Should().Be(@"SELECT * FROM Entities
 WHERE Eid = 1 OR Eid = 2;");
@@ -250,7 +259,7 @@ WHERE DataType = 'String';");
         [Test]
         public void FindPredicatesAffectedBySubjectQuery()
         {
-            var subject = "1";
+            var subject = 1;
 
             var sql = _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(subject);
 
@@ -261,7 +270,7 @@ WHERE Subject = 1;");
         [Test]
         public void FindPredicatesAffectingObjectQuery()
         {
-            var subject = "1";
+            var subject = 1;
 
             var sql = _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(subject);
 

@@ -44,6 +44,9 @@
   <ItemGroup>
     <Compile Include="DatabaseAdaptor.cs" />
     <Compile Include="DataMediator.cs" />
+    <Compile Include="DataPoint\DataPointBuilder.cs" />
+    <Compile Include="DataPoint\DataPointClientFactory.cs" />
+    <Compile Include="DataPoint\DataPointServerFactory.cs" />
     <Compile Include="DataRestoreStrategy.cs" />
     <Compile Include="DictionaryGraphNode.cs" />
     <Compile Include="EntityToTaggedConverter.cs" />

@@ -14,9 +14,10 @@ namespace SqlDatabase.Interfaces
         string UpdateEntitiesQuery(List<TableEntity> tableEntities);
         string InsertIntoPredicatesQuery(List<Triple> triples);
         string UpdatePredicatesQuery(List<Triple> triples);
-        string FindEntitiesByEidQuery(List<string> eids);
+        string FindAllEntitiesQuery();
+        string FindEntitiesByEidQuery(List<int> eids);
         string FindEntitiesByDataTypeQuery(string dataType);
-        string FindPredicatesAffectedBySubjectQuery(string subjectEid);
-        string FindPredicatesAffectingObjectQuery(string objectEid);
+        string FindPredicatesAffectedBySubjectQuery(int subjectEid);
+        string FindPredicatesAffectingObjectQuery(int objectEid);
     }
 }

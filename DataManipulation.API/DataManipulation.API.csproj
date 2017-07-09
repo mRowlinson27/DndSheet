@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataPoint\IDataPointBuilder.cs" />
+    <Compile Include="DataPoint\IDataPointComponentsBuilderFactory.cs" />
+    <Compile Include="DataPoint\IDataPointFactory.cs" />
     <Compile Include="DTOs\AbilityScore.cs" />
     <Compile Include="DataPoint\IDataPoint.cs" />
     <Compile Include="DTOs\SkillsDto.cs" />

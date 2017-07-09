@@ -103,7 +103,12 @@ namespace SqlDatabase.Implementation
             return sqlPart1 + sqlPart2 + sqlPart3 + sqlPart4 + sqlPart5;
         }
 
-        public string FindEntitiesByEidQuery(List<string> eids)
+        public string FindAllEntitiesQuery()
+        {
+            return @"SELECT * FROM Entities;";
+;        }
+
+        public string FindEntitiesByEidQuery(List<int> eids)
         {
             var sql = "SELECT * FROM Entities\r\nWHERE ";
 
@@ -129,12 +134,12 @@ namespace SqlDatabase.Implementation
             return "SELECT * FROM Entities\r\nWHERE DataType = '" + dataType + "';";
         }
 
-        public string FindPredicatesAffectedBySubjectQuery(string subjectEid)
+        public string FindPredicatesAffectedBySubjectQuery(int subjectEid)
         {
             return "SELECT * FROM Predicates\r\nWHERE Subject = " + subjectEid + ";";
         }
 
-        public string FindPredicatesAffectingObjectQuery(string objectEid)
+        public string FindPredicatesAffectingObjectQuery(int objectEid)
         {
             return "SELECT * FROM Predicates\r\nWHERE Object = " + objectEid + ";";
         }
