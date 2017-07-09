@@ -1,7 +1,6 @@
 ﻿using System;
-using DataManipulation.API;
 
-namespace DataManipulation.EntryData
+namespace DataManipulation.DataPoint
 {
     class TaggableInt
     {

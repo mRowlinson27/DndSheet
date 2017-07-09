@@ -71,9 +71,9 @@
     <Compile Include="CustomFormStructuresTests\EditableTextBoxTests.cs" />
     <Compile Include="CustomFormStructuresTests\DataEntryFormManagerTests.cs" />
     <Compile Include="DataManipulationTests\DictionaryGraphNodeTests.cs" />
-    <Compile Include="DataManipulationTests\EntryDataClientTests.cs" />
-    <Compile Include="DataManipulationTests\EntryDataServerTests.cs" />
-    <Compile Include="DataManipulationTests\EntryDataTests.cs" />
+    <Compile Include="DataManipulationTests\DataPointClientTests.cs" />
+    <Compile Include="DataManipulationTests\DataPointServerTests.cs" />
+    <Compile Include="DataManipulationTests\DataPointTests.cs" />
     <Compile Include="DataManipulationTests\SqlDataCreatorTests.cs" />
     <Compile Include="DataManipulationTests\EventApplierTests.cs" />
     <Compile Include="DataManipulationTests\PropertyApplierTests.cs" />

@@ -5,23 +5,26 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using DataManipulation.API;
-using DataManipulation.API.EntryData;
-using DataManipulation.EntryData;
-using DataManipulation.Taggables;
+using DataManipulation.API.DataPoint;
 using SqlDatabase.API;
 
 namespace DataManipulation
 {
     public class DataRestoreStrategy : IDataRestoreStrategy
     {
-        private readonly IDictionaryGraphNodeFactory<IEntryData> _dictionaryGraphNodeFactory;
+        private readonly IDictionaryGraphNodeFactory<IDataPoint> _dictionaryGraphNodeFactory;
 
-        public DataRestoreStrategy(IDictionaryGraphNodeFactory<IEntryData> dictionaryGraphNodeFactory)
+        public DataRestoreStrategy(IDictionaryGraphNodeFactory<IDataPoint> dictionaryGraphNodeFactory)
         {
             _dictionaryGraphNodeFactory = dictionaryGraphNodeFactory;
         }
 
-        public IDictionaryGraphNode<IEntryData> RestoreTree(IDatabaseAdaptor databaseAccessor)
+        public void CreateAllPoints()
+        {
+            
+        }
+
+        public IDictionaryGraphNode<IDataPoint> RestoreTree(IDatabaseAdaptor databaseAccessor)
         {
             var head = databaseAccessor.FindEntityByEid("Head");
 
