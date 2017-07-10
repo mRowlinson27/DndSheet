@@ -76,6 +76,33 @@ namespace UnitTests.DataManipulationTests
             A.CallTo(() => _dataPoint1.AddSubscriber(_dataPoint2, tripleData[0].Relationship)).MustHaveHappened();
         }
 
+        [Test]
+        public void RestoreTree_GetsHeadCorrectly()
+        {
+            var headName = "Page1";
+            var otherHead = "";
+            var heads = new List<TableEntity>
+            {
+                new TableEntity()
+                {
+                    Eid = 0,
+                    DataType = "Head",
+                    Value = headName
+                },
+                new TableEntity()
+                {
+                    Eid = 1,
+                    DataType = "Head",
+                    Value = otherHead
+                }
+            };
+
+            A.CallTo(() => _databaseControl.FindEntitiesByDatatype("Head")).Returns(heads);
+
+            _dataRestoreStrategy.RestoreTree(headName, _databaseControl);
+
+        }
+
         private void SetupPointCreation()
         {
             _tableEntities = new List<TableEntity>

@@ -24,7 +24,7 @@ namespace DataManipulation
         public Dictionary<int,IDataPoint> CreateAllPoints(IDatabaseControl databaseControl)
         {
             var points = new Dictionary<int, IDataPoint>();
-            var entities = databaseControl.FindAllEntities();
+            var entities = databaseControl.FindEntitiesByDatatype("Point");
 
             foreach (var entity in entities)
             {
@@ -43,12 +43,13 @@ namespace DataManipulation
             return points;
         }
 
-        public IDictionaryGraphNode<IDataPoint> RestoreTree(IDatabaseAdaptor databaseAdaptor)
+        public IDictionaryGraphNode<IDataPoint> RestoreTree(string headName, IDatabaseControl databaseControl)
         {
-            var head = databaseAdaptor.FindEntityByEid("Head");
+            var heads = databaseControl.FindEntitiesByDatatype("Head");
+            var head = heads.FirstOrDefault(x => x.Value == headName);
 
-            var graph = _dictionaryGraphNodeFactory.Create(0, null);
-            var headings = databaseAdaptor.FindEntitiesByDatatype("Heading");
+            var graph = _dictionaryGraphNodeFactory.Create(head.Eid, null);
+            var headings = databaseControl.FindEntitiesByDatatype("GraphNode");
 
 
 

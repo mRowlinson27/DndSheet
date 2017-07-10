@@ -52,17 +52,23 @@ namespace UnitTests.SqLDatabase
             const string connection = "connection";
             const string createEntiryTable = "createEntityTable";
             const string createPredicateTable = "createPredicateTable";
+            const string populateDefaultEntities = "populateDefaultEntities";
+            const string populateDefaultPredicates = "populateDefaultPredicates";
             A.CallTo(() => _fileExplorer.CheckFileExists(connection)).Returns(false);
             A.CallTo(() => _sqLiteDatabaseFactory.Create(connection, _connectionWrapperFactory)).Returns(_sqLiteDatabase);
             A.CallTo(() => _databaseTableCreationQueries.CreateEntitiesTable).Returns(createEntiryTable);
             A.CallTo(() => _databaseTableCreationQueries.CreatePredicatesTable).Returns(createPredicateTable);
+            A.CallTo(() => _databaseTableCreationQueries.PopulateDefaultEntities).Returns(populateDefaultEntities);
+            A.CallTo(() => _databaseTableCreationQueries.PopulateDefaultPredicates).Returns(populateDefaultPredicates);
 
             _databaseBuilder.Build(connection);
 
             A.CallTo(() => _fileExplorer.CreateNewDatabase(connection)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabaseFactory.Create(connection, _connectionWrapperFactory)).MustHaveHappened().
                 Then(A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(createEntiryTable)).MustHaveHappened()).
-                Then(A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(createPredicateTable)).MustHaveHappened());
+                Then(A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(createPredicateTable)).MustHaveHappened()).
+                Then(A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(populateDefaultEntities)).MustHaveHappened()).
+                Then(A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(populateDefaultPredicates)).MustHaveHappened());
         }
     }
 }
