@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace DataManipulation.API.DataPoint
+namespace DataManipulation.API.Point
 {
-    public interface IDataPointCalculateStrategy
+    public interface IPointCalculateStrategy
     {
         object Calculate(object change);
         List<object> Calculate(List<object> changes);

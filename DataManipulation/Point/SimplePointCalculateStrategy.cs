@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using DataManipulation.API.DataPoint;
+using DataManipulation.API.Point;
 
-namespace DataManipulation.DataPoint
+namespace DataManipulation.Point
 {
-    class SimpleDataPointCalculateStrategy : IDataPointCalculateStrategy
+    class SimplePointCalculateStrategy : IPointCalculateStrategy
     {
         public object Calculate(object change)
         {

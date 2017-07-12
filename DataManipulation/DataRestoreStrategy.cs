@@ -5,30 +5,30 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using DataManipulation.API;
-using DataManipulation.API.DataPoint;
+using DataManipulation.API.Point;
 using SqlDatabase.API;
 
 namespace DataManipulation
 {
     public class DataRestoreStrategy : IDataRestoreStrategy
     {
-        private readonly IDataPointBuilder _dataPointBuilder;
-        private readonly IDictionaryGraphNodeFactory<IDataPoint> _dictionaryGraphNodeFactory;
+        private readonly IPointBuilder _pointBuilder;
+        private readonly IDictionaryGraphNodeFactory<IPoint> _dictionaryGraphNodeFactory;
 
-        public DataRestoreStrategy(IDataPointBuilder dataPointBuilder, IDictionaryGraphNodeFactory<IDataPoint> dictionaryGraphNodeFactory)
+        public DataRestoreStrategy(IPointBuilder pointBuilder, IDictionaryGraphNodeFactory<IPoint> dictionaryGraphNodeFactory)
         {
-            _dataPointBuilder = dataPointBuilder;
+            _pointBuilder = pointBuilder;
             _dictionaryGraphNodeFactory = dictionaryGraphNodeFactory;
         }
 
-        public Dictionary<int,IDataPoint> CreateAllPoints(IDatabaseControl databaseControl)
+        public Dictionary<int,IPoint> CreateAllPoints(IDatabaseControl databaseControl)
         {
-            var points = new Dictionary<int, IDataPoint>();
+            var points = new Dictionary<int, IPoint>();
             var entities = databaseControl.FindEntitiesByDatatype("Point");
 
             foreach (var entity in entities)
             {
-                var point = _dataPointBuilder.BuildPoint(entity);
+                var point = _pointBuilder.BuildPoint(entity);
                 points.Add(point.Eid, point);
             }
 
@@ -43,7 +43,7 @@ namespace DataManipulation
             return points;
         }
 
-        public IDictionaryGraphNode<IDataPoint> RestoreTree(string headName, IDatabaseControl databaseControl)
+        public IDictionaryGraphNode<IPoint> RestoreTree(string headName, IDatabaseControl databaseControl)
         {
             var heads = databaseControl.FindEntitiesByDatatype("Head");
             var head = heads.FirstOrDefault(x => x.Value == headName);

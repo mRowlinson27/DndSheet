@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataManipulation.DataPoint
+namespace DataManipulation.Point
 {
     class TaggableInt
     {

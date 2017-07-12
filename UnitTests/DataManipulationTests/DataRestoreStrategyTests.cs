@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataManipulation;
 using DataManipulation.API;
-using DataManipulation.API.DataPoint;
+using DataManipulation.API.Point;
 using FakeItEasy;
 using NUnit.Framework;
 using SqlDatabase.API;
@@ -17,20 +17,20 @@ namespace UnitTests.DataManipulationTests
     class DataRestoreStrategyTests
     {
         private DataRestoreStrategy _dataRestoreStrategy;
-        private IDictionaryGraphNodeFactory<IDataPoint> _dictionaryGraphNodeFactory;
+        private IDictionaryGraphNodeFactory<IPoint> _dictionaryGraphNodeFactory;
         private IDatabaseControl _databaseControl;
-        private IDataPointBuilder _dataPointBuilder;
+        private IPointBuilder _pointBuilder;
         private List<TableEntity> _tableEntities;
-        private IDataPoint _dataPoint1;
-        private IDataPoint _dataPoint2;
+        private IPoint _point1;
+        private IPoint _point2;
 
         [SetUp]
         public void Setup()
         {
-            _dictionaryGraphNodeFactory = A.Fake<IDictionaryGraphNodeFactory<IDataPoint>>();
+            _dictionaryGraphNodeFactory = A.Fake<IDictionaryGraphNodeFactory<IPoint>>();
             _databaseControl = A.Fake<IDatabaseControl>();
-            _dataPointBuilder = A.Fake<IDataPointBuilder>();
-            _dataRestoreStrategy = new DataRestoreStrategy(_dataPointBuilder, _dictionaryGraphNodeFactory);
+            _pointBuilder = A.Fake<IPointBuilder>();
+            _dataRestoreStrategy = new DataRestoreStrategy(_pointBuilder, _dictionaryGraphNodeFactory);
         }
 
         [Test]
@@ -41,8 +41,8 @@ namespace UnitTests.DataManipulationTests
             _dataRestoreStrategy.CreateAllPoints(_databaseControl);
 
             A.CallTo(() => _databaseControl.FindAllEntities()).MustHaveHappened();
-            A.CallTo(() => _dataPointBuilder.BuildPoint(_tableEntities[0])).MustHaveHappened()
-                .Then(A.CallTo(() => _dataPointBuilder.BuildPoint(_tableEntities[1])).MustHaveHappened());
+            A.CallTo(() => _pointBuilder.BuildPoint(_tableEntities[0])).MustHaveHappened()
+                .Then(A.CallTo(() => _pointBuilder.BuildPoint(_tableEntities[1])).MustHaveHappened());
         }
 
         [Test]
@@ -53,8 +53,8 @@ namespace UnitTests.DataManipulationTests
             _dataRestoreStrategy.CreateAllPoints(_databaseControl);
 
             A.CallTo(() => _databaseControl.FindAllEntities()).MustHaveHappened();
-            A.CallTo(() => _dataPointBuilder.BuildPoint(_tableEntities[0])).MustHaveHappened()
-                .Then(A.CallTo(() => _dataPointBuilder.BuildPoint(_tableEntities[1])).MustHaveHappened())
+            A.CallTo(() => _pointBuilder.BuildPoint(_tableEntities[0])).MustHaveHappened()
+                .Then(A.CallTo(() => _pointBuilder.BuildPoint(_tableEntities[1])).MustHaveHappened())
                 .Then(A.CallTo(() => _databaseControl.FindPredicatesAffectedBySubject(A<int>.Ignored))
                     .MustHaveHappened(Repeated.Exactly.Twice));
         }
@@ -73,7 +73,7 @@ namespace UnitTests.DataManipulationTests
 
             _dataRestoreStrategy.CreateAllPoints(_databaseControl);
 
-            A.CallTo(() => _dataPoint1.AddSubscriber(_dataPoint2, tripleData[0].Relationship)).MustHaveHappened();
+            A.CallTo(() => _point1.AddSubscriber(_point2, tripleData[0].Relationship)).MustHaveHappened();
         }
 
         [Test]
@@ -116,13 +116,13 @@ namespace UnitTests.DataManipulationTests
                     Eid = 2, DataType = "Int", Value = "1"
                 }
             };
-            _dataPoint1 = A.Fake<IDataPoint>();
-            _dataPoint2 = A.Fake<IDataPoint>();
+            _point1 = A.Fake<IPoint>();
+            _point2 = A.Fake<IPoint>();
             A.CallTo(() => _databaseControl.FindAllEntities()).Returns(_tableEntities);
-            A.CallTo(() => _dataPointBuilder.BuildPoint(A<TableEntity>.Ignored))
-                .ReturnsNextFromSequence(_dataPoint1, _dataPoint2);
-            A.CallTo(() => _dataPoint1.Eid).Returns(_tableEntities[0].Eid);
-            A.CallTo(() => _dataPoint2.Eid).Returns(_tableEntities[1].Eid);
+            A.CallTo(() => _pointBuilder.BuildPoint(A<TableEntity>.Ignored))
+                .ReturnsNextFromSequence(_point1, _point2);
+            A.CallTo(() => _point1.Eid).Returns(_tableEntities[0].Eid);
+            A.CallTo(() => _point2.Eid).Returns(_tableEntities[1].Eid);
         }
     }
 }

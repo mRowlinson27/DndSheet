@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SqlDatabase.API.DTO;
 
-namespace DataManipulation.API.DataPoint
+namespace DataManipulation.API.Point
 {
-    public interface IDataPointBuilder
+    public interface IPointBuilder
     {
-        IDataPoint BuildPoint(TableEntity tableEntity);
+        IPoint BuildPoint(TableEntity tableEntity);
     }
 }

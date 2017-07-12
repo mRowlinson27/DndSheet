@@ -1,36 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using DataManipulation.API.DataPoint;
+using DataManipulation.API.Point;
 
-namespace DataManipulation.DataPoint
+namespace DataManipulation.Point
 {
-    public class DataPointClient : IDataPointClient
+    public class PointClient : IPointClient
     {
-        private readonly IDataPoint _dataPoint;
+        private readonly IPoint _point;
         private object _value;
         private object _output;
         public object Output { get { return _output; } }
         private Dictionary<int, object> _subscriptions;
 
-        public DataPointClient(IDataPoint dataPoint, object value)
+        public PointClient(IPoint point, object value)
         {
-            _dataPoint = dataPoint;
+            _point = point;
             _value = value;
             _output = value;
             _subscriptions = new Dictionary<int, object>();
         }
 
-        public void UnSubscribeTo(IDataPoint dataPoint)
+        public void UnSubscribeTo(IPoint point)
         {
-            if (_subscriptions.ContainsKey(dataPoint.Eid))
+            if (_subscriptions.ContainsKey(point.Eid))
             {
-                _subscriptions.Remove(dataPoint.Eid);
-                dataPoint.Update -= ReceiveUpdate;
+                _subscriptions.Remove(point.Eid);
+                point.Update -= ReceiveUpdate;
             }
             Update();
         }
 
-        public void SubscribeTo(IDataPoint dataPoint, object currentChange)
+        public void SubscribeTo(IPoint point, object currentChange)
         {
             if (currentChange.GetType() != _value.GetType())
             {
@@ -41,17 +41,17 @@ namespace DataManipulation.DataPoint
                 throw new InvalidOperationException();
             }
 
-            _subscriptions.Add(dataPoint.Eid, currentChange);
-            dataPoint.Update += ReceiveUpdate;
+            _subscriptions.Add(point.Eid, currentChange);
+            point.Update += ReceiveUpdate;
             Update();
         }
 
         private void ReceiveUpdate(object sender, UpdateArgs updateArgs)
         {
-            var server = sender as IDataPoint;
-            if (server != null && updateArgs.Updates.ContainsKey(_dataPoint.Eid))
+            var server = sender as IPoint;
+            if (server != null && updateArgs.Updates.ContainsKey(_point.Eid))
             {
-                _subscriptions[server.Eid] = updateArgs.Updates[_dataPoint.Eid];
+                _subscriptions[server.Eid] = updateArgs.Updates[_point.Eid];
             }
             Update();
         }

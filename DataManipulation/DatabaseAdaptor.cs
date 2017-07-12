@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataManipulation.API;
-using DataManipulation.API.DataPoint;
+using DataManipulation.API.Point;
 using SqlDatabase.API.DTO;
 
 namespace DataManipulation
@@ -27,17 +27,17 @@ namespace DataManipulation
             throw new NotImplementedException();
         }
 
-        public List<IDataPoint> FindEntitiesByEid(List<string> eids)
+        public List<IPoint> FindEntitiesByEid(List<string> eids)
         {
             throw new NotImplementedException();
         }
 
-        public IDataPoint FindEntityByEid(string eid)
+        public IPoint FindEntityByEid(string eid)
         {
             throw new NotImplementedException();
         }
 
-        public List<IDataPoint> FindEntitiesByDatatype(string dataType)
+        public List<IPoint> FindEntitiesByDatatype(string dataType)
         {
             throw new NotImplementedException();
         }

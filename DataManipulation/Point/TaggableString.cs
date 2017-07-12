@@ -1,4 +1,4 @@
-﻿namespace DataManipulation.DataPoint
+﻿namespace DataManipulation.Point
 {
     class TaggableString
     {
