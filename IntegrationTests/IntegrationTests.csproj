@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0A5642E-5605-466F-8A7F-3814F29191BE}</ProjectGuid>
+    <ProjectGuid>{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitTests</RootNamespace>
-    <AssemblyName>UnitTests</AssemblyName>
+    <RootNamespace>IntegrationTests</RootNamespace>
+    <AssemblyName>IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,9 +48,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,41 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomFormsTests\ControlPropertiesStyleTests.cs" />
-    <Compile Include="CustomFormsTests\TextBoxPropertiesStyleTests.cs" />
-    <Compile Include="CustomFormStructuresTests\Builders\CentralLayoutBuilderTests.cs" />
-    <Compile Include="CustomFormStructuresTests\EditableBehaviourStrategyTests.cs" />
-    <Compile Include="CustomFormStructuresTests\Decorators\TableLayoutDecoratorApplierTests.cs" />
-    <Compile Include="CustomFormStructuresTests\Builders\EditableTextBoxBuilderTests.cs" />
-    <Compile Include="CustomFormStructuresTests\Builders\DataEntryFormBuilderTests.cs" />
-    <Compile Include="CustomFormStructuresTests\DataEntryFormTests.cs" />
-    <Compile Include="CustomFormStructuresTests\Decorators\EqualColumnsTableLayoutDecoratorTests.cs" />
-    <Compile Include="CustomFormStructuresTests\EditableTextBoxTests.cs" />
-    <Compile Include="CustomFormStructuresTests\DataEntryFormManagerTests.cs" />
-    <Compile Include="DataManipulationTests\PointBuilderTests.cs" />
-    <Compile Include="DataManipulationTests\DataRestoreStrategyTests.cs" />
-    <Compile Include="DataManipulationTests\DictionaryGraphNodeTests.cs" />
-    <Compile Include="DataManipulationTests\PointClientTests.cs" />
-    <Compile Include="DataManipulationTests\PointServerTests.cs" />
-    <Compile Include="DataManipulationTests\PointTests.cs" />
-    <Compile Include="DataManipulationTests\SqlDataCreatorTests.cs" />
-    <Compile Include="DataManipulationTests\EventApplierTests.cs" />
-    <Compile Include="DataManipulationTests\PropertyApplierTests.cs" />
-    <Compile Include="CustomFormStructuresTests\VerticalScrollStrategyTests.cs" />
-    <Compile Include="CustomFormStructuresTests\DataMapperTests.cs" />
-    <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqLDatabase\DatabaseControlTests.cs" />
-    <Compile Include="SqLDatabase\SqLiteDatabaseBuilderTests.cs" />
-    <Compile Include="SqLDatabase\SqLiteDatabaseTests.cs" />
-    <Compile Include="SqLDatabase\SqlQueryConstructorTests.cs" />
     <Compile Include="Utilities\CalculatorTests.cs" />
-    <Compile Include="Utilities\EquationPartsIdentifierTests.cs" />
-    <Compile Include="Utilities\MathsResolverTests.cs" />
-    <Compile Include="Utilities\NestingIdentifierTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">
@@ -129,11 +93,11 @@
       <Name>FormApp</Name>
     </ProjectReference>
     <ProjectReference Include="..\SqlDatabase.API\SqlDatabase.API.csproj">
-      <Project>{FE714E67-AB32-4B5B-AB13-F1A58DE50935}</Project>
+      <Project>{fe714e67-ab32-4b5b-ab13-f1a58de50935}</Project>
       <Name>SqlDatabase.API</Name>
     </ProjectReference>
     <ProjectReference Include="..\SqlDatabase\SqlDatabase.csproj">
-      <Project>{93BD93C5-7820-495B-BDA8-A41D37E2D852}</Project>
+      <Project>{93bd93c5-7820-495b-bda8-a41d37e2d852}</Project>
       <Name>SqlDatabase</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utilities.API\Utilities.API.csproj">
@@ -146,17 +110,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CustomFormsTests\Builders\" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

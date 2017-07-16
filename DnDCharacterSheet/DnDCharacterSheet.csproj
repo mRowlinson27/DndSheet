@@ -106,6 +106,14 @@
       <Project>{93bd93c5-7820-495b-bda8-a41d37e2d852}</Project>
       <Name>SqlDatabase</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities.API\Utilities.API.csproj">
+      <Project>{8c2b367f-ba2f-48b7-a877-d55ea72ed9d7}</Project>
+      <Name>Utilities.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{1632b768-4973-428d-8733-8e859d1efab5}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

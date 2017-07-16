@@ -26,20 +26,6 @@ namespace DataManipulation
             var points = new Dictionary<int, IPoint>();
             var entities = databaseControl.FindEntitiesByDatatype("Point");
 
-            foreach (var entity in entities)
-            {
-                var point = _pointBuilder.BuildPoint(entity);
-                points.Add(point.Eid, point);
-            }
-
-            foreach (var point in points.Values)
-            {
-                var predicates = databaseControl.FindPredicatesAffectedBySubject(point.Eid);
-                foreach (var predicate in predicates)
-                {
-                    point.AddSubscriber(points[predicate.Subject], predicate.Relationship);
-                }
-            }
             return points;
         }
 

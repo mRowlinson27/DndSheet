@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDCharacterSheet", "DnDCharacterSheet\DnDCharacterSheet.csproj", "{23E551E6-F3AA-434D-A3A4-136F459A1531}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -27,6 +27,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDatabase", "SqlDatabase\SqlDatabase.csproj", "{93BD93C5-7820-495B-BDA8-A41D37E2D852}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDatabase.API", "SqlDatabase.API\SqlDatabase.API.csproj", "{FE714E67-AB32-4B5B-AB13-F1A58DE50935}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.API", "Utilities.API\Utilities.API.csproj", "{8C2B367F-BA2F-48B7-A877-D55EA72ED9D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{1632B768-4973-428D-8733-8E859D1EFAB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +84,18 @@ Global
 		{FE714E67-AB32-4B5B-AB13-F1A58DE50935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE714E67-AB32-4B5B-AB13-F1A58DE50935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE714E67-AB32-4B5B-AB13-F1A58DE50935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C2B367F-BA2F-48B7-A877-D55EA72ED9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C2B367F-BA2F-48B7-A877-D55EA72ED9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C2B367F-BA2F-48B7-A877-D55EA72ED9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C2B367F-BA2F-48B7-A877-D55EA72ED9D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1632B768-4973-428D-8733-8E859D1EFAB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1632B768-4973-428D-8733-8E859D1EFAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1632B768-4973-428D-8733-8E859D1EFAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1632B768-4973-428D-8733-8E859D1EFAB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
