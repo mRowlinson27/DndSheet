@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FakeItEasy;
+﻿using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
 using Utilities.DTOs;
+using Utilities.Interfaces.Calculator;
 using Utilities.Implementation.Calculator;
-using Utilities.Interfaces;
 
-namespace UnitTests.Utilities
+namespace UnitTests.Utilities.Calculator
 {
     [TestFixture]
-    public class CalculatorTests
+    public class EquationCalculatorTests
     {
-        private Calculator _calculator;
+        private EquationCalculator _calculator;
         private IMathsResolver _mathsResolver;
         private INestingIdentifier _nestingIdentifier;
 
@@ -24,7 +19,7 @@ namespace UnitTests.Utilities
         {
             _mathsResolver = A.Fake<IMathsResolver>();
             _nestingIdentifier = A.Fake<INestingIdentifier>();
-            _calculator = new Calculator(_mathsResolver, _nestingIdentifier);
+            _calculator = new EquationCalculator(_mathsResolver, _nestingIdentifier);
         }
 
         [Test]

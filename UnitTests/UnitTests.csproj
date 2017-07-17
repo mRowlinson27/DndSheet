@@ -87,10 +87,16 @@
     <Compile Include="SqLDatabase\SqLiteDatabaseBuilderTests.cs" />
     <Compile Include="SqLDatabase\SqLiteDatabaseTests.cs" />
     <Compile Include="SqLDatabase\SqlQueryConstructorTests.cs" />
-    <Compile Include="Utilities\CalculatorTests.cs" />
-    <Compile Include="Utilities\EquationPartsIdentifierTests.cs" />
-    <Compile Include="Utilities\MathsResolverTests.cs" />
-    <Compile Include="Utilities\NestingIdentifierTests.cs" />
+    <Compile Include="Utilities\Calculator\AdditionRuleResolverTests.cs" />
+    <Compile Include="Utilities\Calculator\EquationCalculatorTests.cs" />
+    <Compile Include="Utilities\Calculator\DivisionRuleResolverTests.cs" />
+    <Compile Include="Utilities\Calculator\EquationPartsIdentifierTests.cs" />
+    <Compile Include="Utilities\Calculator\MathsResolverBuilderTests.cs" />
+    <Compile Include="Utilities\Calculator\MathsResolverTests.cs" />
+    <Compile Include="Utilities\Calculator\MultiplicationRuleResolverTests.cs" />
+    <Compile Include="Utilities\Calculator\NestingIdentifierTests.cs" />
+    <Compile Include="Utilities\Calculator\PowersRuleResolverTests.cs" />
+    <Compile Include="Utilities\Calculator\SubtractionRuleResolverTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -41,13 +41,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\StringRange.cs" />
-    <Compile Include="Implementation\Calculator\Calculator.cs" />
+    <Compile Include="Implementation\Calculator\AdditionRuleResolver.cs" />
+    <Compile Include="Implementation\Calculator\EquationCalculator.cs" />
+    <Compile Include="Implementation\Calculator\DivisionRuleResolver.cs" />
     <Compile Include="Implementation\Calculator\EquationPartsIdentifier.cs" />
     <Compile Include="Implementation\Calculator\MathsResolver.cs" />
+    <Compile Include="Implementation\Calculator\MathsResolverBuilder.cs" />
+    <Compile Include="Implementation\Calculator\MathsResolverFactory.cs" />
+    <Compile Include="Implementation\Calculator\MathsRuleResolverFactory.cs" />
+    <Compile Include="Implementation\Calculator\MultiplicationRuleResolver.cs" />
     <Compile Include="Implementation\Calculator\NestingIdentifier.cs" />
-    <Compile Include="Interfaces\IEquationPartsIdentifier.cs" />
-    <Compile Include="Interfaces\IMathsResolver.cs" />
-    <Compile Include="Interfaces\INestingIdentifier.cs" />
+    <Compile Include="Implementation\Calculator\PowersRuleResolver.cs" />
+    <Compile Include="Implementation\Calculator\SubtractionRuleResolver.cs" />
+    <Compile Include="Interfaces\Calculator\IEquationPartsIdentifier.cs" />
+    <Compile Include="Interfaces\Calculator\IMathsResolver.cs" />
+    <Compile Include="Interfaces\Calculator\IMathsResolverBuilder.cs" />
+    <Compile Include="Interfaces\Calculator\IMathsResolverFactory.cs" />
+    <Compile Include="Interfaces\Calculator\IMathsRuleResolver.cs" />
+    <Compile Include="Interfaces\Calculator\IMathsRuleResolverFactory.cs" />
+    <Compile Include="Interfaces\Calculator\INestingIdentifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

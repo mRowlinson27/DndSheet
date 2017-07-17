@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Utilities.Interfaces;
+using Utilities.Interfaces.Calculator;
 
 namespace Utilities.Implementation.Calculator
 {

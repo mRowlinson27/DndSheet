@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Utilities.Interfaces
+namespace Utilities.API
 {
-    public interface IMathsResolver
+    public interface IEquationCalculator
     {
-        string ResolveSection(string equation);
+        int Calculate(string equation);
     }
 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 using Utilities.Implementation.Calculator;
 
-namespace UnitTests.Utilities
+namespace UnitTests.Utilities.Calculator
 {
     [TestFixture]
     class EquationPartsIdentifierTests

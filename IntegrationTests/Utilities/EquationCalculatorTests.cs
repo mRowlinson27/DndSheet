@@ -8,22 +8,24 @@ using FluentAssertions;
 using NUnit.Framework;
 using Utilities.Implementation.Calculator;
 using Utilities.Interfaces;
+using Utilities.Interfaces.Calculator;
 
 namespace IntegrationTests.Utilities
 {
     [TestFixture]
-    public class CalculatorTests
+    public class EquationCalculatorTests
     {
-        private Calculator _calculator;
+        private EquationCalculator _calculator;
         private IMathsResolver _mathsResolver;
         private INestingIdentifier _nestingIdentifier;
 
         [SetUp]
         public void Setup()
         {
-            _mathsResolver = new MathsResolver(new EquationPartsIdentifier());
+            _mathsResolver = new MathsResolverBuilder(new MathsResolverFactory(new EquationPartsIdentifier()),
+                new MathsRuleResolverFactory()).Build();
             _nestingIdentifier = new NestingIdentifier();
-            _calculator = new Calculator(_mathsResolver, _nestingIdentifier);
+            _calculator = new EquationCalculator(_mathsResolver, _nestingIdentifier);
         }
 
         [Test]

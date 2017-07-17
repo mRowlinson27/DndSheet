@@ -2,15 +2,16 @@
 using Utilities.API;
 using Utilities.DTOs;
 using Utilities.Interfaces;
+using Utilities.Interfaces.Calculator;
 
 namespace Utilities.Implementation.Calculator
 {
-    public class Calculator : ICalculator
+    public class EquationCalculator : IEquationCalculator
     {
         private readonly IMathsResolver _mathsResolver;
         private readonly INestingIdentifier _nestingIdentifier;
 
-        public Calculator(IMathsResolver mathsResolver, INestingIdentifier nestingIdentifier)
+        public EquationCalculator(IMathsResolver mathsResolver, INestingIdentifier nestingIdentifier)
         {
             _mathsResolver = mathsResolver;
             _nestingIdentifier = nestingIdentifier;

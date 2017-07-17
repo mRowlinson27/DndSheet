@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Util
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5E1C5087-172B-4BA5-B156-7592E0189195}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,5 +101,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0A5642E-5605-466F-8A7F-3814F29191BE} = {5E1C5087-172B-4BA5-B156-7592E0189195}
+		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D} = {5E1C5087-172B-4BA5-B156-7592E0189195}
 	EndGlobalSection
 EndGlobal

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Text.RegularExpressions;
 using Utilities.DTOs;
 using Utilities.Interfaces;
+using Utilities.Interfaces.Calculator;
 
 namespace Utilities.Implementation.Calculator
 {
