@@ -49,11 +49,43 @@ namespace UnitTests.Utilities.Calculator
         }
 
         [Test]
-        public void FindParts_HasTwoOperators_ReturnsThreeParts()
+        public void FindParts_HasTwoPlusOperators_ReturnsOne()
         {
             var result = _equationPartsIdentifier.FindParts("1 + +");
 
-            result.Should().BeEquivalentTo(new List<string> { "1", "+", "+" });
+            result.Should().BeEquivalentTo(new List<string> { "1", "+" });
+        }
+
+        [Test]
+        public void FindParts_HasTwoNegOperators_ReturnsOne()
+        {
+            var result = _equationPartsIdentifier.FindParts("1 - -");
+
+            result.Should().BeEquivalentTo(new List<string> { "1", "+" });
+        }
+
+        [Test]
+        public void FindParts_HasNegThenPosOperators_ReturnsNeg()
+        {
+            var result = _equationPartsIdentifier.FindParts("1 - +");
+
+            result.Should().BeEquivalentTo(new List<string> { "1", "-" });
+        }
+
+        [Test]
+        public void FindParts_HasPosThenNegOperators_ReturnsNeg()
+        {
+            var result = _equationPartsIdentifier.FindParts("1 + -");
+
+            result.Should().BeEquivalentTo(new List<string> { "1", "-" });
+        }
+
+        [Test]
+        public void FindParts_HasLongSequenceOperator_ReturnsOne()
+        {
+            var result = _equationPartsIdentifier.FindParts("1 +++++++-");
+
+            result.Should().BeEquivalentTo(new List<string> { "1", "-" });
         }
 
         [Test]

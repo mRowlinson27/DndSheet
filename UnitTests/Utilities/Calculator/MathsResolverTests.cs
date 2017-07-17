@@ -39,7 +39,7 @@ namespace UnitTests.Utilities.Calculator
 
             var response = _mathsResolver.ResolveSection(equation);
 
-            response.Should().Be("2");
+            response.Should().Be("+2");
             A.CallTo(() => _equationPartsIdentifier.FindParts(equation)).MustHaveHappened();
             A.CallTo(() => _mathsRuleResolver.BothPositiveResolution(input, 1)).MustHaveHappened();
         }
@@ -82,7 +82,7 @@ namespace UnitTests.Utilities.Calculator
 
             var response = _mathsResolver.ResolveSection(equation);
 
-            response.Should().Be("2");
+            response.Should().Be("+2");
             A.CallTo(() => _equationPartsIdentifier.FindParts(equation)).MustHaveHappened();
             A.CallTo(() => _mathsRuleResolver.BothNegativeResolution(input, 2)).MustHaveHappened();
         }
@@ -104,7 +104,7 @@ namespace UnitTests.Utilities.Calculator
 
             var response = _mathsResolver.ResolveSection(equation);
 
-            response.Should().Be("2");
+            response.Should().Be("+2");
             A.CallTo(() => _equationPartsIdentifier.FindParts(equation)).MustHaveHappened();
             A.CallTo(() => _mathsRuleResolver.FirstTermNegativeResolution(input, 2)).MustHaveHappened();
 
@@ -127,7 +127,7 @@ namespace UnitTests.Utilities.Calculator
 
             var response = _mathsResolver.ResolveSection(equation);
 
-            response.Should().Be("2");
+            response.Should().Be("+2");
             A.CallTo(() => _equationPartsIdentifier.FindParts(equation)).MustHaveHappened();
             A.CallTo(() => _mathsRuleResolver.SecondTermNegativeResolution(input, 1)).MustHaveHappened();
         }

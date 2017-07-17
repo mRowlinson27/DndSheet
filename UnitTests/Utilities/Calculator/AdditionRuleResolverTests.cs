@@ -65,6 +65,20 @@ namespace UnitTests.Utilities.Calculator
         }
 
         [Test]
+        public void BothPositiveResolution_NoFirstTerm_PerformedCorrectly()
+        {
+            var input = new List<string>()
+            {
+                "+",
+                "2"
+            };
+
+            var value = _additionResolver.BothPositiveResolution(input, 0);
+
+            value.Should().BeEquivalentTo("2");
+        }
+
+        [Test]
         public void SecondTermNegativeResolution_PerformedCorrectly()
         {
             var input = new List<string>()

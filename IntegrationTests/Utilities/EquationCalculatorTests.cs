@@ -62,7 +62,6 @@ namespace IntegrationTests.Utilities
         public void Calculate_SimpleEquation4()
         {
             var equation = "10 * 5 - (4 + 2) ^ 2 + 6 / 3";
-
             var answer = _calculator.Calculate(equation);
 
             answer.Should().Be(16);

@@ -40,27 +40,27 @@ namespace Utilities.Implementation.Calculator
                     {
                         if (FirstTermIsNegative(equationList, i) && SecondTermIsNegative(equationList, i))
                         {
-                            equationList[i - 2] = mathsRuleResolver.BothNegativeResolution(equationList, i);
+                            equationList[i - 2] = PrependPosSign(mathsRuleResolver.BothNegativeResolution(equationList, i));
                             equationList.RemoveRange(i - 1, 4);
                         }
                         else if (FirstTermIsNegative(equationList, i))
                         {
-                            equationList[i - 2] = mathsRuleResolver.FirstTermNegativeResolution(equationList, i);
+                            equationList[i - 2] = PrependPosSign(mathsRuleResolver.FirstTermNegativeResolution(equationList, i));
                             equationList.RemoveRange(i - 1, 3);
                         }
                         else if (SecondTermIsNegative(equationList, i))
                         {
-                            equationList[i - 1] = mathsRuleResolver.SecondTermNegativeResolution(equationList, i);
+                            equationList[i - 1] = PrependPosSign(mathsRuleResolver.SecondTermNegativeResolution(equationList, i));
                             equationList.RemoveRange(i, 3);
                         }
                         else if (i == 0)
                         {
-                            equationList[i] = mathsRuleResolver.BothPositiveResolution(equationList, i);
+                            equationList[i] = PrependPosSign(mathsRuleResolver.BothPositiveResolution(equationList, i));
                             equationList.RemoveRange(i + 1, 1);
                         }
                         else
                         {
-                            equationList[i - 1] = mathsRuleResolver.BothPositiveResolution(equationList, i);
+                            equationList[i - 1] = PrependPosSign(mathsRuleResolver.BothPositiveResolution(equationList, i));
                             equationList.RemoveRange(i, 2);
                         }
                         i = equationList.Count;
@@ -87,6 +87,15 @@ namespace Utilities.Implementation.Calculator
                 return true;
             }
             return false;
+        }
+
+        private string PrependPosSign(string input)
+        {
+            if (int.Parse(input) >= 0)
+            {
+                return "+" + input;
+            }
+            return input;
         }
     }
 }

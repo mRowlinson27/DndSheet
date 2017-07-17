@@ -19,6 +19,10 @@ namespace Utilities.Implementation.Calculator
 
         public string BothPositiveResolution(List<string> input, int index)
         {
+            if (index == 0)
+            {
+                return (int.Parse(input[index + 1])).ToString();
+            }
             return (int.Parse(input[index - 1]) + int.Parse(input[index + 1])).ToString();
         }
 
