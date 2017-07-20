@@ -16,7 +16,8 @@ namespace SqlDatabase.API
         List<TableEntity> FindEntitiesByEid(List<int> eids);
         TableEntity FindEntityByEid(int eid);
         List<TableEntity> FindEntitiesByDatatype(string dataType);
-        List<Triple> FindPredicatesAffectedBySubject(int subjectEid);
-        List<Triple> FindPredicatesAffectingObject(int objectEid);
+        List<Triple> FindTriplesAffectedBySubjectEid(int subjectEid);
+        List<Triple> FindTriplesAffectingObjectEid(int objectEid);
+        List<int> FindEidsWithGivenObjectType(string objectType);
     }
 }

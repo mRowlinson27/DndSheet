@@ -260,12 +260,12 @@ namespace UnitTests.SqLDatabase
                     {"Subject", "1"}, {"Relationship", "0"}, {"Object", "2"}
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindPredicatesAffectedBySubject(1);
+            _databaseControl.FindTriplesAffectedBySubjectEid(1);
 
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(1)).MustHaveHappened();
+            A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(1)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
         }
 
@@ -287,13 +287,13 @@ namespace UnitTests.SqLDatabase
             {
                 new Triple
                 {
-                    Subject = 1, Relationship = "0", Object = 2
+                    Subject = 1, Relationship = 0, Object = 2
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindPredicatesAffectedBySubject(1);
+            var response = _databaseControl.FindTriplesAffectedBySubjectEid(1);
 
             response.ShouldAllBeEquivalentTo(data);
         }
@@ -312,12 +312,12 @@ namespace UnitTests.SqLDatabase
                     {"Subject", "1"}, {"Relationship", "0"}, {"Object", "2"}
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindPredicatesAffectingObject(1);
+            _databaseControl.FindTriplesAffectingObjectEid(1);
 
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(1)).MustHaveHappened();
+            A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectingObjectQuery(1)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
         }
 
@@ -339,13 +339,43 @@ namespace UnitTests.SqLDatabase
             {
                 new Triple
                 {
-                    Subject = 1, Relationship = "0", Object = 2
+                    Subject = 1, Relationship = 0, Object = 2
                 }
             };
-            A.CallTo(() => _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindPredicatesAffectingObject(1);
+            var response = _databaseControl.FindTriplesAffectingObjectEid(1);
+
+            response.ShouldAllBeEquivalentTo(data);
+        }
+
+        [Test]
+        public void FindEidsWithGivenObjectType()
+        {
+            const string sql = "sql";
+            const string path = @"C:\Temp\MYDATABASE.db";
+            A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
+            _databaseControl.Connect(path);
+            var nameValueData = new List<NameValueCollection>
+            {
+                new NameValueCollection()
+                {
+                    {"Subject", "1"}
+                },
+                new NameValueCollection()
+                {
+                    {"Subject", "2"}
+                }
+            };
+            var data = new List<int>
+            {
+                1, 2
+            };
+            A.CallTo(() => _sqlQueryConstructor.FindEidsWithGivenObjectTypeQuery(A<string>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
+
+            var response = _databaseControl.FindEidsWithGivenObjectType("");
 
             response.ShouldAllBeEquivalentTo(data);
         }

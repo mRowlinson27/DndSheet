@@ -66,21 +66,23 @@ END;";
 (4, 'Uri', 'Int'),
 (5, 'Predicate', 'ObjectType'),
 (6, 'Predicate', 'HasValue'),
-(7, 'Predicate', 'Owns'),
-(8, 'BlankNode', 'BlankNode1'),
-(9, 'BlankNode', 'BlankNode2'),
-(10, 'Constant', '14'),
-(11, 'BlankNode', 'BlankNode3'),
-(12, 'Constant', '1+1');";
+(7, 'Predicate', 'HasEquation'),
+(8, 'Predicate', 'ValueOf'),
+(9, 'Predicate', 'Owns'),
+(10, 'BlankNode', 'BlankNode1'),
+(11, 'BlankNode', 'BlankNode2'),
+(12, 'Constant', '14'),
+(13, 'BlankNode', 'BlankNode3'),
+(14, 'Constant', '1+1');";
 
         private string _populateDefaultPredicates =
 @"INSERT INTO Predicates (Subject, Relationship, Object) VALUES
-(8, 5, 1),
-(8, 7, 9),
-(9, 5, 4),
-(9, 6, 10),
-(8, 7, 11),
-(11, 5, 2),
-(11, 6, 12);";
+(10, 5, 1),
+(10, 6, 11),
+(11, 5, 4),
+(11, 8, 12),
+(10, 7, 13),
+(13, 5, 2),
+(13, 8, 14);";
     }
 }

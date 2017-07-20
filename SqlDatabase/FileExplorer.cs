@@ -19,5 +19,13 @@ namespace SqlDatabase
         {
             SQLiteConnection.CreateFile(filename);
         }
+
+        public void DeleteFile(string filename)
+        {
+            if (CheckFileExists(filename))
+            {
+                File.Delete(filename);
+            }
+        }
     }
 }

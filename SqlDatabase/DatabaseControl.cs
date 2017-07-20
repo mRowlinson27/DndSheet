@@ -67,18 +67,32 @@ namespace SqlDatabase
             return CreateTableEntities(nameValueCollections);
         }
 
-        public List<Triple> FindPredicatesAffectedBySubject(int subjectEid)
+        public List<Triple> FindTriplesAffectedBySubjectEid(int subjectEid)
         {
-            var sql = _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(subjectEid);
+            var sql = _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(subjectEid);
             var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
             return CreateTriples(nameValueCollections);
         }
 
-        public List<Triple> FindPredicatesAffectingObject(int objectEid)
+        public List<Triple> FindTriplesAffectingObjectEid(int objectEid)
         {
-            var sql = _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(objectEid);
+            var sql = _sqlQueryConstructor.FindTriplesAffectingObjectQuery(objectEid);
             var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
             return CreateTriples(nameValueCollections);
+        }
+
+        public List<int> FindEidsWithGivenObjectType(string objectType)
+        {
+            var sql = _sqlQueryConstructor.FindEidsWithGivenObjectTypeQuery(objectType);
+            var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
+            var response = new List<int>();
+            foreach (var nvc in nameValueCollections)
+            {
+                int subjectEid;
+                int.TryParse(nvc.Get("Subject"), out subjectEid);
+                response.Add(subjectEid);
+            }
+            return response;
         }
 
         private List<TableEntity> CreateTableEntities(List<NameValueCollection> nameValueCollections)
@@ -104,13 +118,14 @@ namespace SqlDatabase
             var response = new List<Triple>();
             foreach (var nvc in nameValueCollections)
             {
-                int subjectEid, objectEid;
+                int subjectEid, objectEid, relationshipEid;
                 int.TryParse(nvc.Get("Subject"), out subjectEid);
+                int.TryParse(nvc.Get("Relationship"), out relationshipEid);
                 int.TryParse(nvc.Get("Object"), out objectEid);
                 var triple = new Triple()
                 {
                     Subject = subjectEid,
-                    Relationship = nvc.Get("Relationship"),
+                    Relationship = relationshipEid,
                     Object = objectEid
                 };
                 response.Add(triple);

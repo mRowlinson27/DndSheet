@@ -126,14 +126,14 @@ Eid IN (1, 2);");
             {
                 new Triple
                 {
-                    Subject = 1, Relationship = "Owns", Object = 2
+                    Subject = 1, Relationship = 0, Object = 2
                 }
             };
 
             var sql = _sqlQueryConstructor.InsertIntoPredicatesQuery(data);
 
             sql.Should().Be(@"INSERT INTO Predicates (Subject, Relationship, Object) VALUES
-(1, 'Owns', 2);");
+(1, 0, 2);");
         }
 
         [Test]
@@ -143,19 +143,19 @@ Eid IN (1, 2);");
             {
                 new Triple
                 {
-                    Subject = 1, Relationship = "Owns", Object = 2
+                    Subject = 1, Relationship = 0, Object = 2
                 },
                 new Triple
                 {
-                    Subject = 2, Relationship = "Owned By", Object = 1
+                    Subject = 2, Relationship = 0, Object = 1
                 }
             };
 
             var sql = _sqlQueryConstructor.InsertIntoPredicatesQuery(data);
 
             sql.Should().Be(@"INSERT INTO Predicates (Subject, Relationship, Object) VALUES
-(1, 'Owns', 2),
-(2, 'Owned By', 1);");
+(1, 0, 2),
+(2, 0, 1);");
         }
 
         [Test]
@@ -165,7 +165,7 @@ Eid IN (1, 2);");
             {
                 new Triple
                 {
-                    Subject = 1, Relationship = "Owns", Object = 2
+                    Subject = 1, Relationship = 0, Object = 2
                 }
             };
 
@@ -174,7 +174,7 @@ Eid IN (1, 2);");
             sql.Should().Be(@"UPDATE Predicates
 SET Relationship =
 CASE
-WHEN Subject = 1 AND Object = 2 THEN 'Owns'
+WHEN Subject = 1 AND Object = 2 THEN 0
 END
 WHERE
 Subject = 1 AND Object = 2;");
@@ -187,11 +187,11 @@ Subject = 1 AND Object = 2;");
             {
                 new Triple
                 {
-                    Subject = 1, Relationship = "Owns", Object = 2
+                    Subject = 1, Relationship = 0, Object = 2
                 },
                 new Triple
                 {
-                    Subject = 2, Relationship = "Owned By", Object = 1
+                    Subject = 2, Relationship = 10, Object = 1
                 }
             };
 
@@ -200,8 +200,8 @@ Subject = 1 AND Object = 2;");
             sql.Should().Be(@"UPDATE Predicates
 SET Relationship =
 CASE
-WHEN Subject = 1 AND Object = 2 THEN 'Owns'
-WHEN Subject = 2 AND Object = 1 THEN 'Owned By'
+WHEN Subject = 1 AND Object = 2 THEN 0
+WHEN Subject = 2 AND Object = 1 THEN 10
 END
 WHERE
 Subject = 1 AND Object = 2 OR Subject = 2 AND Object = 1;");
@@ -261,7 +261,7 @@ WHERE DataType = 'String';");
         {
             var subject = 1;
 
-            var sql = _sqlQueryConstructor.FindPredicatesAffectedBySubjectQuery(subject);
+            var sql = _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(subject);
 
             sql.Should().Be(@"SELECT * FROM Predicates
 WHERE Subject = 1;");
@@ -272,7 +272,7 @@ WHERE Subject = 1;");
         {
             var subject = 1;
 
-            var sql = _sqlQueryConstructor.FindPredicatesAffectingObjectQuery(subject);
+            var sql = _sqlQueryConstructor.FindTriplesAffectingObjectQuery(subject);
 
             sql.Should().Be(@"SELECT * FROM Predicates
 WHERE Object = 1;");

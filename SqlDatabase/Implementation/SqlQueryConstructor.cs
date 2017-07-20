@@ -72,7 +72,7 @@ namespace SqlDatabase.Implementation
                 {
                     sql += ",";
                 }
-                sql += "\r\n(" + triple.Subject + ", '" + triple.Relationship + "', " + triple.Object + ")";
+                sql += "\r\n(" + triple.Subject + ", " + triple.Relationship + ", " + triple.Object + ")";
             }
             sql += ";";
             return sql;
@@ -88,7 +88,7 @@ namespace SqlDatabase.Implementation
             var firstLoop = true;
             foreach (var triple in triples)
             {
-                sqlPart2 += "\r\nWHEN Subject = " + triple.Subject + " AND Object = " + triple.Object + " THEN '" + triple.Relationship + "'";
+                sqlPart2 += "\r\nWHEN Subject = " + triple.Subject + " AND Object = " + triple.Object + " THEN " + triple.Relationship + "";
                 if (firstLoop)
                 {
                     firstLoop = false;
@@ -134,12 +134,12 @@ namespace SqlDatabase.Implementation
             return "SELECT * FROM Entities\r\nWHERE DataType = '" + dataType + "';";
         }
 
-        public string FindPredicatesAffectedBySubjectQuery(int subjectEid)
+        public string FindTriplesAffectedBySubjectQuery(int subjectEid)
         {
             return "SELECT * FROM Predicates\r\nWHERE Subject = " + subjectEid + ";";
         }
 
-        public string FindPredicatesAffectingObjectQuery(int objectEid)
+        public string FindTriplesAffectingObjectQuery(int objectEid)
         {
             return "SELECT * FROM Predicates\r\nWHERE Object = " + objectEid + ";";
         }
@@ -157,6 +157,27 @@ namespace SqlDatabase.Implementation
   INNER JOIN Entities ON Relationship=Entities.Eid
 )
 INNER JOIN Entities ON Object=Entities.Eid;";
+        }
+
+        public string FindDetailsFromEid()
+        {
+            return @"SELECT Subject, Relationship, Value AS Object, Object as ObjectEid FROM
+(
+  SELECT Subject, Value AS Relationship, Object FROM
+  (
+      SELECT Value AS Subject, Relationship, Object
+      FROM Predicates
+      INNER JOIN Entities ON Predicates.Subject=Entities.Eid
+      WHERE Subject = 10
+  )
+  INNER JOIN Entities ON Relationship=Entities.Eid
+)
+INNER JOIN Entities ON Object=Entities.Eid;";
+        }
+
+        public string FindEidsWithGivenObjectTypeQuery(string objectType)
+        {
+            return "SELECT Subject FROM Predicates\r\nWHERE Relationship = 'ObjectType' AND Object = '" + objectType + "';";
         }
     }
 }

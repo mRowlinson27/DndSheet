@@ -10,5 +10,6 @@ namespace SqlDatabase
     {
         bool CheckFileExists(string fileName);
         void CreateNewDatabase(string filename);
+        void DeleteFile(string filename);
     }
 }

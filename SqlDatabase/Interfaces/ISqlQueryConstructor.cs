@@ -17,8 +17,9 @@ namespace SqlDatabase.Interfaces
         string FindAllEntitiesQuery();
         string FindEntitiesByEidQuery(List<int> eids);
         string FindEntitiesByDataTypeQuery(string dataType);
-        string FindPredicatesAffectedBySubjectQuery(int subjectEid);
-        string FindPredicatesAffectingObjectQuery(int objectEid);
+        string FindTriplesAffectedBySubjectQuery(int subjectEid);
+        string FindTriplesAffectingObjectQuery(int objectEid);
         string FindAllPredicatesQuery();
+        string FindEidsWithGivenObjectTypeQuery(string objectType);
     }
 }

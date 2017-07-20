@@ -14,29 +14,37 @@ namespace IntegrationTests.SqlDatabase
     public class SqLiteDatabaseBuilderTests
     {
         private SqLiteDatabaseBuilder _sqLiteDatabaseBuilder;
+        private IFileExplorer _fileExplorer;
 
         [SetUp]
         public void Setup()
         {
-            _sqLiteDatabaseBuilder = new SqLiteDatabaseBuilder(new DatabaseTableCreationQueries(), new FileExplorer(),
+            _fileExplorer = new FileExplorer();
+            _sqLiteDatabaseBuilder = new SqLiteDatabaseBuilder(new DatabaseTableCreationQueries(), _fileExplorer,
                 new SqLiteDatabaseFactory(), new SqLiteConnectionWrapperFactory());
         }
 
         [Test]
         public void Build_CreateDefaultDatabase()
         {
-           
+           const string path = @"C:\Temp\TestDatabase.db";
             var dbControl = new DatabaseControl(_sqLiteDatabaseBuilder, new SqlQueryConstructor());
-            dbControl.Connect(@"C:\Temp\TestDatabase.db");
+            _fileExplorer.DeleteFile(path);
+            dbControl.Connect(path);
 
-            var vals = dbControl.FindAllEntities();
+            var vals = dbControl.FindEidsWithGivenObjectType("Point");
 
             foreach (var val in vals)
             {
-                Console.WriteLine($"{val.Eid} - {val.DataType} - {val.Value}");
+                var data = dbControl.FindTriplesAffectedBySubjectEid(val);
+                Console.WriteLine($"{val}");
+                foreach (var d in data)
+                {
+                    Console.WriteLine($"{d.Subject} - {d.Relationship} - {d.Object}");
+                }
             }
 
-            var vals2 = dbControl.FindPredicatesAffectedBySubject(8);
+            var vals2 = dbControl.FindTriplesAffectedBySubjectEid(8);
 
             foreach (var val in vals2)
             {
