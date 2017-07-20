@@ -143,5 +143,20 @@ namespace SqlDatabase.Implementation
         {
             return "SELECT * FROM Predicates\r\nWHERE Object = " + objectEid + ";";
         }
+
+        public string FindAllPredicatesQuery()
+        {
+            return @"SELECT Subject, Relationship, Value AS Object FROM
+(
+  SELECT Subject, Value AS Relationship, Object FROM
+  (
+      SELECT Value AS Subject, Relationship, Object
+      FROM Predicates
+      INNER JOIN Entities ON Predicates.Subject=Entities.Eid
+  )
+  INNER JOIN Entities ON Relationship=Entities.Eid
+)
+INNER JOIN Entities ON Object=Entities.Eid;";
+        }
     }
 }

@@ -24,6 +24,11 @@ namespace SqlDatabase.Implementation
             get { return _populateDefaultPredicates; }
         }
 
+        public string CreatePredicatesTrigger
+        {
+            get { return _createPredicateTrigger; }
+        }
+
         private string _createEntitiesTable = 
 @"CREATE TABLE Entities (
 Eid INTEGER PRIMARY KEY,
@@ -33,28 +38,49 @@ Value VARCHAR(50));";
         private string _createPredicatesTable =
 @"CREATE TABLE Predicates (
 Subject INTEGER,
-Relationship VARCHAR(50),
+Relationship INTEGER,
 Object INTEGER,
-PRIMARY KEY (Object, Subject),
+PRIMARY KEY (Object, Relationship, Subject),
 FOREIGN KEY (Object) REFERENCES Entities (Eid),
+FOREIGN KEY (Relationship) REFERENCES Entities (Eid),
 FOREIGN KEY (Subject) REFERENCES Entities (Eid));";
+
+        private string _createPredicateTrigger =
+@"CREATE TRIGGER BeforePredicateInsert BEFORE INSERT ON Predicates  
+BEGIN  
+SELECT CASE   
+	WHEN ((SELECT Datatype FROM Entities WHERE Eid = NEW.Subject AND (Datatype = 'Uri' OR Datatype = 'BlankNode')) ISNULL)   
+		THEN RAISE(ABORT, 'Subject must be a Uri or BlankNode')
+    WHEN ((SELECT Datatype FROM Entities WHERE Eid = NEW.Relationship AND Datatype = 'Predicate') ISNULL)   
+		THEN RAISE(ABORT, 'Relationship must be a predicate')
+    WHEN ((SELECT Datatype FROM Entities WHERE Eid = NEW.Object AND (Datatype = 'Uri' OR Datatype = 'BlankNode' OR Datatype = 'Constant')) ISNULL)   
+		THEN RAISE(ABORT, 'Subject must be a Uri, BlankNode or Constant')
+	END;
+END;";
 
         private string _populateDefaultEntities =
 @"INSERT INTO Entities (Eid, DataType, Value) VALUES
-(0, 'Head', 'Page1'),
-(1, 'GraphNode', ''),
-(2, 'GraphNode', ''),
-(3, 'GraphNode', ''),
-(4, 'String', 'Character Details'),
-(5, 'String', 'Ability Scores'),
-(6, 'String', 'Str');";
+(1, 'Uri', 'Point'),
+(2, 'Uri', 'Equation'),
+(3, 'Uri', 'String'),
+(4, 'Uri', 'Int'),
+(5, 'Predicate', 'ObjectType'),
+(6, 'Predicate', 'HasValue'),
+(7, 'Predicate', 'Owns'),
+(8, 'BlankNode', 'BlankNode1'),
+(9, 'BlankNode', 'BlankNode2'),
+(10, 'Constant', '14'),
+(11, 'BlankNode', 'BlankNode3'),
+(12, 'Constant', '1+1');";
 
         private string _populateDefaultPredicates =
 @"INSERT INTO Predicates (Subject, Relationship, Object) VALUES
-(0, 'Has', 1),
-(0, 'Has', 2),
-(1, 'Has', 3),
-(1, 'Has', 4),
-(2, 'Has', 4);";
+(8, 5, 1),
+(8, 7, 9),
+(9, 5, 4),
+(9, 6, 10),
+(8, 7, 11),
+(11, 5, 2),
+(11, 6, 12);";
     }
 }

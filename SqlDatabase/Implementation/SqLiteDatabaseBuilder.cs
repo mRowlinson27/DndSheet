@@ -28,6 +28,7 @@ namespace SqlDatabase.Implementation
                 sqliteDatabase = _sqLiteDatabaseFactory.Create(connection, _sqLiteConnectionWrapperFactory);
                 sqliteDatabase.ExecuteNonQuery(_databaseTableCreationQueries.CreateEntitiesTable);
                 sqliteDatabase.ExecuteNonQuery(_databaseTableCreationQueries.CreatePredicatesTable);
+                sqliteDatabase.ExecuteNonQuery(_databaseTableCreationQueries.CreatePredicatesTrigger);
                 sqliteDatabase.ExecuteNonQuery(_databaseTableCreationQueries.PopulateDefaultEntities);
                 sqliteDatabase.ExecuteNonQuery(_databaseTableCreationQueries.PopulateDefaultPredicates);
             }

@@ -12,5 +12,6 @@ namespace SqlDatabase.Interfaces
         string CreatePredicatesTable { get; }
         string PopulateDefaultEntities { get; }
         string PopulateDefaultPredicates { get; }
+        string CreatePredicatesTrigger { get; }
     }
 }
