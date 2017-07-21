@@ -159,25 +159,39 @@ namespace SqlDatabase.Implementation
 INNER JOIN Entities ON Object=Entities.Eid;";
         }
 
-        public string FindDetailsFromEid()
+        public string FindObjectDetailsFromEid(int eid)
         {
-            return @"SELECT Subject, Relationship, Value AS Object, Object as ObjectEid FROM
+            return @"SELECT Subject, Relationship, Value as ExtendedRelationship, V as Value FROM
 (
-  SELECT Subject, Value AS Relationship, Object FROM
+  SELECT Sub as Subject, Relation as Relationship, Relationship as ExtendedRelationship, Value as V FROM
   (
-      SELECT Value AS Subject, Relationship, Object
+    (SELECT Subject as Sub, Relationship as Relation, Object as ObjectEid, DataType as Data FROM
+    (
+      SELECT Subject, Value AS Relationship, Object
       FROM Predicates
-      INNER JOIN Entities ON Predicates.Subject=Entities.Eid
-      WHERE Subject = 10
+      INNER JOIN Entities ON Relationship=Entities.Eid
+      WHERE Subject = " + eid + @"
+    )
+    INNER JOIN Entities ON Object=Entities.Eid
+    WHERE DataType = 'BlankNode') as Q1  
   )
-  INNER JOIN Entities ON Relationship=Entities.Eid
+  INNER JOIN Predicates ON Predicates.Subject = ObjectEid
+  INNER JOIN Entities ON Entities.Eid = Object
 )
-INNER JOIN Entities ON Object=Entities.Eid;";
+INNER JOIN Entities on Entities.Eid = ExtendedRelationship
+ORDER BY Subject;";
         }
 
         public string FindEidsWithGivenObjectTypeQuery(string objectType)
         {
-            return "SELECT Subject FROM Predicates\r\nWHERE Relationship = 'ObjectType' AND Object = '" + objectType + "';";
+            return @"SELECT Subject FROM
+(
+  SELECT Subject, Value AS Relationship, Object FROM
+  Predicates
+  INNER JOIN Entities ON Relationship = Entities.Eid
+)
+INNER JOIN Entities ON Object = Entities.Eid
+WHERE Relationship = 'ObjectType' AND Value = '" + objectType + "'; ";
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using SqlDatabase.API.DTO;
 
 namespace SqlDatabase.API
 {
-    public interface IDatabaseControl
+    public interface IDatabase
     {
         void Connect(string connection);
         void InsertIntoEntities(List<TableEntity> tableEntities);
@@ -19,5 +20,6 @@ namespace SqlDatabase.API
         List<Triple> FindTriplesAffectedBySubjectEid(int subjectEid);
         List<Triple> FindTriplesAffectingObjectEid(int objectEid);
         List<int> FindEidsWithGivenObjectType(string objectType);
+        List<SqlData> FindObjectDetailsFromEid(int eid);
     }
 }

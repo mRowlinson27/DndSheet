@@ -43,7 +43,7 @@
     <Compile Include="DTO\SqlData.cs" />
     <Compile Include="DTO\TableEntity.cs" />
     <Compile Include="DTO\Triple.cs" />
-    <Compile Include="IDatabaseControl.cs" />
+    <Compile Include="IDatabase.cs" />
     <Compile Include="ISqLiteDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

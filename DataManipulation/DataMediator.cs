@@ -10,12 +10,12 @@ namespace DataManipulation
 {
     public class DataMediator
     {
-        private readonly IDatabaseControl _databaseControl;
+        private readonly IDatabase _database;
         private readonly IDataRestoreStrategy _dataRestoreStrategy;
 
-        public DataMediator(IDatabaseControl databaseControl, IDataRestoreStrategy dataRestoreStrategy)
+        public DataMediator(IDatabase database, IDataRestoreStrategy dataRestoreStrategy)
         {
-            _databaseControl = databaseControl;
+            _database = database;
             _dataRestoreStrategy = dataRestoreStrategy;
         }
 

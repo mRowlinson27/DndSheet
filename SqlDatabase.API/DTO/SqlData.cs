@@ -8,7 +8,9 @@ namespace SqlDatabase.API.DTO
 {
     public class SqlData
     {
-        public TableEntity TableEntity;
-        public List<Triple> Triples;
+        public int Eid { get; set; }
+        public string Relationship { get; set; }
+        public string ExtendedRelationship { get; set; }
+        public string Value { get; set; }
     }
 }

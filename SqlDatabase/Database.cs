@@ -11,13 +11,13 @@ using SqlDatabase.Interfaces;
 
 namespace SqlDatabase
 {
-    public class DatabaseControl : IDatabaseControl
+    public class Database : IDatabase
     {
         private readonly ISqLiteDatabaseBuilder _sqLiteDatabaseBuilder;
         private readonly ISqlQueryConstructor _sqlQueryConstructor;
         private ISqLiteDatabase _sqLiteDatabase;
 
-        public DatabaseControl(ISqLiteDatabaseBuilder sqLiteDatabaseBuilder, ISqlQueryConstructor sqlQueryConstructor)
+        public Database(ISqLiteDatabaseBuilder sqLiteDatabaseBuilder, ISqlQueryConstructor sqlQueryConstructor)
         {
             _sqLiteDatabaseBuilder = sqLiteDatabaseBuilder;
             _sqlQueryConstructor = sqlQueryConstructor;
@@ -91,6 +91,26 @@ namespace SqlDatabase
                 int subjectEid;
                 int.TryParse(nvc.Get("Subject"), out subjectEid);
                 response.Add(subjectEid);
+            }
+            return response;
+        }
+
+        public List<SqlData> FindObjectDetailsFromEid(int eid)
+        {
+            var sql = _sqlQueryConstructor.FindObjectDetailsFromEid(eid);
+            var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
+            var response = new List<SqlData>();
+            foreach (var nvc in nameValueCollections)
+            {
+                int subjectEid;
+                int.TryParse(nvc.Get("Subject"), out subjectEid);
+                response.Add(new SqlData()
+                {
+                    Eid = subjectEid,
+                    Relationship = nvc.Get("Relationship"),
+                    ExtendedRelationship = nvc.Get("ExtendedRelationship"),
+                    Value = nvc.Get("Value")
+                });
             }
             return response;
         }

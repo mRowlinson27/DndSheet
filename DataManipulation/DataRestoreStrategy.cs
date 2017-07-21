@@ -21,21 +21,21 @@ namespace DataManipulation
             _dictionaryGraphNodeFactory = dictionaryGraphNodeFactory;
         }
 
-        public Dictionary<int,IPoint> CreateAllPoints(IDatabaseControl databaseControl)
+        public Dictionary<int,IPoint> CreateAllPoints(IDatabase database)
         {
             var points = new Dictionary<int, IPoint>();
-            var entities = databaseControl.FindEntitiesByDatatype("Point");
+            var entities = database.FindEntitiesByDatatype("Point");
 
             return points;
         }
 
-        public IDictionaryGraphNode<IPoint> RestoreTree(string headName, IDatabaseControl databaseControl)
+        public IDictionaryGraphNode<IPoint> RestoreTree(string headName, IDatabase database)
         {
-            var heads = databaseControl.FindEntitiesByDatatype("Head");
+            var heads = database.FindEntitiesByDatatype("Head");
             var head = heads.FirstOrDefault(x => x.Value == headName);
 
             var graph = _dictionaryGraphNodeFactory.Create(head.Eid, null);
-            var headings = databaseControl.FindEntitiesByDatatype("GraphNode");
+            var headings = database.FindEntitiesByDatatype("GraphNode");
 
 
 

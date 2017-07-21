@@ -28,7 +28,7 @@ namespace IntegrationTests.SqlDatabase
         public void Build_CreateDefaultDatabase()
         {
            const string path = @"C:\Temp\TestDatabase.db";
-            var dbControl = new DatabaseControl(_sqLiteDatabaseBuilder, new SqlQueryConstructor());
+            var dbControl = new Database(_sqLiteDatabaseBuilder, new SqlQueryConstructor());
             _fileExplorer.DeleteFile(path);
             dbControl.Connect(path);
 
@@ -36,11 +36,11 @@ namespace IntegrationTests.SqlDatabase
 
             foreach (var val in vals)
             {
-                var data = dbControl.FindTriplesAffectedBySubjectEid(val);
+                var data = dbControl.FindObjectDetailsFromEid(val);
                 Console.WriteLine($"{val}");
                 foreach (var d in data)
                 {
-                    Console.WriteLine($"{d.Subject} - {d.Relationship} - {d.Object}");
+                    Console.WriteLine($"{d.Eid} - {d.Relationship} - {d.ExtendedRelationship} - {d.Value}");
                 }
             }
 

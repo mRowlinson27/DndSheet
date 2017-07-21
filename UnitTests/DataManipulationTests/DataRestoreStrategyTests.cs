@@ -18,7 +18,7 @@ namespace UnitTests.DataManipulationTests
     {
         private DataRestoreStrategy _dataRestoreStrategy;
         private IDictionaryGraphNodeFactory<IPoint> _dictionaryGraphNodeFactory;
-        private IDatabaseControl _databaseControl;
+        private IDatabase _database;
         private IPointBuilder _pointBuilder;
         private List<TableEntity> _tableEntities;
         private IPoint _point1;
@@ -28,7 +28,7 @@ namespace UnitTests.DataManipulationTests
         public void Setup()
         {
             _dictionaryGraphNodeFactory = A.Fake<IDictionaryGraphNodeFactory<IPoint>>();
-            _databaseControl = A.Fake<IDatabaseControl>();
+            _database = A.Fake<IDatabase>();
             _pointBuilder = A.Fake<IPointBuilder>();
             _dataRestoreStrategy = new DataRestoreStrategy(_pointBuilder, _dictionaryGraphNodeFactory);
         }
@@ -60,9 +60,9 @@ namespace UnitTests.DataManipulationTests
                 }
             };
 
-            A.CallTo(() => _databaseControl.FindEntitiesByDatatype("Head")).Returns(heads);
+            A.CallTo(() => _database.FindEntitiesByDatatype("Head")).Returns(heads);
 
-            _dataRestoreStrategy.RestoreTree(headName, _databaseControl);
+            _dataRestoreStrategy.RestoreTree(headName, _database);
 
         }
     }

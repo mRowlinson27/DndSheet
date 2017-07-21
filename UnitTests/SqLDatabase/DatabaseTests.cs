@@ -15,9 +15,9 @@ using SqlDatabase.Interfaces;
 namespace UnitTests.SqLDatabase
 {
     [TestFixture]
-    public class DatabaseControlTests
+    public class DatabaseTests
     {
-        private DatabaseControl _databaseControl;
+        private Database _database;
         private ISqLiteDatabaseBuilder _databaseBuilder;
         private ISqlQueryConstructor _sqlQueryConstructor;
         private ISqLiteDatabase _sqLiteDatabase;
@@ -28,14 +28,14 @@ namespace UnitTests.SqLDatabase
             _databaseBuilder = A.Fake<ISqLiteDatabaseBuilder>();
             _sqlQueryConstructor = A.Fake<ISqlQueryConstructor>();
             _sqLiteDatabase = A.Fake<ISqLiteDatabase>();
-            _databaseControl = new DatabaseControl(_databaseBuilder, _sqlQueryConstructor);
+            _database = new Database(_databaseBuilder, _sqlQueryConstructor);
         }
 
         [Test]
         public void Connect_BuildsConnection()
         {
             const string path = @"C:\Temp\MYDATABASE.db";
-            _databaseControl.Connect(path);
+            _database.Connect(path);
 
             A.CallTo(() => _databaseBuilder.Build(path)).MustHaveHappened();
         }
@@ -47,7 +47,7 @@ namespace UnitTests.SqLDatabase
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
 
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var data = new List<TableEntity>
             {
                 new TableEntity()
@@ -55,7 +55,7 @@ namespace UnitTests.SqLDatabase
 
             A.CallTo(() => _sqlQueryConstructor.InsertIntoEntitiesQuery(data)).Returns(sql);
 
-            _databaseControl.InsertIntoEntities(data);
+            _database.InsertIntoEntities(data);
 
             A.CallTo(() => _sqlQueryConstructor.InsertIntoEntitiesQuery(data)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(sql)).MustHaveHappened();
@@ -68,7 +68,7 @@ namespace UnitTests.SqLDatabase
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
 
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var data = new List<Triple>
             {
                 new Triple()
@@ -76,7 +76,7 @@ namespace UnitTests.SqLDatabase
 
             A.CallTo(() => _sqlQueryConstructor.InsertIntoPredicatesQuery(data)).Returns(sql);
 
-            _databaseControl.InsertIntoPredicates(data);
+            _database.InsertIntoPredicates(data);
 
             A.CallTo(() => _sqlQueryConstructor.InsertIntoPredicatesQuery(data)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteNonQuery(sql)).MustHaveHappened();
@@ -89,7 +89,7 @@ namespace UnitTests.SqLDatabase
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
 
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -101,7 +101,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindAllEntitiesQuery()).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindAllEntities();
+            _database.FindAllEntities();
 
             A.CallTo(() => _sqlQueryConstructor.FindAllEntitiesQuery()).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
@@ -114,7 +114,7 @@ namespace UnitTests.SqLDatabase
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
 
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -133,7 +133,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindAllEntitiesQuery()).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindAllEntities();
+            var response = _database.FindAllEntities();
 
             response.ShouldAllBeEquivalentTo(data);
         }
@@ -145,7 +145,7 @@ namespace UnitTests.SqLDatabase
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
 
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -157,7 +157,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindEntitiesByEidQuery(A<List<int>>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindEntitiesByEid(null);
+            _database.FindEntitiesByEid(null);
 
             A.CallTo(() => _sqlQueryConstructor.FindEntitiesByEidQuery(null)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
@@ -170,7 +170,7 @@ namespace UnitTests.SqLDatabase
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
 
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -189,7 +189,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindEntitiesByEidQuery(A<List<int>>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindEntitiesByEid(null);
+            var response = _database.FindEntitiesByEid(null);
 
             response.ShouldAllBeEquivalentTo(data);
         }
@@ -200,7 +200,7 @@ namespace UnitTests.SqLDatabase
             const string sql = "sql";
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -211,7 +211,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindEntitiesByDataTypeQuery(A<string>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindEntitiesByDatatype(null);
+            _database.FindEntitiesByDatatype(null);
 
             A.CallTo(() => _sqlQueryConstructor.FindEntitiesByDataTypeQuery(null)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
@@ -223,7 +223,7 @@ namespace UnitTests.SqLDatabase
             const string sql = "sql";
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -241,7 +241,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindEntitiesByDataTypeQuery(A<string>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindEntitiesByDatatype(null);
+            var response = _database.FindEntitiesByDatatype(null);
 
             response.ShouldAllBeEquivalentTo(data);
         }
@@ -252,7 +252,7 @@ namespace UnitTests.SqLDatabase
             const string sql = "sql";
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -263,7 +263,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindTriplesAffectedBySubjectEid(1);
+            _database.FindTriplesAffectedBySubjectEid(1);
 
             A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(1)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
@@ -275,7 +275,7 @@ namespace UnitTests.SqLDatabase
             const string sql = "sql";
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -293,7 +293,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectedBySubjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindTriplesAffectedBySubjectEid(1);
+            var response = _database.FindTriplesAffectedBySubjectEid(1);
 
             response.ShouldAllBeEquivalentTo(data);
         }
@@ -304,7 +304,7 @@ namespace UnitTests.SqLDatabase
             const string sql = "sql";
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -315,7 +315,7 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            _databaseControl.FindTriplesAffectingObjectEid(1);
+            _database.FindTriplesAffectingObjectEid(1);
 
             A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectingObjectQuery(1)).MustHaveHappened();
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).MustHaveHappened();
@@ -327,7 +327,7 @@ namespace UnitTests.SqLDatabase
             const string sql = "sql";
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -345,18 +345,18 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindTriplesAffectingObjectQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindTriplesAffectingObjectEid(1);
+            var response = _database.FindTriplesAffectingObjectEid(1);
 
             response.ShouldAllBeEquivalentTo(data);
         }
 
         [Test]
-        public void FindEidsWithGivenObjectType()
+        public void FindEidsWithGivenObjectType_GetsSqlAndExecutesAsQuery()
         {
             const string sql = "sql";
             const string path = @"C:\Temp\MYDATABASE.db";
             A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
-            _databaseControl.Connect(path);
+            _database.Connect(path);
             var nameValueData = new List<NameValueCollection>
             {
                 new NameValueCollection()
@@ -375,9 +375,41 @@ namespace UnitTests.SqLDatabase
             A.CallTo(() => _sqlQueryConstructor.FindEidsWithGivenObjectTypeQuery(A<string>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
-            var response = _databaseControl.FindEidsWithGivenObjectType("");
+            var response = _database.FindEidsWithGivenObjectType("");
 
             response.ShouldAllBeEquivalentTo(data);
+        }
+
+        [Test]
+        public void FindDetailsFromEid_GetsSqlAndExecutesAsQuery()
+        {
+            const string sql = "sql";
+            const string path = @"C:\Temp\MYDATABASE.db";
+            var correctSqlData = new SqlData()
+            {
+                Eid = 1,
+                Relationship = "HasValue",
+                ExtendedRelationship = "ObjectType",
+                Value = "Int"
+            };
+            A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
+            _database.Connect(path);
+            var nameValueData = new List<NameValueCollection>
+            {
+                new NameValueCollection()
+                {
+                    { "Subject", "1"},
+                    { "Relationship", "HasValue" },
+                    { "ExtendedRelationship", "ObjectType" },
+                    { "Value", "Int" }
+                },
+            };
+            A.CallTo(() => _sqlQueryConstructor.FindObjectDetailsFromEid(A<int>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
+
+            var response = _database.FindObjectDetailsFromEid(1);
+
+            response.ShouldBeEquivalentTo(new List<SqlData>() { correctSqlData });
         }
     }
 }
