@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlDatabase\SqLiteDatabaseBuilderTests.cs" />
     <Compile Include="Utilities\EquationCalculatorTests.cs" />
+    <Compile Include="Utilities\MostlyFullSequenceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">

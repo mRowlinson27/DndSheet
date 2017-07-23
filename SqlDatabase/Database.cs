@@ -23,9 +23,16 @@ namespace SqlDatabase
             _sqlQueryConstructor = sqlQueryConstructor;
         }
 
+        public event EventHandler EntityDeleted;
+        public event EventHandler Connected;
+
         public void Connect(string connection)
         {
             _sqLiteDatabase = _sqLiteDatabaseBuilder.Build(connection);
+            if (Connected != null)
+            {
+                Connected.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public void InsertIntoEntities(List<TableEntity> tableEntities)

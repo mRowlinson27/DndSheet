@@ -193,5 +193,10 @@ ORDER BY Subject;";
 INNER JOIN Entities ON Object = Entities.Eid
 WHERE Relationship = 'ObjectType' AND Value = '" + objectType + "'; ";
         }
+
+        public string FindAllEids()
+        {
+            return "SELECT Eid FROM Entities;";
+        }
     }
 }

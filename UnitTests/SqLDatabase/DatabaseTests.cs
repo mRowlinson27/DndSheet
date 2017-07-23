@@ -41,6 +41,17 @@ namespace UnitTests.SqLDatabase
         }
 
         [Test]
+        public void Connect_RaisesConnectedEvent()
+        {
+            const string path = @"C:\Temp\MYDATABASE.db";
+            _database.MonitorEvents();
+
+            _database.Connect(path);
+
+            _database.ShouldRaise("Connected");
+        }
+
+        [Test]
         public void InsertIntoEntites_GetsSqlAndExecutesAsNonQuery()
         {
             const string sql = "sql";

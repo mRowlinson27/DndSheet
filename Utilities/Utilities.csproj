@@ -53,6 +53,7 @@
     <Compile Include="Implementation\Calculator\NestingIdentifier.cs" />
     <Compile Include="Implementation\Calculator\PowersRuleResolver.cs" />
     <Compile Include="Implementation\Calculator\SubtractionRuleResolver.cs" />
+    <Compile Include="Implementation\MostlyFullSequence.cs" />
     <Compile Include="Interfaces\Calculator\IEquationPartsIdentifier.cs" />
     <Compile Include="Interfaces\Calculator\IMathsResolver.cs" />
     <Compile Include="Interfaces\Calculator\IMathsResolverBuilder.cs" />

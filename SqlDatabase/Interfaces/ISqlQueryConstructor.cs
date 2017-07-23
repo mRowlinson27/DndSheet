@@ -22,5 +22,6 @@ namespace SqlDatabase.Interfaces
         string FindAllPredicatesQuery();
         string FindEidsWithGivenObjectTypeQuery(string objectType);
         string FindObjectDetailsFromEid(int eid);
+        string FindAllEids();
     }
 }

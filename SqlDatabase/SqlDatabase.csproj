@@ -50,6 +50,7 @@
     <Compile Include="Implementation\DatabaseTableCreationQueries.cs" />
     <Compile Include="FileExplorer.cs" />
     <Compile Include="IFileExplorer.cs" />
+    <Compile Include="Implementation\EidCreator.cs" />
     <Compile Include="Implementation\SqLiteConnectionWrapperFactory.cs" />
     <Compile Include="Implementation\SqLiteDatabase.cs" />
     <Compile Include="Implementation\SqLiteConnectionWrapper.cs" />

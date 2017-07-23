@@ -10,6 +10,8 @@ namespace SqlDatabase.API
 {
     public interface IDatabase
     {
+        event EventHandler EntityDeleted;
+        event EventHandler Connected;
         void Connect(string connection);
         void InsertIntoEntities(List<TableEntity> tableEntities);
         void InsertIntoPredicates(List<Triple> triples);

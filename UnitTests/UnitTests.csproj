@@ -84,6 +84,7 @@
     <Compile Include="FormAppTests\MainFormProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqLDatabase\DatabaseTests.cs" />
+    <Compile Include="SqLDatabase\EidCreatorTests.cs" />
     <Compile Include="SqLDatabase\SqLiteDatabaseBuilderTests.cs" />
     <Compile Include="SqLDatabase\SqLiteDatabaseTests.cs" />
     <Compile Include="SqLDatabase\SqlQueryConstructorTests.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Utilities\Calculator\NestingIdentifierTests.cs" />
     <Compile Include="Utilities\Calculator\PowersRuleResolverTests.cs" />
     <Compile Include="Utilities\Calculator\SubtractionRuleResolverTests.cs" />
+    <Compile Include="Utilities\MostlyFullSequenceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
