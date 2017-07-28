@@ -10,5 +10,7 @@ namespace SqlDatabase.Interfaces
     {
         int GetNextEid();
         List<int> GetNextXEids(int x);
+        void DeleteEidAt(int index);
+        void DeleteMultipleEidsAt(List<int> indexes);
     }
 }

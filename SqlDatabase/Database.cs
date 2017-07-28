@@ -102,9 +102,23 @@ namespace SqlDatabase
             return response;
         }
 
+        public List<int> FindAllEids()
+        {
+            var sql = _sqlQueryConstructor.FindAllEidsQuery();
+            var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
+            var response = new List<int>();
+            foreach (var nvc in nameValueCollections)
+            {
+                int subjectEid;
+                int.TryParse(nvc.Get("Eid"), out subjectEid);
+                response.Add(subjectEid);
+            }
+            return response;
+        }
+
         public List<SqlData> FindObjectDetailsFromEid(int eid)
         {
-            var sql = _sqlQueryConstructor.FindObjectDetailsFromEid(eid);
+            var sql = _sqlQueryConstructor.FindObjectDetailsFromEidQuery(eid);
             var nameValueCollections = _sqLiteDatabase.ExecuteReader(sql);
             var response = new List<SqlData>();
             foreach (var nvc in nameValueCollections)

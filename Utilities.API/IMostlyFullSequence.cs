@@ -15,5 +15,6 @@ namespace Utilities.API
         void InsertMultiple(List<int> indexes);
         void DeleteAt(int index);
         void DeleteMultipleAt(List<int> indexes);
+        void Clear();
     }
 }

@@ -21,7 +21,7 @@ namespace SqlDatabase.Interfaces
         string FindTriplesAffectingObjectQuery(int objectEid);
         string FindAllPredicatesQuery();
         string FindEidsWithGivenObjectTypeQuery(string objectType);
-        string FindObjectDetailsFromEid(int eid);
-        string FindAllEids();
+        string FindObjectDetailsFromEidQuery(int eid);
+        string FindAllEidsQuery();
     }
 }

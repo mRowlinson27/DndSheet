@@ -354,5 +354,20 @@ namespace UnitTests.Utilities
 
             _mostlyFullSequence.GetInternaList().Should().BeEquivalentTo(correctList);
         }
+
+        [Test]
+        public void Clear_FiveSixSevenInsertedThenCleared_CorrectUnderlyingList()
+        {
+            var numsToBeInserted = new List<int> { 5, 6, 7 };
+            var correctList = new List<int>
+            {
+                0, 0
+            };
+
+            _mostlyFullSequence.InsertMultiple(numsToBeInserted);
+            _mostlyFullSequence.Clear();
+
+            _mostlyFullSequence.GetInternaList().Should().BeEquivalentTo(correctList);
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace SqlDatabase.API
         List<Triple> FindTriplesAffectedBySubjectEid(int subjectEid);
         List<Triple> FindTriplesAffectingObjectEid(int objectEid);
         List<int> FindEidsWithGivenObjectType(string objectType);
+        List<int> FindAllEids();
         List<SqlData> FindObjectDetailsFromEid(int eid);
     }
 }

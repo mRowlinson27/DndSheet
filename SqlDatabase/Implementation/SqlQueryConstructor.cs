@@ -159,7 +159,7 @@ namespace SqlDatabase.Implementation
 INNER JOIN Entities ON Object=Entities.Eid;";
         }
 
-        public string FindObjectDetailsFromEid(int eid)
+        public string FindObjectDetailsFromEidQuery(int eid)
         {
             return @"SELECT Subject, Relationship, Value as ExtendedRelationship, V as Value FROM
 (
@@ -194,7 +194,7 @@ INNER JOIN Entities ON Object = Entities.Eid
 WHERE Relationship = 'ObjectType' AND Value = '" + objectType + "'; ";
         }
 
-        public string FindAllEids()
+        public string FindAllEidsQuery()
         {
             return "SELECT Eid FROM Entities;";
         }

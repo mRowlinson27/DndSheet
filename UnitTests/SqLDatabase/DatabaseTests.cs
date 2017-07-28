@@ -392,6 +392,36 @@ namespace UnitTests.SqLDatabase
         }
 
         [Test]
+        public void FindAllEidsQuery_GetsSqlAndExecutesAsQuery()
+        {
+            const string sql = "sql";
+            const string path = @"C:\Temp\MYDATABASE.db";
+            A.CallTo(() => _databaseBuilder.Build(path)).Returns(_sqLiteDatabase);
+            _database.Connect(path);
+            var nameValueData = new List<NameValueCollection>
+            {
+                new NameValueCollection()
+                {
+                    {"Eid", "1"}
+                },
+                new NameValueCollection()
+                {
+                    {"Eid", "2"}
+                }
+            };
+            var data = new List<int>
+            {
+                1, 2
+            };
+            A.CallTo(() => _sqlQueryConstructor.FindAllEidsQuery()).Returns(sql);
+            A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
+
+            var response = _database.FindAllEids();
+
+            response.ShouldAllBeEquivalentTo(data);
+        }
+
+        [Test]
         public void FindDetailsFromEid_GetsSqlAndExecutesAsQuery()
         {
             const string sql = "sql";
@@ -415,7 +445,7 @@ namespace UnitTests.SqLDatabase
                     { "Value", "Int" }
                 },
             };
-            A.CallTo(() => _sqlQueryConstructor.FindObjectDetailsFromEid(A<int>.Ignored)).Returns(sql);
+            A.CallTo(() => _sqlQueryConstructor.FindObjectDetailsFromEidQuery(A<int>.Ignored)).Returns(sql);
             A.CallTo(() => _sqLiteDatabase.ExecuteReader(sql)).Returns(nameValueData);
 
             var response = _database.FindObjectDetailsFromEid(1);

@@ -139,6 +139,11 @@ namespace Utilities.Implementation
             }
         }
 
+        public void Clear()
+        {
+            _ints = new List<int> { 0, 0 };
+        }
+
         private bool ContainsIndex(int index)
         {
             for (int i = 1; i < _ints.Count; i += 2)
