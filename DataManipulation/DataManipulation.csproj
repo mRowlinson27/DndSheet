@@ -44,11 +44,12 @@
   <ItemGroup>
     <Compile Include="DatabaseAdaptor.cs" />
     <Compile Include="DataMediator.cs" />
+    <Compile Include="Point\Point2.cs" />
     <Compile Include="Point\PointBuilder.cs" />
     <Compile Include="Point\PointClientFactory.cs" />
+    <Compile Include="Point\PointEquation.cs" />
     <Compile Include="Point\PointServerFactory.cs" />
     <Compile Include="DataRestoreStrategy.cs" />
-    <Compile Include="DictionaryGraphNode.cs" />
     <Compile Include="EntityToTaggedConverter.cs" />
     <Compile Include="Point\Point.cs" />
     <Compile Include="Point\PointClient.cs" />
@@ -78,6 +79,10 @@
     <ProjectReference Include="..\SqlDatabase.API\SqlDatabase.API.csproj">
       <Project>{fe714e67-ab32-4b5b-ab13-f1a58de50935}</Project>
       <Name>SqlDatabase.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.API\Utilities.API.csproj">
+      <Project>{8c2b367f-ba2f-48b7-a877-d55ea72ed9d7}</Project>
+      <Name>Utilities.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

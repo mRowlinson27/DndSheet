@@ -1,4 +1,5 @@
-﻿using DataManipulation.API.Point;
+﻿using System.Collections.Generic;
+using DataManipulation.API.Point;
 using SqlDatabase.API.DTO;
 
 namespace DataManipulation.Point
@@ -28,6 +29,11 @@ namespace DataManipulation.Point
             var pointComponentsBuilder = _pointComponentsBuilderFactory.Create(tableEntity.Value,
                 _pointClientFactory, _pointServerFactory, _simpleCalculateStrategy);
             return _pointFactory.Create(tableEntity.Eid, pointComponentsBuilder);
+        }
+
+        public IPoint BuildPoint(int eid, object value, List<IPointEquation> equations)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

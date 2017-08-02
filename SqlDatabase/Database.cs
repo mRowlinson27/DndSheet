@@ -11,7 +11,7 @@ using SqlDatabase.Interfaces;
 
 namespace SqlDatabase
 {
-    public class Database : IDatabase
+    public class Database : IDatabase, IDatabaseConnector
     {
         private readonly ISqLiteDatabaseBuilder _sqLiteDatabaseBuilder;
         private readonly ISqlQueryConstructor _sqlQueryConstructor;
@@ -26,13 +26,14 @@ namespace SqlDatabase
         public event EventHandler EntityDeleted;
         public event EventHandler Connected;
 
-        public void Connect(string connection)
+        public IDatabase Connect(string connection)
         {
             _sqLiteDatabase = _sqLiteDatabaseBuilder.Build(connection);
             if (Connected != null)
             {
                 Connected.Invoke(this, EventArgs.Empty);
             }
+            return this;
         }
 
         public void InsertIntoEntities(List<TableEntity> tableEntities)

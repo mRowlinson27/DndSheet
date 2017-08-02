@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using DataManipulation;
 using FluentAssertions;
 using NUnit.Framework;
 using SqlDatabase.API.DTO;
+using Utilities.Implementation;
 
-namespace UnitTests.DataManipulationTests
+namespace UnitTests.Utilities
 {
     [TestFixture]
     public class DictionaryGraphNodeTests

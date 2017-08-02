@@ -12,7 +12,6 @@ namespace SqlDatabase.API
     {
         event EventHandler EntityDeleted;
         event EventHandler Connected;
-        void Connect(string connection);
         void InsertIntoEntities(List<TableEntity> tableEntities);
         void InsertIntoPredicates(List<Triple> triples);
         List<TableEntity> FindAllEntities();

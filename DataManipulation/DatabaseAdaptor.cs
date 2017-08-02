@@ -17,16 +17,6 @@ namespace DataManipulation
             throw new NotImplementedException();
         }
 
-        public void InsertIntoEntites(List<TableEntity> tableEntities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InsertIntoPredicates(List<Triple> triples)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<IPoint> FindEntitiesByEid(List<string> eids)
         {
             throw new NotImplementedException();
@@ -38,16 +28,6 @@ namespace DataManipulation
         }
 
         public List<IPoint> FindEntitiesByDatatype(string dataType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Triple> FindPredicatesAffectedBySubject(string subjectEid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Triple> FindPredicatesAffectingObject(string objectEid)
         {
             throw new NotImplementedException();
         }

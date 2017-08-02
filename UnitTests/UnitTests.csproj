@@ -72,7 +72,7 @@
     <Compile Include="CustomFormStructuresTests\DataEntryFormManagerTests.cs" />
     <Compile Include="DataManipulationTests\PointBuilderTests.cs" />
     <Compile Include="DataManipulationTests\DataRestoreStrategyTests.cs" />
-    <Compile Include="DataManipulationTests\DictionaryGraphNodeTests.cs" />
+    <Compile Include="Utilities\DictionaryGraphNodeTests.cs" />
     <Compile Include="DataManipulationTests\PointClientTests.cs" />
     <Compile Include="DataManipulationTests\PointServerTests.cs" />
     <Compile Include="DataManipulationTests\PointTests.cs" />

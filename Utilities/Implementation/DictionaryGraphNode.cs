@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataManipulation.API;
-using SqlDatabase.API.DTO;
+using Utilities.API;
 
-namespace DataManipulation
+namespace Utilities.Implementation
 {
     public class DictionaryGraphNode<T> : IDictionaryGraphNode<T>
     {

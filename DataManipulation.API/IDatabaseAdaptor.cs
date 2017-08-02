@@ -11,12 +11,8 @@ namespace DataManipulation.API
     public interface IDatabaseAdaptor
     {
         void Connect(string connection);
-        void InsertIntoEntites(List<TableEntity> tableEntities);
-        void InsertIntoPredicates(List<Triple> triples);
         List<IPoint> FindEntitiesByEid(List<string> eids);
         IPoint FindEntityByEid(string eid);
         List<IPoint> FindEntitiesByDatatype(string dataType);
-        List<Triple> FindPredicatesAffectedBySubject(string subjectEid);
-        List<Triple> FindPredicatesAffectingObject(string objectEid);
     }
 }

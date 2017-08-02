@@ -10,6 +10,7 @@ using FakeItEasy;
 using NUnit.Framework;
 using SqlDatabase.API;
 using SqlDatabase.API.DTO;
+using Utilities.API;
 
 namespace UnitTests.DataManipulationTests
 {

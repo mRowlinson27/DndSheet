@@ -10,5 +10,6 @@ namespace DataManipulation.API.Point
     public interface IPointBuilder
     {
         IPoint BuildPoint(TableEntity tableEntity);
+        IPoint BuildPoint(int eid, object value, List<IPointEquation> equations);
     }
 }
