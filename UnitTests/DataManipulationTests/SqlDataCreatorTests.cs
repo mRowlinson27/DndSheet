@@ -23,13 +23,14 @@ namespace UnitTests.DataManipulationTests
         [Test]
         public void ConvertAbilityScore_ReturnsCorrectSqlData()
         {
-//            var strengthScore = new AbilityScore
-//            {
-//                Name = "Strength",
-//                Abr = "Str",
-//                Value = 14
-//            };
+            //            var strengthScore = new AbilityScore
+            //            {
+            //                Name = "Strength",
+            //                Abr = "Str",
+            //                Value = 14
+            //            };
 
+            Assert.That(true == false);
             var sqlData = _sqlDataCreator.Create(null);
         }
     }

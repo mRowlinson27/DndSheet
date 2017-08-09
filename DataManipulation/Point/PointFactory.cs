@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataManipulation.API.DTOs;
 using DataManipulation.API.Point;
 
 namespace DataManipulation.Point
 {
-    public class PointClientFactory : IPointClientFactory
+    public class PointFactory : IPointFactory
     {
-        public IPointClient Create(IPoint point, object value)
+        public IPoint Create(int eid, PointValue value)
         {
-            return new PointClient(point, value);
+            return new Point(eid, value);
         }
     }
 }

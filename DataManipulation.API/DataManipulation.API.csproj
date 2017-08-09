@@ -40,29 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\PointValue.cs" />
     <Compile Include="Point\IPointBuilder.cs" />
-    <Compile Include="Point\IPointComponentsBuilderFactory.cs" />
     <Compile Include="Point\IPointEquation.cs" />
     <Compile Include="Point\IPointFactory.cs" />
     <Compile Include="DTOs\AbilityScore.cs" />
     <Compile Include="Point\IPoint.cs" />
     <Compile Include="DTOs\SkillsDto.cs" />
     <Compile Include="DTOs\SqlAbilityScore.cs" />
-    <Compile Include="Point\IPointClient.cs" />
-    <Compile Include="Point\IPointClientFactory.cs" />
-    <Compile Include="Point\IPointServer.cs" />
-    <Compile Include="Point\IPointServerFactory.cs" />
     <Compile Include="IDatabaseAdaptor.cs" />
     <Compile Include="IDatabaseInterpretor.cs" />
     <Compile Include="IDataRestoreStrategy.cs" />
     <Compile Include="IEidCreator.cs" />
     <Compile Include="IEntityToTaggedConverter.cs" />
-    <Compile Include="Point\IPointComponentsBuilder.cs" />
     <Compile Include="IEventApplier.cs" />
     <Compile Include="IPropertyApplier.cs" />
     <Compile Include="IPropertyChangedChecker.cs" />
     <Compile Include="Point\IPointCalculateStrategy.cs" />
-    <Compile Include="Point\IPointValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

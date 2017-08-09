@@ -44,24 +44,16 @@
   <ItemGroup>
     <Compile Include="DatabaseAdaptor.cs" />
     <Compile Include="DataMediator.cs" />
-    <Compile Include="Point\Point2.cs" />
+    <Compile Include="Point\Point.cs" />
     <Compile Include="Point\PointBuilder.cs" />
-    <Compile Include="Point\PointClientFactory.cs" />
     <Compile Include="Point\PointEquation.cs" />
-    <Compile Include="Point\PointServerFactory.cs" />
+    <Compile Include="Point\PointFactory.cs" />
     <Compile Include="DataRestoreStrategy.cs" />
     <Compile Include="EntityToTaggedConverter.cs" />
-    <Compile Include="Point\Point.cs" />
-    <Compile Include="Point\PointClient.cs" />
-    <Compile Include="Point\PointComponentsBuilder.cs" />
-    <Compile Include="Point\PointServer.cs" />
-    <Compile Include="Point\SimplePointCalculateStrategy.cs" />
     <Compile Include="SqlDataCreator.cs" />
     <Compile Include="EventApplier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyApplier.cs" />
-    <Compile Include="Point\TaggableInt.cs" />
-    <Compile Include="Point\TaggableString.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomForms.API\CustomForms.API.csproj">

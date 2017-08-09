@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataManipulation.API;
+using DataManipulation.API.DTOs;
 using DataManipulation.API.Point;
 using DataManipulation.Point;
 using FakeItEasy;
@@ -16,95 +17,201 @@ namespace UnitTests.DataManipulationTests
     [TestFixture]
     public class PointTests
     {
-        private IPointComponentsBuilder _componentsBuilder;
-        private IPointClient _pointClient;
-        private IPointServer _pointServer;
-
         [SetUp]
         public void Setup()
         {
-            _componentsBuilder = A.Fake<IPointComponentsBuilder>();
-            _pointClient = A.Fake<IPointClient>();
-            _pointServer = A.Fake<IPointServer>();
-            A.CallTo(() => _componentsBuilder.CreateClient(A<IPoint>.Ignored))
-                .Returns(_pointClient);
-            A.CallTo(() => _componentsBuilder.CreateServer(A<IPoint>.Ignored)).Returns(_pointServer);
+
         }
 
         [Test]
-        public void Constructor_CreatesServerAndClient()
+        public void NewPoint_ValueCorrect()
         {
-            var point = new Point(1, _componentsBuilder);
+            var correctValue = "test";
+            var pvalue = new PointValue(1, "", correctValue);
 
-            A.CallTo(() => _componentsBuilder.CreateClient(point)).MustHaveHappened();
-            A.CallTo(() => _componentsBuilder.CreateServer(point)).MustHaveHappened();
+            var point = new Point(2, pvalue);
+
+            point.Output.Should().Be(correctValue);
         }
 
         [Test]
-        public void AddSubscriber_CallsServerMethod()
+        public void UpdateValue_ValueCorrect()
         {
-            var change = 1;
-            var point = new Point(1, _componentsBuilder);
-            var fakePoint = A.Fake<IPoint>();
+            var correctValue = "test";
+            var pvalue = new PointValue(1, "", "");
+            var point = new Point(2, pvalue);
 
-            point.AddSubscriber(fakePoint, change);
+            point.UpdateValue(correctValue);
 
-            A.CallTo(() => _pointServer.AddSubscriber(fakePoint, change)).MustHaveHappened();
+            point.Output.Should().Be(correctValue);
         }
 
         [Test]
-        public void SubscribeTo_CallsClientMethod()
+        public void UpdateValue_TriggersUpdated()
         {
-            var change = 1;
-            var point = new Point(1, _componentsBuilder);
-            var fakePoint = A.Fake<IPoint>();
-
-            point.SubscribeTo(fakePoint, change);
-
-            A.CallTo(() => _pointClient.SubscribeTo(fakePoint, change)).MustHaveHappened();
-        }
-
-        [Test]
-        public void UnSubscribeTo_CallsClientMethod()
-        {
-            var point = new Point(1, _componentsBuilder);
-            var fakePoint = A.Fake<IPoint>();
-
-            point.UnSubscribeTo(fakePoint);
-
-            A.CallTo(() => _pointClient.UnSubscribeTo(fakePoint)).MustHaveHappened();
-        }
-
-        [Test]
-        public void UpdateSubscription_CallsServerMethod()
-        {
-            var newChange = 1;
-            var eid = 1;
-            var point = new Point(1, _componentsBuilder);
-            var updateArgs = new UpdateArgs();
-            A.CallTo(() => _pointServer.UpdateSubscription(eid, newChange)).Returns(updateArgs);
+            var value = "test";
+            var pvalue = new PointValue(1, "", "");
+            var point = new Point(2, pvalue);
             point.MonitorEvents();
 
-            point.UpdateSubscription(eid, newChange);
+            point.UpdateValue(value);
 
-            A.CallTo(() => _pointServer.UpdateSubscription(eid, newChange)).MustHaveHappened();
-            point.ShouldRaise("Update").WithArgs<UpdateArgs>(args => args == updateArgs);
+            point.ShouldRaise("Updated");
         }
 
         [Test]
-        public void UpdateSubscriptions_CallsServerMethod()
+        public void UpdateValue_DoesNotTriggersUpdatedIfSameResult()
         {
-            var newChange = new List<object> {1, 2};
-            var eid = new List<int> { 1, 2 };
-            var point = new Point(1, _componentsBuilder);
-            var updateArgs = new UpdateArgs();
-            A.CallTo(() => _pointServer.UpdateSubscriptions(eid, newChange)).Returns(updateArgs);
+            var value = "test";
+            var pvalue = new PointValue(1, "", value);
+            var point = new Point(2, pvalue);
             point.MonitorEvents();
 
-            point.UpdateSubscriptions(eid, newChange);
+            point.UpdateValue(value);
 
-            A.CallTo(() => _pointServer.UpdateSubscriptions(eid, newChange)).MustHaveHappened();
-            point.ShouldRaise("Update").WithArgs<UpdateArgs>(args => args == updateArgs);
+            point.ShouldNotRaise("Updated");
+        }
+
+        [Test]
+        public void AddSubscriber_RecalculatesOutput()
+        {
+            var value = "test";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(value, dataType)).Returns(value);
+
+            point.SubscribeTo(equation);
+
+            point.Output.Should().Be(value);
+        }
+
+        [Test]
+        public void AddSubscriber_TriggersUpdatedIfDifferentResult()
+        {
+            var value1 = "test";
+            var value2 = "test2";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value1);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
+            point.MonitorEvents();
+
+            point.SubscribeTo(equation);
+
+            point.ShouldRaise("Updated");
+        }
+
+        [Test]
+        public void AddSubscriber_DoesNotTriggersUpdatedIfSameResult()
+        {
+            var value = "test";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(value, dataType)).Returns(value);
+            point.MonitorEvents();
+
+            point.SubscribeTo(equation);
+
+            point.ShouldNotRaise("Updated");
+        }
+
+        [Test]
+        public void AddSubscriber_SameSubscriber_ThrowsException()
+        {
+            var value = "test";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(value, dataType)).Returns(value);
+            A.CallTo(() => equation.Eid).Returns(3);
+
+            point.SubscribeTo(equation);
+            Assert.Throws(typeof(ArgumentException),() => point.SubscribeTo(equation));
+        }
+
+        [Test]
+        public void AddSubscriber_UpdateEquationUpdatesPoint()
+        {
+            var value1 = "test1";
+            var dataType = "type";
+            var value2 = "test2";
+            var pvalue = new PointValue(1, dataType, value1);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value1);
+            A.CallTo(() => equation.Eid).Returns(3);
+            point.SubscribeTo(equation);
+            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
+
+            equation.Updated += Raise.WithEmpty();
+
+            point.Output.Should().Be(value2);
+        }
+
+        [Test]
+        public void UnSubscribeTo_RecalculatesWithoutSubscriber()
+        {
+            var value1 = "test";
+            var value2 = "test2";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value1);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
+            point.SubscribeTo(equation);
+
+            point.UnSubscribeTo(equation);
+
+            point.Output.Should().Be(value1);
+        }
+
+        [Test]
+        public void UnSubscribeTo_TriggersUpdated()
+        {
+            var value1 = "test";
+            var value2 = "test2";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value1);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
+            point.SubscribeTo(equation);
+            point.MonitorEvents();
+
+            point.UnSubscribeTo(equation);
+
+            point.ShouldRaise("Updated");
+        }
+
+        [Test]
+        public void UnSubscribeTo_NoLongerListensToEquation()
+        {
+            var value1 = "test";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value1);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            var equation2 = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Eid).Returns(3);
+            point.SubscribeTo(equation);
+            point.UnSubscribeTo(equation);
+            point.SubscribeTo(equation2);
+
+            equation.Updated += Raise.WithEmpty();
+            
+            A.CallTo(() => equation2.Evaluate(value1, dataType)).MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void IntegrationTestForMemoryLeaks()
+        {
+            Assert.That(true == false);
         }
     }
 }

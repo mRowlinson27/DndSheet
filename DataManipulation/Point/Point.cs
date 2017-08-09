@@ -1,54 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DataManipulation.API.DTOs;
 using DataManipulation.API.Point;
 
 namespace DataManipulation.Point
 {
     public class Point : IPoint
     {
+        private readonly PointValue _value;
+        private readonly Dictionary<int, IPointEquation> _subscribedEquations;
+        public event EventHandler Updated;
         public int Eid { get; set; }
-        public object Output { get { return _pointClient.Output; } }
-        public event EventHandler<UpdateArgs> Update;
-        private readonly IPointServer _pointServer;
-        private readonly IPointClient _pointClient;
+        private string _output;
 
-        public Point(int eid, IPointComponentsBuilder pointComponentsBuilder)
+        public Point(int eid, PointValue value)
         {
+            _value = value;
+            _output = _value.Value;
+            _subscribedEquations = new Dictionary<int, IPointEquation>();
             Eid = eid;
-            _pointServer = pointComponentsBuilder.CreateServer(this);
-            _pointClient = pointComponentsBuilder.CreateClient(this);
         }
 
-        public void AddSubscriber(IPoint subscriber, object change)
+        public string Output => _output;
+
+        public void UpdateValue(string value)
         {
-            _pointServer.AddSubscriber(subscriber, change);
+            _value.Value = value;
+            UpdateAndNotify();
         }
 
-        public void UnSubscribeTo(IPoint point)
+        public void UnSubscribeTo(IPointEquation equation)
         {
-            _pointClient.UnSubscribeTo(point);
+            _subscribedEquations.Remove(equation.Eid);
+            equation.Updated -= OnEquationUpdated;
+            UpdateAndNotify();
         }
 
-        public void SubscribeTo(IPoint point, object currentChange)
+        public void SubscribeTo(IPointEquation equation)
         {
-            _pointClient.SubscribeTo(point, currentChange);
+            _subscribedEquations.Add(equation.Eid, equation);
+            equation.Updated += OnEquationUpdated;
+            UpdateAndNotify();
         }
 
-        public void UpdateSubscription(int eid, object newChange)
+        private void OnEquationUpdated(object sender, EventArgs eventArgs)
         {
-            OnUpdate(_pointServer.UpdateSubscription(eid, newChange));
+            UpdateAndNotify();
         }
 
-        public void UpdateSubscriptions(List<int> eids, List<object> newChanges)
+        private void UpdateAndNotify()
         {
-            OnUpdate(_pointServer.UpdateSubscriptions(eids, newChanges));
-        }
-
-        protected virtual void OnUpdate(UpdateArgs args)
-        {
-            if (Update != null)
+            var newOutput = RecalculateOutput();
+            if (newOutput != _output && Updated != null)
             {
-                Update.Invoke(this, args);
+                Updated.Invoke(this, EventArgs.Empty);
+            }
+            _output = newOutput;
+        }
+
+        private string RecalculateOutput()
+        {
+            var response = _value.Value;
+            foreach (var equation in _subscribedEquations)
+            {
+                response = equation.Value.Evaluate(response, _value.DataType);
+            }
+            return response;
+        }
+
+        public void Dispose()
+        {
+            foreach (var equation in _subscribedEquations)
+            {
+                equation.Value.Updated -= OnEquationUpdated;
             }
         }
     }

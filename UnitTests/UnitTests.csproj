@@ -73,8 +73,6 @@
     <Compile Include="DataManipulationTests\PointBuilderTests.cs" />
     <Compile Include="DataManipulationTests\DataRestoreStrategyTests.cs" />
     <Compile Include="Utilities\DictionaryGraphNodeTests.cs" />
-    <Compile Include="DataManipulationTests\PointClientTests.cs" />
-    <Compile Include="DataManipulationTests\PointServerTests.cs" />
     <Compile Include="DataManipulationTests\PointTests.cs" />
     <Compile Include="DataManipulationTests\SqlDataCreatorTests.cs" />
     <Compile Include="DataManipulationTests\EventApplierTests.cs" />

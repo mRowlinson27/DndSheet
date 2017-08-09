@@ -3,20 +3,13 @@ using System.Collections.Generic;
 
 namespace DataManipulation.API.Point
 {
-    public interface IPoint
+    public interface IPoint : IDisposable
     {
+        event EventHandler Updated;
         int Eid { get; set; }
-        object Output { get; }
-        event EventHandler<UpdateArgs> Update;
-        void AddSubscriber(IPoint data, object change);
-        void UnSubscribeTo(IPoint data);
-        void SubscribeTo(IPoint data, object change);
-        void UpdateSubscription(int eid, object newChange);
-        void UpdateSubscriptions(List<int> eids, List<object> newChanges);
-    }
-
-    public class UpdateArgs : EventArgs
-    {
-        public Dictionary<int, object> Updates;
+        string Output { get; }
+        void UpdateValue(string value);
+        void UnSubscribeTo(IPointEquation equation);
+        void SubscribeTo(IPointEquation equation);
     }
 }
