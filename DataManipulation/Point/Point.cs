@@ -11,7 +11,7 @@ namespace DataManipulation.Point
     public class Point : IPoint
     {
         private readonly PointValue _value;
-        private readonly Dictionary<int, IPointEquation> _subscribedEquations;
+        private readonly Dictionary<Tuple<int,int>, IPointEquation> _subscribedEquations;
         public event EventHandler Updated;
         public int Eid { get; set; }
         private string _output;
@@ -20,7 +20,7 @@ namespace DataManipulation.Point
         {
             _value = value;
             _output = _value.Value;
-            _subscribedEquations = new Dictionary<int, IPointEquation>();
+            _subscribedEquations = new Dictionary<Tuple<int, int>, IPointEquation>();
             Eid = eid;
         }
 
@@ -32,16 +32,20 @@ namespace DataManipulation.Point
             UpdateAndNotify();
         }
 
-        public void UnSubscribeTo(IPointEquation equation)
+        public void UnSubscribeTo(int eid, IPointEquation equation)
         {
-            _subscribedEquations.Remove(equation.Eid);
+            _subscribedEquations.Remove(new Tuple<int, int>(eid, equation.Eid));
             equation.Updated -= OnEquationUpdated;
             UpdateAndNotify();
         }
 
-        public void SubscribeTo(IPointEquation equation)
+        public void SubscribeTo(int eid,IPointEquation equation)
         {
-            _subscribedEquations.Add(equation.Eid, equation);
+            if (eid == Eid)
+            {
+                throw new ArgumentException();
+            }
+            _subscribedEquations.Add(new Tuple<int, int>(eid, equation.Eid), equation);
             equation.Updated += OnEquationUpdated;
             UpdateAndNotify();
         }
@@ -63,12 +67,18 @@ namespace DataManipulation.Point
 
         private string RecalculateOutput()
         {
-            var response = _value.Value;
+            var request = new EquationRequest()
+            {
+                Value = _value.Value,
+                DataType = _value.DataType
+            };
             foreach (var equation in _subscribedEquations)
             {
-                response = equation.Value.Evaluate(response, _value.DataType);
+                request.SubscriberEid = equation.Key.Item1;
+                var response = equation.Value.Evaluate(request);
+                request.Value = response;
             }
-            return response;
+            return request.Value;
         }
 
         public void Dispose()

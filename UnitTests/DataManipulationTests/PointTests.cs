@@ -80,9 +80,9 @@ namespace UnitTests.DataManipulationTests
             var pvalue = new PointValue(1, dataType, value);
             var point = new Point(2, pvalue);
             var equation = A.Fake<IPointEquation>();
-            A.CallTo(() => equation.Evaluate(value, dataType)).Returns(value);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value && x.DataType == dataType && x.SubscriberEid == 3))).Returns(value);
 
-            point.SubscribeTo(equation);
+            point.SubscribeTo(3, equation);
 
             point.Output.Should().Be(value);
         }
@@ -96,10 +96,10 @@ namespace UnitTests.DataManipulationTests
             var pvalue = new PointValue(1, dataType, value1);
             var point = new Point(2, pvalue);
             var equation = A.Fake<IPointEquation>();
-            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value1 && x.DataType == dataType && x.SubscriberEid == 3))).Returns(value2);
             point.MonitorEvents();
 
-            point.SubscribeTo(equation);
+            point.SubscribeTo(3, equation);
 
             point.ShouldRaise("Updated");
         }
@@ -112,27 +112,56 @@ namespace UnitTests.DataManipulationTests
             var pvalue = new PointValue(1, dataType, value);
             var point = new Point(2, pvalue);
             var equation = A.Fake<IPointEquation>();
-            A.CallTo(() => equation.Evaluate(value, dataType)).Returns(value);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value && x.DataType == dataType && x.SubscriberEid == 3))).Returns(value);
             point.MonitorEvents();
 
-            point.SubscribeTo(equation);
+            point.SubscribeTo(3, equation);
 
             point.ShouldNotRaise("Updated");
         }
 
         [Test]
-        public void AddSubscriber_SameSubscriber_ThrowsException()
+        public void AddSubscriber_SameSubscriber_ThrowsExceptionIfSameUID()
         {
             var value = "test";
             var dataType = "type";
             var pvalue = new PointValue(1, dataType, value);
             var point = new Point(2, pvalue);
             var equation = A.Fake<IPointEquation>();
-            A.CallTo(() => equation.Evaluate(value, dataType)).Returns(value);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value && x.DataType == dataType && x.SubscriberEid == 3))).Returns(value);
             A.CallTo(() => equation.Eid).Returns(3);
 
-            point.SubscribeTo(equation);
-            Assert.Throws(typeof(ArgumentException),() => point.SubscribeTo(equation));
+            point.SubscribeTo(3, equation);
+            Assert.Throws(typeof(ArgumentException),() => point.SubscribeTo(3, equation));
+        }
+
+        [Test]
+        public void AddSubscriber_SameSubscriber_DoesNotThrowsExceptionIfDifferentUID()
+        {
+            var value = "test";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value && x.DataType == dataType && x.SubscriberEid == 3))).Returns(value);
+            A.CallTo(() => equation.Eid).Returns(3);
+
+            point.SubscribeTo(3, equation);
+            point.SubscribeTo(4, equation);
+        }
+
+        [Test]
+        public void AddSubscriber_ThrowsExceptionIfItself()
+        {
+            var value = "test";
+            var dataType = "type";
+            var pvalue = new PointValue(1, dataType, value);
+            var point = new Point(2, pvalue);
+            var equation = A.Fake<IPointEquation>();
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value && x.DataType == dataType && x.SubscriberEid == 3))).Returns(value);
+            A.CallTo(() => equation.Eid).Returns(3);
+
+            Assert.Throws(typeof(ArgumentException), () => point.SubscribeTo(2, equation));
         }
 
         [Test]
@@ -144,10 +173,10 @@ namespace UnitTests.DataManipulationTests
             var pvalue = new PointValue(1, dataType, value1);
             var point = new Point(2, pvalue);
             var equation = A.Fake<IPointEquation>();
-            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value1);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value1 && x.DataType == dataType && x.SubscriberEid == 4))).Returns(value1);
             A.CallTo(() => equation.Eid).Returns(3);
-            point.SubscribeTo(equation);
-            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
+            point.SubscribeTo(4, equation);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value1 && x.DataType == dataType && x.SubscriberEid == 4))).Returns(value2);
 
             equation.Updated += Raise.WithEmpty();
 
@@ -163,10 +192,10 @@ namespace UnitTests.DataManipulationTests
             var pvalue = new PointValue(1, dataType, value1);
             var point = new Point(2, pvalue);
             var equation = A.Fake<IPointEquation>();
-            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
-            point.SubscribeTo(equation);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value1 && x.DataType == dataType && x.SubscriberEid == 4))).Returns(value2);
+            point.SubscribeTo(4, equation);
 
-            point.UnSubscribeTo(equation);
+            point.UnSubscribeTo(4, equation);
 
             point.Output.Should().Be(value1);
         }
@@ -180,11 +209,11 @@ namespace UnitTests.DataManipulationTests
             var pvalue = new PointValue(1, dataType, value1);
             var point = new Point(2, pvalue);
             var equation = A.Fake<IPointEquation>();
-            A.CallTo(() => equation.Evaluate(value1, dataType)).Returns(value2);
-            point.SubscribeTo(equation);
+            A.CallTo(() => equation.Evaluate(A<EquationRequest>.That.Matches(x => x.Value == value1 && x.DataType == dataType && x.SubscriberEid == 4))).Returns(value2);
+            point.SubscribeTo(4, equation);
             point.MonitorEvents();
 
-            point.UnSubscribeTo(equation);
+            point.UnSubscribeTo(4, equation);
 
             point.ShouldRaise("Updated");
         }
@@ -199,13 +228,13 @@ namespace UnitTests.DataManipulationTests
             var equation = A.Fake<IPointEquation>();
             var equation2 = A.Fake<IPointEquation>();
             A.CallTo(() => equation.Eid).Returns(3);
-            point.SubscribeTo(equation);
-            point.UnSubscribeTo(equation);
-            point.SubscribeTo(equation2);
+            A.CallTo(() => equation2.Eid).Returns(4);
 
-            equation.Updated += Raise.WithEmpty();
-            
-            A.CallTo(() => equation2.Evaluate(value1, dataType)).MustHaveHappened(Repeated.Exactly.Once);
+            point.SubscribeTo(3, equation);
+            point.UnSubscribeTo(3, equation);
+            point.SubscribeTo(4, equation2);
+
+            A.CallTo(() => equation2.Evaluate(A<EquationRequest>.Ignored)).MustHaveHappened(Repeated.Exactly.Once);
         }
 
         [Test]

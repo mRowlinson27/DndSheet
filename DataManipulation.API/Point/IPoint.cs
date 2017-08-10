@@ -9,7 +9,7 @@ namespace DataManipulation.API.Point
         int Eid { get; set; }
         string Output { get; }
         void UpdateValue(string value);
-        void UnSubscribeTo(IPointEquation equation);
-        void SubscribeTo(IPointEquation equation);
+        void UnSubscribeTo(int eid, IPointEquation equation);
+        void SubscribeTo(int eid, IPointEquation equation);
     }
 }

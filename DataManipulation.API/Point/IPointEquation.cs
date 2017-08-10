@@ -12,6 +12,6 @@ namespace DataManipulation.API.Point
         event EventHandler Updated;
         int Eid { get; set; }
         string Value { get; }
-        string Evaluate(string value, string dataType);
+        string Evaluate(EquationRequest equationRequest);
     }
 }
