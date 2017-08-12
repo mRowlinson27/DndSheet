@@ -41,15 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\EquationRequest.cs" />
-    <Compile Include="DTOs\PointValue.cs" />
-    <Compile Include="Point\IPointBuilder.cs" />
-    <Compile Include="Point\IPointEquation.cs" />
-    <Compile Include="Point\IPointFactory.cs" />
     <Compile Include="DTOs\AbilityScore.cs" />
-    <Compile Include="Point\IPoint.cs" />
     <Compile Include="DTOs\SkillsDto.cs" />
     <Compile Include="DTOs\SqlAbilityScore.cs" />
-    <Compile Include="IDatabaseAdaptor.cs" />
     <Compile Include="IDatabaseInterpretor.cs" />
     <Compile Include="IDataRestoreStrategy.cs" />
     <Compile Include="IEidCreator.cs" />
@@ -57,7 +51,6 @@
     <Compile Include="IEventApplier.cs" />
     <Compile Include="IPropertyApplier.cs" />
     <Compile Include="IPropertyChangedChecker.cs" />
-    <Compile Include="Point\IPointCalculateStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +59,7 @@
       <Name>SqlDatabase.API</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,4 @@
-﻿namespace DataManipulation.API.DTOs
+﻿namespace DataManipulation.DTO
 {
     public class PointValue
     {

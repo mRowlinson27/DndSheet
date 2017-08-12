@@ -72,8 +72,11 @@
     <Compile Include="CustomFormStructuresTests\DataEntryFormManagerTests.cs" />
     <Compile Include="DataManipulationTests\PointBuilderTests.cs" />
     <Compile Include="DataManipulationTests\DataRestoreStrategyTests.cs" />
-    <Compile Include="Utilities\DictionaryGraphNodeTests.cs" />
+    <Compile Include="DataManipulationTests\PointGraphTests.cs" />
     <Compile Include="DataManipulationTests\PointTests.cs" />
+    <Compile Include="DataManipulationTests\PointUpdateStrategyTests.cs" />
+    <Compile Include="DataManipulationTests\PointUpdateSubscriberTests.cs" />
+    <Compile Include="Utilities\DictionaryGraphNodeTests.cs" />
     <Compile Include="DataManipulationTests\SqlDataCreatorTests.cs" />
     <Compile Include="DataManipulationTests\EventApplierTests.cs" />
     <Compile Include="DataManipulationTests\PropertyApplierTests.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="Utilities\Calculator\NestingIdentifierTests.cs" />
     <Compile Include="Utilities\Calculator\PowersRuleResolverTests.cs" />
     <Compile Include="Utilities\Calculator\SubtractionRuleResolverTests.cs" />
+    <Compile Include="Utilities\DirectedGraphTests.cs" />
     <Compile Include="Utilities\MostlyFullSequenceTests.cs" />
   </ItemGroup>
   <ItemGroup>

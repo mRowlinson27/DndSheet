@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataManipulation.API;
-using DataManipulation.API.Point;
+using DataManipulation.Interfaces;
 using SqlDatabase.API.DTO;
 
 namespace DataManipulation

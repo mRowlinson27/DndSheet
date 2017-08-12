@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DataManipulation.API;
-using DataManipulation.API.Point;
+using DataManipulation.Interfaces;
 using SqlDatabase.API;
 using Utilities.API;
 
@@ -19,7 +19,7 @@ namespace DataManipulation
             _dictionaryGraphNodeFactory = dictionaryGraphNodeFactory;
         }
 
-        public Dictionary<int,IPoint> CreateAllPoints(IDatabase database)
+        public Dictionary<int, IPoint> CreateAllPoints(IDatabase database)
         {
             var points = new Dictionary<int, IPoint>();
             var entities = database.FindEntitiesByDatatype("Point");

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataManipulation.API.Point;
-using SqlDatabase.API.DTO;
+﻿using System.Collections.Generic;
 
-namespace DataManipulation.API
+namespace DataManipulation.Interfaces
 {
     public interface IDatabaseAdaptor
     {

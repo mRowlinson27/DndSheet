@@ -54,6 +54,9 @@
     <Compile Include="Implementation\Calculator\PowersRuleResolver.cs" />
     <Compile Include="Implementation\Calculator\SubtractionRuleResolver.cs" />
     <Compile Include="Implementation\DictionaryGraphNode.cs" />
+    <Compile Include="Implementation\DirectedGraph.cs" />
+    <Compile Include="DTOs\GraphEdge.cs" />
+    <Compile Include="DTOs\GraphNode.cs" />
     <Compile Include="Implementation\MostlyFullSequence.cs" />
     <Compile Include="Interfaces\Calculator\IEquationPartsIdentifier.cs" />
     <Compile Include="Interfaces\Calculator\IMathsResolver.cs" />

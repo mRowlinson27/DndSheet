@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
-using DataManipulation.API.DTOs;
-using DataManipulation.API.Point;
-using SqlDatabase.API.DTO;
+using DataManipulation.DTO;
+using DataManipulation.Interfaces;
 
-namespace DataManipulation.Point
+namespace DataManipulation
 {
     public class PointBuilder : IPointBuilder
     {
         private readonly IPointFactory _pointFactory;
-        private readonly IPointCalculateStrategy _simpleCalculateStrategy;
+        private readonly IEquationCalculateStrategy _simpleCalculateStrategy;
 
-        public PointBuilder(IPointFactory pointFactory, IPointCalculateStrategy simpleCalculateStrategy)
+        public PointBuilder(IPointFactory pointFactory, IEquationCalculateStrategy simpleCalculateStrategy)
         {
             _pointFactory = pointFactory;
             _simpleCalculateStrategy = simpleCalculateStrategy;
