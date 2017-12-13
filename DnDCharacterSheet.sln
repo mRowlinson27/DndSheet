@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDCharacterSheet", "DnDCharacterSheet\DnDCharacterSheet.csproj", "{23E551E6-F3AA-434D-A3A4-136F459A1531}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -35,6 +35,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5E1C5087-172B-4BA5-B156-7592E0189195}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfModel", "WpfModel\WpfModel.csproj", "{E2B5415B-29F9-4563-919F-0A21A2DB9BDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfUITests", "WpfUITests\WpfUITests.csproj", "{C7EF0255-2224-47C6-8571-C1926FF7BCB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfUI", "WpfUI\WpfUI.csproj", "{EF431B72-95ED-41B3-861A-713E3CB01B53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +104,18 @@ Global
 		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2B5415B-29F9-4563-919F-0A21A2DB9BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B5415B-29F9-4563-919F-0A21A2DB9BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B5415B-29F9-4563-919F-0A21A2DB9BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B5415B-29F9-4563-919F-0A21A2DB9BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7EF0255-2224-47C6-8571-C1926FF7BCB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7EF0255-2224-47C6-8571-C1926FF7BCB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7EF0255-2224-47C6-8571-C1926FF7BCB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7EF0255-2224-47C6-8571-C1926FF7BCB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF431B72-95ED-41B3-861A-713E3CB01B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF431B72-95ED-41B3-861A-713E3CB01B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF431B72-95ED-41B3-861A-713E3CB01B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF431B72-95ED-41B3-861A-713E3CB01B53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,5 +123,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E0A5642E-5605-466F-8A7F-3814F29191BE} = {5E1C5087-172B-4BA5-B156-7592E0189195}
 		{D62FD153-1371-476A-AB0C-ABD6DFFADE6D} = {5E1C5087-172B-4BA5-B156-7592E0189195}
+		{C7EF0255-2224-47C6-8571-C1926FF7BCB5} = {5E1C5087-172B-4BA5-B156-7592E0189195}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E57C5C9C-9A7F-49D9-9B1D-1D1BC197D431}
 	EndGlobalSection
 EndGlobal
