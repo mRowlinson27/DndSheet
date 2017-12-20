@@ -4,6 +4,8 @@ namespace WpfUI.ViewModels.Helpers
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Dtos;
 
     public class DictionaryTableViewModelHelper : IDictionaryTableViewModelHelper
@@ -17,6 +19,8 @@ namespace WpfUI.ViewModels.Helpers
 
         public DataTable GetSource()
         {
+            Thread.Sleep(3000);
+
             var dataTable = new DataTable();
 
             foreach (var heading in _dictionaryTable.Headings)

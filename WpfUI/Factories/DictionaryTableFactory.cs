@@ -26,8 +26,6 @@ namespace WpfUI.Factories
             {
                 DataContext = dictionaryTableViewModel,
             };
-            dictionaryTableViewModel.DictionaryTableView = tablesView;
-            dictionaryTableViewModel.ApplyBindings();
             return tablesView;
         }
     }
