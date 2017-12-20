@@ -53,10 +53,16 @@
     <Compile Include="Implementation\Calculator\NestingIdentifier.cs" />
     <Compile Include="Implementation\Calculator\PowersRuleResolver.cs" />
     <Compile Include="Implementation\Calculator\SubtractionRuleResolver.cs" />
+    <Compile Include="Implementation\DAL\FileReader.cs" />
+    <Compile Include="Implementation\DAL\FileWriter.cs" />
+    <Compile Include="Implementation\DAL\StreamWriterWrapper.cs" />
+    <Compile Include="Implementation\DAL\StreamWriterWrapperFactory.cs" />
+    <Compile Include="Implementation\DateTimeWrapper.cs" />
     <Compile Include="Implementation\DictionaryGraphNode.cs" />
     <Compile Include="Implementation\DirectedGraph.cs" />
     <Compile Include="DTOs\GraphEdge.cs" />
     <Compile Include="DTOs\GraphNode.cs" />
+    <Compile Include="Implementation\Logger.cs" />
     <Compile Include="Implementation\MostlyFullSequence.cs" />
     <Compile Include="Interfaces\Calculator\IEquationPartsIdentifier.cs" />
     <Compile Include="Interfaces\Calculator\IMathsResolver.cs" />

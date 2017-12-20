@@ -5,6 +5,8 @@
     using System.Windows;
     using Dtos;
     using Factories;
+    using Utilities.Implementation;
+    using Utilities.Implementation.DAL;
     using ViewModels;
     using ViewModels.Helpers;
     using DictionaryTableView = Controls.DictionaryTableView;
@@ -18,6 +20,12 @@
         [STAThread]
         public static void Main()
         {
+            var logger = new Logger(
+                new FileWriter(new StreamWriterWrapperFactory()),
+                new DateTimeWrapper());
+
+            logger.LogMessage("Program started");
+
             var application = new App();
             application.InitializeComponent();
 
@@ -65,8 +73,9 @@
                 DataContext = new MainViewModel(tablesView)
             };
 
+            application.Exit += (sender, args) => logger.LogMessage("Program closed");
 
-            application.Run(mainWindow);  
+            application.Run(mainWindow);
         }
     }
 }

@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Utilities.API;
-
+﻿
 namespace Utilities.Implementation
 {
+    using System;
+    using System.Collections.Generic;
+    using API;
+
     public class DictionaryGraphNode<T> : IDictionaryGraphNode<T>
     {
         private readonly T _data;
