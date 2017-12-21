@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace WpfUITests
 {
+    using System;
+    using System.Collections.Generic;
     using System.Data;
     using FluentAssertions;
     using NUnit.Framework;
-    using WpfUI.Dtos;
+    using WpfUI.API.Dtos;
     using WpfUI.ViewModels.Helpers;
 
     [TestFixture]

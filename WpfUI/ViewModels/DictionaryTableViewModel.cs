@@ -11,10 +11,7 @@
         private DataTable _dataGridBinding;
         public DataTable DataGridBinding
         {
-            get
-            {
-                return _dataGridBinding;
-            }
+            get { return _dataGridBinding; }
 
             private set { _dataGridBinding = value; OnPropertyChanged(); }
         }
@@ -27,8 +24,7 @@
 
         private async void Initialize()
         {
-            _dataGridBinding = await Task.Run(() => _dictionaryTableViewModelHelper.GetSource());
-            OnPropertyChanged("DataGridBinding");
+            DataGridBinding = await Task.Run(() => _dictionaryTableViewModelHelper.GetSource());
         }
     }
 }

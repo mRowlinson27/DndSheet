@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WpfUITests</RootNamespace>
     <AssemblyName>WpfUITests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,6 +64,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WpfUI.API\WpfUI.API.csproj">
+      <Project>{60c1fe9c-3fd1-4155-864f-75b1b109ea00}</Project>
+      <Name>WpfUI.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WpfUI\WpfUI.csproj">
       <Project>{ef431b72-95ed-41b3-861a-713e3cb01b53}</Project>
       <Name>WpfUI</Name>

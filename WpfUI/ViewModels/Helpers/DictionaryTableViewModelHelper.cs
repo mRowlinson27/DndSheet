@@ -6,7 +6,7 @@ namespace WpfUI.ViewModels.Helpers
     using System.Data;
     using System.Threading;
     using System.Threading.Tasks;
-    using Dtos;
+    using API.Dtos;
 
     public class DictionaryTableViewModelHelper : IDictionaryTableViewModelHelper
     {

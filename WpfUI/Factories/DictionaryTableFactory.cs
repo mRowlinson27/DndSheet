@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WpfUI.Factories
+﻿namespace WpfUI.Factories
 {
+    using API;
+    using API.Dtos;
     using Controls;
-    using Dtos;
     using ViewModels;
     using ViewModels.Helpers;
 
-    public class DictionaryTableFactory
+    public class DictionaryTableFactory : IDictionaryTableFactory
     {
         public DictionaryTableFactory()
         {
             
         }
 
-        public DictionaryTableView Create(DictionaryTable dictionaryTable)
+        public IDictionaryTableView Create(DictionaryTable dictionaryTable)
         {
             var dictionaryTableViewModel = new DictionaryTableViewModel(
                 new DictionaryTableViewModelHelper(dictionaryTable));

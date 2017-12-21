@@ -1,4 +1,5 @@
-﻿namespace WpfUI.Dtos
+﻿
+namespace WpfUI.API.Dtos
 {
     using System.Collections.Generic;
 

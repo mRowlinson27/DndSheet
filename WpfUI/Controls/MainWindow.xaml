@@ -6,9 +6,27 @@
         xmlns:controls="clr-namespace:WpfUI.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="525">
-    <Grid>
-        <controls:DictionaryTableView x:Name="MainWindowTablesView" Content="{Binding MainWindowTablesViewBinding}" Margin="0,50,0,0"></controls:DictionaryTableView>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="My Application" VerticalAlignment="Top" Height="45" Width="497" Style="{DynamicResource MainHeader}"/>
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="Heading" 
+                   Grid.Row="0" Grid.ColumnSpan="2" 
+                   Background="DarkRed"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="My Application"
+                   Style="{DynamicResource MainHeader}"/>
+        <controls:DictionaryTableView x:Name="MainWindowTablesView" 
+                                      Background="Aqua"
+                                      Margin="5,5,5,5"
+                                      Grid.Row="1" Grid.Column="0" 
+                                      Content="{Binding MainWindowTablesViewBinding}"/>
     </Grid>
 </Window>
 

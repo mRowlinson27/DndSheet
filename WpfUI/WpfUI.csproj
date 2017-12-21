@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WpfUI</RootNamespace>
     <AssemblyName>WpfUI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,8 +52,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\ColumnHeadings.cs" />
-    <Compile Include="Dtos\DictionaryTable.cs" />
     <Compile Include="Factories\DictionaryTableFactory.cs" />
     <Compile Include="ViewModels\Helpers\DictionaryTableViewModelHelper.cs" />
     <Compile Include="ViewModels\Helpers\IDictionaryTableViewModelHelper.cs" />
@@ -118,6 +117,10 @@
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{1632b768-4973-428d-8733-8e859d1efab5}</Project>
       <Name>Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfUI.API\WpfUI.API.csproj">
+      <Project>{60c1fe9c-3fd1-4155-864f-75b1b109ea00}</Project>
+      <Name>WpfUI.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

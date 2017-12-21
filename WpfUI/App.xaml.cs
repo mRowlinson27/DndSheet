@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Windows;
-    using Dtos;
+    using API.Dtos;
     using Factories;
     using Utilities.Implementation;
     using Utilities.Implementation.DAL;
