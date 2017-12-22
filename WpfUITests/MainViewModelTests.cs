@@ -44,5 +44,18 @@ namespace WpfUI.UnitTests
             //Assert
             A.CallTo(() => _dictionaryTableView.Update(A<DictionaryTable>.Ignored)).MustHaveHappened();
         }
+
+        [Test]
+        public void Initialize_AddsDictionaryListener()
+        {
+            //Arrange
+            A.CallTo(() => _dictionaryTableFactory.Create()).Returns(_dictionaryTableView);
+            _mainViewModel.Initialize();
+
+            //Act
+            _dictionaryTableView.DictionaryTableUpdated += Raise.With(this, new DictionaryTableUpdatedArgs(null) );
+
+            //Assert
+        }
     }
 }

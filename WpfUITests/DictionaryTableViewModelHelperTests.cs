@@ -14,55 +14,60 @@ namespace WpfUI.UnitTests
     [TestFixture]
     class DictionaryTableViewModelHelperTests
     {
-        [Test]
-        public void GetSource_HasCorrectColumnNames()
+        private DictionaryTableViewModelHelper _dictionaryTableViewModelHelper;
+
+        [SetUp]
+        public void Setup()
         {
-            //Arrange
             var logger = A.Fake<ILogger>();
-            var data = GetDefaultData();
-            var dictionaryTableViewModelHelper = new DictionaryTableViewModelHelper(logger);
-
-            //Act
-            var result = dictionaryTableViewModelHelper.ConvertDictionaryTableToDataTable(data);
-
-            //Assert
-            result.Columns[0].ColumnName.Should().Be(data.Headings[0].HeadingName);
-            result.Columns[1].ColumnName.Should().Be(data.Headings[1].HeadingName);
-            result.Columns[2].ColumnName.Should().Be(data.Headings[2].HeadingName);
+            _dictionaryTableViewModelHelper = new DictionaryTableViewModelHelper(logger);
         }
 
         [Test]
-        public void GetSource_HasRows()
+        public void ConvertDictionaryTableToDataTable_CorrectTableReturned()
         {
             //Arrange
-            var logger = A.Fake<ILogger>();
-            var data = GetDefaultData();
-            var dictionaryTableViewModelHelper = new DictionaryTableViewModelHelper(logger);
+            var data = GetDefaultDictionaryTable();
 
             //Act
-            var result = dictionaryTableViewModelHelper.ConvertDictionaryTableToDataTable(data);
+            var result = _dictionaryTableViewModelHelper.ConvertDictionaryTableToDataTable(data);
 
             //Assert
-            CompareRow(result.Rows, data);
+            var defaultDataTable = GetDefaultDataTable();
+            CompareDataTables(result, defaultDataTable);
         }
 
-        private DictionaryTable GetDefaultData()
+        [Test]
+        public void ConvertDataTableToDictionaryTable_CorrectTableReturned()
+        {
+            //Arrange
+            var defaultDataTable = GetDefaultDataTable();
+
+            //Act
+            var result = _dictionaryTableViewModelHelper.ConvertDataTableToDictionaryTable(defaultDataTable);
+
+            //Assert
+            var defaultDictionaryTable = GetDefaultDictionaryTable();
+            CompareDictionaryTables(result, defaultDictionaryTable);
+        }
+
+        private DictionaryTable GetDefaultDictionaryTable()
         {
             return new DictionaryTable()
             {
-                Headings = new List<ColumnHeadings>
+                Headings = new List<ColumnHeading>
                 {
-                    new ColumnHeadings()
+                    new ColumnHeading()
                     {
                         ColumnType = typeof(string),
                         HeadingName = "Skill Name"
                     },
-                    new ColumnHeadings()
+                    new ColumnHeading()
                     {
                         ColumnType = typeof(bool),
                         HeadingName = "Description"
                     },
-                    new ColumnHeadings()
+                    new ColumnHeading()
                     {
                         ColumnType = typeof(int),
                         HeadingName = "Ranks"
@@ -86,16 +91,52 @@ namespace WpfUI.UnitTests
             };
         }
 
-        private void CompareRow(DataRowCollection dataRowCollection, DictionaryTable dictionaryTable)
+        private DataTable GetDefaultDataTable()
         {
-            for (var i = 0; i < dataRowCollection.Count; i++)
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("Skill Name", typeof(string));
+            dataTable.Columns.Add("Description", typeof(bool));
+            dataTable.Columns.Add("Ranks", typeof(int));
+
+            dataTable.Rows.Add("Acro", true, 1);
+            dataTable.Rows.Add("Climb", false, 3);
+
+            return dataTable;
+        }
+
+        private void CompareDictionaryTables(DictionaryTable table1, DictionaryTable table2)
+        {
+            Assert.That(table1.Headings.Count == table2.Headings.Count);
+            for (int i = 0; i < table1.Headings.Count; i++)
             {
-                var row = dataRowCollection[i];
-                for (var headingNum = 0; headingNum < dictionaryTable.Headings.Count; headingNum++ )
+                var heading1 = table1.Headings[i];
+                var heading2 = table2.Headings[i];
+                heading1.ShouldBeEquivalentTo(heading2);
+            }
+
+            Assert.That(table1.Rows.Count == table2.Rows.Count);
+            for (int i = 0; i < table1.Rows.Count; i++)
+            {
+                var row1 = table1.Rows[i];
+                var row2 = table2.Rows[i];
+                row1.ShouldBeEquivalentTo(row2);
+            }
+        }
+
+        private void CompareDataTables(DataTable table1, DataTable table2)
+        {
+            Assert.That(table1.Columns.Count == table2.Columns.Count);
+            Assert.That(table1.Rows.Count == table2.Rows.Count);
+            for (int i = 0; i < table1.Columns.Count; i++)
+            {
+                var col1 = table1.Columns[i];
+                var col2 = table2.Columns[i];
+                col1.ColumnName.Should().BeEquivalentTo(col2.ColumnName);
+                for (int j = 0; j < table1.Rows.Count; j++)
                 {
-                    var correctVal = dictionaryTable.Rows[i][dictionaryTable.Headings[headingNum].HeadingName];
-                    //row[headingNum].Should().Be(correctVal);
-                    Console.WriteLine($"{row[headingNum]} ({row[headingNum].GetType()}) - {correctVal} ({correctVal.GetType()})");
+                    var row1 = table1.Rows[j][col1.ColumnName];
+                    var row2 = table2.Rows[j][col2.ColumnName];
+                    row1.ShouldBeEquivalentTo(row2);
                 }
             }
         }

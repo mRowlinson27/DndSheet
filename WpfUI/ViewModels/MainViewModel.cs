@@ -8,7 +8,7 @@
     using Utilities.API;
     using DictionaryTableView = Controls.DictionaryTableView;
 
-    public class MainViewModel : ViewModelBase, IMainWindow
+    public class MainViewModel : ViewModelBase, IMainWindow, IMainViewModel
     {
         //Bindings -------------------------------
 
@@ -38,21 +38,21 @@
         public void Initialize()
         {
             Logger.LogEntry();
-            var dictionaryTable = new DictionaryTable()
+            _oldTable = new DictionaryTable()
             {
-                Headings = new List<ColumnHeadings>
+                Headings = new List<ColumnHeading>
                 {
-                    new ColumnHeadings()
+                    new ColumnHeading()
                     {
                         ColumnType = typeof(string),
                         HeadingName = "Skill Name"
                     },
-                    new ColumnHeadings()
+                    new ColumnHeading()
                     {
                         ColumnType = typeof(bool),
                         HeadingName = "Description"
                     },
-                    new ColumnHeadings()
+                    new ColumnHeading()
                     {
                         ColumnType = typeof(int),
                         HeadingName = "Ranks"
@@ -75,8 +75,20 @@
                 }
             };
             MainWindowTablesViewBinding = DictionaryTableFactory.Create();
-            MainWindowTablesViewBinding.Update(dictionaryTable);
+            MainWindowTablesViewBinding.Update(_oldTable);
+            MainWindowTablesViewBinding.DictionaryTableUpdated += OnDictionaryTableUpdated;
             Logger.LogExit();
+        }
+
+        private void OnDictionaryTableUpdated(object sender, DictionaryTableUpdatedArgs dictionaryTableUpdatedArgs)
+        {
+            Logger.LogEntry();
+        }
+
+        private DictionaryTable _oldTable;
+        public async Task ButtonClick()
+        {
+            await Task.Run(() => MainWindowTablesViewBinding.Update(_oldTable));
         }
     }
 }

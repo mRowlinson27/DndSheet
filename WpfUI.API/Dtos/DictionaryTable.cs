@@ -5,7 +5,7 @@ namespace WpfUI.API.Dtos
 
     public class DictionaryTable
     {
-        public List<ColumnHeadings> Headings { get; set; } 
+        public List<ColumnHeading> Headings { get; set; } 
 
         public List<Dictionary<string, object>> Rows { get; set; }
     }

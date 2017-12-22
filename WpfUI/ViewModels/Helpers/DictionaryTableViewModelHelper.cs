@@ -1,11 +1,9 @@
 ﻿
 namespace WpfUI.ViewModels.Helpers
 {
+    using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Data;
-    using System.Threading;
-    using System.Threading.Tasks;
     using API.Dtos;
     using Utilities.API;
 
@@ -21,8 +19,6 @@ namespace WpfUI.ViewModels.Helpers
         public DataTable ConvertDictionaryTableToDataTable(DictionaryTable dictionaryTable)
         {
             _logger.LogEntry();
-            Thread.Sleep(3000);
-
             var dataTable = new DataTable();
 
             foreach (var heading in dictionaryTable.Headings)
@@ -34,6 +30,7 @@ namespace WpfUI.ViewModels.Helpers
                 var rowData = new List<object>();
                 foreach (var heading in dictionaryTable.Headings)
                 {
+                    Console.WriteLine(row[heading.HeadingName]);
                     rowData.Add(row[heading.HeadingName]);
                 }
                 dataTable.Rows.Add(rowData.ToArray());
@@ -44,7 +41,31 @@ namespace WpfUI.ViewModels.Helpers
 
         public DictionaryTable ConvertDataTableToDictionaryTable(DataTable dataTable)
         {
-            throw new System.NotImplementedException();
+            var dictionaryTable = new DictionaryTable();
+            dictionaryTable.Headings = new List<ColumnHeading>();
+            dictionaryTable.Rows = new List<Dictionary<string, object>>();
+
+            foreach (DataColumn col in dataTable.Columns)
+            {
+                var columnHeading = new ColumnHeading()
+                {
+                    HeadingName = col.ColumnName,
+                    ColumnType = col.DataType
+                };
+                dictionaryTable.Headings.Add(columnHeading);
+            }
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var dictRow = new Dictionary<string, object>();
+                foreach (DataColumn col in dataTable.Columns)
+                {
+                    dictRow.Add(col.ColumnName, row[col.ColumnName]);
+                }
+                dictionaryTable.Rows.Add(dictRow);
+            }
+
+            return dictionaryTable;
         }
     }
 }

@@ -41,10 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\ColumnHeadings.cs" />
+    <Compile Include="Dtos\ColumnHeading.cs" />
     <Compile Include="Dtos\DictionaryTable.cs" />
     <Compile Include="IDictionaryTableFactory.cs" />
     <Compile Include="IDictionaryTableView.cs" />
+    <Compile Include="IMainViewModel.cs" />
     <Compile Include="IMainWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

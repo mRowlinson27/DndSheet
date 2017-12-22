@@ -9,6 +9,7 @@
     <Grid>
         <DataGrid  x:Name="DataGrid" AutoGenerateColumns="True" 
                    ItemsSource="{Binding DataGridBinding}"
+                   CellEditEnding="DataGrid_OnCellEditEnding"
                    IsReadOnly="False"
                    IsEnabled="True"
                    Height="300" VerticalAlignment="Bottom" CanUserAddRows="false" ColumnWidth="*">

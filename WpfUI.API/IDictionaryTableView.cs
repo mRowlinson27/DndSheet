@@ -6,12 +6,10 @@ namespace WpfUI.API
 
     public interface IDictionaryTableView
     {
-        event DictionaryTableUpdatedHandler DictionaryTableUpdated;
+        event EventHandler<DictionaryTableUpdatedArgs> DictionaryTableUpdated;
 
         void Update(DictionaryTable dictionaryTable);
     }
-
-    public delegate void DictionaryTableUpdatedHandler(object sender, DictionaryTableUpdatedArgs a);
 
     public class DictionaryTableUpdatedArgs : EventArgs
     {
@@ -20,7 +18,7 @@ namespace WpfUI.API
             _dictionaryTable = dictionaryTable;
         }
         private DictionaryTable _dictionaryTable;
-        public DictionaryTable Message
+        public DictionaryTable DictionaryTable
         {
             get { return _dictionaryTable; }
         }

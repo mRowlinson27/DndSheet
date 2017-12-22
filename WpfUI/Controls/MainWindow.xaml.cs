@@ -36,5 +36,10 @@
         {
             _mainViewModel.Initialize();
         }
+
+        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            await _mainViewModel.ButtonClick();
+        }
     }
 }

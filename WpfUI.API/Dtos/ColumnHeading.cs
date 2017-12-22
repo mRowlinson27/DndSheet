@@ -3,7 +3,7 @@ namespace WpfUI.API.Dtos
 {
     using System;
 
-    public class ColumnHeadings
+    public class ColumnHeading
     {
         public string HeadingName { get; set; }
 
