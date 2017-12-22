@@ -1,13 +1,15 @@
 ﻿
-namespace WpfUITests
+namespace WpfUI.UnitTests
 {
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using API.Dtos;
+    using FakeItEasy;
     using FluentAssertions;
     using NUnit.Framework;
-    using WpfUI.API.Dtos;
-    using WpfUI.ViewModels.Helpers;
+    using ViewModels.Helpers;
+    using ILogger = Utilities.API.ILogger;
 
     [TestFixture]
     class DictionaryTableViewModelHelperTests
@@ -16,11 +18,12 @@ namespace WpfUITests
         public void GetSource_HasCorrectColumnNames()
         {
             //Arrange
+            var logger = A.Fake<ILogger>();
             var data = GetDefaultData();
-            var dictionaryTableViewModelHelper = new DictionaryTableViewModelHelper(data);
+            var dictionaryTableViewModelHelper = new DictionaryTableViewModelHelper(logger);
 
             //Act
-            var result = dictionaryTableViewModelHelper.GetSource();
+            var result = dictionaryTableViewModelHelper.ConvertDictionaryTableToDataTable(data);
 
             //Assert
             result.Columns[0].ColumnName.Should().Be(data.Headings[0].HeadingName);
@@ -32,11 +35,12 @@ namespace WpfUITests
         public void GetSource_HasRows()
         {
             //Arrange
+            var logger = A.Fake<ILogger>();
             var data = GetDefaultData();
-            var dictionaryTableViewModelHelper = new DictionaryTableViewModelHelper(data);
+            var dictionaryTableViewModelHelper = new DictionaryTableViewModelHelper(logger);
 
             //Act
-            var result = dictionaryTableViewModelHelper.GetSource();
+            var result = dictionaryTableViewModelHelper.ConvertDictionaryTableToDataTable(data);
 
             //Assert
             CompareRow(result.Rows, data);

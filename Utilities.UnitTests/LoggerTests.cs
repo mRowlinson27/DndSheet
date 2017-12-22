@@ -31,12 +31,44 @@ namespace Utilities.UnitTests
             var message = "message";
             var currentTime = new DateTime(2000, 1, 2, 3, 4, 5);
             A.CallTo(() => _dateTimeWrapper.GetCurrentDateTime()).Returns(currentTime);
-            var correctMessage = "3:04:05 AM | LoggerTests::LogMessage_LogsTimeCallingMethodAndMessage:39 | message" + '\n';
+            var correctMessage = "03:04:05:000000 AM | LoggerTests::LogMessage_LogsTimeCallingMethodAndMessage:37 | message" + '\n';
 
-            //Act
+            //Act - Note Changing the height of this line breaks the test
             _logger.LogMessage(message);
 
-            Console.WriteLine(correctMessage);
+            //Assert
+            A.CallTo(() => _fileWriter.Write(A<string>.Ignored,
+                    A<string>.That.Matches(x => String.CompareOrdinal(x, correctMessage) == 0)))
+                .MustHaveHappened();
+        }
+
+        [Test]
+        public void LogEntry_LogsTimeCallingMethodAsEntered()
+        {
+            //Arrange
+            var currentTime = new DateTime(2000, 1, 2, 3, 4, 5);
+            A.CallTo(() => _dateTimeWrapper.GetCurrentDateTime()).Returns(currentTime);
+            var correctMessage = "03:04:05:000000 AM | LoggerTests::LogEntry_LogsTimeCallingMethodAsEntered:54 | ENTERED" + '\n';
+
+            //Act - Note Changing the height of this line breaks the test
+            _logger.LogEntry();
+
+            //Assert
+            A.CallTo(() => _fileWriter.Write(A<string>.Ignored,
+                    A<string>.That.Matches(x => String.CompareOrdinal(x, correctMessage) == 0)))
+                .MustHaveHappened();
+        }
+
+        [Test]
+        public void LogExit_LogsTimeCallingMethodAsExiting()
+        {
+            //Arrange
+            var currentTime = new DateTime(2000, 1, 2, 3, 4, 5);
+            A.CallTo(() => _dateTimeWrapper.GetCurrentDateTime()).Returns(currentTime);
+            var correctMessage = "03:04:05:000000 AM | LoggerTests::LogExit_LogsTimeCallingMethodAsExiting:71 | EXITING" + '\n';
+
+            //Act - Note Changing the height of this line breaks the test
+            _logger.LogExit();
 
             //Assert
             A.CallTo(() => _fileWriter.Write(A<string>.Ignored,

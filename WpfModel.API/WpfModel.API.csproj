@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{60C1FE9C-3FD1-4155-864F-75B1B109EA00}</ProjectGuid>
+    <ProjectGuid>{58490091-DE76-45DE-97DB-174A555025A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WpfUI.API</RootNamespace>
-    <AssemblyName>WpfUI.API</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <RootNamespace>WpfModel.API</RootNamespace>
+    <AssemblyName>WpfModel.API</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,18 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\ColumnHeadings.cs" />
-    <Compile Include="Dtos\DictionaryTable.cs" />
-    <Compile Include="IDictionaryTableFactory.cs" />
-    <Compile Include="IDictionaryTableView.cs" />
-    <Compile Include="IMainWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Utilities.API\Utilities.API.csproj">
-      <Project>{8c2b367f-ba2f-48b7-a877-d55ea72ed9d7}</Project>
-      <Name>Utilities.API</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

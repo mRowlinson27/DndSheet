@@ -1,6 +1,7 @@
 ﻿
 namespace Utilities.Implementation
 {
+    using System;
     using API;
     using API.DAL;
 
@@ -9,6 +10,7 @@ namespace Utilities.Implementation
         private readonly IFileWriter _fileWriter;
         private readonly IDateTimeWrapper _dateTimeWrapper;
         private string logFilePath = "C:\\Temp\\CharacterLog.txt";
+        private object sync = new object();
 
         public Logger(IFileWriter fileWriter, IDateTimeWrapper dateTimeWrapper)
         {
@@ -25,10 +27,27 @@ namespace Utilities.Implementation
             var classFileName = sourceFilePath.Substring(sourceFilePath.LastIndexOf('\\') + 1);
             var className = classFileName.Substring(0, classFileName.Length - 3);
 
-            var finalLog = time.ToLongTimeString() + " | " + className + "::" + memberName + ":" + sourceLineNumber +
+            var finalLog = time.ToString("hh:mm:ss:ffffff tt") + " | " + className + "::" + memberName + ":" + sourceLineNumber +
                            " | " + message + '\n';
 
-            _fileWriter.Write(logFilePath, finalLog);
+            lock (sync)
+            {
+                _fileWriter.Write(logFilePath, finalLog);
+            }
+        }
+
+        public void LogEntry([System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
+            [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
+            [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
+        {
+            LogMessage("ENTERED", memberName, sourceFilePath, sourceLineNumber);
+        }
+
+        public void LogExit([System.Runtime.CompilerServices.CallerMemberName] string memberName = "",
+            [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
+            [System.Runtime.CompilerServices.CallerLineNumber] int sourceLineNumber = 0)
+        {
+            LogMessage("EXITING", memberName, sourceFilePath, sourceLineNumber);
         }
     }
 }

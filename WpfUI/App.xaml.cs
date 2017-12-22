@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Windows;
+    using API;
     using API.Dtos;
     using Factories;
     using Utilities.Implementation;
@@ -29,49 +30,13 @@
             var application = new App();
             application.InitializeComponent();
 
-            var dictionaryTable = new DictionaryTable()
+            var dictionaryTableFactory = new DictionaryTableFactory(logger);
+            var mainWindow = new MainWindow()
             {
-                Headings = new List<ColumnHeadings>
-                {
-                    new ColumnHeadings()
-                    {
-                        ColumnType = typeof(string),
-                        HeadingName = "Skill Name"
-                    },
-                    new ColumnHeadings()
-                    {
-                        ColumnType = typeof(bool),
-                        HeadingName = "Description"
-                    },
-                    new ColumnHeadings()
-                    {
-                        ColumnType = typeof(int),
-                        HeadingName = "Ranks"
-                    }
-                },
-                Rows = new List<Dictionary<string, object>>
-                {
-                    new Dictionary<string, object>
-                    {
-                        {"Skill Name", "Acro"},
-                        {"Description",  true},
-                        {"Ranks", 1}
-                    },
-                    new Dictionary<string, object>
-                    {
-                        {"Skill Name", "Climb"},
-                        {"Description",  false},
-                        {"Ranks", 3}
-                    }
-                }
+                Logger = logger,
+                DictionaryTableFactory = dictionaryTableFactory
             };
-
-            var tablesView = new DictionaryTableFactory().Create(dictionaryTable);
-
-            var mainWindow = new MainWindow
-            {
-                DataContext = new MainViewModel(tablesView)
-            };
+            mainWindow.Initialize();
 
             application.Exit += (sender, args) => logger.LogMessage("Program closed");
 

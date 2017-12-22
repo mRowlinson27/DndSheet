@@ -7,36 +7,44 @@ namespace WpfUI.ViewModels.Helpers
     using System.Threading;
     using System.Threading.Tasks;
     using API.Dtos;
+    using Utilities.API;
 
     public class DictionaryTableViewModelHelper : IDictionaryTableViewModelHelper
     {
-        private readonly DictionaryTable _dictionaryTable;
+        private readonly ILogger _logger;
 
-        public DictionaryTableViewModelHelper(DictionaryTable dictionaryTable)
+        public DictionaryTableViewModelHelper(ILogger logger)
         {
-            _dictionaryTable = dictionaryTable;
+            _logger = logger;
         }
 
-        public DataTable GetSource()
+        public DataTable ConvertDictionaryTableToDataTable(DictionaryTable dictionaryTable)
         {
+            _logger.LogEntry();
             Thread.Sleep(3000);
 
             var dataTable = new DataTable();
 
-            foreach (var heading in _dictionaryTable.Headings)
+            foreach (var heading in dictionaryTable.Headings)
             {
                 dataTable.Columns.Add(new DataColumn(heading.HeadingName, heading.ColumnType));
             }
-            foreach (var row in _dictionaryTable.Rows)
+            foreach (var row in dictionaryTable.Rows)
             {
                 var rowData = new List<object>();
-                foreach (var heading in _dictionaryTable.Headings)
+                foreach (var heading in dictionaryTable.Headings)
                 {
                     rowData.Add(row[heading.HeadingName]);
                 }
                 dataTable.Rows.Add(rowData.ToArray());
             }
+            _logger.LogExit();
             return dataTable;
+        }
+
+        public DictionaryTable ConvertDataTableToDictionaryTable(DataTable dataTable)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

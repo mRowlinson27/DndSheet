@@ -3,24 +3,23 @@
     using API;
     using API.Dtos;
     using Controls;
+    using Utilities.API;
     using ViewModels;
     using ViewModels.Helpers;
 
     public class DictionaryTableFactory : IDictionaryTableFactory
     {
-        public DictionaryTableFactory()
+        private readonly ILogger _logger;
+
+        public DictionaryTableFactory(ILogger logger)
         {
-            
+            _logger = logger;
         }
 
-        public IDictionaryTableView Create(DictionaryTable dictionaryTable)
+        public IDictionaryTableView Create()
         {
-            var dictionaryTableViewModel = new DictionaryTableViewModel(
-                new DictionaryTableViewModelHelper(dictionaryTable));
-            var tablesView = new DictionaryTableView
-            {
-                DataContext = dictionaryTableViewModel,
-            };
+            var tablesView = new DictionaryTableView(
+                new DictionaryTableViewModelHelper(_logger), _logger);
             return tablesView;
         }
     }

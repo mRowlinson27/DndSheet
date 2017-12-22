@@ -7,7 +7,10 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid>
-        <DataGrid  x:Name="DataGrid" AutoGenerateColumns="True" ItemsSource="{Binding DataGridBinding}"
+        <DataGrid  x:Name="DataGrid" AutoGenerateColumns="True" 
+                   ItemsSource="{Binding DataGridBinding}"
+                   IsReadOnly="False"
+                   IsEnabled="True"
                    Height="300" VerticalAlignment="Bottom" CanUserAddRows="false" ColumnWidth="*">
         </DataGrid>
     </Grid>
