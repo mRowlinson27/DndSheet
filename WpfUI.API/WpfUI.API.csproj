@@ -45,6 +45,7 @@
     <Compile Include="Dtos\DictionaryTable.cs" />
     <Compile Include="IDictionaryTableFactory.cs" />
     <Compile Include="IDictionaryTableView.cs" />
+    <Compile Include="IDictionaryTableViewModel.cs" />
     <Compile Include="IMainViewModel.cs" />
     <Compile Include="IMainWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

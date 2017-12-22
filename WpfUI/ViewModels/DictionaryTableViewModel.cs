@@ -8,7 +8,7 @@
     using Helpers;
     using Utilities.API;
 
-    public class DictionaryTableViewModel : ViewModelBase, IDictionaryTableView
+    public class DictionaryTableViewModel : ViewModelBase, IDictionaryTableViewModel
     {
         public event EventHandler<DictionaryTableUpdatedArgs> DictionaryTableUpdated;
         

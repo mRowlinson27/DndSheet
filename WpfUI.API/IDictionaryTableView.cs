@@ -9,6 +9,8 @@ namespace WpfUI.API
         event EventHandler<DictionaryTableUpdatedArgs> DictionaryTableUpdated;
 
         void Update(DictionaryTable dictionaryTable);
+        void AllowEditing();
+        void DisallowEditing();
     }
 
     public class DictionaryTableUpdatedArgs : EventArgs

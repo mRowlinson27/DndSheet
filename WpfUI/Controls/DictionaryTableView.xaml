@@ -10,9 +10,19 @@
         <DataGrid  x:Name="DataGrid" AutoGenerateColumns="True" 
                    ItemsSource="{Binding DataGridBinding}"
                    CellEditEnding="DataGrid_OnCellEditEnding"
-                   IsReadOnly="False"
+                   IsReadOnly="True"
                    IsEnabled="True"
                    Height="300" VerticalAlignment="Bottom" CanUserAddRows="false" ColumnWidth="*">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                            <Setter Property="Background" Value="Yellow" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
     </Grid>
 </UserControl>

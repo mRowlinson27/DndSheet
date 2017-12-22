@@ -17,7 +17,7 @@
         private readonly ILogger _logger;
         public event EventHandler<DictionaryTableUpdatedArgs> DictionaryTableUpdated;
 
-        private DictionaryTableViewModel _dictionaryTableViewModel;
+        private IDictionaryTableViewModel _dictionaryTableViewModel;
 
         public DictionaryTableView()
         {
@@ -47,6 +47,16 @@
         public void Update(DictionaryTable dictionaryTable)
         {
             _dictionaryTableViewModel.Update(dictionaryTable);
+        }
+
+        public void AllowEditing()
+        {
+            DataGrid.IsReadOnly = false;
+        }
+
+        public void DisallowEditing()
+        {
+            DataGrid.IsReadOnly = true;
         }
 
         private void DataGrid_OnCellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
