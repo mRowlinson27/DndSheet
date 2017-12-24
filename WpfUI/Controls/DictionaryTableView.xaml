@@ -12,7 +12,7 @@
                    CellEditEnding="DataGrid_OnCellEditEnding"
                    IsReadOnly="True"
                    IsEnabled="True"
-                   Height="300" VerticalAlignment="Bottom" CanUserAddRows="false" ColumnWidth="*">
+                   CanUserAddRows="false" ColumnWidth="*">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Style.Triggers>

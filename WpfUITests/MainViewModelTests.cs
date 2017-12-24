@@ -15,7 +15,7 @@ namespace WpfUI.UnitTests
         private IMainWindow _mainWindow;
         private IDictionaryTableFactory _dictionaryTableFactory;
         private ILogger _logger;
-        private IDictionaryTableView _dictionaryTableView;
+        private IDictionaryTableDecoratorView _dictionaryTableView;
 
         [SetUp]
         public void Setup()
@@ -29,14 +29,14 @@ namespace WpfUI.UnitTests
                 Logger = _logger,
             };
 
-            _dictionaryTableView = A.Fake<IDictionaryTableView>();
+            _dictionaryTableView = A.Fake<IDictionaryTableDecoratorView>();
         }
 
         [Test]
         public void Initialize_CreatesDictionaryTableView_AndUpdatesIt()
         {
             //Arrange
-            A.CallTo(() => _dictionaryTableFactory.Create()).Returns(_dictionaryTableView);
+            A.CallTo(() => _dictionaryTableFactory.CreateDecoratedView()).Returns(_dictionaryTableView);
 
             //Act
             _mainViewModel.Initialize();

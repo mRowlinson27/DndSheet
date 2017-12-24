@@ -52,7 +52,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DictionaryTableDecoratorView.xaml.cs">
+      <DependentUpon>DictionaryTableDecoratorView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Factories\DictionaryTableFactory.cs" />
+    <Compile Include="ViewModels\DictionaryTableDecoratorViewModel.cs" />
     <Compile Include="ViewModels\Helpers\DictionaryTableViewModelHelper.cs" />
     <Compile Include="ViewModels\Helpers\IDictionaryTableViewModelHelper.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -65,6 +69,10 @@
     <Compile Include="Controls\DictionaryTableView.xaml.cs">
       <DependentUpon>DictionaryTableView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\DictionaryTableDecoratorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

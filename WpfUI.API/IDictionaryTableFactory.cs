@@ -6,5 +6,7 @@ namespace WpfUI.API
     public interface IDictionaryTableFactory
     {
         IDictionaryTableView Create();
+
+        IDictionaryTableDecoratorView CreateDecoratedView();
     }
 }

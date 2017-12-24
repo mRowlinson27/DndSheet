@@ -22,5 +22,10 @@
                 new DictionaryTableViewModelHelper(_logger), _logger);
             return tablesView;
         }
+
+        public IDictionaryTableDecoratorView CreateDecoratedView()
+        {
+            return new DictionaryTableDecoratorView(Create(), _logger);
+        }
     }
 }

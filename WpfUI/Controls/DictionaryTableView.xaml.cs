@@ -1,4 +1,5 @@
-﻿namespace WpfUI.Controls
+﻿
+namespace WpfUI.Controls
 {
     using System;
     using System.Windows.Controls;

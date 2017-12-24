@@ -11,7 +11,7 @@
     {
         //Bindings -------------------------------
 
-        public IDictionaryTableView MainWindowTablesViewBinding
+        public IDictionaryTableDecoratorView MainWindowTablesViewBinding
         {
             get { return _dictionaryTableView; }
             set
@@ -20,7 +20,7 @@
                 OnPropertyChanged("MainWindowTablesView");
             }
         }
-        private IDictionaryTableView _dictionaryTableView;
+        private IDictionaryTableDecoratorView _dictionaryTableView;
 
         //Properties -------------------------------
 
@@ -73,7 +73,7 @@
                     }
                 }
             };
-            MainWindowTablesViewBinding = DictionaryTableFactory.Create();
+            MainWindowTablesViewBinding = DictionaryTableFactory.CreateDecoratedView();
             MainWindowTablesViewBinding.Update(_oldTable);
             MainWindowTablesViewBinding.DictionaryTableUpdated += OnDictionaryTableUpdated;
             Logger.LogExit();

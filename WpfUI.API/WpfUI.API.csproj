@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Dtos\ColumnHeading.cs" />
     <Compile Include="Dtos\DictionaryTable.cs" />
+    <Compile Include="IDictionaryTableDecoratorView.cs" />
+    <Compile Include="IDictionaryTableDecoratorViewModel.cs" />
     <Compile Include="IDictionaryTableFactory.cs" />
     <Compile Include="IDictionaryTableView.cs" />
     <Compile Include="IDictionaryTableViewModel.cs" />
