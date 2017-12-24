@@ -38,6 +38,29 @@ namespace WpfUI.UnitTests
         }
 
         [Test]
+        public void ConvertDictionaryTableToDataTable_ExtraDictionaryHeading_CorrectTableReturnedWithEmptyColumn()
+        {
+            //Arrange
+            var data = GetDefaultDictionaryTable();
+            data.Headings.Add(new ColumnHeading()
+            {
+                ColumnType = typeof(bool),
+                HeadingName = "NewHeading"
+            });
+
+            //Act
+            var result = _dictionaryTableViewModelHelper.ConvertDictionaryTableToDataTable(data);
+
+            //Assert
+            var defaultDataTable = GetDefaultDataTable();
+            defaultDataTable.Columns.Add("NewHeading", typeof(bool));
+            defaultDataTable.Rows[0][3] = false;
+            defaultDataTable.Rows[1][3] = false;
+            
+            CompareDataTables(result, defaultDataTable);
+        }
+
+        [Test]
         public void ConvertDataTableToDictionaryTable_CorrectTableReturned()
         {
             //Arrange

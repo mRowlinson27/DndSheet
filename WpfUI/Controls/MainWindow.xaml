@@ -27,8 +27,24 @@
                                       Margin="5,5,5,5"
                                       Grid.Row="1" Grid.Column="0" 
                                       Content="{Binding MainWindowTablesViewBinding}"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="51,57,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.613,1.583" Grid.Column="1" Grid.Row="1"
+        <Button Content="DEBUG"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="59"
+                Margin="50,5,0,5"
                 Click="ButtonBase_OnClick"/>
+        <Button Content="Add"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="59"
+                Margin="50,5,0,5"
+                Click="EditButton_OnClick"/>
+        <Button Content="Edit" Grid.Column="1"
+                HorizontalAlignment="Right" VerticalAlignment="Top" Width="59"
+                Margin="0,5,50,5"
+                Click="EditButton_OnClick"/>
+        <Button Content="Cancel" Grid.Column="1"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="59"
+                Margin="0,0,50,5"
+                Click="CancelButton_OnClick"/>
+
+        
     </Grid>
 </Window>
 

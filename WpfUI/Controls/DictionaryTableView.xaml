@@ -16,8 +16,11 @@
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Style.Triggers>
+                        <Trigger Property="IsReadOnly" Value="False">
+                            <Setter Property="Background" Value="PaleGoldenrod"></Setter>
+                        </Trigger>
                         <Trigger Property="DataGridCell.IsSelected" Value="True">
-                            <Setter Property="Background" Value="Yellow" />
+                            <Setter Property="Background" Value="LightGray" />
                             <Setter Property="Foreground" Value="Black" />
                         </Trigger>
                     </Style.Triggers>

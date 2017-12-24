@@ -6,7 +6,6 @@
     using API;
     using API.Dtos;
     using Utilities.API;
-    using DictionaryTableView = Controls.DictionaryTableView;
 
     public class MainViewModel : ViewModelBase, IMainWindow, IMainViewModel
     {
@@ -86,9 +85,15 @@
         }
 
         private DictionaryTable _oldTable;
-        public async Task ButtonClick()
+        public void AllowEditing()
         {
-            await Task.Run(() => MainWindowTablesViewBinding.Update(_oldTable));
+            MainWindowTablesViewBinding.AllowEditing();
+        }
+
+        public void CancelEditing()
+        {
+            MainWindowTablesViewBinding.Update(_oldTable);
+            MainWindowTablesViewBinding.DisallowEditing();
         }
     }
 }

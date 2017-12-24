@@ -21,22 +21,53 @@ namespace WpfUI.ViewModels.Helpers
             _logger.LogEntry();
             var dataTable = new DataTable();
 
+            PopulateDataTableColumns(dictionaryTable, dataTable);
+            PopulateDataTableRows(dictionaryTable, dataTable);
+
+            _logger.LogExit();
+            return dataTable;
+        }
+
+        private void PopulateDataTableColumns(DictionaryTable dictionaryTable, DataTable dataTable)
+        {
             foreach (var heading in dictionaryTable.Headings)
             {
                 dataTable.Columns.Add(new DataColumn(heading.HeadingName, heading.ColumnType));
             }
+        }
+
+        private void PopulateDataTableRows(DictionaryTable dictionaryTable, DataTable dataTable)
+        {
             foreach (var row in dictionaryTable.Rows)
             {
-                var rowData = new List<object>();
-                foreach (var heading in dictionaryTable.Headings)
+                dataTable.Rows.Add(GetRowArrayFromDictionaryTable(dictionaryTable.Headings, row));
+            }
+        }
+
+        private object[] GetRowArrayFromDictionaryTable(List<ColumnHeading> headings, Dictionary<string, object> row)
+        {
+            var rowData = new List<object>();
+            foreach (var heading in headings)
+            {
+                if (row.ContainsKey(heading.HeadingName))
                 {
-                    Console.WriteLine(row[heading.HeadingName]);
                     rowData.Add(row[heading.HeadingName]);
                 }
-                dataTable.Rows.Add(rowData.ToArray());
+                else
+                {
+                    rowData.Add(GetDefault(heading.ColumnType));
+                }
             }
-            _logger.LogExit();
-            return dataTable;
+            return rowData.ToArray();
+        }
+
+        private object GetDefault(Type type)
+        {
+            if (type.IsValueType)
+            {
+                return Activator.CreateInstance(type);
+            }
+            return null;
         }
 
         public DictionaryTable ConvertDataTableToDictionaryTable(DataTable dataTable)

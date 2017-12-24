@@ -37,9 +37,28 @@
             _mainViewModel.Initialize();
         }
 
-        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            await _mainViewModel.ButtonClick();
+            MessageBoxResult result = MessageBox.Show("Do you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                
+            }
+        }
+
+        private void AddColumnButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void EditButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _mainViewModel.AllowEditing();
+        }
+
+        private void CancelButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            _mainViewModel.CancelEditing();
         }
     }
 }

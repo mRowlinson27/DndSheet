@@ -5,6 +5,7 @@ namespace WpfUI.API
 
     public interface IMainViewModel
     {
-        Task ButtonClick();
+        void AllowEditing();
+        void CancelEditing();
     }
 }
