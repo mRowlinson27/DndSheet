@@ -5,12 +5,37 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfUI.Controls"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300">
+      d:DesignHeight="300" d:DesignWidth="400" Background="SpringGreen">
 
-    <Grid>
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <local:DictionaryTableView x:Name="DictionaryTableView" 
-                                      Background="Aqua"
-                                      Margin="15,15,15,15"
-                                      Content="{Binding DictionaryTableViewBinding}"/>
+                                   Grid.Row="0" Grid.Column="0" 
+                                    Background="MediumOrchid"
+                                    Margin="25,25,0,0"
+                                    Content="{Binding DictionaryTableViewBinding}" VerticalAlignment="Top" MinHeight="25"/>
+        
+        <Label Content="Table Name" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Top" Height="25"/>
+
+        <Button Content="+"
+                Grid.Row="0" Grid.Column="1" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Height="25" Margin="0,27,25,0">
+            <Button.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="FontSize" Value="20px"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Content="Add Row"
+                Grid.Row="1" Grid.Column="0" 
+                HorizontalAlignment="Center" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </UserControl>

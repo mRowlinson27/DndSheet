@@ -29,7 +29,6 @@ namespace WpfUI.Controls
         {
             _logger = logger;
             InitializeComponent();
-            DataGrid.Background = Brushes.MediumOrchid;
             _dictionaryTableViewModel = new DictionaryTableViewModel(this, dictionaryTableViewModelHelper, logger);
             ApplyViewModelBindings();
         }
@@ -37,6 +36,7 @@ namespace WpfUI.Controls
         private void ApplyViewModelBindings()
         {
             DataContext = _dictionaryTableViewModel;
+            DataGrid.Background = this.Background;
             _dictionaryTableViewModel.DictionaryTableUpdated += OnDictionaryTableUpdated;
         }
 

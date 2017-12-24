@@ -4,28 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="150" d:DesignWidth="200">
 
-    <Grid>
-        <DataGrid  x:Name="DataGrid" AutoGenerateColumns="True" 
+
+    <DataGrid  x:Name="DataGrid" AutoGenerateColumns="True" 
                    ItemsSource="{Binding DataGridBinding}"
                    CellEditEnding="DataGrid_OnCellEditEnding"
                    IsReadOnly="True"
                    IsEnabled="True"
-                   CanUserAddRows="false" ColumnWidth="*">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridCell}">
-                    <Style.Triggers>
-                        <Trigger Property="IsReadOnly" Value="False">
-                            <Setter Property="Background" Value="PaleGoldenrod"></Setter>
-                        </Trigger>
-                        <Trigger Property="DataGridCell.IsSelected" Value="True">
-                            <Setter Property="Background" Value="LightGray" />
-                            <Setter Property="Foreground" Value="Black" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.Resources>
-        </DataGrid>
-    </Grid>
+                   CanUserAddRows="false" ColumnWidth="*"
+                   ColumnHeaderHeight="25">
+        <DataGrid.Resources>
+            <Style TargetType="{x:Type DataGridCell}">
+                <Style.Triggers>
+                    <Trigger Property="IsReadOnly" Value="False">
+                        <Setter Property="Background" Value="PaleGoldenrod"></Setter>
+                    </Trigger>
+                    <Trigger Property="DataGridCell.IsSelected" Value="True">
+                        <Setter Property="Background" Value="LightGray" />
+                        <Setter Property="Foreground" Value="Black" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </DataGrid.Resources>
+    </DataGrid>
+
 </UserControl>
